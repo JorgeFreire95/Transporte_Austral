@@ -1,0 +1,36 @@
+SiiNunit
+{
+map_data : .map.data {
+    # Paleta de colores de caminos en la interfaz
+    road_color: 0xFF555555
+    road_discovered_color: 0xFF00D7FF
+    job_road_color: 0xFF00FF88
+    world_road_color: 0xFF444444
+
+    # Centro de la vista de mapa UI enfocado en la Zona Central de Chile (Santiago)
+    ui_map_center: (-2000.0, 20000.0)
+    ui_map_size: (120000.0, 250000.0)
+
+    # Límites de cámara de paneo en todos los niveles de zoom (evita que se desplace a Europa)
+    camera_limits_min[0]: (-250000.0, -150000.0)
+    camera_limits_max[0]: (250000.0, 300000.0)
+    camera_limits_min[1]: (-250000.0, -150000.0)
+    camera_limits_max[1]: (250000.0, 300000.0)
+    camera_limits_min[2]: (-250000.0, -150000.0)
+    camera_limits_max[2]: (250000.0, 300000.0)
+    camera_limits_min[3]: (-250000.0, -150000.0)
+    camera_limits_max[3]: (250000.0, 300000.0)
+    camera_limits_min[4]: (-250000.0, -150000.0)
+    camera_limits_max[4]: (250000.0, 300000.0)
+    camera_limits_min[5]: (-250000.0, -150000.0)
+    camera_limits_max[5]: (250000.0, 300000.0)
+    camera_limits_min[6]: (-250000.0, -150000.0)
+    camera_limits_max[6]: (250000.0, 300000.0)
+    camera_limits_min[7]: (-250000.0, -150000.0)
+    camera_limits_max[7]: (250000.0, 300000.0)
+
+    # Coordenadas de zoom
+    ui_map_camera_min: 15.0
+    ui_map_camera_max: 200.0
+}
+}

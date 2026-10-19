@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/loading/loading_screen.tobj"
+    texture_name : "texture"
+}

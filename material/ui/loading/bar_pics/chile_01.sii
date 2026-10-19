@@ -1,0 +1,7 @@
+SiiNunit
+{
+loading_screen_def : .screen {
+    location: "Transporte Austral - Chile"
+    dlc_id: ""
+}
+}
