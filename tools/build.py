@@ -33,10 +33,50 @@ EXCLUDED_PATTERNS = {
 }
 
 
+def sincronizar_mapa_desde_juego():
+    """Detecta si el SCS Map Editor ha guardado chile.mbd en base/map/ y lo sincroniza."""
+    posibles_bases = [
+        Path(r"D:\SteamLibrary\steamapps\common\Euro Truck Simulator 2\base\map"),
+        Path(r"C:\Program Files (x86)\Steam\steamapps\common\Euro Truck Simulator 2\base\map"),
+        Path(r"E:\SteamLibrary\steamapps\common\Euro Truck Simulator 2\base\map"),
+        Path.home() / "OneDrive" / "Documentos" / "Euro Truck Simulator 2" / "base" / "map",
+        Path.home() / "Documents" / "Euro Truck Simulator 2" / "base" / "map",
+    ]
+
+    map_dest = BASE_DIR / "map"
+    map_dest.mkdir(parents=True, exist_ok=True)
+
+    for base_map in posibles_bases:
+        mbd_file = base_map / "chile.mbd"
+        if mbd_file.exists():
+            import shutil
+            shutil.copy2(mbd_file, map_dest / "chile.mbd")
+            print(f"[SYNC] Archivo chile.mbd detectado y copiado desde: {base_map}")
+
+            # Copiar sectores si existen
+            sec_dir = base_map / "chile"
+            if sec_dir.exists():
+                dest_sec = map_dest / "chile"
+                dest_sec.mkdir(parents=True, exist_ok=True)
+                for f in sec_dir.glob("*.*"):
+                    shutil.copy2(f, dest_sec / f.name)
+                print(f"[SYNC] Sectores sincronizados en: {dest_sec}")
+            break
+
+
 def validar_mod():
     """Valida la integridad de los archivos del mod antes de empaquetar."""
+    sincronizar_mapa_desde_juego()
     print("[1/3] Validando estructura e integridad del mod...")
     errores = []
+
+    # Verificar presencia de chile.mbd para mapa standalone
+    chile_mbd = BASE_DIR / "map" / "chile.mbd"
+    if not chile_mbd.exists():
+        print(" [AVISO MÓDULO STANDALONE] Aún no se ha generado 'map/chile.mbd'.")
+        print("  -> Para habilitar 'chile.mbd' en el menú 'Módulo de mapa', guarda el mapa una vez en el editor con: save chile")
+    else:
+        print(" -> Módulo de mapa independiente 'chile.mbd' detectado: OK.")
 
     # Verificar manifest y description
     manifest = BASE_DIR / "manifest.sii"
@@ -125,8 +165,11 @@ def instalar_en_ets2(scs_path: Path):
     print("[3/3] Buscando directorio de mods de Euro Truck Simulator 2...")
 
     posibles_rutas = [
+        Path.home() / "OneDrive" / "Documentos" / "Euro Truck Simulator 2" / "mod",
+        Path.home() / "OneDrive" / "Documents" / "Euro Truck Simulator 2" / "mod",
         Path.home() / "Documents" / "Euro Truck Simulator 2" / "mod",
         Path.home() / "Documentos" / "Euro Truck Simulator 2" / "mod",
+        Path(os.environ.get("USERPROFILE", "")) / "OneDrive" / "Documentos" / "Euro Truck Simulator 2" / "mod",
         Path(os.environ.get("USERPROFILE", "")) / "Documents" / "Euro Truck Simulator 2" / "mod",
         Path(os.environ.get("USERPROFILE", "")) / "Documentos" / "Euro Truck Simulator 2" / "mod",
     ]
