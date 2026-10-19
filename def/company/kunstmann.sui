@@ -1,0 +1,6 @@
+company_permanent : company.permanent.kunstmann
+{
+    name: "Cervecería Kunstmann (Valdivia)"
+    sort_name: "KUNSTMANN"
+    trailer_look: "kunstmann"
+}

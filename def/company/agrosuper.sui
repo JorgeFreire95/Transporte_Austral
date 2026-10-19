@@ -1,0 +1,6 @@
+company_permanent : company.permanent.agrosuper
+{
+    name: "Agrosuper Chile"
+    sort_name: "AGROSUPER"
+    trailer_look: "agrosuper"
+}

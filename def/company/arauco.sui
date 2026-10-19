@@ -1,0 +1,6 @@
+company_permanent : company.permanent.arauco
+{
+    name: "Arauco Celulosa y Maderas"
+    sort_name: "ARAUCO"
+    trailer_look: "arauco"
+}

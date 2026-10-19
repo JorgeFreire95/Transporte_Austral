@@ -1,0 +1,6 @@
+company_permanent : company.permanent.aquachile
+{
+    name: "AquaChile Salmones"
+    sort_name: "AQUACHILE"
+    trailer_look: "aquachile"
+}

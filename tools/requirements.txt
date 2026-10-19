@@ -1,0 +1,8 @@
+# Transporte Austral - Herramientas de Desarrollo en Python
+# Las herramientas principales (generator.py, geo_converter.py, build.py, sector_helper.py)
+# utilizan la biblioteca estándar de Python 3.10+ (sin dependencias obligatorias).
+
+# Dependencias opcionales para utilidades avanzadas (GIS, texturas y automatización de assets):
+# colorama>=0.4.6       # Colores en consola
+# pillow>=10.0.0        # Procesamiento y conversión de imágenes DDS/PNG
+# pyproj>=3.6.0         # Proyecciones cartográficas avanzadas UTM/WGS84

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.copec
+{
+    name: "Copec - Combustibles y Lubricantes"
+    sort_name: "COPEC"
+    trailer_look: "copec"
+}

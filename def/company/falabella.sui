@@ -1,0 +1,6 @@
+company_permanent : company.permanent.falabella
+{
+    name: "Falabella Logística & Retail"
+    sort_name: "FALABELLA"
+    trailer_look: "falabella"
+}

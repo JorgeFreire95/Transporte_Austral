@@ -1,0 +1,6 @@
+company_permanent : company.permanent.chilexpress
+{
+    name: "Chilexpress Courier"
+    sort_name: "CHILEXPRESS"
+    trailer_look: "chilexpress"
+}

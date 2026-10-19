@@ -1,0 +1,6 @@
+company_permanent : company.permanent.codelco
+{
+    name: "Codelco Chile"
+    sort_name: "CODELCO"
+    trailer_look: "codelco"
+}

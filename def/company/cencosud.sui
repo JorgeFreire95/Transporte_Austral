@@ -1,0 +1,6 @@
+company_permanent : company.permanent.cencosud
+{
+    name: "Cencosud (Jumbo / Easy / Santa Isabel)"
+    sort_name: "CENCOSUD"
+    trailer_look: "cencosud"
+}

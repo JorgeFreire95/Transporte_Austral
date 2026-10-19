@@ -1,0 +1,6 @@
+company_permanent : company.permanent.concha_toro
+{
+    name: "Viña Concha y Toro"
+    sort_name: "CONCHA_TORO"
+    trailer_look: "concha_toro"
+}

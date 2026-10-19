@@ -1,0 +1,6 @@
+company_permanent : company.permanent.colun
+{
+    name: "Colun - La Magia del Sur"
+    sort_name: "COLUN"
+    trailer_look: "colun"
+}

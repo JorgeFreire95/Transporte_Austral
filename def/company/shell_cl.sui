@@ -1,0 +1,6 @@
+company_permanent : company.permanent.shell_cl
+{
+    name: "Shell Enex Chile"
+    sort_name: "SHELL_CL"
+    trailer_look: "shell_cl"
+}

@@ -1,0 +1,14 @@
+cargo_data : cargo.encomiendas_cl
+{
+    name: "Cargas Express y Encomiendas Nacionales"
+    name_localized: "@@encomiendas_cl@@"
+    fragility: 0.5
+    valuable: false
+    group[]: containers
+    mass: 12000.0
+    unit_reward_per_km: 0.35
+    unit_load_time: 40
+    body_types[]: _curtain_s
+    body_types[]: _dryvan_s
+    body_types[]: _insulated_s
+}

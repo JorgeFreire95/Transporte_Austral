@@ -1,0 +1,6 @@
+company_permanent : company.permanent.ccu
+{
+    name: "CCU - Compañía de Cervecerías Unidas"
+    sort_name: "CCU"
+    trailer_look: "ccu"
+}

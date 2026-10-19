@@ -1,0 +1,29 @@
+SiiNunit
+{
+# Estaciones de Servicio Oficiales en Rutas y Carreteras de Chile
+# Red Copec (Pronto / Punto), Shell Enex (Upa!), Petrobras (Spacio 1)
+
+gasoline_station : gas.copec_pronto
+{
+    name: "Copec Pronto"
+    fuel_price: 1.15
+}
+
+gasoline_station : gas.copec_punto
+{
+    name: "Copec Punto"
+    fuel_price: 1.15
+}
+
+gasoline_station : gas.shell_upa
+{
+    name: "Shell Upa!"
+    fuel_price: 1.16
+}
+
+gasoline_station : gas.petrobras_spacio
+{
+    name: "Petrobras Spacio 1"
+    fuel_price: 1.14
+}
+}

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.starken
+{
+    name: "Starken Encomiendas y Logística"
+    sort_name: "STARKEN"
+    trailer_look: "starken"
+}

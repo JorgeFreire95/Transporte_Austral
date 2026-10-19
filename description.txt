@@ -1,0 +1,12 @@
+[orange][b]TRANSPORTE AUSTRAL - MAPA DE CHILE (ETS2)[/b][/orange]
+[white]Recreación completa de Chile a escala realista para Euro Truck Simulator 2.[/white]
+
+[cyan][b]CARACTERÍSTICAS PRINCIPALES:[/b][/cyan]
+- [yellow]16 Regiones de Chile:[/yellow] Desde Arica y Parinacota hasta Magallanes y la Antártica Chilena.
+- [yellow]Carreteras Icónicas:[/yellow] Ruta 5 Panamericana completa, Carretera Austral (Ruta 7), Ruta 68, Ruta 78 Autopista del Sol, Cuesta Caracoles (Paso Los Libertadores).
+- [yellow]Empresas Chilenas Reales:[/yellow] Copec, Codelco, Agrosuper, Arauco, CMPC, Colun, Falabella, CCU, AquaChile, Starken, Chilexpress y más.
+- [yellow]Estaciones de Servicio:[/yellow] Red de Copec (Pronto / Punto), Shell (Upa!), Petrobras (Spacio 1) con áreas de descanso y pesaje de camiones.
+- [yellow]Cargas Nacionales:[/yellow] Cátodos de cobre, salmones frescos, celulosa kraft, vinos reserva, madera de pino, leche del sur, paltas y fruta fresca.
+- [yellow]Patentes Chilenas Oficiales:[/yellow] Algoritmo fiel al Registro Civil de Chile (formato BB-BB-00).
+
+[normal]Desarrollado con herramientas avanzadas SCS Map Editor, SCS Blender Tools y suite de automatización en Python.[/normal]

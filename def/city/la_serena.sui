@@ -1,0 +1,30 @@
+city_data : city.la_serena
+{
+    city_name: "La Serena"
+    city_name_localized: "@@la_serena@@"
+    country: chile
+
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: -10
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: -20
+    map_x_offsets[]: -15
+
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 25
+    map_y_offsets[]: -10
+    map_y_offsets[]: -5
+    map_y_offsets[]: -15
+    map_y_offsets[]: -15
+    map_y_offsets[]: -15
+
+    # Coordenadas en mapa SCS (escala 1:19)
+    # Región: Región de Coquimbo (IV)
+    # Posición estimada X/Z
+    vehicle_brands[]: "scania"
+    vehicle_brands[]: "volvo"
+}

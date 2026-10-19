@@ -1,0 +1,6 @@
+company_permanent : company.permanent.tpa_arica
+{
+    name: "Terminal Puerto Arica (TPA)"
+    sort_name: "TPA_ARICA"
+    trailer_look: "tpa_arica"
+}

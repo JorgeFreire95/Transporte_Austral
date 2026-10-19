@@ -1,0 +1,17 @@
+SiiNunit
+{
+mod_package : .package_transporte_austral {
+    package_version: "1.0.0"
+    display_name: "Transporte Austral - Mapa de Chile"
+    author: "Transporte Austral Team"
+    category[]: "map"
+    icon: "mod_icon.png"
+    description_file: "description.txt"
+
+    # Compatibilidad con versiones de Euro Truck Simulator 2
+    compatible_versions[]: "1.50.*"
+    compatible_versions[]: "1.51.*"
+    compatible_versions[]: "1.52.*"
+    compatible_versions[]: "1.53.*"
+}
+}

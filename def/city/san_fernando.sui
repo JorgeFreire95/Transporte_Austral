@@ -1,0 +1,30 @@
+city_data : city.san_fernando
+{
+    city_name: "San Fernando"
+    city_name_localized: "@@san_fernando@@"
+    country: chile
+
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: -10
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: -20
+    map_x_offsets[]: -15
+
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 25
+    map_y_offsets[]: -10
+    map_y_offsets[]: -5
+    map_y_offsets[]: -15
+    map_y_offsets[]: -15
+    map_y_offsets[]: -15
+
+    # Coordenadas en mapa SCS (escala 1:19)
+    # Región: Región del Libertador General Bernardo O'Higgins (VI)
+    # Posición estimada X/Z
+    vehicle_brands[]: "scania"
+    vehicle_brands[]: "volvo"
+}

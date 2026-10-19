@@ -1,0 +1,44 @@
+country_data : country.data.chile
+{
+    name: "Chile"
+    name_localized: "@@chile@@"
+    country_code: "CL"
+    iso_country_code: chl
+
+    pos: (-120000, 0, 180000)
+
+    fuel_price: 1.15
+
+    lights_mandatory: true
+    driving_side: right
+    left_hand_traffic: false
+
+    # Carabineros de Chile
+    emergency_call: 133
+
+    # Tolerancias de peaje y límites de masa (45 toneladas para camión con semirremolque en Chile)
+    mass_limit: 45000
+
+    # Límites de velocidad según Ley de Tránsito de Chile
+    # speed_limit[0]: Camiones | speed_limit[1]: Buses | speed_limit[2]: Automóviles
+    # Zona Urbana: 50 km/h para todos
+    speed_limit_urban[0]: 50
+    speed_limit_urban[1]: 50
+    speed_limit_urban[2]: 50
+
+    # Carretera convencional (Rural simple vía): Camiones 90 km/h, Autos 100 km/h
+    speed_limit_rural[0]: 90
+    speed_limit_rural[1]: 90
+    speed_limit_rural[2]: 100
+
+    # Autopista (Doble calzada / Ruta 5 / Autopistas Concesionadas): Camiones 90/100 km/h, Autos 120 km/h
+    speed_limit_motorway[0]: 90
+    speed_limit_motorway[1]: 100
+    speed_limit_motorway[2]: 120
+
+    # Zonas horarias de Chile
+    time_zone: -180 # UTC-3 (Hora Continental verano / Magallanes permanente)
+    time_zone_name: "CLT"
+
+    @include "chile/license_plates.sui"
+}

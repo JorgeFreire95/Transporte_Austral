@@ -1,0 +1,6 @@
+company_permanent : company.permanent.cmpc
+{
+    name: "Empresas CMPC"
+    sort_name: "CMPC"
+    trailer_look: "cmpc"
+}
