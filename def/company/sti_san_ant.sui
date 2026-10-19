@@ -1,0 +1,6 @@
+company_permanent : company.permanent.sti_san_ant
+{
+    name: "San Antonio Terminal Internacional (STI)"
+    sort_name: "STI_SAN_ANT"
+    trailer_look: "sti_san_ant"
+}

@@ -48,8 +48,8 @@ SiiNunit
 @include "city/coyhaique.sui"
 @include "city/puerto_aysen.sui"
 @include "city/cochrane.sui"
-@include "city/villa_ohiggins.sui"
+@include "city/v_ohiggins.sui"
 @include "city/punta_arenas.sui"
-@include "city/puerto_natales.sui"
+@include "city/pto_natales.sui"
 @include "city/porvenir.sui"
 }

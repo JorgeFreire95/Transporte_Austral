@@ -16,6 +16,6 @@ SiiNunit
 @include "company/starken.sui"
 @include "company/chilexpress.sui"
 @include "company/tpa_arica.sui"
-@include "company/sti_sanantonio.sui"
+@include "company/sti_san_ant.sui"
 @include "company/kunstmann.sui"
 }

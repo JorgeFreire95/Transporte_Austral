@@ -1,7 +1,7 @@
-cargo_data : cargo.celulosa_fardo
+cargo_data : cargo.cel_fardo
 {
     name: "Fardos de Celulosa Kraft Arauco/CMPC"
-    name_localized: "@@celulosa_fardo@@"
+    name_localized: "@@cel_fardo@@"
     fragility: 0.1
     valuable: false
     group[]: bulk

@@ -1,6 +1,6 @@
 SiiNunit
 {
-mod_package : .package_transporte_austral {
+mod_package : .package_name {
     package_version: "1.0.0"
     display_name: "Transporte Austral - Mapa de Chile"
     author: "Transporte Austral Team"

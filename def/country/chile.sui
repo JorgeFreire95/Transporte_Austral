@@ -10,7 +10,6 @@ country_data : country.data.chile
     fuel_price: 1.15
 
     lights_mandatory: true
-    driving_side: right
     left_hand_traffic: false
 
     # Carabineros de Chile

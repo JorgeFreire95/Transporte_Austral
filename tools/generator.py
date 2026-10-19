@@ -175,7 +175,7 @@ REGIONES_CHILE = {
                 "nombre": "San Antonio",
                 "x": -117200, "z": 162000,
                 "icon": "san_antonio",
-                "empresas": ["sti_sanantonio", "copec", "starken", "petrobras_cl"]
+                "empresas": ["sti_san_ant", "copec", "starken", "petrobras_cl"]
             },
             {
                 "id": "los_andes",
@@ -433,10 +433,10 @@ REGIONES_CHILE = {
                 "empresas": ["terpel", "copec"]
             },
             {
-                "id": "villa_ohiggins",
+                "id": "v_ohiggins",
                 "nombre": "Villa O'Higgins",
                 "x": -113800, "z": 242000,
-                "icon": "villa_ohiggins",
+                "icon": "v_ohiggins",
                 "empresas": ["copec", "logistica_austral"]
             }
         ]
@@ -452,10 +452,10 @@ REGIONES_CHILE = {
                 "empresas": ["enap_magallanes", "copec", "tabsa_ferries", "shell_cl"]
             },
             {
-                "id": "puerto_natales",
+                "id": "pto_natales",
                 "nombre": "Puerto Natales",
                 "x": -113200, "z": 258000,
-                "icon": "puerto_natales",
+                "icon": "pto_natales",
                 "empresas": ["australis_seafood", "copec", "frigorifico_sur"]
             },
             {
@@ -476,38 +476,38 @@ EMPRESAS_CHILENAS = {
     "copec": {
         "nombre": "Copec - Combustibles y Lubricantes",
         "rubro": "Combustibles, Tiendas Pronto Copec y Punto Copec",
-        "cargas_in": ["petroleo_ref", "combustible_cl", "lubricantes_copec", "abarrotes"],
-        "cargas_out": ["combustible_cl", "lubricantes_copec"]
+        "cargas_in": ["petroleo_ref", "combust_cl", "lubricantes_copec", "abarrotes"],
+        "cargas_out": ["combust_cl", "lubricantes_copec"]
     },
     "shell_cl": {
         "nombre": "Shell Enex Chile",
         "rubro": "Combustibles y Tiendas Upa! / Upita",
-        "cargas_in": ["petroleo_ref", "combustible_cl", "bebidas", "snacks"],
-        "cargas_out": ["combustible_cl", "lubricantes_shell"]
+        "cargas_in": ["petroleo_ref", "combust_cl", "bebidas", "snacks"],
+        "cargas_out": ["combust_cl", "lubricantes_shell"]
     },
     "petrobras_cl": {
         "nombre": "Petrobras Chile - Esmax",
         "rubro": "Combustibles y Tiendas Spacio 1",
-        "cargas_in": ["combustible_cl", "lubricantes_petro"],
-        "cargas_out": ["combustible_cl"]
+        "cargas_in": ["combust_cl", "lubricantes_petro"],
+        "cargas_out": ["combust_cl"]
     },
     "codelco": {
         "nombre": "Codelco Chile",
         "rubro": "Minería Estatal del Cobre (Chuquicamata, El Teniente, Andina)",
         "cargas_in": ["maquinaria_pesada", "explosivos_min", "acido_sulfurico", "repuestos_cat"],
-        "cargas_out": ["catodos_cobre", "concentrado_cobre", "anodos_cobre"]
+        "cargas_out": ["catod_cobre", "concentrado_cobre", "anodos_cobre"]
     },
     "arauco": {
         "nombre": "Arauco Celulosa y Maderas",
         "rubro": "Complejo Forestal y Celulosa (MAPA, Constitución)",
         "cargas_in": ["troncos_pino", "quimicos_blanqueo", "repuestos_ind"],
-        "cargas_out": ["celulosa_fardo", "madera_aserrada", "tableros_mdf"]
+        "cargas_out": ["cel_fardo", "madera_aserrada", "tableros_mdf"]
     },
     "cmpc": {
         "nombre": "Empresas CMPC",
         "rubro": "Forestal Mininco y Papeles del Pacífico",
-        "cargas_in": ["troncos_eucalipto", "bobinas_papel", "combustible_cl"],
-        "cargas_out": ["celulosa_fardo", "papel_kraft", "madera_aserrada"]
+        "cargas_in": ["troncos_eucalipto", "bobinas_papel", "combust_cl"],
+        "cargas_out": ["cel_fardo", "papel_kraft", "madera_aserrada"]
     },
     "agrosuper": {
         "nombre": "Agrosuper Chile",
@@ -543,7 +543,7 @@ EMPRESAS_CHILENAS = {
         "nombre": "AquaChile Salmones",
         "rubro": "Acuicultura y Exportación de Salmón",
         "cargas_in": ["alimento_peces", "cajas_poliestireno", "hielo_escamas"],
-        "cargas_out": ["salmon_fresco", "salmon_congelado", "filetes_salmon"]
+        "cargas_out": ["salm_fresco", "salmon_congelado", "filetes_salmon"]
     },
     "concha_toro": {
         "nombre": "Viña Concha y Toro",
@@ -554,8 +554,8 @@ EMPRESAS_CHILENAS = {
     "starken": {
         "nombre": "Starken Encomiendas y Logística",
         "rubro": "Transporte de carga express y encomiendas en todo Chile",
-        "cargas_in": ["encomiendas_cl", "paquetes_express"],
-        "cargas_out": ["encomiendas_cl", "carga_consolidada"]
+        "cargas_in": ["encomiendas", "paquetes_express"],
+        "cargas_out": ["encomiendas", "carga_consolidada"]
     },
     "chilexpress": {
         "nombre": "Chilexpress Courier",
@@ -569,7 +569,7 @@ EMPRESAS_CHILENAS = {
         "cargas_in": ["minerales_export", "contenedores_import"],
         "cargas_out": ["contenedores_import", "carga_general"]
     },
-    "sti_sanantonio": {
+    "sti_san_ant": {
         "nombre": "San Antonio Terminal Internacional (STI)",
         "rubro": "Mayor puerto de transferencia de contenedores de Chile",
         "cargas_in": ["fruta_export", "vino_reserva", "cobre_export"],
@@ -587,25 +587,25 @@ EMPRESAS_CHILENAS = {
 # BASE DE DATOS: CARGAS CHILENAS TÍPICAS
 # ==============================================================================
 CARGAS_CHILENAS = {
-    "catodos_cobre": {
+    "catod_cobre": {
         "nombre": "Cátodos de Cobre de Alta Pureza",
-        "nombre_loc": "@@catodos_cobre@@",
+        "nombre_loc": "@@catod_cobre@@",
         "masa": 24000,
         "fragilidad": 0.2,
         "valiosa": True,
         "grupo": "machinery"
     },
-    "celulosa_fardo": {
+    "cel_fardo": {
         "nombre": "Fardos de Celulosa Kraft Arauco/CMPC",
-        "nombre_loc": "@@celulosa_fardo@@",
+        "nombre_loc": "@@cel_fardo@@",
         "masa": 22500,
         "fragilidad": 0.1,
         "valiosa": False,
         "grupo": "bulk"
     },
-    "salmon_fresco": {
+    "salm_fresco": {
         "nombre": "Salmón Atlántico Fresco en Hielo",
-        "nombre_loc": "@@salmon_fresco@@",
+        "nombre_loc": "@@salm_fresco@@",
         "masa": 19000,
         "fragilidad": 0.8,
         "valiosa": True,
@@ -627,9 +627,9 @@ CARGAS_CHILENAS = {
         "valiosa": False,
         "grupo": "liquid"
     },
-    "combustible_cl": {
+    "combust_cl": {
         "nombre": "Gasolinas 93/97 y Diésel Copec",
-        "nombre_loc": "@@combustible_cl@@",
+        "nombre_loc": "@@combust_cl@@",
         "masa": 26000,
         "fragilidad": 0.9,
         "valiosa": True,
@@ -643,9 +643,9 @@ CARGAS_CHILENAS = {
         "valiosa": True,
         "grupo": "refrigerated"
     },
-    "encomiendas_cl": {
+    "encomiendas": {
         "nombre": "Cargas Express y Encomiendas Nacionales",
-        "nombre_loc": "@@encomiendas_cl@@",
+        "nombre_loc": "@@encomiendas@@",
         "masa": 12000,
         "fragilidad": 0.5,
         "valiosa": False,

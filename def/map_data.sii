@@ -28,9 +28,5 @@ map_data : .map.data {
     camera_limits_max[6]: (250000.0, 300000.0)
     camera_limits_min[7]: (-250000.0, -150000.0)
     camera_limits_max[7]: (250000.0, 300000.0)
-
-    # Coordenadas de zoom
-    ui_map_camera_min: 15.0
-    ui_map_camera_max: 200.0
 }
 }
