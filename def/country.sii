@@ -1,4 +1,5 @@
 SiiNunit
 {
 @include "country/chile.sui"
+@include "country/chile/license_plates.sui"
 }

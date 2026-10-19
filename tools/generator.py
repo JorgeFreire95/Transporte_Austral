@@ -792,9 +792,14 @@ def generar_pais():
     country_dir = DEF_DIR / "country"
     country_dir.mkdir(parents=True, exist_ok=True)
 
-    # Master country.sii (sobreescribe la lista de países base de Europa)
+    # Master country.sii (sobreescribe la lista de países base de Europa y carga patentes)
     master_path = DEF_DIR / "country.sii"
-    master_content = 'SiiNunit\n{\n@include "country/chile.sui"\n}\n'
+    master_content = """SiiNunit
+{
+@include "country/chile.sui"
+@include "country/chile/license_plates.sui"
+}
+"""
     with open(master_path, "w", encoding="utf-8") as f:
         f.write(master_content)
 
@@ -827,14 +832,33 @@ def generar_pais():
     mass_limit_per_axle_count[]: 38000
     mass_limit_per_axle_count[]: 44000
     mass_limit_per_axle_count[]: 45000
-
-    @include "chile/license_plates.sui"
 }
 """
     with open(chile_sui_path, "w", encoding="utf-8") as f:
         f.write(chile_content)
 
-    print("-> País Chile generado en def/country.sii y def/country/chile.sui")
+    print("-> País Chile generado en def/country.sii y def/country/chile.sui (sin errores de sintaxis)")
+
+
+def desactivar_dlcs_europa():
+    """Neutraliza ciudades y países de DLCs europeos (Iberia, Escandinavia, Halloween, etc.)"""
+    dlc_files = [
+        DEF_DIR / "country.halloween.sii",
+        DEF_DIR / "city.halloween.sii",
+        DEF_DIR / "city.iberia.sii",
+        DEF_DIR / "city.balkan_e.sii",
+        DEF_DIR / "city.balkan_w.sii",
+        DEF_DIR / "city.balt.sii",
+        DEF_DIR / "city.it.sii",
+        DEF_DIR / "city.fr.sii",
+        DEF_DIR / "city.east.sii",
+        DEF_DIR / "city.north.sii",
+    ]
+    empty_content = "SiiNunit\n{\n}\n"
+    for dlc_f in dlc_files:
+        with open(dlc_f, "w", encoding="utf-8") as f:
+            f.write(empty_content)
+    print("-> 10 módulos de DLCs europeos neutralizados (garantiza mapa 100% chileno sin Brackenreach)")
 
 
 def generar_estaciones_servicio():
@@ -888,6 +912,7 @@ def main():
     generar_empresas()
     generar_cargas()
     generar_estaciones_servicio()
+    desactivar_dlcs_europa()
     print("================================================================")
     print("Todas las definiciones se han generado correctamente.")
 

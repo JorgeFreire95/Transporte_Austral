@@ -22,6 +22,4 @@ country_data : country.data.chile
     mass_limit_per_axle_count[]: 38000
     mass_limit_per_axle_count[]: 44000
     mass_limit_per_axle_count[]: 45000
-
-    @include "chile/license_plates.sui"
 }
