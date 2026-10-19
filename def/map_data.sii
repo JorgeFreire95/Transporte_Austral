@@ -1,32 +1,171 @@
 SiiNunit
 {
 map_data : .map.data {
-    # Paleta de colores de caminos en la interfaz
-    road_color: 0xFF555555
-    road_discovered_color: 0xFF00D7FF
-    job_road_color: 0xFF00FF88
-    world_road_color: 0xFF444444
 
-    # Centro de la vista de mapa UI enfocado en la Zona Central de Chile (Santiago)
-    ui_map_center: (-2000.0, 20000.0)
-    ui_map_size: (120000.0, 250000.0)
+	road_color:			0xFF707070 	//Advisor map undiscovered route
+	road_discovered_color:		0xFF20bcff	//Advisor map discovered route
+	job_road_color:			0x50353535	//Job market map undiscoveder route
+	job_road_discovered_color:	0xFF2b3436	//Job market map discovered route
+	world_road_color:		0xFF707070	//Main map undiscovered route
+	world_road_discovered_color:	0xFF20bcff 	//Main map discovered route
+	fleet_manager_road_color:		0xff424242	//Fleet manager map undiscovered route
+	fleet_manager_road_discovered_color:	0xff424242 	//Fleet manager map discovered route
 
-    # Límites de cámara de paneo en todos los niveles de zoom (evita que se desplace a Europa)
-    camera_limits_min[0]: (-250000.0, -150000.0)
-    camera_limits_max[0]: (250000.0, 300000.0)
-    camera_limits_min[1]: (-250000.0, -150000.0)
-    camera_limits_max[1]: (250000.0, 300000.0)
-    camera_limits_min[2]: (-250000.0, -150000.0)
-    camera_limits_max[2]: (250000.0, 300000.0)
-    camera_limits_min[3]: (-250000.0, -150000.0)
-    camera_limits_max[3]: (250000.0, 300000.0)
-    camera_limits_min[4]: (-250000.0, -150000.0)
-    camera_limits_max[4]: (250000.0, 300000.0)
-    camera_limits_min[5]: (-250000.0, -150000.0)
-    camera_limits_max[5]: (250000.0, 300000.0)
-    camera_limits_min[6]: (-250000.0, -150000.0)
-    camera_limits_max[6]: (250000.0, 300000.0)
-    camera_limits_min[7]: (-250000.0, -150000.0)
-    camera_limits_max[7]: (250000.0, 300000.0)
+	# Map area colors
+	map_area_color_name[]: "Road"
+	map_area_color[]: 0xFF707070
+	map_area_discovered_color[]: 0xFF20bcff
+
+	map_area_color_name[]: "Light"
+	map_area_color[]: 0xFF737373
+	map_area_discovered_color[]: 0xFF98CAEB
+
+	map_area_color_name[]: "Dark"
+	map_area_color[]: 0xFF333333
+	map_area_discovered_color[]: 0xFF3ba2e0
+
+	map_area_color_name[]: "Green"
+	map_area_color[]: 0xFF737373
+	map_area_discovered_color[]: 0xFF95CAA9
+
+	map_area_color_name[]: "Nav-Red"
+	map_area_color[]: 0xFF787890
+	map_area_discovered_color[]: 0xFF000099
+
+	map_area_color_name[]: "Nav-Green"
+	map_area_color[]: 0xFF759076
+	map_area_discovered_color[]: 0xFF35A54D
+
+	map_area_color_name[]: "Nav-Blue"
+	map_area_color[]: 0xFF907576
+	map_area_discovered_color[]: 0xFFD9772F
+
+	map_area_color_name[]: "Nav-Yellow"
+	map_area_color[]: 0xFF778f90
+	map_area_discovered_color[]: 0xFF24D4EC
+
+	map_area_color_name[]: "Nav-Purple"
+	map_area_color[]: 0xFF827279
+	map_area_discovered_color[]: 0xFFA93E6E
+
+	prefab_color:				0xFF737373
+	prefab_obstacle_color:			0xFF333333
+	prefab_grass_color:			0xFF737373
+	prefab_discovered_color:		0xFF98CAEB
+	prefab_obstacle_discovered_color:	0xFF3BA2E0
+	prefab_grass_discovered_color:		0xFF95CAA9
+
+	outline_color:			0xFF000000
+	navigation_color:		0xFF0C0CCF
+	navigation_highlight_color:	0xFF0C42DF
+	navigation_fade_color:		0xFF07077C
+	navigation_arrow_color: 	0xFF06FB11
+
+	# Niveles de Zoom completos (0 a 7 requeridos por Prism3D)
+	zoom_uplift[0]: 50.0		// close zoom for 3d map
+	zoom_uplift[1]: 220.0		// far zoom for 3d map
+	zoom_uplift[2]: 900.0		// close zoom for minimap
+	zoom_uplift[3]: 4000.0		// far zoom for minimap
+	zoom_uplift[4]: 1000.0		// city detail zoom for world map
+	zoom_uplift[5]: 5000.0		// closest zoom for world map
+	zoom_uplift[6]: 20000.0		// middle zoom for world map
+	zoom_uplift[7]: 75000.0		// whole world map zoom
+
+	player_size[0]: 15.0
+	player_size[1]: 35.0
+	player_size[2]: 120.0
+	player_size[3]: 500.0
+	player_size[4]: 90.0
+	player_size[5]: 350.0
+	player_size[6]: 900.0
+	player_size[7]: 2200.0
+
+	road_size_factor[0]: 1.0
+	road_size_factor[1]: 1.0
+	road_size_factor[2]: 1.5
+	road_size_factor[3]: 3.0
+	road_size_factor[4]: 1.0
+	road_size_factor[5]: 1.5
+	road_size_factor[6]: 4.5
+	road_size_factor[7]: 8.0
+
+	full_detail[0]: true
+	full_detail[1]: true
+	full_detail[2]: true
+	full_detail[3]: true
+	full_detail[4]: true
+	full_detail[5]: true
+	full_detail[6]: false
+	full_detail[7]: false
+
+	icon_size[0]: (13.0, 13.0)
+	icon_size[1]: (10.0, 10.0)
+	icon_size[2]: (10.0, 10.0)
+	icon_size[3]: (8.0, 8.0)
+	icon_size[4]: (15.0, 15.0)
+	icon_size[5]: (12.0, 12.0)
+	icon_size[6]: (10.0, 10.0)
+	icon_size[7]: (10.0, 10.0)
+
+	city_icon_size[0]: (13.0, 13.0)
+	city_icon_size[1]: (10.0, 10.0)
+	city_icon_size[2]: (10.0, 10.0)
+	city_icon_size[3]: (8.0, 8.0)
+	city_icon_size[4]: (15.0, 15.0)
+	city_icon_size[5]: (12.0, 12.0)
+	city_icon_size[6]: (10.0, 10.0)
+	city_icon_size[7]: (15.0, 15.0)
+
+	company_icon_size[0]: (32.0, 8.0)
+	company_icon_size[1]: (20.0, 5.0)
+	company_icon_size[2]: (0.0, 0.0)
+	company_icon_size[3]: (0.0, 0.0)
+	company_icon_size[4]: (60.0, 15.0)
+	company_icon_size[5]: (40.0, 10.0)
+	company_icon_size[6]: (16.0, 4.0)
+	company_icon_size[7]: (16.0, 4.0)
+
+	# Límites de cámara en coordenadas de Chile
+	camera_limits_min[0]: (-1000000.0, -1000000.0)
+	camera_limits_min[1]: (-1000000.0, -1000000.0)
+	camera_limits_min[2]: (-1000000.0, -1000000.0)
+	camera_limits_min[3]: (-1000000.0, -1000000.0)
+	camera_limits_min[4]: (-300000.0, -200000.0)
+	camera_limits_min[5]: (-250000.0, -180000.0)
+	camera_limits_min[6]: (-200000.0, -150000.0)
+	camera_limits_min[7]: (-150000.0, -120000.0)
+
+	camera_limits_max[0]: (1000000.0, 1000000.0)
+	camera_limits_max[1]: (1000000.0, 1000000.0)
+	camera_limits_max[2]: (1000000.0, 1000000.0)
+	camera_limits_max[3]: (1000000.0, 1000000.0)
+	camera_limits_max[4]: (300000.0, 300000.0)
+	camera_limits_max[5]: (250000.0, 280000.0)
+	camera_limits_max[6]: (200000.0, 250000.0)
+	camera_limits_max[7]: (150000.0, 220000.0)
+
+	map_items_flags[0]: 0x0F685FFF
+	map_items_flags[1]: 0x0F685FFF
+	map_items_flags[2]: 0x0F685FFF
+	map_items_flags[3]: 0x0F685FFF
+	map_items_flags[4]: 0x0F685FAF
+	map_items_flags[5]: 0x0F685FAF
+	map_items_flags[6]: 0x0F685487
+	map_items_flags[7]: 0x0C481402
+
+	map_3d_camera_pitch: 40.0
+
+	ui_map_center:	(-2000.0, 20000.0)	# Centro en Chile
+	ui_map_size:	(120000.0, 250000.0)
+
+	ui_map_camera_min: (-150000.0, -120000.0)
+	ui_map_camera_max: (150000.0, 220000.0)
+	ui_map_camera_start: (-2000.0, 20000.0)
+
+	ui_map_always_draw_city: true
+
+	navigation_city_penalty: 1.0
+	navigation_slow_road_penalty: 5.0
+	navigation_maximum_speed: 30.6
 }
 }
