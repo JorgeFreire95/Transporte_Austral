@@ -1,7 +1,6 @@
 cargo_data : cargo.catod_cobre
 {
     name: "Cátodos de Cobre de Alta Pureza"
-    name_localized: "@@catod_cobre@@"
     fragility: 0.2
     valuable: true
     group[]: machinery

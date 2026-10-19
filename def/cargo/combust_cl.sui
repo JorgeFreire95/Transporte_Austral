@@ -1,7 +1,6 @@
 cargo_data : cargo.combust_cl
 {
     name: "Gasolinas 93/97 y Diésel Copec"
-    name_localized: "@@combust_cl@@"
     fragility: 0.9
     valuable: true
     group[]: adr_liquid

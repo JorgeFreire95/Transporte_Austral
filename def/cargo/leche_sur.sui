@@ -1,7 +1,6 @@
 cargo_data : cargo.leche_sur
 {
     name: "Leche Fresca en Cisterna Colun"
-    name_localized: "@@leche_sur@@"
     fragility: 0.3
     valuable: false
     group[]: liquid

@@ -24,7 +24,5 @@ city_data : city.castro
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: Región de Los Lagos (X)
-    # Posición estimada X/Z
-    vehicle_brands[]: "scania"
-    vehicle_brands[]: "volvo"
+    # Posición estimada X/Z: (-116800, 214500)
 }

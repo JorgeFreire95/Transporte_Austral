@@ -24,7 +24,5 @@ city_data : city.coronel
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: Región del Biobío (VIII)
-    # Posición estimada X/Z
-    vehicle_brands[]: "scania"
-    vehicle_brands[]: "volvo"
+    # Posición estimada X/Z: (-116900, 186800)
 }

@@ -1,7 +1,6 @@
 cargo_data : cargo.vino_reserva
 {
     name: "Vino Chileno Reserva Embotellado"
-    name_localized: "@@vino_reserva@@"
     fragility: 0.7
     valuable: true
     group[]: containers

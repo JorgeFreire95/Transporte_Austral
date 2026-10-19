@@ -24,7 +24,5 @@ city_data : city.san_bernardo
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: Región Metropolitana de Santiago (RM)
-    # Posición estimada X/Z
-    vehicle_brands[]: "scania"
-    vehicle_brands[]: "volvo"
+    # Posición estimada X/Z: (-115700, 162500)
 }

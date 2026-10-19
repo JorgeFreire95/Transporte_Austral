@@ -24,7 +24,5 @@ city_data : city.linares
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: Región del Maule (VII)
-    # Posición estimada X/Z
-    vehicle_brands[]: "scania"
-    vehicle_brands[]: "volvo"
+    # Posición estimada X/Z: (-115300, 178000)
 }

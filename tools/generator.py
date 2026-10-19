@@ -693,25 +693,28 @@ def generar_ciudades():
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: {reg_data['nombre']} ({reg_code})
-    # Posición estimada X/Z
-    vehicle_brands[]: "scania"
-    vehicle_brands[]: "volvo"
+    # Posición estimada X/Z: ({ciudad['x']}, {ciudad['z']})
 }}
 """
             with open(sui_path, "w", encoding="utf-8") as f:
                 f.write(content)
 
-    # Master city.chile.sii
-    master_path = DEF_DIR / "city.chile.sii"
+    # Master city.sii (Reemplaza a nivel juego para mapa standalone)
+    master_path = DEF_DIR / "city.sii"
     master_content = "SiiNunit\n{\n" + "\n".join(master_includes) + "\n}\n"
     with open(master_path, "w", encoding="utf-8") as f:
         f.write(master_content)
 
-    print(f"-> {len(master_includes)} ciudades generadas en def/city/ y def/city.chile.sii")
+    # Eliminar viejo city.chile.sii si existe
+    old_master = DEF_DIR / "city.chile.sii"
+    if old_master.exists():
+        old_master.unlink()
+
+    print(f"-> {len(master_includes)} ciudades generadas en def/city/ y def/city.sii")
 
 
 def generar_empresas():
-    """Genera las definiciones de empresas en def/company/ y def/company.chile.sii"""
+    """Genera las definiciones de empresas en def/company/ y def/company.sii"""
     company_dir = DEF_DIR / "company"
     company_dir.mkdir(parents=True, exist_ok=True)
 
@@ -731,16 +734,20 @@ def generar_empresas():
         with open(sui_path, "w", encoding="utf-8") as f:
             f.write(content)
 
-    master_path = DEF_DIR / "company.chile.sii"
+    master_path = DEF_DIR / "company.sii"
     master_content = "SiiNunit\n{\n" + "\n".join(master_includes) + "\n}\n"
     with open(master_path, "w", encoding="utf-8") as f:
         f.write(master_content)
 
-    print(f"-> {len(master_includes)} empresas chilenas generadas en def/company/ y def/company.chile.sii")
+    old_master = DEF_DIR / "company.chile.sii"
+    if old_master.exists():
+        old_master.unlink()
+
+    print(f"-> {len(master_includes)} empresas chilenas generadas en def/company/ y def/company.sii")
 
 
 def generar_cargas():
-    """Genera las definiciones de cargas chilenas en def/cargo/ y def/cargo.chile.sii"""
+    """Genera las definiciones de cargas chilenas en def/cargo/ y def/cargo.sii"""
     cargo_dir = DEF_DIR / "cargo"
     cargo_dir.mkdir(parents=True, exist_ok=True)
 
@@ -754,7 +761,6 @@ def generar_cargas():
         content = f"""cargo_data : cargo.{cargo_id}
 {{
     name: "{cdata['nombre']}"
-    name_localized: "{cdata['nombre_loc']}"
     fragility: {cdata['fragilidad']}
     valuable: {valiosa_flag}
     group[]: {cdata['grupo']}
@@ -769,12 +775,66 @@ def generar_cargas():
         with open(sui_path, "w", encoding="utf-8") as f:
             f.write(content)
 
-    master_path = DEF_DIR / "cargo.chile.sii"
+    master_path = DEF_DIR / "cargo.sii"
     master_content = "SiiNunit\n{\n" + "\n".join(master_includes) + "\n}\n"
     with open(master_path, "w", encoding="utf-8") as f:
         f.write(master_content)
 
-    print(f"-> {len(master_includes)} cargas chilenas generadas en def/cargo/ y def/cargo.chile.sii")
+    old_master = DEF_DIR / "cargo.chile.sii"
+    if old_master.exists():
+        old_master.unlink()
+
+    print(f"-> {len(master_includes)} cargas chilenas generadas en def/cargo/ y def/cargo.sii")
+
+
+def generar_pais():
+    """Genera def/country.sii y def/country/chile.sui (mapa standalone puro)"""
+    country_dir = DEF_DIR / "country"
+    country_dir.mkdir(parents=True, exist_ok=True)
+
+    # Master country.sii (sobreescribe la lista de países base de Europa)
+    master_path = DEF_DIR / "country.sii"
+    master_content = 'SiiNunit\n{\n@include "country/chile.sui"\n}\n'
+    with open(master_path, "w", encoding="utf-8") as f:
+        f.write(master_content)
+
+    old_master = DEF_DIR / "country.chile.sii"
+    if old_master.exists():
+        old_master.unlink()
+
+    chile_sui_path = country_dir / "chile.sui"
+    chile_content = """country_data : country.data.chile
+{
+    country_id: 101
+    name: "Chile"
+    name_localized: "@@chile@@"
+    country_code: "CL"
+    iso_country_code: chl
+
+    pos: (-116500, 0, 160000)
+
+    fuel_price: 1.15
+
+    lights_mandatory: true
+    left_hand_traffic: false
+    driving_tired_offence: true
+
+    time_zone: -180 # UTC-3 (Hora Continental verano / Magallanes permanente)
+    time_zone_name: "CLT"
+
+    mass_limit_per_axle_count[]: 18000
+    mass_limit_per_axle_count[]: 26000
+    mass_limit_per_axle_count[]: 38000
+    mass_limit_per_axle_count[]: 44000
+    mass_limit_per_axle_count[]: 45000
+
+    @include "chile/license_plates.sui"
+}
+"""
+    with open(chile_sui_path, "w", encoding="utf-8") as f:
+        f.write(chile_content)
+
+    print("-> País Chile generado en def/country.sii y def/country/chile.sui")
 
 
 def generar_estaciones_servicio():
@@ -823,6 +883,7 @@ def main():
     print("================================================================")
     print(" TRANSPORTE AUSTRAL - GENERADOR DE DEFINICIONES DE CHILE (ETS2)")
     print("================================================================")
+    generar_pais()
     generar_ciudades()
     generar_empresas()
     generar_cargas()

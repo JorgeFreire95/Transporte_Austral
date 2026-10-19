@@ -1,7 +1,6 @@
 cargo_data : cargo.palta_hass
 {
     name: "Paltas Hass Chilenas de Exportación"
-    name_localized: "@@palta_hass@@"
     fragility: 0.6
     valuable: true
     group[]: refrigerated

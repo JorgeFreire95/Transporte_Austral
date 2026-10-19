@@ -1,7 +1,6 @@
 cargo_data : cargo.salm_fresco
 {
     name: "Salmón Atlántico Fresco en Hielo"
-    name_localized: "@@salm_fresco@@"
     fragility: 0.8
     valuable: true
     group[]: refrigerated

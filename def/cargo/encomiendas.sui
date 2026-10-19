@@ -1,7 +1,6 @@
 cargo_data : cargo.encomiendas
 {
     name: "Cargas Express y Encomiendas Nacionales"
-    name_localized: "@@encomiendas@@"
     fragility: 0.5
     valuable: false
     group[]: containers

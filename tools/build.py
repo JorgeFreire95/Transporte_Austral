@@ -92,12 +92,12 @@ def validar_mod():
     if not icon_png.exists() and not icon_jpg.exists():
         errores.append("No se encontró icono del mod (mod_icon.png o mod_icon.jpg).")
 
-    # Verificar master SII files y sus includes
+    # Verificar master SII files y sus includes (standalone puro)
     master_files = [
-        BASE_DIR / "def" / "country.chile.sii",
-        BASE_DIR / "def" / "city.chile.sii",
-        BASE_DIR / "def" / "company.chile.sii",
-        BASE_DIR / "def" / "cargo.chile.sii",
+        BASE_DIR / "def" / "country.sii",
+        BASE_DIR / "def" / "city.sii",
+        BASE_DIR / "def" / "company.sii",
+        BASE_DIR / "def" / "cargo.sii",
     ]
 
     include_regex = re.compile(r'@include\s+"([^"]+)"')

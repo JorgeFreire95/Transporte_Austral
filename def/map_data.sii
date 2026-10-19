@@ -62,14 +62,14 @@ map_data : .map.data {
 	navigation_arrow_color: 	0xFF06FB11
 
 	# Niveles de Zoom completos (0 a 7 requeridos por Prism3D)
-	zoom_uplift[0]: 50.0		// close zoom for 3d map
-	zoom_uplift[1]: 220.0		// far zoom for 3d map
-	zoom_uplift[2]: 900.0		// close zoom for minimap
-	zoom_uplift[3]: 4000.0		// far zoom for minimap
-	zoom_uplift[4]: 1000.0		// city detail zoom for world map
-	zoom_uplift[5]: 5000.0		// closest zoom for world map
-	zoom_uplift[6]: 20000.0		// middle zoom for world map
-	zoom_uplift[7]: 75000.0		// whole world map zoom
+	zoom_uplift[0]: 50.0
+	zoom_uplift[1]: 220.0
+	zoom_uplift[2]: 900.0
+	zoom_uplift[3]: 4000.0
+	zoom_uplift[4]: 1000.0
+	zoom_uplift[5]: 5000.0
+	zoom_uplift[6]: 20000.0
+	zoom_uplift[7]: 75000.0
 
 	player_size[0]: 15.0
 	player_size[1]: 35.0
@@ -126,23 +126,23 @@ map_data : .map.data {
 	company_icon_size[7]: (16.0, 4.0)
 
 	# Límites de cámara en coordenadas de Chile
-	camera_limits_min[0]: (-1000000.0, -1000000.0)
-	camera_limits_min[1]: (-1000000.0, -1000000.0)
-	camera_limits_min[2]: (-1000000.0, -1000000.0)
-	camera_limits_min[3]: (-1000000.0, -1000000.0)
-	camera_limits_min[4]: (-300000.0, -200000.0)
-	camera_limits_min[5]: (-250000.0, -180000.0)
-	camera_limits_min[6]: (-200000.0, -150000.0)
-	camera_limits_min[7]: (-150000.0, -120000.0)
+	camera_limits_min[0]: (-500000.0, -100000.0)
+	camera_limits_min[1]: (-500000.0, -100000.0)
+	camera_limits_min[2]: (-500000.0, -100000.0)
+	camera_limits_min[3]: (-500000.0, -100000.0)
+	camera_limits_min[4]: (-300000.0, 0.0)
+	camera_limits_min[5]: (-250000.0, 20000.0)
+	camera_limits_min[6]: (-250000.0, 30000.0)
+	camera_limits_min[7]: (-250000.0, 30000.0)
 
-	camera_limits_max[0]: (1000000.0, 1000000.0)
-	camera_limits_max[1]: (1000000.0, 1000000.0)
-	camera_limits_max[2]: (1000000.0, 1000000.0)
-	camera_limits_max[3]: (1000000.0, 1000000.0)
-	camera_limits_max[4]: (300000.0, 300000.0)
-	camera_limits_max[5]: (250000.0, 280000.0)
-	camera_limits_max[6]: (200000.0, 250000.0)
-	camera_limits_max[7]: (150000.0, 220000.0)
+	camera_limits_max[0]: (200000.0, 400000.0)
+	camera_limits_max[1]: (200000.0, 400000.0)
+	camera_limits_max[2]: (200000.0, 400000.0)
+	camera_limits_max[3]: (200000.0, 400000.0)
+	camera_limits_max[4]: (50000.0, 350000.0)
+	camera_limits_max[5]: (30000.0, 340000.0)
+	camera_limits_max[6]: (20000.0, 320000.0)
+	camera_limits_max[7]: (20000.0, 320000.0)
 
 	map_items_flags[0]: 0x0F685FFF
 	map_items_flags[1]: 0x0F685FFF
@@ -155,12 +155,13 @@ map_data : .map.data {
 
 	map_3d_camera_pitch: 40.0
 
-	ui_map_center:	(-2000.0, 20000.0)	# Centro en Chile
-	ui_map_size:	(120000.0, 250000.0)
+	# Centro del mapa UI en coordenadas de Chile
+	ui_map_center:	(-116500.0, 172500.0)
+	ui_map_size:	(150000.0, 250000.0)
 
-	ui_map_camera_min: (-150000.0, -120000.0)
-	ui_map_camera_max: (150000.0, 220000.0)
-	ui_map_camera_start: (-2000.0, 20000.0)
+	ui_map_camera_min: (-250000.0, 30000.0)
+	ui_map_camera_max: (20000.0, 320000.0)
+	ui_map_camera_start: (-116500.0, 172500.0)
 
 	ui_map_always_draw_city: true
 

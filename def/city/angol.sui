@@ -24,7 +24,5 @@ city_data : city.angol
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: Región de La Araucanía (IX)
-    # Posición estimada X/Z
-    vehicle_brands[]: "scania"
-    vehicle_brands[]: "volvo"
+    # Posición estimada X/Z: (-115800, 190500)
 }

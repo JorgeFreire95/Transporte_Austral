@@ -24,7 +24,5 @@ city_data : city.los_andes
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: Región de Valparaíso (V)
-    # Posición estimada X/Z
-    vehicle_brands[]: "scania"
-    vehicle_brands[]: "volvo"
+    # Posición estimada X/Z: (-114800, 156500)
 }

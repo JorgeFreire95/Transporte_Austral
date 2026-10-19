@@ -24,7 +24,5 @@ city_data : city.coyhaique
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: Región de Aysén del Gral. Carlos Ibáñez del Campo (XI)
-    # Posición estimada X/Z
-    vehicle_brands[]: "scania"
-    vehicle_brands[]: "volvo"
+    # Posición estimada X/Z: (-114800, 228000)
 }
