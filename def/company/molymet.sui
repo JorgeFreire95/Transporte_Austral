@@ -1,0 +1,6 @@
+company_permanent : company.permanent.molymet
+{
+    name: "Molymet - Molibdenos y Metales"
+    sort_name: "MOLYMET"
+    trailer_look: "molymet"
+}

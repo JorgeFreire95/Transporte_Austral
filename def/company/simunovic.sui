@@ -1,0 +1,6 @@
+company_permanent : company.permanent.simunovic
+{
+    name: "Frigorífico Simunovic (Punta Arenas)"
+    sort_name: "SIMUNOVIC"
+    trailer_look: "simunovic"
+}

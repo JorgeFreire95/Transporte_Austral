@@ -1,0 +1,6 @@
+company_permanent : company.permanent.sqm
+{
+    name: "SQM - Sociedad Química y Minera de Chile"
+    sort_name: "SQM"
+    trailer_look: "sqm"
+}

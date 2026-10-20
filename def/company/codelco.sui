@@ -1,6 +1,6 @@
 company_permanent : company.permanent.codelco
 {
-    name: "Codelco Chile"
+    name: "Codelco Chile - Minería del Cobre"
     sort_name: "CODELCO"
     trailer_look: "codelco"
 }

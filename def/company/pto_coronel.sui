@@ -1,0 +1,6 @@
+company_permanent : company.permanent.pto_coronel
+{
+    name: "Puerto Coronel"
+    sort_name: "PTO_CORONEL"
+    trailer_look: "pto_coronel"
+}

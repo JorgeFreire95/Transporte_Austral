@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .san_pedro {
+ city: san_pedro
+ prefab: 44
+}
+}

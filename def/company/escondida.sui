@@ -1,0 +1,6 @@
+company_permanent : company.permanent.escondida
+{
+    name: "Minera Escondida - BHP"
+    sort_name: "ESCONDIDA"
+    trailer_look: "escondida"
+}

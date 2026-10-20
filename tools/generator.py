@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEF_DIR = BASE_DIR / "def"
 
 # ==============================================================================
-# BASE DE DATOS: 16 REGIONES DE CHILE Y COMUNAS
+# BASE DE DATOS: 16 REGIONES DE CHILE Y SUS 52 COMUNAS
 # ==============================================================================
 REGIONES_CHILE = {
     "XV": {
@@ -32,14 +32,14 @@ REGIONES_CHILE = {
                 "nombre": "Arica (Av. Comandante San Martín - Morro)",
                 "x": -118200, "z": 85000,
                 "icon": "arica",
-                "empresas": ["copec", "tpa_arica", "corpesca", "starken"]
+                "empresas": ["copec", "tpa_arica", "embonor", "unimarc", "lider", "starken", "chilexpress"]
             },
             {
                 "id": "putre",
                 "nombre": "Putre (Paso Chungará - Ruta 11-CH)",
                 "x": -116400, "z": 83200,
                 "icon": "putre",
-                "empresas": ["copec", "aduana_cl"]
+                "empresas": ["copec", "tpa_arica"]
             }
         ]
     },
@@ -51,14 +51,14 @@ REGIONES_CHILE = {
                 "nombre": "Iquique (Av. Arturo Prat - Costanera)",
                 "x": -118100, "z": 92000,
                 "icon": "iquique",
-                "empresas": ["copec", "zofri", "camanchaca", "shell_cl"]
+                "empresas": ["copec", "shell_cl", "sqm", "unimarc", "lider", "embonor", "starken"]
             },
             {
                 "id": "pozo_almonte",
                 "nombre": "Pozo Almonte (Panamericana - Salitreras)",
                 "x": -116900, "z": 93500,
                 "icon": "pozo_almonte",
-                "empresas": ["copec", "sqm_minera"]
+                "empresas": ["copec", "sqm"]
             }
         ]
     },
@@ -70,28 +70,28 @@ REGIONES_CHILE = {
                 "nombre": "Antofagasta (Av. Pérez Zujovic - Costanera)",
                 "x": -117800, "z": 105000,
                 "icon": "antofagasta",
-                "empresas": ["copec", "finning_cat", "puerto_antof", "falabella", "starken"]
+                "empresas": ["copec", "shell_cl", "escondida", "sqm", "codelco", "lider", "sodimac", "falabella", "andina", "starken", "bluex"]
             },
             {
                 "id": "calama",
                 "nombre": "Calama (Av. Granaderos - Chuquicamata)",
                 "x": -115400, "z": 101000,
                 "icon": "calama",
-                "empresas": ["codelco", "copec", "shell_cl"]
+                "empresas": ["codelco", "copec", "shell_cl", "sodimac", "unimarc", "lider", "sqm"]
             },
             {
                 "id": "san_pedro",
                 "nombre": "San Pedro de Atacama (Caracoles - Valle de la Luna)",
                 "x": -113800, "z": 102500,
                 "icon": "san_pedro",
-                "empresas": ["copec", "turismo_atacama"]
+                "empresas": ["copec", "sqm"]
             },
             {
                 "id": "mejillones",
                 "nombre": "Mejillones (Av. Fertilizantes - Puerto)",
                 "x": -118150, "z": 103200,
                 "icon": "mejillones",
-                "empresas": ["puerto_mej", "petrobras_cl"]
+                "empresas": ["petrobras_cl", "sqm", "escondida", "enap"]
             }
         ]
     },
@@ -103,21 +103,21 @@ REGIONES_CHILE = {
                 "nombre": "Copiapó (Av. Copayapu - Los Carrera)",
                 "x": -116900, "z": 118000,
                 "icon": "copiapo",
-                "empresas": ["copec", "cmp_minera", "agrosuper", "shell_cl"]
+                "empresas": ["copec", "shell_cl", "cap_acero", "sodimac", "lider", "cencosud"]
             },
             {
                 "id": "caldera",
                 "nombre": "Caldera (Costanera - Bahía Inglesa)",
                 "x": -118200, "z": 116500,
                 "icon": "caldera",
-                "empresas": ["copec", "pesquera_atacama"]
+                "empresas": ["copec", "cap_acero"]
             },
             {
                 "id": "vallenar",
                 "nombre": "Vallenar (Av. Brasil - Valle del Huasco)",
                 "x": -116400, "z": 124000,
                 "icon": "vallenar",
-                "empresas": ["copec", "agro_huasco"]
+                "empresas": ["copec", "cap_acero", "unimarc"]
             }
         ]
     },
@@ -129,21 +129,21 @@ REGIONES_CHILE = {
                 "nombre": "La Serena (Av. Francisco de Aguirre - El Faro)",
                 "x": -117200, "z": 135000,
                 "icon": "la_serena",
-                "empresas": ["copec", "falabella", "cencosud", "shell_cl"]
+                "empresas": ["copec", "shell_cl", "cencosud", "falabella", "lider", "sodimac", "unimarc", "starken"]
             },
             {
                 "id": "coquimbo",
                 "nombre": "Coquimbo (Av. Costanera - Puerto)",
                 "x": -117350, "z": 136200,
                 "icon": "coquimbo",
-                "empresas": ["puerto_coq", "copec", "tottus_cl"]
+                "empresas": ["copec", "cencosud", "unimarc", "sodimac"]
             },
             {
                 "id": "ovalle",
                 "nombre": "Ovalle (Av. Ariztía - Valle del Limarí)",
                 "x": -116100, "z": 140000,
                 "icon": "ovalle",
-                "empresas": ["copec", "pisco_capel"]
+                "empresas": ["copec", "concha_toro", "unimarc"]
             },
             {
                 "id": "los_vilos",
@@ -162,28 +162,28 @@ REGIONES_CHILE = {
                 "nombre": "Valparaíso (Av. España - Errázuriz)",
                 "x": -117100, "z": 158000,
                 "icon": "valparaiso",
-                "empresas": ["tps_valpo", "copec", "chilexpress", "falabella"]
+                "empresas": ["copec", "tps_valp", "falabella", "lider", "starken", "chilexpress", "correos_cl"]
             },
             {
                 "id": "vina_del_mar",
                 "nombre": "Viña del Mar (Av. Libertad - 1 Norte)",
                 "x": -116900, "z": 157200,
                 "icon": "vina_del_mar",
-                "empresas": ["cencosud", "copec", "shell_cl"]
+                "empresas": ["copec", "shell_cl", "enap", "cencosud", "lider", "sodimac", "embonor", "ripley"]
             },
             {
                 "id": "san_antonio",
                 "nombre": "San Antonio (Av. Barros Luco - Puerto STI)",
                 "x": -117200, "z": 162000,
                 "icon": "san_antonio",
-                "empresas": ["sti_san_ant", "copec", "starken", "petrobras_cl"]
+                "empresas": ["copec", "sti_san_ant", "melon", "andina", "lider", "sodimac", "petrobras_cl"]
             },
             {
                 "id": "los_andes",
                 "nombre": "Los Andes (Av. Santa Teresa - Paso Los Libertadores)",
                 "x": -114800, "z": 156500,
                 "icon": "los_andes",
-                "empresas": ["codelco", "copec", "aduana_loslib"]
+                "empresas": ["codelco", "copec", "dole_cl", "melon", "unimarc", "sodimac"]
             }
         ]
     },
@@ -195,21 +195,21 @@ REGIONES_CHILE = {
                 "nombre": "Santiago (Alameda - Autopista Central)",
                 "x": -115800, "z": 160000,
                 "icon": "santiago",
-                "empresas": ["falabella", "cencosud", "ccu", "chilexpress", "copec", "shell_cl"]
+                "empresas": ["copec", "shell_cl", "petrobras", "aramco", "falabella", "lider", "cencosud", "sodimac", "andina", "ccu", "starken", "chilexpress", "correos_cl", "bluex", "unimarc", "ripley"]
             },
             {
                 "id": "san_bernardo",
                 "nombre": "San Bernardo (Av. Portales - Eje Sur)",
                 "x": -115700, "z": 162500,
                 "icon": "san_bernardo",
-                "empresas": ["sodimac_log", "starken", "copec", "agrosuper"]
+                "empresas": ["carozzi", "falabella", "soprole", "molymet", "sodimac", "lider", "copec", "agrosuper"]
             },
             {
                 "id": "quilicura",
                 "nombre": "Quilicura (Américo Vespucio - Panamericana Norte)",
                 "x": -115900, "z": 158500,
                 "icon": "quilicura",
-                "empresas": ["ccu", "falabella", "petrobras_cl"]
+                "empresas": ["ideal_cl", "bluex", "falabella", "sodimac", "lider", "polpaico", "copec", "petrobras_cl"]
             }
         ]
     },
@@ -221,14 +221,14 @@ REGIONES_CHILE = {
                 "nombre": "Rancagua (Av. O'Higgins - Carretera El Cobre)",
                 "x": -115500, "z": 165500,
                 "icon": "rancagua",
-                "empresas": ["codelco", "agrosuper", "copec", "shell_cl"]
+                "empresas": ["codelco", "agrosuper", "copec", "shell_cl", "cencosud", "lider", "sodimac", "dole_cl"]
             },
             {
                 "id": "san_fernando",
                 "nombre": "San Fernando (Av. Manuel Rodríguez)",
                 "x": -115300, "z": 169000,
                 "icon": "san_fernando",
-                "empresas": ["concha_toro", "copec", "fruticola_cl"]
+                "empresas": ["copec", "concha_toro", "dole_cl", "unimarc"]
             },
             {
                 "id": "santa_cruz",
@@ -247,21 +247,21 @@ REGIONES_CHILE = {
                 "nombre": "Talca (Av. San Miguel - 2 Sur)",
                 "x": -115200, "z": 175000,
                 "icon": "talca",
-                "empresas": ["pf_alimentos", "copec", "iansa", "shell_cl"]
+                "empresas": ["copec", "shell_cl", "aramco", "cbb_cemento", "lider", "sodimac", "cencosud", "embonor", "starken"]
             },
             {
                 "id": "curico",
                 "nombre": "Curicó (Av. Manso de Velasco - Alameda)",
                 "x": -115100, "z": 172000,
                 "icon": "curico",
-                "empresas": ["vina_sanpedro", "copec", "fruticola_cl"]
+                "empresas": ["copec", "concha_toro", "cbb_cemento", "dole_cl", "carozzi", "lider"]
             },
             {
                 "id": "linares",
                 "nombre": "Linares (Av. Aníbal León Bustos)",
                 "x": -115300, "z": 178000,
                 "icon": "linares",
-                "empresas": ["iansa", "copec"]
+                "empresas": ["copec", "watts", "iansa", "unimarc"]
             },
             {
                 "id": "constitucion",
@@ -280,14 +280,14 @@ REGIONES_CHILE = {
                 "nombre": "Chillán (Av. O'Higgins - Av. Brasil)",
                 "x": -115000, "z": 183000,
                 "icon": "chillan",
-                "empresas": ["cecinas_chillan", "copec", "arauco", "shell_cl"]
+                "empresas": ["copec", "iansa", "lider", "sodimac", "unimarc", "starken", "arauco", "shell_cl"]
             },
             {
                 "id": "san_carlos",
                 "nombre": "San Carlos (Av. Arturo Prat - Violeta Parra)",
                 "x": -114900, "z": 181200,
                 "icon": "san_carlos",
-                "empresas": ["molino_sc", "copec"]
+                "empresas": ["copec", "iansa"]
             }
         ]
     },
@@ -299,28 +299,28 @@ REGIONES_CHILE = {
                 "nombre": "Concepción (Av. O'Higgins - Paicaví)",
                 "x": -116800, "z": 185000,
                 "icon": "concepcion",
-                "empresas": ["arauco", "svti_talcahuano", "copec", "falabella", "shell_cl"]
+                "empresas": ["copec", "shell_cl", "petrobras", "cbb_cemento", "cap_acero", "enap", "arauco", "lider", "sodimac", "cencosud", "falabella", "embonor", "starken", "bluex"]
             },
             {
                 "id": "talcahuano",
                 "nombre": "Talcahuano (Autopista - Puerto San Vicente)",
                 "x": -117000, "z": 184200,
                 "icon": "talcahuano",
-                "empresas": ["huachipato", "camanchaca", "petrobras_cl"]
+                "empresas": ["copec", "petrobras", "cap_acero", "enap", "cbb_cemento"]
             },
             {
                 "id": "los_angeles",
                 "nombre": "Los Ángeles (Av. Alemania - Ricardo Vicuña)",
                 "x": -115200, "z": 188000,
                 "icon": "los_angeles",
-                "empresas": ["cmpc", "arauco", "copec", "starken"]
+                "empresas": ["copec", "cmpc", "arauco", "iansa", "lider", "sodimac"]
             },
             {
                 "id": "coronel",
                 "nombre": "Coronel (Ruta 160 - Puerto Coronel)",
                 "x": -116900, "z": 186800,
                 "icon": "coronel",
-                "empresas": ["puerto_coronel", "pesquera_coronel"]
+                "empresas": ["copec", "pto_coronel", "polpaico", "arauco", "unimarc"]
             }
         ]
     },
@@ -332,21 +332,21 @@ REGIONES_CHILE = {
                 "nombre": "Temuco (Av. Alemania - Caupolicán)",
                 "x": -115400, "z": 194000,
                 "icon": "temuco",
-                "empresas": ["rosen_chile", "copec", "frigorifico_tem", "shell_cl"]
+                "empresas": ["copec", "shell_cl", "aramco", "colun", "soprole", "lider", "sodimac", "cencosud", "embonor", "starken"]
             },
             {
                 "id": "villarrica",
                 "nombre": "Villarrica (Av. Pedro de Valdivia - Costanera)",
                 "x": -115100, "z": 197000,
                 "icon": "villarrica",
-                "empresas": ["copec", "maderas_sur"]
+                "empresas": ["copec", "unimarc"]
             },
             {
                 "id": "angol",
                 "nombre": "Angol (Av. O'Higgins - Cordillera de Nahuelbuta)",
                 "x": -115800, "z": 190500,
                 "icon": "angol",
-                "empresas": ["cmpc", "copec"]
+                "empresas": ["cmpc", "copec", "unimarc"]
             }
         ]
     },
@@ -358,7 +358,7 @@ REGIONES_CHILE = {
                 "nombre": "Valdivia (Costanera Prat - Ramón Picarte)",
                 "x": -116500, "z": 201000,
                 "icon": "valdivia",
-                "empresas": ["kunstmann", "copec", "asenav", "shell_cl"]
+                "empresas": ["copec", "kunstmann", "colun", "lider", "sodimac", "starken", "shell_cl"]
             },
             {
                 "id": "la_union",
@@ -377,35 +377,35 @@ REGIONES_CHILE = {
                 "nombre": "Puerto Montt (Diego Portales - Angelmó)",
                 "x": -116100, "z": 210000,
                 "icon": "puerto_montt",
-                "empresas": ["aquachile", "copec", "somarco_ferries", "shell_cl", "starken"]
+                "empresas": ["copec", "shell_cl", "aquachile", "colun", "soprole", "lider", "sodimac", "cencosud", "melon", "tabsa", "starken", "bluex"]
             },
             {
                 "id": "osorno",
                 "nombre": "Osorno (Av. Mackenna - Errázuriz)",
                 "x": -116200, "z": 206500,
                 "icon": "osorno",
-                "empresas": ["colun", "frigorifico_osorno", "copec"]
+                "empresas": ["copec", "colun", "soprole", "watts", "lider", "sodimac"]
             },
             {
                 "id": "castro",
                 "nombre": "Castro (Palafitos Gamboa - San Martín)",
                 "x": -116800, "z": 214500,
                 "icon": "castro",
-                "empresas": ["aquachile", "copec", "naviera_chiloe"]
+                "empresas": ["copec", "aquachile", "unimarc", "lider"]
             },
             {
                 "id": "quellon",
                 "nombre": "Quellón (Hito Cero Panamericana)",
                 "x": -116700, "z": 218500,
                 "icon": "quellon",
-                "empresas": ["salmones_quellon", "copec"]
+                "empresas": ["aquachile", "copec"]
             },
             {
                 "id": "chaiten",
                 "nombre": "Chaitén (Costanera - Carretera Austral)",
                 "x": -115500, "z": 216000,
                 "icon": "chaiten",
-                "empresas": ["copec", "barcazas_austral"]
+                "empresas": ["copec", "tabsa"]
             }
         ]
     },
@@ -417,28 +417,28 @@ REGIONES_CHILE = {
                 "nombre": "Coyhaique (Baquedano - Carretera Austral)",
                 "x": -114800, "z": 228000,
                 "icon": "coyhaique",
-                "empresas": ["copec", "ganadera_aysen", "starken"]
+                "empresas": ["copec", "aquachile", "unimarc", "starken"]
             },
             {
                 "id": "puerto_aysen",
                 "nombre": "Puerto Aysén (Puente Presidente Ibáñez)",
                 "x": -115600, "z": 226500,
                 "icon": "puerto_aysen",
-                "empresas": ["friosur", "copec", "navimag"]
+                "empresas": ["aquachile", "copec"]
             },
             {
                 "id": "cochrane",
                 "nombre": "Cochrane (Av. San Valentín - Río Baker)",
                 "x": -114200, "z": 236000,
                 "icon": "cochrane",
-                "empresas": ["terpel", "copec"]
+                "empresas": ["copec"]
             },
             {
                 "id": "v_ohiggins",
                 "nombre": "Villa O'Higgins (Fin Carretera Austral)",
                 "x": -113800, "z": 242000,
                 "icon": "v_ohiggins",
-                "empresas": ["copec", "logistica_austral"]
+                "empresas": ["copec"]
             }
         ]
     },
@@ -450,30 +450,31 @@ REGIONES_CHILE = {
                 "nombre": "Punta Arenas (Costanera del Estrecho - Av. España)",
                 "x": -111500, "z": 265000,
                 "icon": "punta_arenas",
-                "empresas": ["enap_magallanes", "copec", "tabsa_ferries", "shell_cl"]
+                "empresas": ["copec", "shell_cl", "enap", "simunovic", "austral_pza", "tabsa", "unimarc", "lider", "sodimac", "starken"]
             },
             {
                 "id": "pto_natales",
                 "nombre": "Puerto Natales (Costanera Pedro Montt)",
                 "x": -113200, "z": 258000,
                 "icon": "pto_natales",
-                "empresas": ["australis_seafood", "copec", "frigorifico_sur"]
+                "empresas": ["copec", "tabsa", "unimarc"]
             },
             {
                 "id": "porvenir",
                 "nombre": "Porvenir (Costanera Chiloé - Tierra del Fuego)",
                 "x": -111100, "z": 267000,
                 "icon": "porvenir",
-                "empresas": ["nova_austral", "copec"]
+                "empresas": ["copec", "tabsa", "simunovic"]
             }
         ]
     }
 }
 
 # ==============================================================================
-# BASE DE DATOS: EMPRESAS CHILENAS Y ESTACIONES DE SERVICIO
+# BASE DE DATOS: 47 EMPRESAS CHILENAS Y ESTACIONES DE SERVICIO
 # ==============================================================================
 EMPRESAS_CHILENAS = {
+    # 1. Red de Combustibles y Estaciones de Servicio
     "copec": {
         "nombre": "Copec - Combustibles y Lubricantes",
         "rubro": "Red de Estaciones de Servicio Copec, Pronto Copec y Punto Copec",
@@ -504,95 +505,273 @@ EMPRESAS_CHILENAS = {
         "cargas_in": ["combust_cl", "diesel", "petrol", "lubric_cl", "beverages"],
         "cargas_out": ["combust_cl", "lubric_cl", "diesel", "petrol"]
     },
+    "enap": {
+        "nombre": "ENAP - Empresa Nacional del Petróleo",
+        "rubro": "Refinerías Concón, Biobío y extracción Magallanes",
+        "cargas_in": ["petrol_ref", "combust_cl", "chemicals"],
+        "cargas_out": ["combust_cl", "petrol_ref", "diesel", "petrol"]
+    },
+
+    # 2. Minería, Siderurgia y Química
     "codelco": {
-        "nombre": "Codelco Chile",
-        "rubro": "Minería Estatal del Cobre (Chuquicamata, El Teniente, Andina)",
+        "nombre": "Codelco Chile - Minería del Cobre",
+        "rubro": "División Chuquicamata, El Teniente, Andina y Salvador",
         "cargas_in": ["maq_pesada", "acid_sulf", "cables", "tires"],
         "cargas_out": ["catod_cobre", "conc_cobre"]
     },
+    "escondida": {
+        "nombre": "Minera Escondida - BHP",
+        "rubro": "Mayor yacimiento y producción de cobre a rajo abierto del mundo",
+        "cargas_in": ["maq_pesada", "acid_sulf", "tires", "cables"],
+        "cargas_out": ["conc_cobre", "catod_cobre"]
+    },
+    "sqm": {
+        "nombre": "SQM - Sociedad Química y Minera de Chile",
+        "rubro": "Líder mundial en Litio, Yodo, Nitratos y Nutrición Vegetal",
+        "cargas_in": ["chemicals", "maq_pesada", "acid_sulf"],
+        "cargas_out": ["fertilizer", "chemicals"]
+    },
+    "cap_acero": {
+        "nombre": "CAP Acero - Compañía Siderúrgica Huachipato y Minería",
+        "rubro": "Siderurgia, barras de molienda y minería de hierro CMP",
+        "cargas_in": ["chemicals", "cables"],
+        "cargas_out": ["metal_beams", "metal_pipes", "re_bars"]
+    },
+    "molymet": {
+        "nombre": "Molymet - Molibdenos y Metales",
+        "rubro": "Mayor procesador de concentrados de molibdeno y renio del mundo",
+        "cargas_in": ["conc_cobre", "acid_sulf", "chemicals"],
+        "cargas_out": ["chemicals", "catod_cobre"]
+    },
+
+    # 3. Forestal, Celulosa y Papel
     "arauco": {
         "nombre": "Arauco Celulosa y Maderas",
-        "rubro": "Complejo Forestal y Celulosa (MAPA, Constitución)",
+        "rubro": "Complejo Forestal y Celulosa (MAPA, Constitución, Horcones)",
         "cargas_in": ["tronc_pino", "chemicals"],
         "cargas_out": ["cel_fardo", "mad_aserr"]
     },
     "cmpc": {
         "nombre": "Empresas CMPC",
-        "rubro": "Forestal Mininco y Papeles del Pacífico",
+        "rubro": "Forestal Mininco, Celulosa Pacífico y Papeles del Sur",
         "cargas_in": ["tronc_pino", "combust_cl"],
         "cargas_out": ["cel_fardo", "mad_aserr"]
     },
+
+    # 4. Alimentos, Carnes, Lácteos y Pastas
     "agrosuper": {
         "nombre": "Agrosuper Chile",
         "rubro": "Alimentos (Super Pollo, Super Cerdo, La Crianza, Sopraval)",
         "cargas_in": ["wheat", "barley"],
         "cargas_out": ["carne_fresc", "pork_meat", "beef_meat"]
     },
-    "falabella": {
-        "nombre": "Falabella Logística & Retail",
-        "rubro": "Centro de Distribución Nacional San Bernardo y Tiendas",
-        "cargas_in": ["electronics", "clothes", "furniture"],
-        "cargas_out": ["encomiendas", "paquet_exp", "furniture"]
-    },
-    "cencosud": {
-        "nombre": "Cencosud (Jumbo / Easy / Santa Isabel)",
-        "rubro": "Supermercados y Mejoramiento del Hogar",
-        "cargas_in": ["food", "carne_fresc", "beverages"],
-        "cargas_out": ["encomiendas", "food", "palta_hass"]
-    },
-    "ccu": {
-        "nombre": "CCU - Compañía de Cervecerías Unidas",
-        "rubro": "Bebidas, Cervezas (Cristal, Royal) y Aguas (Cachantún)",
-        "cargas_in": ["sugar", "beverages", "bottles"],
-        "cargas_out": ["cervez_ccu", "beverages"]
+    "soprole": {
+        "nombre": "Soprole - Sano y Rico a Diario",
+        "rubro": "Líder lácteo nacional en leche, yogures, mantequillas y postres",
+        "cargas_in": ["milk", "sugar", "packaging"],
+        "cargas_out": ["leche_sur", "quesos_col", "milk"]
     },
     "colun": {
         "nombre": "Colun - La Magia del Sur",
-        "rubro": "Cooperativa Agrícola y Lechera de La Unión",
+        "rubro": "Cooperativa Agrícola y Lechera de La Unión (Los Ríos y Los Lagos)",
         "cargas_in": ["milk", "salt"],
         "cargas_out": ["leche_sur", "quesos_col", "milk"]
     },
+    "carozzi": {
+        "nombre": "Carozzi Alimentos",
+        "rubro": "Complejo alimenticio Nos (Pastas Carozzi, Galletas Costa, Ambrosoli)",
+        "cargas_in": ["wheat", "barley", "sugar"],
+        "cargas_out": ["food", "encomiendas"]
+    },
+    "iansa": {
+        "nombre": "Empresas Iansa",
+        "rubro": "Azúcar de remolacha, endulzantes, pastas de tomate y nutrición animal",
+        "cargas_in": ["wheat", "barley", "sugar"],
+        "cargas_out": ["sugar", "food"]
+    },
+    "ideal_cl": {
+        "nombre": "Panadería Ideal - Grupo Bimbo Chile",
+        "rubro": "Producción y distribución de panes de molde, tortillas y bollería",
+        "cargas_in": ["wheat", "sugar", "milk"],
+        "cargas_out": ["food", "encomiendas"]
+    },
+    "watts": {
+        "nombre": "Watt's Alimentos - Loncoleche",
+        "rubro": "Jugos Watt's, mermeladas, margarinas Calo y aceites Chef",
+        "cargas_in": ["milk", "sugar", "apples", "oranges"],
+        "cargas_out": ["food", "beverages"]
+    },
+    "simunovic": {
+        "nombre": "Frigorífico Simunovic (Punta Arenas)",
+        "rubro": "Carnes patagónicas de exportación y cordero magallánico",
+        "cargas_in": ["salt", "packaging"],
+        "cargas_out": ["carne_fresc", "meat"]
+    },
+    "dole_cl": {
+        "nombre": "Dole Chile Frutícola",
+        "rubro": "Exportación de frutas frescas (uvas, manzanas, cerezas, arándanos)",
+        "cargas_in": ["packaging", "fertilizer"],
+        "cargas_out": ["palta_hass", "apples", "grapes"]
+    },
     "aquachile": {
         "nombre": "AquaChile Salmones",
-        "rubro": "Acuicultura y Exportación de Salmón",
+        "rubro": "Líder en acuicultura y exportación de salmón del sur austral",
         "cargas_in": ["food", "packaging"],
         "cargas_out": ["salm_fresco", "fish"]
     },
+
+    # 5. Bebidas, Cervezas y Viñedos
+    "ccu": {
+        "nombre": "CCU - Compañía de Cervecerías Unidas",
+        "rubro": "Cervezas (Cristal, Royal, Escudo), Aguas (Cachantún) y Gaseosas (Bilz, Pap)",
+        "cargas_in": ["sugar", "beverages", "bottles"],
+        "cargas_out": ["cervez_ccu", "beverages"]
+    },
+    "andina": {
+        "nombre": "Coca-Cola Andina",
+        "rubro": "Embotelladora líder de bebidas gaseosas, jugos y aguas minerales",
+        "cargas_in": ["sugar", "bottles", "packaging"],
+        "cargas_out": ["beverages", "empty_barr"]
+    },
+    "embonor": {
+        "nombre": "Coca-Cola Embonor",
+        "rubro": "Embotelladora y distribuidora de bebidas en el norte y sur de Chile",
+        "cargas_in": ["sugar", "bottles", "packaging"],
+        "cargas_out": ["beverages", "empty_barr"]
+    },
     "concha_toro": {
         "nombre": "Viña Concha y Toro",
-        "rubro": "Viñedos y Exportación de Vinos (Casillero del Diablo)",
+        "rubro": "Viñedos y exportación de vinos (Casillero del Diablo, Don Melchor)",
         "cargas_in": ["bottles", "grapes"],
         "cargas_out": ["vino_res", "beverages"]
     },
+    "kunstmann": {
+        "nombre": "Cervecería Kunstmann (Valdivia)",
+        "rubro": "Cerveza artesanal de Valdivia (Torobayo, Bock, Gran Torobayo)",
+        "cargas_in": ["barley", "bottles"],
+        "cargas_out": ["cervez_ccu", "beverages"]
+    },
+    "austral_pza": {
+        "nombre": "Cervecería Austral (Punta Arenas)",
+        "rubro": "La cerveza más austral del mundo elaborada con aguas de la Patagonia",
+        "cargas_in": ["barley", "bottles", "sugar"],
+        "cargas_out": ["cervez_ccu", "beverages"]
+    },
+
+    # 6. Retail, Supermercados y Mejoramiento del Hogar
+    "lider": {
+        "nombre": "Lider - Walmart Chile",
+        "rubro": "Cadena de supermercados e hipermercados líder y centro Lo Aguirre",
+        "cargas_in": ["food", "carne_fresc", "beverages", "milk", "leche_sur", "encomiendas"],
+        "cargas_out": ["encomiendas", "food", "empty_barr"]
+    },
+    "cencosud": {
+        "nombre": "Cencosud (Jumbo / Easy / Santa Isabel)",
+        "rubro": "Supermercados Jumbo, Santa Isabel y mejoramiento del hogar Easy",
+        "cargas_in": ["food", "carne_fresc", "beverages"],
+        "cargas_out": ["encomiendas", "food", "palta_hass"]
+    },
+    "unimarc": {
+        "nombre": "Unimarc - SMU",
+        "rubro": "Supermercado de la familia chilena con presencia de Arica a Magallanes",
+        "cargas_in": ["food", "carne_fresc", "beverages", "milk"],
+        "cargas_out": ["encomiendas", "food"]
+    },
+    "falabella": {
+        "nombre": "Falabella Logística & Retail",
+        "rubro": "Grandes tiendas por departamento y Centro Logístico San Bernardo",
+        "cargas_in": ["electronics", "clothes", "furniture"],
+        "cargas_out": ["encomiendas", "paquet_exp", "furniture"]
+    },
+    "ripley": {
+        "nombre": "Ripley Retail y Logística",
+        "rubro": "Tiendas por departamento y Centro de Distribución Pudahuel",
+        "cargas_in": ["electronics", "clothes", "furniture"],
+        "cargas_out": ["encomiendas", "paquet_exp", "furniture"]
+    },
+    "sodimac": {
+        "nombre": "Homecenter Sodimac / Constructor",
+        "rubro": "Mayorista de materiales de construcción, ferretería y hogar",
+        "cargas_in": ["cement", "mad_aserr", "cel_fardo", "cables", "metal_pipes"],
+        "cargas_out": ["encomiendas", "furniture"]
+    },
+
+    # 7. Cemento y Construcción
+    "melon": {
+        "nombre": "Cemento Melón",
+        "rubro": "Producción histórica de cemento La Calera, San Antonio y hormigones",
+        "cargas_in": ["chemicals", "sand"],
+        "cargas_out": ["cement", "bricks"]
+    },
+    "cbb_cemento": {
+        "nombre": "Cementos Bío Bío - CBB",
+        "rubro": "Fabricación de cemento, cal y hormigón en Talcahuano, Curicó y Teno",
+        "cargas_in": ["chemicals", "sand"],
+        "cargas_out": ["cement", "precast_strs"]
+    },
+    "polpaico": {
+        "nombre": "Cementos Polpaico",
+        "rubro": "Plantas de cemento Cerro Blanco Tiltil y molienda Coronel",
+        "cargas_in": ["sand", "chemicals"],
+        "cargas_out": ["cement", "bricks"]
+    },
+
+    # 8. Courier, Encomiendas y Logística Nacional
     "starken": {
         "nombre": "Starken Encomiendas y Logística",
-        "rubro": "Transporte de carga express y encomiendas en todo Chile",
+        "rubro": "Transporte de carga express, paquetes y encomiendas en todo Chile",
         "cargas_in": ["encomiendas", "paquet_exp"],
         "cargas_out": ["encomiendas", "paquet_exp"]
     },
     "chilexpress": {
         "nombre": "Chilexpress Courier",
-        "rubro": "Logística urgente y paquetería e-commerce nacional",
+        "rubro": "Logística urgente, paquetería e-commerce y courier nacional",
         "cargas_in": ["paquet_exp", "encomiendas"],
         "cargas_out": ["paquet_exp", "encomiendas"]
     },
+    "correos_cl": {
+        "nombre": "CorreosChile",
+        "rubro": "Empresa de Correos de Chile y Centro Tecnológico Postal",
+        "cargas_in": ["encomiendas", "paquet_exp"],
+        "cargas_out": ["encomiendas", "paquet_exp"]
+    },
+    "bluex": {
+        "nombre": "Blue Express",
+        "rubro": "Distribución y logística express para e-commerce en todo Chile",
+        "cargas_in": ["encomiendas", "paquet_exp"],
+        "cargas_out": ["encomiendas", "paquet_exp"]
+    },
+
+    # 9. Puertos, Terminales y Conectividad Austral
     "tpa_arica": {
         "nombre": "Terminal Puerto Arica (TPA)",
-        "rubro": "Puerto multipropósito y conexión internacional con Bolivia",
+        "rubro": "Puerto multipropósito y conexión internacional del norte grande",
         "cargas_in": ["catod_cobre", "conc_cobre", "palta_hass"],
         "cargas_out": ["machinery", "fertilizer", "chemicals"]
     },
     "sti_san_ant": {
         "nombre": "San Antonio Terminal Internacional (STI)",
-        "rubro": "Mayor puerto de transferencia de contenedores de Chile",
+        "rubro": "Mayor terminal marítimo y transferencia de contenedores de Chile",
         "cargas_in": ["vino_res", "catod_cobre", "palta_hass", "salm_fresco"],
         "cargas_out": ["cars", "machinery", "electronics"]
     },
-    "kunstmann": {
-        "nombre": "Cervecería Kunstmann (Valdivia)",
-        "rubro": "Cerveza artesanal de Valdivia (Torobayo)",
-        "cargas_in": ["barley", "bottles"],
-        "cargas_out": ["cervez_ccu", "beverages"]
+    "tps_valp": {
+        "nombre": "TPS Valparaíso - Terminal Pacífico Sur",
+        "rubro": "Terminal portuario histórico de Valparaíso y fruta de exportación",
+        "cargas_in": ["vino_res", "catod_cobre", "palta_hass", "apples"],
+        "cargas_out": ["cars", "machinery", "electronics"]
+    },
+    "pto_coronel": {
+        "nombre": "Puerto Coronel",
+        "rubro": "Mayor puerto de carga forestal, madera y celulosa del Biobío",
+        "cargas_in": ["cel_fardo", "mad_aserr", "tronc_pino"],
+        "cargas_out": ["machinery", "fertilizer", "chemicals"]
+    },
+    "tabsa": {
+        "nombre": "TABSA - Transbordadora Austral Broom",
+        "rubro": "Conectividad marítima y transbordadores de camiones en Magallanes",
+        "cargas_in": ["food", "combust_cl", "encomiendas"],
+        "cargas_out": ["food", "combust_cl", "encomiendas"]
     }
 }
 

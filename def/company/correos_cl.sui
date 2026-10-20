@@ -1,0 +1,6 @@
+company_permanent : company.permanent.correos_cl
+{
+    name: "CorreosChile"
+    sort_name: "CORREOS_CL"
+    trailer_look: "correos_cl"
+}

@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .punta_arenas {
+ city: punta_arenas
+ prefab: 200
+}
+}

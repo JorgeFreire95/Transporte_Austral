@@ -1,0 +1,6 @@
+company_permanent : company.permanent.dole_cl
+{
+    name: "Dole Chile Frutícola"
+    sort_name: "DOLE_CL"
+    trailer_look: "dole_cl"
+}

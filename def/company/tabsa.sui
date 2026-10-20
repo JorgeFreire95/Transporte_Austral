@@ -1,0 +1,6 @@
+company_permanent : company.permanent.tabsa
+{
+    name: "TABSA - Transbordadora Austral Broom"
+    sort_name: "TABSA"
+    trailer_look: "tabsa"
+}

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.andina
+{
+    name: "Coca-Cola Andina"
+    sort_name: "ANDINA"
+    trailer_look: "andina"
+}

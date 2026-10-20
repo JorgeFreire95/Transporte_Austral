@@ -1,0 +1,6 @@
+company_permanent : company.permanent.enap
+{
+    name: "ENAP - Empresa Nacional del Petróleo"
+    sort_name: "ENAP"
+    trailer_look: "enap"
+}

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.austral_pza
+{
+    name: "Cervecería Austral (Punta Arenas)"
+    sort_name: "AUSTRAL_PZA"
+    trailer_look: "austral_pza"
+}

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.embonor
+{
+    name: "Coca-Cola Embonor"
+    sort_name: "EMBONOR"
+    trailer_look: "embonor"
+}

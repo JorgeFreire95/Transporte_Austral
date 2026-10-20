@@ -1,0 +1,6 @@
+company_permanent : company.permanent.tps_valp
+{
+    name: "TPS Valparaíso - Terminal Pacífico Sur"
+    sort_name: "TPS_VALP"
+    trailer_look: "tps_valp"
+}

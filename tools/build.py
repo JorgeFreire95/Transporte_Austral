@@ -168,7 +168,39 @@ def empaquetar_scs(output_path: Path):
                     packed_arcnames.add(zip_arcname)
                     archivos_empaquetados += 1
 
-        # Empaquetar definiciones completas de in/ y out/ para empresas base activas en Chile
+        # Mapeo de empresas chilenas a sus empresas base para heredar catálogo masivo de cargas
+        CHILEAN_TO_BASE = {
+            "copec": "primel",
+            "shell_cl": "pegi",
+            "petrobras": "nada",
+            "petrobras_cl": "nada",
+            "aramco": "apus",
+            "lider": "eurogoodies",
+            "cencosud": "kaarfor",
+            "unimarc": "sellplan",
+            "falabella": "ika_bohag",
+            "sodimac": "sanbuilders",
+            "arauco": "tree_et",
+            "codelco": "quarry",
+            "escondida": "steinbr_str",
+            "sqm": "wgcc",
+            "enap": "itcc",
+            "cap_acero": "kathode",
+            "melon": "sanbuild_cem",
+            "cbb_cemento": "sanbuild_bas",
+            "agrosuper": "euroacres",
+            "colun": "trameri",
+            "soprole": "fcp",
+            "carozzi": "bcp",
+            "ccu": "stokes",
+            "embonor": "nbfc",
+            "iansa": "dfh",
+            "starken": "tradeaux",
+            "chilexpress": "posped",
+            "bluex": "transinet",
+        }
+
+        # Empaquetar definiciones completas de in/ y out/ para empresas activas en Chile
         # desde scratch/def/def/company/ para garantizar ofertas de trabajo sin inflar Git
         scratch_comp_dir = BASE_DIR / "scratch" / "def" / "def" / "company"
         def_comp_dir = BASE_DIR / "def" / "company"
@@ -179,24 +211,29 @@ def empaquetar_scs(output_path: Path):
                 ed_dir = comp_folder / "editor"
                 if not ed_dir.exists() or not list(ed_dir.glob("*.sii")):
                     continue
+
                 src_comp = scratch_comp_dir / comp_folder.name
+                if not src_comp.exists() and comp_folder.name in CHILEAN_TO_BASE:
+                    src_comp = scratch_comp_dir / CHILEAN_TO_BASE[comp_folder.name]
+
                 if not src_comp.exists():
                     continue
 
                 # Incluir archivo .sui de la empresa si falta
-                sui_file = src_comp / f"{comp_folder.name}.sui"
-                if sui_file.exists():
-                    arc = f"def/company/{comp_folder.name}.sui"
-                    if arc not in packed_arcnames:
-                        scs_zip.write(sui_file, arcname=arc)
-                        packed_arcnames.add(arc)
-                        archivos_empaquetados += 1
+                sui_file = src_comp / f"{src_comp.name}.sui"
+                arc_sui = f"def/company/{comp_folder.name}.sui"
+                if arc_sui not in packed_arcnames and sui_file.exists():
+                    scs_zip.write(sui_file, arcname=arc_sui)
+                    packed_arcnames.add(arc_sui)
+                    archivos_empaquetados += 1
 
                 # Incluir todos los archivos in/ y out/ de cargas
                 for subfolder in ["in", "out"]:
                     sub_src = src_comp / subfolder
                     if sub_src.exists():
                         for sii_file in sub_src.glob("*.sii"):
+                            if len(sii_file.stem) > 12:
+                                continue
                             arc = f"def/company/{comp_folder.name}/{subfolder}/{sii_file.name}"
                             if arc not in packed_arcnames:
                                 scs_zip.write(sii_file, arcname=arc)

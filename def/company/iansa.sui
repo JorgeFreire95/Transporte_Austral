@@ -1,0 +1,6 @@
+company_permanent : company.permanent.iansa
+{
+    name: "Empresas Iansa"
+    sort_name: "IANSA"
+    trailer_look: "iansa"
+}

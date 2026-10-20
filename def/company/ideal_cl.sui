@@ -1,0 +1,6 @@
+company_permanent : company.permanent.ideal_cl
+{
+    name: "Panadería Ideal - Grupo Bimbo Chile"
+    sort_name: "IDEAL_CL"
+    trailer_look: "ideal_cl"
+}

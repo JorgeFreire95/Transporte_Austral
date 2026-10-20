@@ -1,0 +1,6 @@
+company_permanent : company.permanent.lider
+{
+    name: "Lider - Walmart Chile"
+    sort_name: "LIDER"
+    trailer_look: "lider"
+}

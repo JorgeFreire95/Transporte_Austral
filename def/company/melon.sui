@@ -1,0 +1,6 @@
+company_permanent : company.permanent.melon
+{
+    name: "Cemento Melón"
+    sort_name: "MELON"
+    trailer_look: "melon"
+}

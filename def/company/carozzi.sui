@@ -1,0 +1,6 @@
+company_permanent : company.permanent.carozzi
+{
+    name: "Carozzi Alimentos"
+    sort_name: "CAROZZI"
+    trailer_look: "carozzi"
+}

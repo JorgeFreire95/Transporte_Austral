@@ -1,0 +1,6 @@
+company_permanent : company.permanent.watts
+{
+    name: "Watt's Alimentos - Loncoleche"
+    sort_name: "WATTS"
+    trailer_look: "watts"
+}

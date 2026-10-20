@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .iquique {
+ city: iquique
+ prefab: 42
+}
+}

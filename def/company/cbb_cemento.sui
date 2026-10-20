@@ -1,0 +1,6 @@
+company_permanent : company.permanent.cbb_cemento
+{
+    name: "Cementos Bío Bío - CBB"
+    sort_name: "CBB_CEMENTO"
+    trailer_look: "cbb_cemento"
+}

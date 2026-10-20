@@ -1,0 +1,6 @@
+company_permanent : company.permanent.polpaico
+{
+    name: "Cementos Polpaico"
+    sort_name: "POLPAICO"
+    trailer_look: "polpaico"
+}

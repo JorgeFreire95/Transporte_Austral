@@ -1,0 +1,6 @@
+company_permanent : company.permanent.ripley
+{
+    name: "Ripley Retail y Logística"
+    sort_name: "RIPLEY"
+    trailer_look: "ripley"
+}

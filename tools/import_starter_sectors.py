@@ -138,15 +138,52 @@ CIUDADES_MAPEO = {
 
 
 # ==============================================================================
-# MAPEO INTEGRAL: ESTACIONES DE SERVICIO DE CHILE (RED OFICIAL)
+# MAPEO INTEGRAL: EMPRESAS CHILENAS Y ESTACIONES DE SERVICIO EN EL MAPA
+# Transforma los prefabs europeos en las marcas chilenas más famosas
 # ==============================================================================
-ESTACIONES_MAPEO = {
-    "primel": "copec",       # 197 estaciones base -> Copec Pronto / Punto (Líder en Chile)
-    "bts":    "copec",       # 13 estaciones base -> Copec
-    "pegi":   "shell_cl",    # 31 estaciones base -> Shell Upa! / Enex Chile
-    "tqg":    "shell_cl",    # 10 estaciones base -> Shell Chile
-    "nada":   "petrobras",   # 25 estaciones base -> Petrobras Spacio 1 / Esmax
-    "apus":   "aramco",      # 22 estaciones base -> Aramco Chile
+EMPRESAS_MAPEO = {
+    # Red de Combustibles y Estaciones de Servicio
+    "primel":       "copec",       # 197 estaciones base -> Copec Pronto / Punto (Líder en Chile)
+    "bts":          "copec",       # 13 estaciones base -> Copec
+    "pegi":         "shell_cl",    # 31 estaciones base -> Shell Upa! / Enex Chile
+    "tqg":          "shell_cl",    # 10 estaciones base -> Shell Chile
+    "nada":         "petrobras",   # 25 estaciones base -> Petrobras Spacio 1 / Esmax
+    "apus":         "aramco",      # 22 estaciones base -> Aramco Chile
+
+    # Supermercados, Retail y Comercio Nacional
+    "eurogoodies":  "lider",       # 20 sedes base -> Lider / Walmart Chile
+    "kaarfor":      "cencosud",    # 12 sedes base -> Cencosud (Jumbo / Easy)
+    "sellplan":     "unimarc",     # 16 sedes base -> Unimarc / SMU
+    "ika_bohag":    "falabella",   # 9 sedes base -> Falabella Retail
+    "sanbuilders":  "sodimac",     # 9 sedes base -> Homecenter Sodimac
+
+    # Forestal, Celulosa y Madera
+    "tree_et":      "arauco",      # 13 sedes base -> Arauco Celulosa y Maderas
+
+    # Minería, Siderurgia y Química
+    "quarry":       "codelco",     # 15 sedes base -> Codelco Minería del Cobre
+    "steinbr_str":  "escondida",   # 6 sedes base -> Minera Escondida (BHP)
+    "wgcc":         "sqm",         # 10 sedes base -> SQM Salar de Atacama
+    "itcc":         "enap",        # 7 sedes base -> ENAP Refinerías
+    "kathode":      "cap_acero",   # 8 sedes base -> CAP Acero
+
+    # Cemento y Construcción
+    "sanbuild_cem": "melon",       # 5 sedes base -> Cemento Melón
+    "sanbuild_bas": "cbb_cemento", # 5 sedes base -> Cementos Bío Bío (CBB)
+
+    # Alimentos, Lácteos, Pastas y Bebidas
+    "euroacres":    "agrosuper",   # 15 sedes base -> Agrosuper Chile
+    "trameri":      "colun",       # 10 sedes base -> Colun - La Magia del Sur
+    "fcp":          "soprole",     # 6 sedes base -> Soprole Lácteos
+    "bcp":          "carozzi",     # 7 sedes base -> Carozzi Alimentos
+    "stokes":       "ccu",         # 11 sedes base -> CCU Cervezas y Bebidas
+    "nbfc":         "embonor",     # 4 sedes base -> Coca-Cola Embonor
+    "dfh":          "iansa",       # 5 sedes base -> Empresas Iansa
+
+    # Encomiendas, Courier y Transporte de Carga
+    "tradeaux":     "starken",     # 9 sedes base -> Starken Encomiendas
+    "posped":       "chilexpress", # 10 sedes base -> Chilexpress Courier
+    "transinet":    "bluex",       # 12 sedes base -> Blue Express
 }
 
 
@@ -169,12 +206,12 @@ def importar_y_parchear_sectores():
         shutil.copy2(SRC_MBD, DEST_MBD)
         print(f"[1/4] Archivo chile.mbd instalado con éxito ({DEST_MBD.stat().st_size} bytes)")
 
-    # 3. Preparar diccionario de reemplazo de tokens de 64 bits (ciudades y gasolineras)
+    # 3. Preparar diccionario de reemplazo de tokens de 64 bits (ciudades y empresas chilenas)
     reemplazos = {}
     for euro_city, cl_city in CIUDADES_MAPEO.items():
         reemplazos[token_bytes(euro_city)] = token_bytes(cl_city)
 
-    for euro_brand, cl_brand in ESTACIONES_MAPEO.items():
+    for euro_brand, cl_brand in EMPRESAS_MAPEO.items():
         reemplazos[token_bytes(euro_brand)] = token_bytes(cl_brand)
 
     # 4. Obtener los sectores de la red vial continua de Chile
@@ -245,8 +282,9 @@ def importar_y_parchear_sectores():
     for euro_city, cl_city in CIUDADES_MAPEO.items():
         src_editor_files = list(SRC_COMPANY_DIR.glob(f"**/editor/{euro_city}.sii"))
         for sfile in src_editor_files:
-            comp_name = sfile.parent.parent.name
-            dest_editor_dir = DEST_DEF_COMPANY / comp_name / "editor"
+            orig_comp = sfile.parent.parent.name
+            dest_comp = EMPRESAS_MAPEO.get(orig_comp, orig_comp)
+            dest_editor_dir = DEST_DEF_COMPANY / dest_comp / "editor"
             dest_editor_dir.mkdir(parents=True, exist_ok=True)
 
             dest_sii = dest_editor_dir / f"{cl_city}.sii"

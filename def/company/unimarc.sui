@@ -1,0 +1,6 @@
+company_permanent : company.permanent.unimarc
+{
+    name: "Unimarc - SMU"
+    sort_name: "UNIMARC"
+    trailer_look: "unimarc"
+}

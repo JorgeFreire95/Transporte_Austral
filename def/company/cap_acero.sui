@@ -1,0 +1,6 @@
+company_permanent : company.permanent.cap_acero
+{
+    name: "CAP Acero - Compañía Siderúrgica Huachipato y Minería"
+    sort_name: "CAP_ACERO"
+    trailer_look: "cap_acero"
+}

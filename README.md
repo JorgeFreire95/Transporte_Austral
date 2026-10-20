@@ -119,22 +119,73 @@ graph TD
     Starken["Starken / Chilexpress"] -->|Paquetería y Encomiendas| HubLogistico["Centros Urbanos y Regiones"]
 ```
 
-### Detalle de Empresas Implementadas:
-1. **Copec:** Mayor distribuidora de combustibles de Chile, operadora de las redes de tiendas de conveniencia **Pronto Copec** y **Punto Copec**.
-2. **Shell Enex:** Distribuidora oficial de combustibles Shell con sus icónicas tiendas **Upa!** y **Upita**.
-3. **Petrobras Esmax:** Red de abastecimiento con tiendas **Spacio 1**.
-4. **Codelco:** Corporación Nacional del Cobre. Genera fletes de cátodos de cobre, concentrado, ácido sulfúrico y maquinaria pesada minera.
-5. **Arauco:** Gigante forestal con complejos en Celulosa Arauco MAPA y Constitución. Genera fletes de fardos de celulosa kraft y madera aserrada.
-6. **Empresas CMPC:** Operaciones de Forestal Mininco y plantas de papel y cartón en Los Ángeles y Maule.
-7. **Agrosuper:** Mayor productor cárnico de Chile (Super Pollo, Super Cerdo, La Crianza, Sopraval), con plantas en Rosario, Lo Miranda y San Bernardo.
-8. **Falabella & Sodimac:** Enormes centros de distribución en San Bernardo para el abastecimiento de retail, electrónica y materiales de construcción.
-9. **Cencosud:** Cadena de centros de acopio para supermercados Jumbo, Santa Isabel y tiendas Easy.
-10. **CCU (Compañía de Cervecerías Unidas):** Fábricas de cerveza Cristal/Royal, gaseosas Bilz/Pap y aguas Cachantún en Renca y Temuco.
-11. **Colun (Cooperativa Agrícola y Lechera de La Unión):** Distribución de leche fresca, quesos y mantequillas desde la Región de Los Ríos a todo el país.
-12. **AquaChile & Camanchaca:** Centros de cultivo y plantas de procesamiento de salmón en Puerto Montt, Castro y Aysén.
-13. **Viña Concha y Toro:** Cargas de barricas de roble y botellas de vino de exportación (Casillero del Diablo, Don Melchor).
-14. **Starken & Chilexpress:** Hubs logísticos de encomiendas y paquetería e-commerce nacional express.
-15. **Terminales Portuarios:** STI San Antonio (San Antonio Terminal Internacional), TPS Valparaíso y TPA Arica.
+### Directorio de 47 Empresas Chilenas Implementadas en el Mapa
+
+El mod conecta los 240 sectores del mapa con 47 empresas emblemáticas chilenas distribuidas estratégicamente a lo largo de las 16 regiones y 52 comunas:
+
+#### 1. ⛽ Combustibles, Energía y Refinerías
+* **Copec (`copec`):** Mayor distribuidora nacional de hidrocarburos. Presente en las 52 comunas con patios de camiones, paradas de autopista y tiendas **Pronto Copec** y **Punto Copec**.
+* **Shell Enex (`shell_cl`):** Red de estaciones de servicio y áreas de descanso con tiendas **Upa!** y **Upita** en las principales ciudades y rutas troncales.
+* **Petrobras Esmax (`petrobras`, `petrobras_cl`):** Red interurbana de abastecimiento y tiendas **Spacio 1**.
+* **Aramco Chile (`aramco`):** Nueva red global de combustibles con estaciones de alto flujo en autopistas chilenas.
+* **ENAP (`enap`):** Empresa Nacional del Petróleo con refinerías en Concón, Biobío y plantas de extracción en Magallanes (movimiento de petróleo crudo, gasolinas y productos químicos).
+
+#### 2. ⛏️ Minería, Siderurgia y Química Pesada
+* **Codelco (`codelco`):** Corporación Nacional del Cobre. Operaciones en Calama (Chuquicamata), Rancagua (El Teniente), Los Andes (Andina) y Diego de Almagro (Salvador). Cargas de cátodos de cobre, concentrado, ácido sulfúrico y maquinaria pesada.
+* **Minera Escondida - BHP (`escondida`):** El mayor yacimiento de cobre a rajo abierto del planeta, ubicado en Antofagasta y Mejillones.
+* **SQM (`sqm`):** Sociedad Química y Minera de Chile. Explotación de litio en el Salar de Atacama, nitratos y yodo en Tarapacá y Antofagasta.
+* **CAP Acero (`cap_acero`):** Siderúrgica Huachipato (Talcahuano) y Compañía Minera del Pacífico en Copiapó/Vallenar (barras de acero, rieles y minerales de hierro).
+* **Molymet (`molymet`):** Mayor procesador mundial de molibdeno y renio con planta industrial en Nos / San Bernardo.
+
+#### 3. 🌲 Forestal, Celulosa y Madera
+* **Arauco (`arauco`):** Gigante forestal con complejos de clase mundial: Complejo MAPA (Arauco), Horcones, Planta Celulosa Constitución y Aserraderos en Biobío y Maule. Fletes de fardos de celulosa Kraft y madera aserrada.
+* **Empresas CMPC (`cmpc`):** "La Papelera", Forestal Mininco y plantas de celulosa y cartones en Los Ángeles, Laja y Puente Alto.
+
+#### 4. 🥩 Alimentos, Lácteos, Carnes y Agroindustria
+* **Agrosuper (`agrosuper`):** Mayor productor cárnico de Chile (Super Pollo, Super Cerdo, La Crianza, Sopraval). Despachos frigoríficos desde Lo Miranda, Rosario y San Bernardo hacia todo Chile.
+* **Colun (`colun`):** Cooperativa Agrícola y Lechera de La Unión ("La Magia del Sur"). Fletes de leche cruda en camiones cisterna isotérmicos, quesos y mantequillas desde Los Ríos hacia el resto del país.
+* **Soprole (`soprole`):** Líder lácteo nacional con plantas de acopio y elaboración de yogures, leches y postres en San Bernardo y Los Lagos.
+* **Carozzi (`carozzi`):** Megacomplejo alimenticio en Nos (Pastas Carozzi, Galletas Costa, Chocolates Ambrosoli y Harinas).
+* **Empresas Iansa (`iansa`):** Plantas agroindustriales de azúcar de remolacha, endulzantes y pulpas de tomate en Los Ángeles, Chillán y Maule.
+* **Panadería Ideal - Bimbo (`ideal_cl`):** Mayor planta de panificación de Chile en Quilicura y distribución continua a nivel nacional.
+* **Watt's (`watts`):** Procesadora de jugos Watt's, leches Loncoleche, margarinas Calo y aceites Chef en Osorno y San Bernardo.
+* **Frigorífico Simunovic (`simunovic`):** Planta faenadora en Punta Arenas especializada en cortes de cordero patagónico y carnes de exportación.
+* **Dole Chile Frutícola (`dole_cl`):** Packing de paltas Hass de Quillota/Petorca, uvas de mesa, arándanos y manzanas para los puertos de Valparaíso y San Antonio.
+* **AquaChile (`aquachile`):** Mayor salmonera de Chile con centros de cultivo y plantas de empaque en Puerto Montt, Castro, Quellón y Aysén.
+
+#### 5. 🍻 Bebidas, Cervezas y Viñedos
+* **CCU (`ccu`):** Compañía de Cervecerías Unidas. Cervezas Cristal, Escudo y Royal Guard; gaseosas Bilz y Pap; y aguas minerales Cachantún.
+* **Coca-Cola Andina (`andina`):** Embotelladora en Renca y San Bernardo para la zona central de Chile.
+* **Coca-Cola Embonor (`embonor`):** Distribución de bebidas gaseosas, jugos y aguas en las zonas norte y sur (Arica, Iquique, Concepción, Temuco).
+* **Viña Concha y Toro (`concha_toro`):** La viña más icónica de Chile (Casillero del Diablo, Don Melchor) con bodegas en Pirque, Curicó y San Fernando.
+* **Cervecería Kunstmann (`kunstmann`):** Cerveza craft tradicional nacida en Torobayo (Valdivia).
+* **Cervecería Austral (`austral_pza`):** La cerveza más austral del mundo, elaborada en Punta Arenas con aguas de la Patagonia.
+
+#### 6. 🛒 Retail, Supermercados y Mejoramiento del Hogar
+* **Lider - Walmart Chile (`lider`):** Red de hipermercados Lider, Express de Lider y el megacentro de distribución Lo Aguirre en Pudahuel.
+* **Cencosud (`cencosud`):** Cadena de abastecimiento de Hipermercados Jumbo, Supermercados Santa Isabel y tiendas de construcción Easy.
+* **Unimarc (`unimarc`):** Supermercado presente en las 16 regiones de Chile, desde Arica hasta Magallanes.
+* **Falabella Logística (`falabella`):** Grandes tiendas por departamento y centros logísticos en San Bernardo y Pudahuel.
+* **Ripley Retail (`ripley`):** Tiendas departamentales, electrónica y centro de distribución Pudahuel.
+* **Homecenter Sodimac (`sodimac`):** Red líder de ferretería, mejoramiento del hogar y Sodimac Constructor (cemento, maderas, herramientas).
+
+#### 7. 🏗️ Cemento y Materiales de Construcción
+* **Cemento Melón (`melon`):** Producción histórica de cemento y áridos desde La Calera y San Antonio.
+* **Cementos Bío Bío - CBB (`cbb_cemento`):** Plantas de molienda de cemento y cal en Talcahuano, Curicó y Teno.
+* **Cementos Polpaico (`polpaico`):** Complejos de cemento y hormigón en Cerro Blanco (Tiltil) y Coronel.
+
+#### 8. 📦 Courier, Encomiendas y Logística Nacional
+* **Starken (`starken`):** Hub de paquetería express y carga pesada del grupo TurBus con terminales en todo el territorio chileno.
+* **Chilexpress (`chilexpress`):** Courier de paquetería urgente y entregas e-commerce nacional con hubs en aeropuertos y carreteras.
+* **CorreosChile (`correos_cl`):** Correo oficial del Estado de Chile y su Centro Tecnológico Postal (CTP) en el Aeropuerto de Pudahuel.
+* **Blue Express (`bluex`):** Operador logístico líder en distribución de última milla para comercio electrónico.
+
+#### 9. ⚓ Puertos, Terminales Marítimos y Conectividad Austral
+* **STI San Antonio (`sti_san_ant`):** San Antonio Terminal Internacional, el puerto de mayor transferencia de contenedores del país.
+* **TPS Valparaíso (`tps_valp`):** Terminal Pacífico Sur, muelle histórico para el embarque de fruta fresca y vinos chilenos.
+* **TPA Arica (`tpa_arica`):** Terminal Puerto Arica, muelle multipropósito del extremo norte y salida bioceánica.
+* **Puerto Coronel (`pto_coronel`):** Principal puerto de exportación de celulosa, tableros y maderas del sur de Chile.
+* **TABSA (`tabsa`):** Transbordadora Austral Broom. Servicio de ferries y barcazas para cruce de camiones pesados en Primera Angostura (Estrecho de Magallanes) y Porvenir (Tierra del Fuego).
 
 ---
 

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.soprole
+{
+    name: "Soprole - Sano y Rico a Diario"
+    sort_name: "SOPROLE"
+    trailer_look: "soprole"
+}

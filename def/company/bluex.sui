@@ -1,0 +1,6 @@
+company_permanent : company.permanent.bluex
+{
+    name: "Blue Express"
+    sort_name: "BLUEX"
+    trailer_look: "bluex"
+}
