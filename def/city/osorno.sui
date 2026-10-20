@@ -2,7 +2,7 @@ city_data : city.osorno
 {
     city_name: "Osorno (Av. Mackenna - Errázuriz)"
     city_name_localized: "Osorno (Av. Mackenna - Errázuriz)"
-    country: cl_x
+    country: chile
     vehicle_brands[]: "man"
 
     map_x_offsets[]: 0

@@ -2,7 +2,7 @@ city_data : city.puerto_montt
 {
     city_name: "Puerto Montt (Diego Portales - Angelmó)"
     city_name_localized: "Puerto Montt (Diego Portales - Angelmó)"
-    country: cl_x
+    country: chile
     vehicle_brands[]: "iveco"
 
     map_x_offsets[]: 0

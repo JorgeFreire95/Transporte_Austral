@@ -2,7 +2,7 @@ city_data : city.los_andes
 {
     city_name: "Los Andes (Av. Santa Teresa - Paso Los Libertadores)"
     city_name_localized: "Los Andes (Av. Santa Teresa - Paso Los Libertadores)"
-    country: cl_v
+    country: chile
     vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0

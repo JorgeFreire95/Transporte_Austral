@@ -206,13 +206,10 @@ def importar_y_parchear_sectores():
         shutil.copy2(SRC_MBD, DEST_MBD)
         print(f"[1/4] Archivo chile.mbd instalado con éxito ({DEST_MBD.stat().st_size} bytes)")
 
-    # 3. Preparar diccionario de reemplazo de tokens de 64 bits (ciudades y empresas chilenas)
-    reemplazos = {}
+    # 3. Preparar diccionario de reemplazo de tokens de 64 bits (ÚNICAMENTE para ciudades en .base)
+    reemplazos_ciudades = {}
     for euro_city, cl_city in CIUDADES_MAPEO.items():
-        reemplazos[token_bytes(euro_city)] = token_bytes(cl_city)
-
-    for euro_brand, cl_brand in EMPRESAS_MAPEO.items():
-        reemplazos[token_bytes(euro_brand)] = token_bytes(cl_brand)
+        reemplazos_ciudades[token_bytes(euro_city)] = token_bytes(cl_city)
 
     # 4. Obtener los sectores de la red vial continua de Chile
     # (Filtra automáticamente sectores aislados de Europa como Lappeenranta, Rusia, etc.)
@@ -249,7 +246,7 @@ def importar_y_parchear_sectores():
     main_comp = set(components[0]) # Los 240 sectores conectados que albergan a Chile
     sectores_disponibles = sorted([sector_coords[c] for c in main_comp])
 
-    print(f"[2/4] Copiando y parcheando {len(sectores_disponibles)} sectores conectados de Chile (excluyendo Lappeenranta y fragmentos aislados)...")
+    print(f"[2/4] Copiando sectores conectados de Chile ({len(sectores_disponibles)} sectores)...")
     total_archivos = 0
     total_reemplazos = 0
 
@@ -260,20 +257,25 @@ def importar_y_parchear_sectores():
                 continue
 
             dest_file = DEST_CHILE_DIR / f"{sec_name}{ext}"
-            data_bytes = src_file.read_bytes()
 
-            # Reemplazar tokens de ciudades
-            for src_b, dst_b in reemplazos.items():
-                cnt = data_bytes.count(src_b)
-                if cnt > 0:
-                    data_bytes = data_bytes.replace(src_b, dst_b)
-                    total_reemplazos += cnt
+            # CRÍTICO: .aux, .desc, .data y .snd son índices espaciales compilados por SCS.
+            # NO deben ser alterados byte por byte, ya que corrompe la lectura del motor (cached read too big).
+            # Solo .base contiene las definiciones de entidades y nombres de ciudades.
+            if ext == ".base":
+                data_bytes = src_file.read_bytes()
+                for src_b, dst_b in reemplazos_ciudades.items():
+                    cnt = data_bytes.count(src_b)
+                    if cnt > 0:
+                        data_bytes = data_bytes.replace(src_b, dst_b)
+                        total_reemplazos += cnt
+                dest_file.write_bytes(data_bytes)
+            else:
+                shutil.copy2(src_file, dest_file)
 
-            dest_file.write_bytes(data_bytes)
             total_archivos += 1
 
     print(f" -> {total_archivos} archivos de sectores generados en {DEST_CHILE_DIR}")
-    print(f" -> {total_reemplazos} ocurrencias de tokens reemplazadas (ciudades y marcas Copec, Shell, Petrobras, Aramco)")
+    print(f" -> {total_reemplazos} ocurrencias de ciudades chilenas vinculadas en archivos .base")
 
     # 5. Generar sucursales de empresas para cada una de las 52 ciudades chilenas
     print("[3/4] Generando sucursales de empresas en def/company/*/editor/ para las 52 comunas...")
@@ -284,16 +286,25 @@ def importar_y_parchear_sectores():
         for sfile in src_editor_files:
             orig_comp = sfile.parent.parent.name
             dest_comp = EMPRESAS_MAPEO.get(orig_comp, orig_comp)
+
+            # Sucursal para la marca chilena
             dest_editor_dir = DEST_DEF_COMPANY / dest_comp / "editor"
             dest_editor_dir.mkdir(parents=True, exist_ok=True)
-
             dest_sii = dest_editor_dir / f"{cl_city}.sii"
+
             content = sfile.read_text(encoding="utf-8", errors="ignore")
             content = content.replace(f".{euro_city}", f".{cl_city}")
             content = content.replace(f"city: {euro_city}", f"city: {cl_city}")
-
             dest_sii.write_text(content, encoding="utf-8")
             total_sucursales += 1
+
+            # Sucursal de respaldo para la empresa original (retrocompatibilidad)
+            if dest_comp != orig_comp:
+                orig_editor_dir = DEST_DEF_COMPANY / orig_comp / "editor"
+                orig_editor_dir.mkdir(parents=True, exist_ok=True)
+                orig_sii = orig_editor_dir / f"{cl_city}.sii"
+                orig_sii.write_text(content, encoding="utf-8")
+                total_sucursales += 1
 
     print(f" -> {total_sucursales} sedes de empresas generadas para las 52 comunas de Chile")
     print(f"[4/4] Red vial continua y economía de 52 comunas 100% operativas.")

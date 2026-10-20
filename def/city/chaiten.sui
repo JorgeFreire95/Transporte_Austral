@@ -2,7 +2,7 @@ city_data : city.chaiten
 {
     city_name: "Chaitén (Costanera - Carretera Austral)"
     city_name_localized: "Chaitén (Costanera - Carretera Austral)"
-    country: cl_x
+    country: chile
     vehicle_brands[]: "iveco"
 
     map_x_offsets[]: 0

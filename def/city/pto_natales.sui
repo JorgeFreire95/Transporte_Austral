@@ -2,7 +2,7 @@ city_data : city.pto_natales
 {
     city_name: "Puerto Natales (Costanera Pedro Montt)"
     city_name_localized: "Puerto Natales (Costanera Pedro Montt)"
-    country: cl_xii
+    country: chile
     vehicle_brands[]: "iveco"
 
     map_x_offsets[]: 0

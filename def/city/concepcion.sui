@@ -2,7 +2,7 @@ city_data : city.concepcion
 {
     city_name: "Concepción (Av. O'Higgins - Paicaví)"
     city_name_localized: "Concepción (Av. O'Higgins - Paicaví)"
-    country: cl_viii
+    country: chile
     vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0

@@ -2,7 +2,7 @@ city_data : city.ovalle
 {
     city_name: "Ovalle (Av. Ariztía - Valle del Limarí)"
     city_name_localized: "Ovalle (Av. Ariztía - Valle del Limarí)"
-    country: cl_iv
+    country: chile
     vehicle_brands[]: "daf"
 
     map_x_offsets[]: 0

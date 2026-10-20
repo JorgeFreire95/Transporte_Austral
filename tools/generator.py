@@ -1090,7 +1090,7 @@ def generar_ciudades():
 {{
     city_name: "{ciudad['nombre']}"
     city_name_localized: "{ciudad['nombre']}"
-    country: {country_id_str}{brand_str}
+    country: chile{brand_str}
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

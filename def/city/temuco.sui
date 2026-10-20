@@ -2,7 +2,7 @@ city_data : city.temuco
 {
     city_name: "Temuco (Av. Alemania - Caupolicán)"
     city_name_localized: "Temuco (Av. Alemania - Caupolicán)"
-    country: cl_ix
+    country: chile
     vehicle_brands[]: "renault"
 
     map_x_offsets[]: 0

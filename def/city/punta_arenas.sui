@@ -2,7 +2,7 @@ city_data : city.punta_arenas
 {
     city_name: "Punta Arenas (Costanera del Estrecho - Av. España)"
     city_name_localized: "Punta Arenas (Costanera del Estrecho - Av. España)"
-    country: cl_xii
+    country: chile
     vehicle_brands[]: "volvo"
 
     map_x_offsets[]: 0
