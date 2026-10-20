@@ -29,14 +29,14 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "arica",
-                "nombre": "Arica (Av. Comandante San Martín - Morro)",
+                "nombre": "Arica",
                 "x": -118200, "z": 85000,
                 "icon": "arica",
                 "empresas": ["copec", "tpa_arica", "embonor", "unimarc", "lider", "starken", "chilexpress"]
             },
             {
                 "id": "putre",
-                "nombre": "Putre (Paso Chungará - Ruta 11-CH)",
+                "nombre": "Putre",
                 "x": -116400, "z": 83200,
                 "icon": "putre",
                 "empresas": ["copec", "tpa_arica"]
@@ -48,14 +48,14 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "iquique",
-                "nombre": "Iquique (Av. Arturo Prat - Costanera)",
+                "nombre": "Iquique",
                 "x": -118100, "z": 92000,
                 "icon": "iquique",
                 "empresas": ["copec", "shell_cl", "sqm", "unimarc", "lider", "embonor", "starken"]
             },
             {
                 "id": "pozo_almonte",
-                "nombre": "Pozo Almonte (Panamericana - Salitreras)",
+                "nombre": "Pozo Almonte",
                 "x": -116900, "z": 93500,
                 "icon": "pozo_almonte",
                 "empresas": ["copec", "sqm"]
@@ -67,28 +67,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "antofagasta",
-                "nombre": "Antofagasta (Av. Pérez Zujovic - Costanera)",
+                "nombre": "Antofagasta",
                 "x": -117800, "z": 105000,
                 "icon": "antofagasta",
                 "empresas": ["copec", "shell_cl", "escondida", "sqm", "codelco", "lider", "sodimac", "falabella", "andina", "starken", "bluex"]
             },
             {
                 "id": "calama",
-                "nombre": "Calama (Av. Granaderos - Chuquicamata)",
+                "nombre": "Calama",
                 "x": -115400, "z": 101000,
                 "icon": "calama",
                 "empresas": ["codelco", "copec", "shell_cl", "sodimac", "unimarc", "lider", "sqm"]
             },
             {
                 "id": "san_pedro",
-                "nombre": "San Pedro de Atacama (Caracoles - Valle de la Luna)",
+                "nombre": "San Pedro de Atacama",
                 "x": -113800, "z": 102500,
                 "icon": "san_pedro",
                 "empresas": ["copec", "sqm"]
             },
             {
                 "id": "mejillones",
-                "nombre": "Mejillones (Av. Fertilizantes - Puerto)",
+                "nombre": "Mejillones",
                 "x": -118150, "z": 103200,
                 "icon": "mejillones",
                 "empresas": ["petrobras_cl", "sqm", "escondida", "enap"]
@@ -100,21 +100,21 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "copiapo",
-                "nombre": "Copiapó (Av. Copayapu - Los Carrera)",
+                "nombre": "Copiapó",
                 "x": -116900, "z": 118000,
                 "icon": "copiapo",
                 "empresas": ["copec", "shell_cl", "cap_acero", "sodimac", "lider", "cencosud"]
             },
             {
                 "id": "caldera",
-                "nombre": "Caldera (Costanera - Bahía Inglesa)",
+                "nombre": "Caldera",
                 "x": -118200, "z": 116500,
                 "icon": "caldera",
                 "empresas": ["copec", "cap_acero"]
             },
             {
                 "id": "vallenar",
-                "nombre": "Vallenar (Av. Brasil - Valle del Huasco)",
+                "nombre": "Vallenar",
                 "x": -116400, "z": 124000,
                 "icon": "vallenar",
                 "empresas": ["copec", "cap_acero", "unimarc"]
@@ -126,28 +126,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "la_serena",
-                "nombre": "La Serena (Av. Francisco de Aguirre - El Faro)",
+                "nombre": "La Serena",
                 "x": -117200, "z": 135000,
                 "icon": "la_serena",
                 "empresas": ["copec", "shell_cl", "cencosud", "falabella", "lider", "sodimac", "unimarc", "starken"]
             },
             {
                 "id": "coquimbo",
-                "nombre": "Coquimbo (Av. Costanera - Puerto)",
+                "nombre": "Coquimbo",
                 "x": -117350, "z": 136200,
                 "icon": "coquimbo",
                 "empresas": ["copec", "cencosud", "unimarc", "sodimac"]
             },
             {
                 "id": "ovalle",
-                "nombre": "Ovalle (Av. Ariztía - Valle del Limarí)",
+                "nombre": "Ovalle",
                 "x": -116100, "z": 140000,
                 "icon": "ovalle",
                 "empresas": ["copec", "concha_toro", "unimarc"]
             },
             {
                 "id": "los_vilos",
-                "nombre": "Los Vilos (Costanera Salvador Allende)",
+                "nombre": "Los Vilos",
                 "x": -117000, "z": 148500,
                 "icon": "los_vilos",
                 "empresas": ["copec", "shell_cl"]
@@ -159,28 +159,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "valparaiso",
-                "nombre": "Valparaíso (Av. España - Errázuriz)",
+                "nombre": "Valparaíso",
                 "x": -117100, "z": 158000,
                 "icon": "valparaiso",
                 "empresas": ["copec", "tps_valp", "falabella", "lider", "starken", "chilexpress", "correos_cl"]
             },
             {
                 "id": "vina_del_mar",
-                "nombre": "Viña del Mar (Av. Libertad - 1 Norte)",
+                "nombre": "Viña del Mar",
                 "x": -116900, "z": 157200,
                 "icon": "vina_del_mar",
                 "empresas": ["copec", "shell_cl", "enap", "cencosud", "lider", "sodimac", "embonor", "ripley"]
             },
             {
                 "id": "san_antonio",
-                "nombre": "San Antonio (Av. Barros Luco - Puerto STI)",
+                "nombre": "San Antonio",
                 "x": -117200, "z": 162000,
                 "icon": "san_antonio",
                 "empresas": ["copec", "sti_san_ant", "melon", "andina", "lider", "sodimac", "petrobras_cl"]
             },
             {
                 "id": "los_andes",
-                "nombre": "Los Andes (Av. Santa Teresa - Paso Los Libertadores)",
+                "nombre": "Los Andes",
                 "x": -114800, "z": 156500,
                 "icon": "los_andes",
                 "empresas": ["codelco", "copec", "dole_cl", "melon", "unimarc", "sodimac"]
@@ -192,21 +192,21 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "santiago",
-                "nombre": "Santiago (Alameda - Autopista Central)",
+                "nombre": "Santiago",
                 "x": -115800, "z": 160000,
                 "icon": "santiago",
                 "empresas": ["copec", "shell_cl", "petrobras", "aramco", "falabella", "lider", "cencosud", "sodimac", "andina", "ccu", "starken", "chilexpress", "correos_cl", "bluex", "unimarc", "ripley"]
             },
             {
                 "id": "san_bernardo",
-                "nombre": "San Bernardo (Av. Portales - Eje Sur)",
+                "nombre": "San Bernardo",
                 "x": -115700, "z": 162500,
                 "icon": "san_bernardo",
                 "empresas": ["carozzi", "falabella", "soprole", "molymet", "sodimac", "lider", "copec", "agrosuper"]
             },
             {
                 "id": "quilicura",
-                "nombre": "Quilicura (Américo Vespucio - Panamericana Norte)",
+                "nombre": "Quilicura",
                 "x": -115900, "z": 158500,
                 "icon": "quilicura",
                 "empresas": ["ideal_cl", "bluex", "falabella", "sodimac", "lider", "polpaico", "copec", "petrobras_cl"]
@@ -218,21 +218,21 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "rancagua",
-                "nombre": "Rancagua (Av. O'Higgins - Carretera El Cobre)",
+                "nombre": "Rancagua",
                 "x": -115500, "z": 165500,
                 "icon": "rancagua",
                 "empresas": ["codelco", "agrosuper", "copec", "shell_cl", "cencosud", "lider", "sodimac", "dole_cl"]
             },
             {
                 "id": "san_fernando",
-                "nombre": "San Fernando (Av. Manuel Rodríguez)",
+                "nombre": "San Fernando",
                 "x": -115300, "z": 169000,
                 "icon": "san_fernando",
                 "empresas": ["copec", "concha_toro", "dole_cl", "unimarc"]
             },
             {
                 "id": "santa_cruz",
-                "nombre": "Santa Cruz (Av. Errázuriz - Valle de Colchagua)",
+                "nombre": "Santa Cruz",
                 "x": -116400, "z": 170500,
                 "icon": "santa_cruz",
                 "empresas": ["concha_toro", "copec"]
@@ -244,28 +244,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "talca",
-                "nombre": "Talca (Av. San Miguel - 2 Sur)",
+                "nombre": "Talca",
                 "x": -115200, "z": 175000,
                 "icon": "talca",
                 "empresas": ["copec", "shell_cl", "aramco", "cbb_cemento", "lider", "sodimac", "cencosud", "embonor", "starken"]
             },
             {
                 "id": "curico",
-                "nombre": "Curicó (Av. Manso de Velasco - Alameda)",
+                "nombre": "Curicó",
                 "x": -115100, "z": 172000,
                 "icon": "curico",
                 "empresas": ["copec", "concha_toro", "cbb_cemento", "dole_cl", "carozzi", "lider"]
             },
             {
                 "id": "linares",
-                "nombre": "Linares (Av. Aníbal León Bustos)",
+                "nombre": "Linares",
                 "x": -115300, "z": 178000,
                 "icon": "linares",
                 "empresas": ["copec", "watts", "iansa", "unimarc"]
             },
             {
                 "id": "constitucion",
-                "nombre": "Constitución (Costanera Río Maule)",
+                "nombre": "Constitución",
                 "x": -117200, "z": 174800,
                 "icon": "constitucion",
                 "empresas": ["arauco", "copec"]
@@ -277,14 +277,14 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "chillan",
-                "nombre": "Chillán (Av. O'Higgins - Av. Brasil)",
+                "nombre": "Chillán",
                 "x": -115000, "z": 183000,
                 "icon": "chillan",
                 "empresas": ["copec", "iansa", "lider", "sodimac", "unimarc", "starken", "arauco", "shell_cl"]
             },
             {
                 "id": "san_carlos",
-                "nombre": "San Carlos (Av. Arturo Prat - Violeta Parra)",
+                "nombre": "San Carlos",
                 "x": -114900, "z": 181200,
                 "icon": "san_carlos",
                 "empresas": ["copec", "iansa"]
@@ -296,28 +296,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "concepcion",
-                "nombre": "Concepción (Av. O'Higgins - Paicaví)",
+                "nombre": "Concepción",
                 "x": -116800, "z": 185000,
                 "icon": "concepcion",
                 "empresas": ["copec", "shell_cl", "petrobras", "cbb_cemento", "cap_acero", "enap", "arauco", "lider", "sodimac", "cencosud", "falabella", "embonor", "starken", "bluex"]
             },
             {
                 "id": "talcahuano",
-                "nombre": "Talcahuano (Autopista - Puerto San Vicente)",
+                "nombre": "Talcahuano",
                 "x": -117000, "z": 184200,
                 "icon": "talcahuano",
                 "empresas": ["copec", "petrobras", "cap_acero", "enap", "cbb_cemento"]
             },
             {
                 "id": "los_angeles",
-                "nombre": "Los Ángeles (Av. Alemania - Ricardo Vicuña)",
+                "nombre": "Los Ángeles",
                 "x": -115200, "z": 188000,
                 "icon": "los_angeles",
                 "empresas": ["copec", "cmpc", "arauco", "iansa", "lider", "sodimac"]
             },
             {
                 "id": "coronel",
-                "nombre": "Coronel (Ruta 160 - Puerto Coronel)",
+                "nombre": "Coronel",
                 "x": -116900, "z": 186800,
                 "icon": "coronel",
                 "empresas": ["copec", "pto_coronel", "polpaico", "arauco", "unimarc"]
@@ -329,21 +329,21 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "temuco",
-                "nombre": "Temuco (Av. Alemania - Caupolicán)",
+                "nombre": "Temuco",
                 "x": -115400, "z": 194000,
                 "icon": "temuco",
                 "empresas": ["copec", "shell_cl", "aramco", "colun", "soprole", "lider", "sodimac", "cencosud", "embonor", "starken"]
             },
             {
                 "id": "villarrica",
-                "nombre": "Villarrica (Av. Pedro de Valdivia - Costanera)",
+                "nombre": "Villarrica",
                 "x": -115100, "z": 197000,
                 "icon": "villarrica",
                 "empresas": ["copec", "unimarc"]
             },
             {
                 "id": "angol",
-                "nombre": "Angol (Av. O'Higgins - Cordillera de Nahuelbuta)",
+                "nombre": "Angol",
                 "x": -115800, "z": 190500,
                 "icon": "angol",
                 "empresas": ["cmpc", "copec", "unimarc"]
@@ -355,14 +355,14 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "valdivia",
-                "nombre": "Valdivia (Costanera Prat - Ramón Picarte)",
+                "nombre": "Valdivia",
                 "x": -116500, "z": 201000,
                 "icon": "valdivia",
                 "empresas": ["copec", "kunstmann", "colun", "lider", "sodimac", "starken", "shell_cl"]
             },
             {
                 "id": "la_union",
-                "nombre": "La Unión (Av. Arturo Prat - Planta Colun)",
+                "nombre": "La Unión",
                 "x": -116200, "z": 204500,
                 "icon": "la_union",
                 "empresas": ["colun", "copec", "arauco"]
@@ -374,35 +374,35 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "puerto_montt",
-                "nombre": "Puerto Montt (Diego Portales - Angelmó)",
+                "nombre": "Puerto Montt",
                 "x": -116100, "z": 210000,
                 "icon": "puerto_montt",
                 "empresas": ["copec", "shell_cl", "aquachile", "colun", "soprole", "lider", "sodimac", "cencosud", "melon", "tabsa", "starken", "bluex"]
             },
             {
                 "id": "osorno",
-                "nombre": "Osorno (Av. Mackenna - Errázuriz)",
+                "nombre": "Osorno",
                 "x": -116200, "z": 206500,
                 "icon": "osorno",
                 "empresas": ["copec", "colun", "soprole", "watts", "lider", "sodimac"]
             },
             {
                 "id": "castro",
-                "nombre": "Castro (Palafitos Gamboa - San Martín)",
+                "nombre": "Castro",
                 "x": -116800, "z": 214500,
                 "icon": "castro",
                 "empresas": ["copec", "aquachile", "unimarc", "lider"]
             },
             {
                 "id": "quellon",
-                "nombre": "Quellón (Hito Cero Panamericana)",
+                "nombre": "Quellón",
                 "x": -116700, "z": 218500,
                 "icon": "quellon",
                 "empresas": ["aquachile", "copec"]
             },
             {
                 "id": "chaiten",
-                "nombre": "Chaitén (Costanera - Carretera Austral)",
+                "nombre": "Chaitén",
                 "x": -115500, "z": 216000,
                 "icon": "chaiten",
                 "empresas": ["copec", "tabsa"]
@@ -414,28 +414,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "coyhaique",
-                "nombre": "Coyhaique (Baquedano - Carretera Austral)",
+                "nombre": "Coyhaique",
                 "x": -114800, "z": 228000,
                 "icon": "coyhaique",
                 "empresas": ["copec", "aquachile", "unimarc", "starken"]
             },
             {
                 "id": "puerto_aysen",
-                "nombre": "Puerto Aysén (Puente Presidente Ibáñez)",
+                "nombre": "Puerto Aysén",
                 "x": -115600, "z": 226500,
                 "icon": "puerto_aysen",
                 "empresas": ["aquachile", "copec"]
             },
             {
                 "id": "cochrane",
-                "nombre": "Cochrane (Av. San Valentín - Río Baker)",
+                "nombre": "Cochrane",
                 "x": -114200, "z": 236000,
                 "icon": "cochrane",
                 "empresas": ["copec"]
             },
             {
                 "id": "v_ohiggins",
-                "nombre": "Villa O'Higgins (Fin Carretera Austral)",
+                "nombre": "Villa O'Higgins",
                 "x": -113800, "z": 242000,
                 "icon": "v_ohiggins",
                 "empresas": ["copec"]
@@ -447,21 +447,21 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "punta_arenas",
-                "nombre": "Punta Arenas (Costanera del Estrecho - Av. España)",
+                "nombre": "Punta Arenas",
                 "x": -111500, "z": 265000,
                 "icon": "punta_arenas",
                 "empresas": ["copec", "shell_cl", "enap", "simunovic", "austral_pza", "tabsa", "unimarc", "lider", "sodimac", "starken"]
             },
             {
                 "id": "pto_natales",
-                "nombre": "Puerto Natales (Costanera Pedro Montt)",
+                "nombre": "Puerto Natales",
                 "x": -113200, "z": 258000,
                 "icon": "pto_natales",
                 "empresas": ["copec", "tabsa", "unimarc"]
             },
             {
                 "id": "porvenir",
-                "nombre": "Porvenir (Costanera Chiloé - Tierra del Fuego)",
+                "nombre": "Porvenir",
                 "x": -111100, "z": 267000,
                 "icon": "porvenir",
                 "empresas": ["copec", "tabsa", "simunovic"]
