@@ -793,14 +793,12 @@ REBRAND_BASE_COMPANIES = {
 
     # Retail, Supermercados y Centros de Distribución
     "eurogoodies":     {"nombre": "Lider - Walmart Chile", "sort": "LIDER", "trailer": "lider"},
-    "eurogoodies_grv": {"nombre": "Lider Centro Distribución", "sort": "LIDER", "trailer": "lider"},
     "kaarfor":         {"nombre": "Cencosud (Jumbo / Easy)", "sort": "CENCOSUD", "trailer": "cencosud"},
     "kaarfor_grv":     {"nombre": "Cencosud Centro de Acopio", "sort": "CENCOSUD", "trailer": "cencosud"},
     "sellplan":        {"nombre": "Unimarc Supermercados", "sort": "UNIMARC", "trailer": "unimarc"},
     "sellplan_grv":    {"nombre": "Unimarc Abastecimiento", "sort": "UNIMARC", "trailer": "unimarc"},
     "ika_bohag":       {"nombre": "Falabella Retail", "sort": "FALABELLA", "trailer": "falabella"},
     "sanbuilders":     {"nombre": "Homecenter Sodimac", "sort": "SODIMAC", "trailer": "sodimac"},
-    "sanbuilders_grv": {"nombre": "Sodimac Constructor", "sort": "SODIMAC", "trailer": "sodimac"},
     "sanbuild_hal":    {"nombre": "Sodimac Ferretería", "sort": "SODIMAC", "trailer": "sodimac"},
     "sanbuild_hms":    {"nombre": "Sodimac Maderas", "sort": "SODIMAC", "trailer": "sodimac"},
     "sanbuild_win":    {"nombre": "Sodimac Materiales", "sort": "SODIMAC", "trailer": "sodimac"},
@@ -819,7 +817,6 @@ REBRAND_BASE_COMPANIES = {
     "rt_log":          {"nombre": "Chilexpress Hub", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
     "fle":             {"nombre": "Chilexpress CTP Aeropuerto", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
     "transinet":       {"nombre": "Blue Express", "sort": "BLUEX", "trailer": "bluex"},
-    "transinet_grv":   {"nombre": "Blue Express Hub", "sort": "BLUEX", "trailer": "bluex"},
     "cargotras":       {"nombre": "Blue Express Carga", "sort": "BLUEX", "trailer": "bluex"},
 
     # Bebidas, Cervezas y Embotelladoras
@@ -832,7 +829,6 @@ REBRAND_BASE_COMPANIES = {
 
     # Alimentos, Carnes, Lácteos y Frutas
     "euroacres":       {"nombre": "Agrosuper Chile", "sort": "AGROSUPER", "trailer": "agrosuper"},
-    "euroacres_grv":   {"nombre": "Agrosuper Faenadora", "sort": "AGROSUPER", "trailer": "agrosuper"},
     "libellula":       {"nombre": "Agrosuper Complejo Lo Miranda", "sort": "AGROSUPER", "trailer": "agrosuper"},
     "trameri":         {"nombre": "Colun - La Magia del Sur", "sort": "COLUN", "trailer": "colun"},
     "trameri_grv":     {"nombre": "Colun Planta Lechera", "sort": "COLUN", "trailer": "colun"},
@@ -1262,6 +1258,14 @@ def generar_empresas():
     """Genera las definiciones de empresas en def/company/ y def/company.sii con sucursales e in/out de cargas"""
     company_dir = DEF_DIR / "company"
     company_dir.mkdir(parents=True, exist_ok=True)
+
+    # Limpiar cualquier company sui o carpeta vieja que exceda 12 caracteres
+    for old_item in company_dir.glob("*"):
+        if len(old_item.stem) > 12:
+            if old_item.is_dir():
+                shutil.rmtree(old_item)
+            else:
+                old_item.unlink()
 
     master_includes = []
 

@@ -118,10 +118,18 @@ def validar_mod():
                 if not included_file.exists():
                     errores.append(f"Archivo incluido no encontrado: {rel_include} (referenciado en {master.name})")
 
-    # Validar que los identificadores de cargas y sucursales no excedan el límite de 12 caracteres de SCS
+    # Validar que los identificadores de cargas, empresas y sucursales no excedan el límite de 12 caracteres de SCS
     for c_file in (BASE_DIR / "def" / "cargo").glob("*.sui"):
         if len(c_file.stem) > 12:
             errores.append(f"El nombre de la carga '{c_file.stem}' supera los 12 caracteres máximos de SCS.")
+
+    for comp_sui in (BASE_DIR / "def" / "company").glob("*.sui"):
+        if len(comp_sui.stem) > 12:
+            errores.append(f"El identificador de empresa '{comp_sui.stem}' supera los 12 caracteres máximos de SCS.")
+
+    for comp_folder in (BASE_DIR / "def" / "company").glob("*"):
+        if comp_folder.is_dir() and len(comp_folder.name) > 12:
+            errores.append(f"La carpeta de empresa '{comp_folder.name}' supera los 12 caracteres máximos de SCS.")
 
     for comp_sii in (BASE_DIR / "def" / "company").glob("**/*.sii"):
         if comp_sii.parent.name in ("in", "out") and len(comp_sii.stem) > 12:

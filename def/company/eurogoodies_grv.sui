@@ -1,6 +1,0 @@
-company_permanent : company.permanent.eurogoodies_grv
-{
-    name: "Lider Centro Distribución"
-    sort_name: "LIDER"
-    trailer_look: "lider"
-}

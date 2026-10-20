@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .paquet_exp {
- cargo: "cargo.paquet_exp"
-}
-}

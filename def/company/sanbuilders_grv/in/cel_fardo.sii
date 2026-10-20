@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .cel_fardo {
- cargo: "cargo.cel_fardo"
-}
-}
