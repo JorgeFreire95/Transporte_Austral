@@ -1,7 +1,7 @@
 city_data : city.rancagua
 {
-    city_name: "Rancagua (Av. O'Higgins - Carretera El Cobre)"
-    city_name_localized: "Rancagua (Av. O'Higgins - Carretera El Cobre)"
+    city_name: "Rancagua"
+    city_name_localized: "Rancagua"
     country: chile
     vehicle_brands[]: "scania"
 

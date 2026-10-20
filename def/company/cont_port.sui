@@ -1,6 +1,6 @@
-company_permanent: company.permanent.cont_port
+company_permanent : company.permanent.cont_port
 {
-	name: "Container port"
-	sort_name: "container port"
-	trailer_look: cont_port
+    name: "Puerto Valparaíso (TPS)"
+    sort_name: "TPS"
+    trailer_look: "tps_valp"
 }

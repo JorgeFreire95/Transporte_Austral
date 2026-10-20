@@ -1,6 +1,6 @@
-company_permanent: company.permanent.fcp
+company_permanent : company.permanent.fcp
 {
-	name: "FCP"
-	sort_name: "fcp"
-	trailer_look: fcp
+    name: "Soprole Lácteos"
+    sort_name: "SOPROLE"
+    trailer_look: "soprole"
 }

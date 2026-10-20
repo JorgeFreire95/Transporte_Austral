@@ -776,6 +776,108 @@ EMPRESAS_CHILENAS = {
 }
 
 # ==============================================================================
+# REBRANDING INTEGRAL: EMPRESAS DEL JUEGO BASE -> MARCAS CHILENAS CORRESPONDIENTES
+# Sustituye permanentemente los nombres europeos en los prefabs del mapa
+# ==============================================================================
+REBRAND_BASE_COMPANIES = {
+    # Red de Combustibles y Estaciones de Servicio
+    "primel":          {"nombre": "Copec Pronto", "sort": "COPEC", "trailer": "copec"},
+    "bts":             {"nombre": "Copec Punto", "sort": "COPEC", "trailer": "copec"},
+    "pegi":            {"nombre": "Shell Upa!", "sort": "SHELL", "trailer": "shell_cl"},
+    "tqg":             {"nombre": "Shell Chile", "sort": "SHELL", "trailer": "shell_cl"},
+    "nada":            {"nombre": "Petrobras Spacio 1", "sort": "PETROBRAS", "trailer": "petrobras"},
+    "apus":            {"nombre": "Aramco Chile", "sort": "ARAMCO", "trailer": "aramco"},
+    "itcc":            {"nombre": "ENAP Refinerías", "sort": "ENAP", "trailer": "enap"},
+    "itcc_scrap":      {"nombre": "ENAP Maestranza", "sort": "ENAP", "trailer": "enap"},
+    "ns_oil":          {"nombre": "ENAP Magallanes", "sort": "ENAP", "trailer": "enap"},
+
+    # Retail, Supermercados y Centros de Distribución
+    "eurogoodies":     {"nombre": "Lider - Walmart Chile", "sort": "LIDER", "trailer": "lider"},
+    "eurogoodies_grv": {"nombre": "Lider Centro Distribución", "sort": "LIDER", "trailer": "lider"},
+    "kaarfor":         {"nombre": "Cencosud (Jumbo / Easy)", "sort": "CENCOSUD", "trailer": "cencosud"},
+    "kaarfor_grv":     {"nombre": "Cencosud Centro de Acopio", "sort": "CENCOSUD", "trailer": "cencosud"},
+    "sellplan":        {"nombre": "Unimarc Supermercados", "sort": "UNIMARC", "trailer": "unimarc"},
+    "sellplan_grv":    {"nombre": "Unimarc Abastecimiento", "sort": "UNIMARC", "trailer": "unimarc"},
+    "ika_bohag":       {"nombre": "Falabella Retail", "sort": "FALABELLA", "trailer": "falabella"},
+    "sanbuilders":     {"nombre": "Homecenter Sodimac", "sort": "SODIMAC", "trailer": "sodimac"},
+    "sanbuilders_grv": {"nombre": "Sodimac Constructor", "sort": "SODIMAC", "trailer": "sodimac"},
+    "sanbuild_hal":    {"nombre": "Sodimac Ferretería", "sort": "SODIMAC", "trailer": "sodimac"},
+    "sanbuild_hms":    {"nombre": "Sodimac Maderas", "sort": "SODIMAC", "trailer": "sodimac"},
+    "sanbuild_win":    {"nombre": "Sodimac Materiales", "sort": "SODIMAC", "trailer": "sodimac"},
+    "eumefa":          {"nombre": "Sodimac Homecenter", "sort": "SODIMAC", "trailer": "sodimac"},
+    "renar":           {"nombre": "Cencosud Logística", "sort": "CENCOSUD", "trailer": "cencosud"},
+    "renat":           {"nombre": "Lider Logística", "sort": "LIDER", "trailer": "lider"},
+
+    # Courier, Logística y Encomiendas Express
+    "lkwlog":          {"nombre": "Starken Encomiendas", "sort": "STARKEN", "trailer": "starken"},
+    "tradeaux_grv":    {"nombre": "Starken Carga Pesada", "sort": "STARKEN", "trailer": "starken"},
+    "gnt":             {"nombre": "Starken Centro de Acopio", "sort": "STARKEN", "trailer": "starken"},
+    "posped":          {"nombre": "Chilexpress Courier", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
+    "posped_grv":      {"nombre": "Chilexpress Logística", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
+    "tradeaux":        {"nombre": "Chilexpress Express", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
+    "rt_log":          {"nombre": "Chilexpress Hub", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
+    "transinet":       {"nombre": "Blue Express", "sort": "BLUEX", "trailer": "bluex"},
+    "transinet_grv":   {"nombre": "Blue Express Hub", "sort": "BLUEX", "trailer": "bluex"},
+    "cargotras":       {"nombre": "Blue Express Carga", "sort": "BLUEX", "trailer": "bluex"},
+
+    # Bebidas, Cervezas y Embotelladoras
+    "shuttle":         {"nombre": "Coca-Cola Andina", "sort": "ANDINA", "trailer": "andina"},
+    "nbfc":            {"nombre": "Coca-Cola Embonor", "sort": "EMBONOR", "trailer": "embonor"},
+    "stokes":          {"nombre": "CCU Cervezas y Bebidas", "sort": "CCU", "trailer": "ccu"},
+    "polar":           {"nombre": "Cervecería Austral Patagonia", "sort": "AUSTRAL", "trailer": "austral_pza"},
+    "scout":           {"nombre": "Viña Concha y Toro", "sort": "CONCHA_TORO", "trailer": "concha_toro"},
+
+    # Alimentos, Carnes, Lácteos y Frutas
+    "euroacres":       {"nombre": "Agrosuper Chile", "sort": "AGROSUPER", "trailer": "agrosuper"},
+    "euroacres_grv":   {"nombre": "Agrosuper Faenadora", "sort": "AGROSUPER", "trailer": "agrosuper"},
+    "trameri":         {"nombre": "Colun - La Magia del Sur", "sort": "COLUN", "trailer": "colun"},
+    "trameri_grv":     {"nombre": "Colun Planta Lechera", "sort": "COLUN", "trailer": "colun"},
+    "fcp":             {"nombre": "Soprole Lácteos", "sort": "SOPROLE", "trailer": "soprole"},
+    "fcp_grv":         {"nombre": "Soprole Acopio Sur", "sort": "SOPROLE", "trailer": "soprole"},
+    "bcp":             {"nombre": "Carozzi Alimentos", "sort": "CAROZZI", "trailer": "carozzi"},
+    "bcp_grv":         {"nombre": "Carozzi Molienda", "sort": "CAROZZI", "trailer": "carozzi"},
+    "dfh":             {"nombre": "Empresas Iansa", "sort": "IANSA", "trailer": "iansa"},
+    "bhv":             {"nombre": "Frigorífico Simunovic Patagonia", "sort": "SIMUNOVIC", "trailer": "simunovic"},
+    "polar_fish":      {"nombre": "AquaChile Salmones del Sur", "sort": "AQUACHILE", "trailer": "aquachile"},
+    "globe_eur":       {"nombre": "Dole Chile Frutícola", "sort": "DOLE", "trailer": "dole_cl"},
+    "fallow":          {"nombre": "Panadería Ideal Bimbo", "sort": "IDEAL", "trailer": "ideal_cl"},
+    "drekkar":         {"nombre": "Watt's Alimentos", "sort": "WATTS", "trailer": "watts"},
+    "agronord":        {"nombre": "Watt's Loncoleche", "sort": "WATTS", "trailer": "watts"},
+
+    # Minería, Siderurgia y Química
+    "quarry":          {"nombre": "Codelco Minería del Cobre", "sort": "CODELCO", "trailer": "codelco"},
+    "quarry_grv":      {"nombre": "Codelco Chancado", "sort": "CODELCO", "trailer": "codelco"},
+    "steinbr_str":     {"nombre": "Minera Escondida (BHP)", "sort": "ESCONDIDA", "trailer": "escondida"},
+    "wgcc":            {"nombre": "SQM Salar de Atacama", "sort": "SQM", "trailer": "sqm"},
+    "kathode":         {"nombre": "CAP Acero Huachipato", "sort": "CAP", "trailer": "cap_acero"},
+    "ns_chem":         {"nombre": "Molymet Molibdenos y Metales", "sort": "MOLYMET", "trailer": "molymet"},
+
+    # Forestal y Madera
+    "tree_et":         {"nombre": "Arauco Celulosa y Maderas", "sort": "ARAUCO", "trailer": "arauco"},
+    "tree_et_log":     {"nombre": "Arauco Aserraderos", "sort": "ARAUCO", "trailer": "arauco"},
+    "tree_et_grv":     {"nombre": "Arauco Bosques", "sort": "ARAUCO", "trailer": "arauco"},
+    "scs_paper":       {"nombre": "CMPC Celulosa y Papeles", "sort": "CMPC", "trailer": "cmpc"},
+    "viljo_paper":     {"nombre": "CMPC Forestal Mininco", "sort": "CMPC", "trailer": "cmpc"},
+
+    # Cemento y Construcción
+    "sanbuild_cem":    {"nombre": "Cemento Melón", "sort": "MELON", "trailer": "melon"},
+    "sanbuild_bas":    {"nombre": "Cementos Bío Bío (CBB)", "sort": "CBB", "trailer": "cbb_cemento"},
+    "brawen":          {"nombre": "Melón Hormigones", "sort": "MELON", "trailer": "melon"},
+    "batisse":         {"nombre": "Cementos Polpaico", "sort": "POLPAICO", "trailer": "polpaico"},
+    "batisse_hs":      {"nombre": "Cementos Polpaico Planta", "sort": "POLPAICO", "trailer": "polpaico"},
+
+    # Puertos y Conectividad Marítima
+    "euroflow":        {"nombre": "Puerto San Antonio (STI)", "sort": "STI", "trailer": "sti_san_ant"},
+    "cont_port":       {"nombre": "Puerto Valparaíso (TPS)", "sort": "TPS", "trailer": "tps_valp"},
+    "subse":           {"nombre": "Puerto Valparaíso Terminal", "sort": "TPS", "trailer": "tps_valp"},
+    "cont_port_it":    {"nombre": "Puerto Coronel", "sort": "CORONEL", "trailer": "pto_coronel"},
+    "marina":          {"nombre": "TABSA Transbordadores Austral", "sort": "TABSA", "trailer": "tabsa"},
+    "gallia_ferry":    {"nombre": "TABSA Barcazas Patagonia", "sort": "TABSA", "trailer": "tabsa"},
+    "eolo_lines":      {"nombre": "Naviera Transmarchilay", "sort": "TABSA", "trailer": "tabsa"},
+    "polarislines":    {"nombre": "Naviera Navimag Ferries", "sort": "TABSA", "trailer": "tabsa"},
+}
+
+# ==============================================================================
 # BASE DE DATOS: CARGAS CHILENAS (TOKENS <= 12 CARACTERES PARA MOTOR SCS)
 # Con pagos proporcionales a peso, tipo de carga y distancia
 # ==============================================================================
@@ -1082,14 +1184,15 @@ def generar_ciudades():
 
         for ciudad in reg_data["ciudades"]:
             cid = ciudad["id"]
+            cname = ciudad["nombre"].split(" (")[0].strip()
             master_includes.append(f'@include "city/{cid}.sui"')
 
             sui_path = city_dir / f"{cid}.sui"
             brand_str = f'\n    vehicle_brands[]: "{CIUDAD_BRANDS[cid]}"' if cid in CIUDAD_BRANDS else ""
             content = f"""city_data : city.{cid}
 {{
-    city_name: "{ciudad['nombre']}"
-    city_name_localized: "{ciudad['nombre']}"
+    city_name: "{cname}"
+    city_name_localized: "{cname}"
     country: chile{brand_str}
 
     map_x_offsets[]: 0
@@ -1139,6 +1242,7 @@ def generar_empresas():
 
     master_includes = []
 
+    # 1. Generar definiciones de las 47 empresas chilenas
     for comp_id, comp_data in EMPRESAS_CHILENAS.items():
         master_includes.append(f'@include "company/{comp_id}.sui"')
 
@@ -1153,7 +1257,7 @@ def generar_empresas():
         with open(sui_path, "w", encoding="utf-8") as f:
             f.write(content)
 
-        # 1. Generar carpetas in/ y out/ para cargas de transporte
+        # Generar carpetas in/ y out/ para cargas de transporte
         in_dir = company_dir / comp_id / "in"
         if in_dir.exists():
             shutil.rmtree(in_dir)
@@ -1170,7 +1274,7 @@ def generar_empresas():
             cargo_sii = out_dir / f"{cargo_out}.sii"
             cargo_sii.write_text(f'SiiNunit\n{{\ncargo_def : .{cargo_out} {{\n cargo: "cargo.{cargo_out}"\n}}\n}}\n', encoding="utf-8")
 
-        # 2. Generar sucursales activas en editor/ para las comunas y estaciones de servicio
+        # Generar sucursales activas en editor/ para las comunas y estaciones de servicio
         editor_dir = company_dir / comp_id / "editor"
         editor_dir.mkdir(parents=True, exist_ok=True)
 
@@ -1187,7 +1291,24 @@ def generar_empresas():
                     ed_sii = editor_dir / f"{cid}.sii"
                     ed_sii.write_text(f'SiiNunit\n{{\ncompany_def : .{cid} {{\n city: {cid}\n prefab: d_cust_1w1\n}}\n}}\n', encoding="utf-8")
 
-    # Incluir también empresas base para compatibilidad con prefabs importados
+    # 2. REBRANDING DE EMPRESAS BASE: Sustituye todos los prefabs importados con nombres chilenos
+    for base_id, bdata in REBRAND_BASE_COMPANIES.items():
+        sui_path = company_dir / f"{base_id}.sui"
+        b_content = f"""company_permanent : company.permanent.{base_id}
+{{
+    name: "{bdata['nombre']}"
+    sort_name: "{bdata['sort']}"
+    trailer_look: "{bdata['trailer']}"
+}}
+"""
+        with open(sui_path, "w", encoding="utf-8") as f:
+            f.write(b_content)
+
+        inc = f'@include "company/{base_id}.sui"'
+        if inc not in master_includes:
+            master_includes.append(inc)
+
+    # Incluir también empresas base restantes para compatibilidad con prefabs importados
     base_company_sii = BASE_DIR / "scratch" / "def" / "def" / "company.sii"
     if base_company_sii.exists():
         with open(base_company_sii, "r", encoding="utf-8", errors="ignore") as f:
@@ -1501,7 +1622,7 @@ def generar_locales():
     for reg_code, reg_info in REGIONES_CHILE.items():
         for ciudad in reg_info["ciudades"]:
             cid = ciudad["id"]
-            cname = ciudad["nombre"]
+            cname = ciudad["nombre"].split(" (")[0].strip()
             loc_lines.append(f'    key[]: "{cid}"\n    val[]: "{cname}"')
 
     for cargo_id, cdata in CARGAS_CHILENAS.items():

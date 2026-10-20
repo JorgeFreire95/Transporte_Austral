@@ -1,6 +1,6 @@
-company_permanent: company.permanent.euroflow
+company_permanent : company.permanent.euroflow
 {
-	name: "Euroflow Ports"
-	sort_name: "euroflow ports"
-	trailer_look: plain
+    name: "Puerto San Antonio (STI)"
+    sort_name: "STI"
+    trailer_look: "sti_san_ant"
 }

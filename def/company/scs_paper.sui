@@ -1,6 +1,6 @@
-company_permanent: company.permanent.scs_paper
+company_permanent : company.permanent.scs_paper
 {
-	name: "SCS Paper"
-	sort_name: "scs paper"
-	trailer_look: scs_paper
+    name: "CMPC Celulosa y Papeles"
+    sort_name: "CMPC"
+    trailer_look: "cmpc"
 }

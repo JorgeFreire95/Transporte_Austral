@@ -1,6 +1,6 @@
-company_permanent: company.permanent.sanbuilders
+company_permanent : company.permanent.sanbuilders
 {
-	name: "Sanbuilders"
-	sort_name: "sanbuilders"
-	trailer_look: sanbuilders
+    name: "Homecenter Sodimac"
+    sort_name: "SODIMAC"
+    trailer_look: "sodimac"
 }

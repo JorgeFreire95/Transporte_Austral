@@ -1,0 +1,6 @@
+company_permanent : company.permanent.posped_grv
+{
+    name: "Chilexpress Logística"
+    sort_name: "CHILEXPRESS"
+    trailer_look: "chilexpress"
+}

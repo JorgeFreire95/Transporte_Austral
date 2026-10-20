@@ -1,6 +1,6 @@
-company_permanent: company.permanent.nbfc
+company_permanent : company.permanent.nbfc
 {
-	name: "NBFC"
-	sort_name: "nbfc"
-	trailer_look: nbfc
+    name: "Coca-Cola Embonor"
+    sort_name: "EMBONOR"
+    trailer_look: "embonor"
 }

@@ -1,6 +1,6 @@
-company_permanent: company.permanent.kaarfor
+company_permanent : company.permanent.kaarfor
 {
-	name: "Kaarfor"
-	sort_name: "kaarfor"
-	trailer_look: kaarfor
+    name: "Cencosud (Jumbo / Easy)"
+    sort_name: "CENCOSUD"
+    trailer_look: "cencosud"
 }

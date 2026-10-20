@@ -1,6 +1,6 @@
-company_permanent: company.permanent.shuttle
+company_permanent : company.permanent.shuttle
 {
-	name: "Shuttle Cola"
-	sort_name: "shuttle cola"
-	trailer_look: shuttle
+    name: "Coca-Cola Andina"
+    sort_name: "ANDINA"
+    trailer_look: "andina"
 }

@@ -1,6 +1,6 @@
-company_permanent: company.permanent.sanbuild_bas
+company_permanent : company.permanent.sanbuild_bas
 {
-	name: "Sanbuilders"
-	sort_name: "sanbuilders"
-	trailer_look: sanbuilders
+    name: "Cementos Bío Bío (CBB)"
+    sort_name: "CBB"
+    trailer_look: "cbb_cemento"
 }

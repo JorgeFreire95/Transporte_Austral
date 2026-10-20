@@ -1,7 +1,7 @@
 city_data : city.san_carlos
 {
-    city_name: "San Carlos (Av. Arturo Prat - Violeta Parra)"
-    city_name_localized: "San Carlos (Av. Arturo Prat - Violeta Parra)"
+    city_name: "San Carlos"
+    city_name_localized: "San Carlos"
     country: chile
     vehicle_brands[]: "daf"
 

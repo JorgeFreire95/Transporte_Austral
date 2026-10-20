@@ -1,6 +1,6 @@
-company_permanent: company.permanent.quarry
+company_permanent : company.permanent.quarry
 {
-	name: "Steinbruch"
-	sort_name: "steinbruch"
-	trailer_look: quarry
+    name: "Codelco Minería del Cobre"
+    sort_name: "CODELCO"
+    trailer_look: "codelco"
 }

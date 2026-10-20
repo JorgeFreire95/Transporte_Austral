@@ -1,0 +1,6 @@
+company_permanent : company.permanent.sellplan_grv
+{
+    name: "Unimarc Abastecimiento"
+    sort_name: "UNIMARC"
+    trailer_look: "unimarc"
+}

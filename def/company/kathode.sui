@@ -1,6 +1,6 @@
-company_permanent: company.permanent.kathode
+company_permanent : company.permanent.kathode
 {
-	name: "Kathode"
-	sort_name: "kathode"
-	trailer_look: kathode
+    name: "CAP Acero Huachipato"
+    sort_name: "CAP"
+    trailer_look: "cap_acero"
 }

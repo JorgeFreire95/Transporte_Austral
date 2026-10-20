@@ -1,7 +1,7 @@
 city_data : city.valparaiso
 {
-    city_name: "Valparaíso (Av. España - Errázuriz)"
-    city_name_localized: "Valparaíso (Av. España - Errázuriz)"
+    city_name: "Valparaíso"
+    city_name_localized: "Valparaíso"
     country: chile
     vehicle_brands[]: "daf"
 

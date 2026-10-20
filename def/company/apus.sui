@@ -1,0 +1,6 @@
+company_permanent : company.permanent.apus
+{
+    name: "Aramco Chile"
+    sort_name: "ARAMCO"
+    trailer_look: "aramco"
+}

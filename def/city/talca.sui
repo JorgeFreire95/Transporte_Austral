@@ -1,7 +1,7 @@
 city_data : city.talca
 {
-    city_name: "Talca (Av. San Miguel - 2 Sur)"
-    city_name_localized: "Talca (Av. San Miguel - 2 Sur)"
+    city_name: "Talca"
+    city_name_localized: "Talca"
     country: chile
     vehicle_brands[]: "volvo"
 

@@ -1,6 +1,6 @@
-company_permanent: company.permanent.gnt
+company_permanent : company.permanent.gnt
 {
-	name: "GNT"
-	sort_name: "gnt"
-	trailer_look: gnt
+    name: "Starken Centro de Acopio"
+    sort_name: "STARKEN"
+    trailer_look: "starken"
 }

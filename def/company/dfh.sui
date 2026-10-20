@@ -1,6 +1,6 @@
-company_permanent: company.permanent.dfh
+company_permanent : company.permanent.dfh
 {
-	name: "Deutsche Frachthäfen"
-	sort_name: "deutsche frachthafen"
-	trailer_look: plain
+    name: "Empresas Iansa"
+    sort_name: "IANSA"
+    trailer_look: "iansa"
 }

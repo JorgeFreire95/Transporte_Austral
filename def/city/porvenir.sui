@@ -1,7 +1,7 @@
 city_data : city.porvenir
 {
-    city_name: "Porvenir (Costanera Chiloé - Tierra del Fuego)"
-    city_name_localized: "Porvenir (Costanera Chiloé - Tierra del Fuego)"
+    city_name: "Porvenir"
+    city_name_localized: "Porvenir"
     country: chile
     vehicle_brands[]: "iveco"
 

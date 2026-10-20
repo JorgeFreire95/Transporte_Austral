@@ -1,7 +1,7 @@
 city_data : city.los_angeles
 {
-    city_name: "Los Ángeles (Av. Alemania - Ricardo Vicuña)"
-    city_name_localized: "Los Ángeles (Av. Alemania - Ricardo Vicuña)"
+    city_name: "Los Ángeles"
+    city_name_localized: "Los Ángeles"
     country: chile
     vehicle_brands[]: "iveco"
 

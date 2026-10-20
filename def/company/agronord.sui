@@ -1,6 +1,6 @@
-company_permanent: company.permanent.agronord
+company_permanent : company.permanent.agronord
 {
-	name: "Agronord"
-	sort_name: "agronord"
-	trailer_look: agronord
+    name: "Watt's Loncoleche"
+    sort_name: "WATTS"
+    trailer_look: "watts"
 }

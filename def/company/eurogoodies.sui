@@ -1,6 +1,6 @@
-company_permanent: company.permanent.eurogoodies
+company_permanent : company.permanent.eurogoodies
 {
-	name: "EuroGoodies"
-	sort_name: "eurogoodies"
-	trailer_look: eurogoodies
+    name: "Lider - Walmart Chile"
+    sort_name: "LIDER"
+    trailer_look: "lider"
 }

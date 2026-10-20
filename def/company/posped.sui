@@ -1,6 +1,6 @@
-company_permanent: company.permanent.posped
+company_permanent : company.permanent.posped
 {
-	name: "Posped"
-	sort_name: "posped"
-	trailer_look: posped
+    name: "Chilexpress Courier"
+    sort_name: "CHILEXPRESS"
+    trailer_look: "chilexpress"
 }

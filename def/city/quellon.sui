@@ -1,7 +1,7 @@
 city_data : city.quellon
 {
-    city_name: "Quellón (Hito Cero Panamericana)"
-    city_name_localized: "Quellón (Hito Cero Panamericana)"
+    city_name: "Quellón"
+    city_name_localized: "Quellón"
     country: chile
     vehicle_brands[]: "mercedes"
 

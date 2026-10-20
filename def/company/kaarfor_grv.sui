@@ -1,0 +1,6 @@
+company_permanent : company.permanent.kaarfor_grv
+{
+    name: "Cencosud Centro de Acopio"
+    sort_name: "CENCOSUD"
+    trailer_look: "cencosud"
+}

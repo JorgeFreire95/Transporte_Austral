@@ -1,6 +1,6 @@
-company_permanent: company.permanent.sellplan
+company_permanent : company.permanent.sellplan
 {
-	name: "SellPlan"
-	sort_name: "sellplan"
-	trailer_look: sellplan
+    name: "Unimarc Supermercados"
+    sort_name: "UNIMARC"
+    trailer_look: "unimarc"
 }

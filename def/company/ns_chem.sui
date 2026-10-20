@@ -1,6 +1,6 @@
-company_permanent: company.permanent.ns_chem
+company_permanent : company.permanent.ns_chem
 {
-	name: "NS Chemicals"
-	sort_name: "ns chemicals"
-	trailer_look: ns_chem
+    name: "Molymet Molibdenos y Metales"
+    sort_name: "MOLYMET"
+    trailer_look: "molymet"
 }

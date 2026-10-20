@@ -1,0 +1,6 @@
+company_permanent : company.permanent.polar
+{
+    name: "Cervecería Austral Patagonia"
+    sort_name: "AUSTRAL"
+    trailer_look: "austral_pza"
+}

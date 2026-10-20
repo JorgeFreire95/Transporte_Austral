@@ -1,6 +1,6 @@
-company_permanent: company.permanent.tqg
+company_permanent : company.permanent.tqg
 {
-	name: "TQG"
-	sort_name: "tqg"
-	trailer_look: plain
+    name: "Shell Chile"
+    sort_name: "SHELL"
+    trailer_look: "shell_cl"
 }

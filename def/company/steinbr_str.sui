@@ -1,6 +1,6 @@
-company_permanent: company.permanent.steinbr_str
+company_permanent : company.permanent.steinbr_str
 {
-	name: "Steinbruch"
-	sort_name: "steinbruch"
-	trailer_look: quarry
+    name: "Minera Escondida (BHP)"
+    sort_name: "ESCONDIDA"
+    trailer_look: "escondida"
 }

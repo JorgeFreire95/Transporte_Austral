@@ -1,7 +1,7 @@
 city_data : city.talcahuano
 {
-    city_name: "Talcahuano (Autopista - Puerto San Vicente)"
-    city_name_localized: "Talcahuano (Autopista - Puerto San Vicente)"
+    city_name: "Talcahuano"
+    city_name_localized: "Talcahuano"
     country: chile
     vehicle_brands[]: "mercedes"
 

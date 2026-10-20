@@ -1,0 +1,6 @@
+company_permanent : company.permanent.pegi
+{
+    name: "Shell Upa!"
+    sort_name: "SHELL"
+    trailer_look: "shell_cl"
+}

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.trameri_grv
+{
+    name: "Colun Planta Lechera"
+    sort_name: "COLUN"
+    trailer_look: "colun"
+}

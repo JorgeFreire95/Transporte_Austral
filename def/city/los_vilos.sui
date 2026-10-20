@@ -1,7 +1,7 @@
 city_data : city.los_vilos
 {
-    city_name: "Los Vilos (Costanera Salvador Allende)"
-    city_name_localized: "Los Vilos (Costanera Salvador Allende)"
+    city_name: "Los Vilos"
+    city_name_localized: "Los Vilos"
     country: chile
     vehicle_brands[]: "renault"
 

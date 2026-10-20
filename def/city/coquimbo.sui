@@ -1,7 +1,7 @@
 city_data : city.coquimbo
 {
-    city_name: "Coquimbo (Av. Costanera - Puerto)"
-    city_name_localized: "Coquimbo (Av. Costanera - Puerto)"
+    city_name: "Coquimbo"
+    city_name_localized: "Coquimbo"
     country: chile
     vehicle_brands[]: "mercedes"
 

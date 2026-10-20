@@ -1,6 +1,6 @@
-company_permanent: company.permanent.cont_port_it
+company_permanent : company.permanent.cont_port_it
 {
-	name: "Terminal Container"
-	sort_name: "terminal container"
-	trailer_look: cont_port_it
+    name: "Puerto Coronel"
+    sort_name: "CORONEL"
+    trailer_look: "pto_coronel"
 }

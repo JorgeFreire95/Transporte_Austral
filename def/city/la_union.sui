@@ -1,7 +1,7 @@
 city_data : city.la_union
 {
-    city_name: "La Unión (Av. Arturo Prat - Planta Colun)"
-    city_name_localized: "La Unión (Av. Arturo Prat - Planta Colun)"
+    city_name: "La Unión"
+    city_name_localized: "La Unión"
     country: chile
     vehicle_brands[]: "volvo"
 

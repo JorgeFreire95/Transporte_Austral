@@ -1,7 +1,7 @@
 city_data : city.castro
 {
-    city_name: "Castro (Palafitos Gamboa - San Martín)"
-    city_name_localized: "Castro (Palafitos Gamboa - San Martín)"
+    city_name: "Castro"
+    city_name_localized: "Castro"
     country: chile
     vehicle_brands[]: "daf"
 

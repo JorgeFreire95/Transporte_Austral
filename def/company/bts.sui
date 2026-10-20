@@ -1,0 +1,6 @@
+company_permanent : company.permanent.bts
+{
+    name: "Copec Punto"
+    sort_name: "COPEC"
+    trailer_look: "copec"
+}

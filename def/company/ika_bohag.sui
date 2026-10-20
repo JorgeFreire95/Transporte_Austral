@@ -1,6 +1,6 @@
-company_permanent: company.permanent.ika_bohag
+company_permanent : company.permanent.ika_bohag
 {
-	name: "Ika Bohag"
-	sort_name: "ika bohag"
-	trailer_look: ika_bohag
+    name: "Falabella Retail"
+    sort_name: "FALABELLA"
+    trailer_look: "falabella"
 }

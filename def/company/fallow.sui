@@ -1,6 +1,6 @@
-company_permanent: company.permanent.fallow
+company_permanent : company.permanent.fallow
 {
-	name: "Fallow Cargo"
-	sort_name: "fallow cargo"
-	trailer_look: fallow
+    name: "Panadería Ideal Bimbo"
+    sort_name: "IDEAL"
+    trailer_look: "ideal_cl"
 }

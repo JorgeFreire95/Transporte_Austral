@@ -1,6 +1,6 @@
-company_permanent: company.permanent.batisse_hs
+company_permanent : company.permanent.batisse_hs
 {
-	name: "Bâtisse"
-	sort_name: "batisse"
-	trailer_look: batisse
+    name: "Cementos Polpaico Planta"
+    sort_name: "POLPAICO"
+    trailer_look: "polpaico"
 }

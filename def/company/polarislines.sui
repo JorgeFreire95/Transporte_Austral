@@ -1,6 +1,6 @@
-company_permanent: company.permanent.polarislines
+company_permanent : company.permanent.polarislines
 {
-	name: "Polaris Lines"
-	sort_name: "polaris lines"
-	trailer_look: polarislines
+    name: "Naviera Navimag Ferries"
+    sort_name: "TABSA"
+    trailer_look: "tabsa"
 }

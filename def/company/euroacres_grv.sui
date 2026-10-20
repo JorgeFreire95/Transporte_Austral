@@ -1,0 +1,6 @@
+company_permanent : company.permanent.euroacres_grv
+{
+    name: "Agrosuper Faenadora"
+    sort_name: "AGROSUPER"
+    trailer_look: "agrosuper"
+}

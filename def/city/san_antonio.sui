@@ -1,7 +1,7 @@
 city_data : city.san_antonio
 {
-    city_name: "San Antonio (Av. Barros Luco - Puerto STI)"
-    city_name_localized: "San Antonio (Av. Barros Luco - Puerto STI)"
+    city_name: "San Antonio"
+    city_name_localized: "San Antonio"
     country: chile
     vehicle_brands[]: "daf"
 

@@ -1,7 +1,7 @@
 city_data : city.iquique
 {
-    city_name: "Iquique (Av. Arturo Prat - Costanera)"
-    city_name_localized: "Iquique (Av. Arturo Prat - Costanera)"
+    city_name: "Iquique"
+    city_name_localized: "Iquique"
     country: chile
     vehicle_brands[]: "volvo"
 

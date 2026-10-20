@@ -1,7 +1,7 @@
 city_data : city.santiago
 {
-    city_name: "Santiago (Alameda - Autopista Central)"
-    city_name_localized: "Santiago (Alameda - Autopista Central)"
+    city_name: "Santiago"
+    city_name_localized: "Santiago"
     country: chile
     vehicle_brands[]: "iveco"
 

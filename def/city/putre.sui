@@ -1,7 +1,7 @@
 city_data : city.putre
 {
-    city_name: "Putre (Paso Chungará - Ruta 11-CH)"
-    city_name_localized: "Putre (Paso Chungará - Ruta 11-CH)"
+    city_name: "Putre"
+    city_name_localized: "Putre"
     country: chile
     vehicle_brands[]: "scania"
 

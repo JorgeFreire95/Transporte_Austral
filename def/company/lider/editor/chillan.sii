@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .chillan {
  city: chillan
- prefab: 32
+ prefab: d_cust_1w1
 }
 }

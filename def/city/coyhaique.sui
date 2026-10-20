@@ -1,7 +1,7 @@
 city_data : city.coyhaique
 {
-    city_name: "Coyhaique (Baquedano - Carretera Austral)"
-    city_name_localized: "Coyhaique (Baquedano - Carretera Austral)"
+    city_name: "Coyhaique"
+    city_name_localized: "Coyhaique"
     country: chile
     vehicle_brands[]: "scania"
 

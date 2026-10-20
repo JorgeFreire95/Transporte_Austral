@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .arica {
  city: arica
- prefab: 44
+ prefab: d_cust_1w1
 }
 }

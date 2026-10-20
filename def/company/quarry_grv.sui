@@ -1,0 +1,6 @@
+company_permanent : company.permanent.quarry_grv
+{
+    name: "Codelco Chancado"
+    sort_name: "CODELCO"
+    trailer_look: "codelco"
+}

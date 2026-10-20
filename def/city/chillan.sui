@@ -1,7 +1,7 @@
 city_data : city.chillan
 {
-    city_name: "Chillán (Av. O'Higgins - Av. Brasil)"
-    city_name_localized: "Chillán (Av. O'Higgins - Av. Brasil)"
+    city_name: "Chillán"
+    city_name_localized: "Chillán"
     country: chile
     vehicle_brands[]: "man"
 

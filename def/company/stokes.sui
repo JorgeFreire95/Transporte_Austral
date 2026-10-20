@@ -1,6 +1,6 @@
-company_permanent: company.permanent.stokes
+company_permanent : company.permanent.stokes
 {
-	name: "Stokes"
-	sort_name: "stokes"
-	trailer_look: stokes
+    name: "CCU Cervezas y Bebidas"
+    sort_name: "CCU"
+    trailer_look: "ccu"
 }

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.bcp_grv
+{
+    name: "Carozzi Molienda"
+    sort_name: "CAROZZI"
+    trailer_look: "carozzi"
+}

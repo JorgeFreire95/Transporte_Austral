@@ -1,6 +1,6 @@
-company_permanent: company.permanent.drekkar
+company_permanent : company.permanent.drekkar
 {
-	name: "Drekkar Trans"
-	sort_name: "drekkar trans"
-	trailer_look: drekkar
+    name: "Watt's Alimentos"
+    sort_name: "WATTS"
+    trailer_look: "watts"
 }

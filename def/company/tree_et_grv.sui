@@ -1,0 +1,6 @@
+company_permanent : company.permanent.tree_et_grv
+{
+    name: "Arauco Bosques"
+    sort_name: "ARAUCO"
+    trailer_look: "arauco"
+}

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.transinet_grv
+{
+    name: "Blue Express Hub"
+    sort_name: "BLUEX"
+    trailer_look: "bluex"
+}

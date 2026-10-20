@@ -1,0 +1,6 @@
+company_permanent : company.permanent.fcp_grv
+{
+    name: "Soprole Acopio Sur"
+    sort_name: "SOPROLE"
+    trailer_look: "soprole"
+}

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.tradeaux_grv
+{
+    name: "Starken Carga Pesada"
+    sort_name: "STARKEN"
+    trailer_look: "starken"
+}

@@ -1,6 +1,6 @@
-company_permanent: company.permanent.lkwlog
+company_permanent : company.permanent.lkwlog
 {
-	name: "LkwLog GmbH"
-	sort_name: "lkwlog gmbh"
-	trailer_look: lkwlog
+    name: "Starken Encomiendas"
+    sort_name: "STARKEN"
+    trailer_look: "starken"
 }

@@ -1,6 +1,6 @@
-company_permanent: company.permanent.gallia_ferry
+company_permanent : company.permanent.gallia_ferry
 {
-	name: "Gallia Ferries"
-	sort_name: "gallia ferries"
-	trailer_look: gallia_ferry
+    name: "TABSA Barcazas Patagonia"
+    sort_name: "TABSA"
+    trailer_look: "tabsa"
 }

@@ -1,6 +1,6 @@
-company_permanent: company.permanent.wgcc
+company_permanent : company.permanent.wgcc
 {
-	name: "WGCC"
-	sort_name: "wgcc"
-	trailer_look: wgcc
+    name: "SQM Salar de Atacama"
+    sort_name: "SQM"
+    trailer_look: "sqm"
 }

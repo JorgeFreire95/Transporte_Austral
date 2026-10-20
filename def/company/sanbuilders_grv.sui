@@ -1,0 +1,6 @@
+company_permanent : company.permanent.sanbuilders_grv
+{
+    name: "Sodimac Constructor"
+    sort_name: "SODIMAC"
+    trailer_look: "sodimac"
+}

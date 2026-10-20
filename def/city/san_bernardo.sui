@@ -1,7 +1,7 @@
 city_data : city.san_bernardo
 {
-    city_name: "San Bernardo (Av. Portales - Eje Sur)"
-    city_name_localized: "San Bernardo (Av. Portales - Eje Sur)"
+    city_name: "San Bernardo"
+    city_name_localized: "San Bernardo"
     country: chile
     vehicle_brands[]: "renault"
 

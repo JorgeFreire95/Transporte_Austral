@@ -1,6 +1,6 @@
-company_permanent: company.permanent.viljo_paper
+company_permanent : company.permanent.viljo_paper
 {
-	name: "Viljo paperitehdas Oy"
-	sort_name: "viljo paperitehdas oy"
-	trailer_look: viljo_paper
+    name: "CMPC Forestal Mininco"
+    sort_name: "CMPC"
+    trailer_look: "cmpc"
 }

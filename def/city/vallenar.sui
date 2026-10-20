@@ -1,7 +1,7 @@
 city_data : city.vallenar
 {
-    city_name: "Vallenar (Av. Brasil - Valle del Huasco)"
-    city_name_localized: "Vallenar (Av. Brasil - Valle del Huasco)"
+    city_name: "Vallenar"
+    city_name_localized: "Vallenar"
     country: chile
     vehicle_brands[]: "mercedes"
 

@@ -1,6 +1,6 @@
-company_permanent: company.permanent.itcc
+company_permanent : company.permanent.itcc
 {
-	name: "ITCC"
-	sort_name: "itcc"
-	trailer_look: itcc
+    name: "ENAP Refinerías"
+    sort_name: "ENAP"
+    trailer_look: "enap"
 }

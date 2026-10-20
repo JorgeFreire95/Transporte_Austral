@@ -1,6 +1,6 @@
-company_permanent: company.permanent.euroacres
+company_permanent : company.permanent.euroacres
 {
-	name: "EuroAcres"
-	sort_name: "euroacres"
-	trailer_look: euroacres
+    name: "Agrosuper Chile"
+    sort_name: "AGROSUPER"
+    trailer_look: "agrosuper"
 }

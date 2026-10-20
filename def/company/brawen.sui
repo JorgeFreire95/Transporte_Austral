@@ -1,6 +1,6 @@
-company_permanent: company.permanent.brawen
+company_permanent : company.permanent.brawen
 {
-	name: "Brawen Transport"
-	sort_name: "brawen transport"
-	trailer_look: brawen
+    name: "Melón Hormigones"
+    sort_name: "MELON"
+    trailer_look: "melon"
 }

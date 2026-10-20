@@ -1,7 +1,7 @@
 city_data : city.linares
 {
-    city_name: "Linares (Av. Aníbal León Bustos)"
-    city_name_localized: "Linares (Av. Aníbal León Bustos)"
+    city_name: "Linares"
+    city_name_localized: "Linares"
     country: chile
     vehicle_brands[]: "mercedes"
 

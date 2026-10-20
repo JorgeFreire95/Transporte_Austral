@@ -1,6 +1,6 @@
-company_permanent: company.permanent.polar_fish
+company_permanent : company.permanent.polar_fish
 {
-	name: "Polar Fish"
-	sort_name: "polar fish"
-	trailer_look: polar_fish
+    name: "AquaChile Salmones del Sur"
+    sort_name: "AQUACHILE"
+    trailer_look: "aquachile"
 }

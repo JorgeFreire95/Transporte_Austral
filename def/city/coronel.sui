@@ -1,7 +1,7 @@
 city_data : city.coronel
 {
-    city_name: "Coronel (Ruta 160 - Puerto Coronel)"
-    city_name_localized: "Coronel (Ruta 160 - Puerto Coronel)"
+    city_name: "Coronel"
+    city_name_localized: "Coronel"
     country: chile
     vehicle_brands[]: "mercedes"
 

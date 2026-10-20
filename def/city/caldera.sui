@@ -1,7 +1,7 @@
 city_data : city.caldera
 {
-    city_name: "Caldera (Costanera - Bahía Inglesa)"
-    city_name_localized: "Caldera (Costanera - Bahía Inglesa)"
+    city_name: "Caldera"
+    city_name_localized: "Caldera"
     country: chile
     vehicle_brands[]: "volvo"
 

@@ -1,0 +1,6 @@
+company_permanent : company.permanent.nada
+{
+    name: "Petrobras Spacio 1"
+    sort_name: "PETROBRAS"
+    trailer_look: "petrobras"
+}

@@ -1,7 +1,7 @@
 city_data : city.osorno
 {
-    city_name: "Osorno (Av. Mackenna - Errázuriz)"
-    city_name_localized: "Osorno (Av. Mackenna - Errázuriz)"
+    city_name: "Osorno"
+    city_name_localized: "Osorno"
     country: chile
     vehicle_brands[]: "man"
 

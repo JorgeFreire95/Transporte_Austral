@@ -1,6 +1,6 @@
-company_permanent: company.permanent.trameri
+company_permanent : company.permanent.trameri
 {
-	name: "Trameri"
-	sort_name: "trameri"
-	trailer_look: trameri
+    name: "Colun - La Magia del Sur"
+    sort_name: "COLUN"
+    trailer_look: "colun"
 }

@@ -1,7 +1,7 @@
 city_data : city.valdivia
 {
-    city_name: "Valdivia (Costanera Prat - Ramón Picarte)"
-    city_name_localized: "Valdivia (Costanera Prat - Ramón Picarte)"
+    city_name: "Valdivia"
+    city_name_localized: "Valdivia"
     country: chile
     vehicle_brands[]: "daf"
 

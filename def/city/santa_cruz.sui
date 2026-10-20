@@ -1,7 +1,7 @@
 city_data : city.santa_cruz
 {
-    city_name: "Santa Cruz (Av. Errázuriz - Valle de Colchagua)"
-    city_name_localized: "Santa Cruz (Av. Errázuriz - Valle de Colchagua)"
+    city_name: "Santa Cruz"
+    city_name_localized: "Santa Cruz"
     country: chile
     vehicle_brands[]: "renault"
 

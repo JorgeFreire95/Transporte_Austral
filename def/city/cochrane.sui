@@ -1,7 +1,7 @@
 city_data : city.cochrane
 {
-    city_name: "Cochrane (Av. San Valentín - Río Baker)"
-    city_name_localized: "Cochrane (Av. San Valentín - Río Baker)"
+    city_name: "Cochrane"
+    city_name_localized: "Cochrane"
     country: chile
     vehicle_brands[]: "man"
 

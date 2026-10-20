@@ -1,6 +1,6 @@
-company_permanent: company.permanent.bhv
+company_permanent : company.permanent.bhv
 {
-	name: "BHV"
-	sort_name: "bhv"
-	trailer_look: bhv
+    name: "Frigorífico Simunovic Patagonia"
+    sort_name: "SIMUNOVIC"
+    trailer_look: "simunovic"
 }
