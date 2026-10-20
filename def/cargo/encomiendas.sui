@@ -1,11 +1,12 @@
 cargo_data : cargo.encomiendas
 {
-    name: "Cargas Express y Encomiendas Nacionales"
-    fragility: 0.5
+    name: "Cargas Express y Encomiendas Starken"
+    fragility: 0.4
     valuable: false
     group[]: containers
-    mass: 12000.0
-    unit_reward_per_km: 0.35
+    volume: 2.6
+    mass: 375.0
+    unit_reward_per_km: 0.44
     unit_load_time: 40
     body_types[]: curtainside
     body_types[]: dryvan

@@ -1,0 +1,14 @@
+cargo_data : cargo.madera_aserrada
+{
+    name: "Madera Aserrada y Tableros MDF"
+    fragility: 0.2
+    valuable: false
+    group[]: bulk
+    volume: 2.6
+    mass: 655.0
+    unit_reward_per_km: 0.58
+    unit_load_time: 40
+    body_types[]: flatbed
+    body_types[]: dryvan
+    body_types[]: curtainside
+}

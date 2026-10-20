@@ -4,8 +4,9 @@ cargo_data : cargo.salm_fresco
     fragility: 0.8
     valuable: true
     group[]: refrigerated
-    mass: 19000.0
-    unit_reward_per_km: 0.35
+    volume: 2.6
+    mass: 590.0
+    unit_reward_per_km: 0.82
     unit_load_time: 40
     body_types[]: refrigerated
     body_types[]: insulated

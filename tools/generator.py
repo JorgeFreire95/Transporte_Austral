@@ -596,70 +596,210 @@ EMPRESAS_CHILENAS = {
 }
 
 # ==============================================================================
-# BASE DE DATOS: CARGAS CHILENAS TÍPICAS
+# BASE DE DATOS: CARGAS CHILENAS CON PAGOS PROPORCIONALES A PESO, CARGA Y DISTANCIA
 # ==============================================================================
 CARGAS_CHILENAS = {
+    # 1. Cargas Pesadas y Minería (24 - 28.5 Toneladas)
+    "maquinaria_pesada": {
+        "nombre": "Maquinaria Pesada Minera Cat/Komatsu",
+        "masa_total_ton": 28.5,
+        "volume": 50,
+        "mass": 28500.0,
+        "unit_reward_per_km": 28.5,
+        "fragilidad": 0.5,
+        "valiosa": True,
+        "grupo": "machinery"
+    },
+    "concentrado_cobre": {
+        "nombre": "Concentrado de Cobre a Granel",
+        "masa_total_ton": 27.2,
+        "volume": 2.6,
+        "mass": 850.0,
+        "unit_reward_per_km": 0.95,
+        "fragilidad": 0.1,
+        "valiosa": True,
+        "grupo": "bulk"
+    },
     "catod_cobre": {
         "nombre": "Cátodos de Cobre de Alta Pureza",
-        "nombre_loc": "@@catod_cobre@@",
-        "masa": 24000,
+        "masa_total_ton": 24.0,
+        "volume": 40,
+        "mass": 12000.0,
+        "unit_reward_per_km": 15.2,
         "fragilidad": 0.2,
         "valiosa": True,
         "grupo": "machinery"
     },
-    "cel_fardo": {
-        "nombre": "Fardos de Celulosa Kraft Arauco/CMPC",
-        "nombre_loc": "@@cel_fardo@@",
-        "masa": 22500,
-        "fragilidad": 0.1,
+
+    # 2. Combustibles y Químicos ADR (26 Toneladas - Alta Peligrosidad)
+    "combust_cl": {
+        "nombre": "Gasolinas 93/97 y Diésel Copec",
+        "masa_total_ton": 26.0,
+        "volume": 1,
+        "mass": 866.0,
+        "unit_reward_per_km": 1.25,
+        "adr_class": 3,
+        "fragilidad": 0.8,
+        "valiosa": True,
+        "grupo": "adr_liquid"
+    },
+    "petroleo_ref": {
+        "nombre": "Petróleo Crudo y Refinado ENAP",
+        "masa_total_ton": 26.0,
+        "volume": 1,
+        "mass": 866.0,
+        "unit_reward_per_km": 1.22,
+        "adr_class": 3,
+        "fragilidad": 0.8,
+        "valiosa": True,
+        "grupo": "adr_liquid"
+    },
+    "acido_sulfurico": {
+        "nombre": "Ácido Sulfúrico Minero en Cisterna",
+        "masa_total_ton": 26.0,
+        "volume": 1,
+        "mass": 1040.0,
+        "unit_reward_per_km": 1.48,
+        "adr_class": 8,
+        "fragilidad": 0.9,
+        "valiosa": True,
+        "grupo": "adr_liquid"
+    },
+
+    # 3. Líquidos Alimenticios y Refrigerados Especializados (18 - 25 Toneladas)
+    "leche_sur": {
+        "nombre": "Leche Fresca en Cisterna Colun",
+        "masa_total_ton": 25.0,
+        "volume": 1,
+        "mass": 1000.0,
+        "unit_reward_per_km": 1.05,
+        "fragilidad": 0.3,
         "valiosa": False,
-        "grupo": "bulk"
+        "grupo": "liquid"
     },
     "salm_fresco": {
         "nombre": "Salmón Atlántico Fresco en Hielo",
-        "nombre_loc": "@@salm_fresco@@",
-        "masa": 19000,
+        "masa_total_ton": 18.9,
+        "volume": 2.6,
+        "mass": 590.0,
+        "unit_reward_per_km": 0.82,
         "fragilidad": 0.8,
         "valiosa": True,
         "grupo": "refrigerated"
     },
     "vino_reserva": {
         "nombre": "Vino Chileno Reserva Embotellado",
-        "nombre_loc": "@@vino_reserva@@",
-        "masa": 18500,
+        "masa_total_ton": 18.4,
+        "volume": 2.6,
+        "mass": 575.0,
+        "unit_reward_per_km": 0.76,
         "fragilidad": 0.7,
         "valiosa": True,
         "grupo": "containers"
     },
-    "leche_sur": {
-        "nombre": "Leche Fresca en Cisterna Colun",
-        "nombre_loc": "@@leche_sur@@",
-        "masa": 25000,
-        "fragilidad": 0.3,
+    "carnes_frescas": {
+        "nombre": "Carnes Frescas y Cecinas Agrosuper",
+        "masa_total_ton": 21.9,
+        "volume": 2.6,
+        "mass": 685.0,
+        "unit_reward_per_km": 0.70,
+        "fragilidad": 0.6,
         "valiosa": False,
-        "grupo": "liquid"
-    },
-    "combust_cl": {
-        "nombre": "Gasolinas 93/97 y Diésel Copec",
-        "nombre_loc": "@@combust_cl@@",
-        "masa": 26000,
-        "fragilidad": 0.9,
-        "valiosa": True,
-        "grupo": "adr_liquid"
+        "grupo": "refrigerated"
     },
     "palta_hass": {
         "nombre": "Paltas Hass Chilenas de Exportación",
-        "nombre_loc": "@@palta_hass@@",
-        "masa": 17500,
+        "masa_total_ton": 17.4,
+        "volume": 2.6,
+        "mass": 545.0,
+        "unit_reward_per_km": 0.66,
         "fragilidad": 0.6,
         "valiosa": True,
         "grupo": "refrigerated"
     },
-    "encomiendas": {
-        "nombre": "Cargas Express y Encomiendas Nacionales",
-        "nombre_loc": "@@encomiendas@@",
-        "masa": 12000,
+    "quesos_colun": {
+        "nombre": "Quesos y Mantequillas Colun",
+        "masa_total_ton": 16.0,
+        "volume": 2.6,
+        "mass": 500.0,
+        "unit_reward_per_km": 0.54,
+        "fragilidad": 0.4,
+        "valiosa": False,
+        "grupo": "refrigerated"
+    },
+
+    # 4. Forestal y Materiales (21 - 25 Toneladas)
+    "troncos_pino": {
+        "nombre": "Trozas y Troncos de Pino Arauco",
+        "masa_total_ton": 25.0,
+        "volume": 2.6,
+        "mass": 780.0,
+        "unit_reward_per_km": 0.60,
+        "fragilidad": 0.1,
+        "valiosa": False,
+        "grupo": "bulk"
+    },
+    "cel_fardo": {
+        "nombre": "Fardos de Celulosa Kraft Arauco/CMPC",
+        "masa_total_ton": 22.4,
+        "volume": 2.6,
+        "mass": 700.0,
+        "unit_reward_per_km": 0.62,
+        "fragilidad": 0.1,
+        "valiosa": False,
+        "grupo": "bulk"
+    },
+    "madera_aserrada": {
+        "nombre": "Madera Aserrada y Tableros MDF",
+        "masa_total_ton": 21.0,
+        "volume": 2.6,
+        "mass": 655.0,
+        "unit_reward_per_km": 0.58,
+        "fragilidad": 0.2,
+        "valiosa": False,
+        "grupo": "bulk"
+    },
+
+    # 5. Comercio, Bebidas y Cargas Generales (17 - 19 Toneladas)
+    "cervezas_ccu": {
+        "nombre": "Cervezas CCU Cristal y Aguas Minerales",
+        "masa_total_ton": 18.9,
+        "volume": 2.6,
+        "mass": 590.0,
+        "unit_reward_per_km": 0.55,
         "fragilidad": 0.5,
+        "valiosa": False,
+        "grupo": "containers"
+    },
+    "lubricantes_copec": {
+        "nombre": "Lubricantes y Aceites Mobil/Copec",
+        "masa_total_ton": 17.9,
+        "volume": 2.6,
+        "mass": 560.0,
+        "unit_reward_per_km": 0.52,
+        "fragilidad": 0.3,
+        "valiosa": False,
+        "grupo": "containers"
+    },
+
+    # 6. Encomiendas y Courier Liviano (7 - 12 Toneladas)
+    "encomiendas": {
+        "nombre": "Cargas Express y Encomiendas Starken",
+        "masa_total_ton": 12.0,
+        "volume": 2.6,
+        "mass": 375.0,
+        "unit_reward_per_km": 0.44,
+        "fragilidad": 0.4,
+        "valiosa": False,
+        "grupo": "containers"
+    },
+    "paquetes_express": {
+        "nombre": "Paquetería Courier y Documentos Chilexpress",
+        "masa_total_ton": 7.0,
+        "volume": 2.6,
+        "mass": 220.0,
+        "unit_reward_per_km": 0.35,
+        "fragilidad": 0.3,
         "valiosa": False,
         "grupo": "containers"
     }
@@ -861,17 +1001,22 @@ def generar_cargas():
             body_types_str = "    body_types[]: refrigerated\n    body_types[]: insulated\n    body_types[]: dryvan"
         elif cdata["grupo"] == "bulk":
             body_types_str = "    body_types[]: flatbed\n    body_types[]: dryvan\n    body_types[]: curtainside"
+        elif cdata["grupo"] == "machinery":
+            body_types_str = "    body_types[]: lowboy\n    body_types[]: lowbed\n    body_types[]: flatbed"
         else:
             body_types_str = "    body_types[]: curtainside\n    body_types[]: dryvan\n    body_types[]: container"
+
+        adr_str = f"\n    adr_class: {cdata['adr_class']}" if "adr_class" in cdata else ""
 
         content = f"""cargo_data : cargo.{cargo_id}
 {{
     name: "{cdata['nombre']}"
     fragility: {cdata['fragilidad']}
-    valuable: {valiosa_flag}
+    valuable: {valiosa_flag}{adr_str}
     group[]: {cdata['grupo']}
-    mass: {cdata['masa']}.0
-    unit_reward_per_km: 0.35
+    volume: {cdata['volume']}
+    mass: {cdata['mass']}
+    unit_reward_per_km: {cdata['unit_reward_per_km']}
     unit_load_time: 40
 {body_types_str}
 }}
@@ -1126,6 +1271,10 @@ def generar_locales():
             cid = ciudad["id"]
             cname = ciudad["nombre"]
             loc_lines.append(f'    key[]: "{cid}"\n    val[]: "{cname}"')
+
+    for cargo_id, cdata in CARGAS_CHILENAS.items():
+        cname = cdata["nombre"]
+        loc_lines.append(f'    key[]: "{cargo_id}"\n    val[]: "{cname}"')
 
     loc_content = "SiiNunit\n{\nlocalization_db : .localization\n{\n" + "\n".join(loc_lines) + "\n}\n}\n"
 

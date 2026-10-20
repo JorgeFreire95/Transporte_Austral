@@ -1,0 +1,14 @@
+cargo_data : cargo.acido_sulfurico
+{
+    name: "Ácido Sulfúrico Minero en Cisterna"
+    fragility: 0.9
+    valuable: true
+    adr_class: 8
+    group[]: adr_liquid
+    volume: 1
+    mass: 1040.0
+    unit_reward_per_km: 1.48
+    unit_load_time: 40
+    body_types[]: fueltank
+    body_types[]: foodtank
+}

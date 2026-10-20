@@ -2,10 +2,10 @@ SiiNunit
 {
 economy_data : economy.data.storage
 {
-	truck_refund: 		0.6	# 60% of original price
+	truck_refund: 		0.70	# 70% del valor original (reventa equitativa y justa de camiones)
 
-	# Base revenue per km in game native currency.
-	revenue_per_km_base: 15
+	# Base revenue per km in game native currency ($18.000 CLP/km base).
+	revenue_per_km_base: 18
 
 	price_small_garage: 180000
 	price_garage_upgrade: 100000
@@ -16,7 +16,7 @@ economy_data : economy.data.storage
 
 	fuel_discount_in_garage: 0.15	# 15%
 
-	truck_count_for_online:	5	# number of owned trucks to unlock buying online feature
+	truck_count_for_online:	1	# Compra y venta online de camiones disponible desde el 1er camión
 
 	abandoned_job_fine: 12000
 
@@ -94,11 +94,11 @@ economy_data : economy.data.storage
 ## Skill job filtering
 ##
 
-	fixed_revenue: 600	# in Euro
-	revenue_coef_per_km: 0.9 # Revenue coefficient per km used during freight market jobs.
-	cargo_market_revenue_coef_per_km: 1.0 # Revenue coefficient per km used during cargo market jobs.
+	fixed_revenue: 200	# Tarifa fija reducida para que el pago sea estrictamente proporcional a la distancia
+	revenue_coef_per_km: 1.0 # Multiplicador por km en el mercado de fletes
+	cargo_market_revenue_coef_per_km: 1.15 # Multiplicador por km con remolque propio (mercado de cargas)
 
-	reward_bonus_level: 0.015
+	reward_bonus_level: 0.02
 
 #  Experience points
 	free_roam_report_limit: 100

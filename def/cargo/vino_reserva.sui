@@ -4,8 +4,9 @@ cargo_data : cargo.vino_reserva
     fragility: 0.7
     valuable: true
     group[]: containers
-    mass: 18500.0
-    unit_reward_per_km: 0.35
+    volume: 2.6
+    mass: 575.0
+    unit_reward_per_km: 0.76
     unit_load_time: 40
     body_types[]: curtainside
     body_types[]: dryvan

@@ -1,11 +1,13 @@
 cargo_data : cargo.combust_cl
 {
     name: "Gasolinas 93/97 y Diésel Copec"
-    fragility: 0.9
+    fragility: 0.8
     valuable: true
+    adr_class: 3
     group[]: adr_liquid
-    mass: 26000.0
-    unit_reward_per_km: 0.35
+    volume: 1
+    mass: 866.0
+    unit_reward_per_km: 1.25
     unit_load_time: 40
     body_types[]: fueltank
     body_types[]: foodtank

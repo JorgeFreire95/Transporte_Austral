@@ -1,0 +1,14 @@
+cargo_data : cargo.quesos_colun
+{
+    name: "Quesos y Mantequillas Colun"
+    fragility: 0.4
+    valuable: false
+    group[]: refrigerated
+    volume: 2.6
+    mass: 500.0
+    unit_reward_per_km: 0.54
+    unit_load_time: 40
+    body_types[]: refrigerated
+    body_types[]: insulated
+    body_types[]: dryvan
+}
