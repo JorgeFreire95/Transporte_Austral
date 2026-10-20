@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .salm_fresco {
+ cargo: "cargo.salm_fresco"
+}
+}

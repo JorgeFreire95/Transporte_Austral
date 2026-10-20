@@ -1,6 +1,6 @@
-company_permanent: company.permanent.suikersmij
+company_permanent : company.permanent.suikersmij
 {
-	name: "Suikersmij"
-	sort_name: "suikersmij"
-	trailer_look: plain
+    name: "Empresas Iansa Planta Azucarera"
+    sort_name: "IANSA"
+    trailer_look: "iansa"
 }

@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .quesos_col {
+ cargo: "cargo.quesos_col"
+}
+}

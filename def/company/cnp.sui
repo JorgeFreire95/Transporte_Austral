@@ -1,6 +1,6 @@
-company_permanent: company.permanent.cnp
+company_permanent : company.permanent.cnp
 {
-	name: "CNP"
-	sort_name: "cnp"
-	trailer_look: cnp
+    name: "Molymet Renio y Molibdeno"
+    sort_name: "MOLYMET"
+    trailer_look: "molymet"
 }

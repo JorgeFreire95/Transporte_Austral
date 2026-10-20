@@ -1,6 +1,6 @@
-company_permanent: company.permanent.villco_mkt
+company_permanent : company.permanent.villco_mkt
 {
-	name: "Villco"
-	sort_name: "villco"
-	trailer_look: villco
+    name: "Unimarc Mercado Central"
+    sort_name: "UNIMARC"
+    trailer_look: "unimarc"
 }

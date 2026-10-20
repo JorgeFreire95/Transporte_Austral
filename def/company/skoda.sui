@@ -1,6 +1,6 @@
-company_permanent: company.permanent.skoda
+company_permanent : company.permanent.skoda
 {
-	name: "Scout"
-	sort_name: "scout"
-	trailer_look: scout
+    name: "Automotriz Kaufmann"
+    sort_name: "KAUFMANN"
+    trailer_look: "volvo"
 }

@@ -291,6 +291,20 @@ def instalar_en_ets2(scs_path: Path):
         shutil.copy2(scs_path, dest)
         print(f" -> Mod copiado con éxito a tu carpeta de ETS2:")
         print(f"    {dest}")
+
+        # Forzar reinicio de economía en config.cfg de ETS2 para regenerar todas las ofertas de trabajo
+        cfg_path = target_mod_dir.parent / "config.cfg"
+        if cfg_path.exists():
+            try:
+                cfg_text = cfg_path.read_text(encoding="utf-8", errors="ignore")
+                if 'uset g_force_economy_reset "' in cfg_text:
+                    cfg_text = re.sub(r'uset g_force_economy_reset "[01]"', 'uset g_force_economy_reset "1"', cfg_text)
+                else:
+                    cfg_text += '\nuset g_force_economy_reset "1"\n'
+                cfg_path.write_text(cfg_text, encoding="utf-8")
+                print(" -> Forzado reinicio de economía en config.cfg (g_force_economy_reset = 1) para refrescar todos los fletes chilenos.")
+            except Exception as e:
+                print(f" -> Aviso: no se pudo actualizar config.cfg: {e}")
     else:
         print(" -> No se detectó la carpeta ETS2 en Documentos por defecto.")
         print(f"    Puedes copiar manualmente '{scs_path}' a:")

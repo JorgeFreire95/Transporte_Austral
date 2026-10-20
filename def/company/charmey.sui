@@ -1,6 +1,6 @@
-company_permanent: company.permanent.charmey
+company_permanent : company.permanent.charmey
 {
-	name: "Charmey"
-	sort_name: "charmey"
-	trailer_look: charmey
+    name: "Colun Quesos del Sur"
+    sort_name: "COLUN"
+    trailer_look: "colun"
 }

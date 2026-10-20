@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .acid_sulf {
+ cargo: "cargo.acid_sulf"
+}
+}

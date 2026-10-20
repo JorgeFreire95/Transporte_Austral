@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .mad_aserr {
+ cargo: "cargo.mad_aserr"
+}
+}

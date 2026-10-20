@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .leche_sur {
+ cargo: "cargo.leche_sur"
+}
+}

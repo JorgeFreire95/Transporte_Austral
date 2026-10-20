@@ -1,6 +1,6 @@
-company_permanent: company.permanent.granoro
+company_permanent : company.permanent.granoro
 {
-	name: "Granoro"
-	sort_name: "granoro"
-	trailer_look: plain
+    name: "Carozzi Molinera de Trigo"
+    sort_name: "CAROZZI"
+    trailer_look: "carozzi"
 }

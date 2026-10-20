@@ -1,6 +1,6 @@
 company_permanent : company.permanent.tradeaux
 {
-    name: "Chilexpress Express"
-    sort_name: "CHILEXPRESS"
-    trailer_look: "chilexpress"
+    name: "Starken Encomiendas y Carga"
+    sort_name: "STARKEN"
+    trailer_look: "starken"
 }

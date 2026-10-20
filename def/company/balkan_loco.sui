@@ -1,6 +1,6 @@
-company_permanent: company.permanent.balkan_loco
+company_permanent : company.permanent.balkan_loco
 {
-	name: "Balkan Loco"
-	sort_name: "balkan loco"
-	trailer_look: balkan_loco
+    name: "Fepasa Ferrocarril del Pacífico"
+    sort_name: "FEPASA"
+    trailer_look: "arauco"
 }

@@ -1,6 +1,6 @@
-company_permanent: company.permanent.domdepo
+company_permanent : company.permanent.domdepo
 {
-	name: "DomDepo"
-	sort_name: "domdepo"
-	trailer_look: domdepo
+    name: "Homecenter Sodimac Constructor"
+    sort_name: "SODIMAC"
+    trailer_look: "sodimac"
 }

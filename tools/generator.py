@@ -812,10 +812,12 @@ REBRAND_BASE_COMPANIES = {
     "lkwlog":          {"nombre": "Starken Encomiendas", "sort": "STARKEN", "trailer": "starken"},
     "tradeaux_grv":    {"nombre": "Starken Carga Pesada", "sort": "STARKEN", "trailer": "starken"},
     "gnt":             {"nombre": "Starken Centro de Acopio", "sort": "STARKEN", "trailer": "starken"},
+    "tradeaux":        {"nombre": "Starken Encomiendas y Carga", "sort": "STARKEN", "trailer": "starken"},
+    "lisette_log":     {"nombre": "Starken Hub Portuario", "sort": "STARKEN", "trailer": "starken"},
     "posped":          {"nombre": "Chilexpress Courier", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
     "posped_grv":      {"nombre": "Chilexpress Logística", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
-    "tradeaux":        {"nombre": "Chilexpress Express", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
     "rt_log":          {"nombre": "Chilexpress Hub", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
+    "fle":             {"nombre": "Chilexpress CTP Aeropuerto", "sort": "CHILEXPRESS", "trailer": "chilexpress"},
     "transinet":       {"nombre": "Blue Express", "sort": "BLUEX", "trailer": "bluex"},
     "transinet_grv":   {"nombre": "Blue Express Hub", "sort": "BLUEX", "trailer": "bluex"},
     "cargotras":       {"nombre": "Blue Express Carga", "sort": "BLUEX", "trailer": "bluex"},
@@ -826,23 +828,29 @@ REBRAND_BASE_COMPANIES = {
     "stokes":          {"nombre": "CCU Cervezas y Bebidas", "sort": "CCU", "trailer": "ccu"},
     "polar":           {"nombre": "Cervecería Austral Patagonia", "sort": "AUSTRAL", "trailer": "austral_pza"},
     "scout":           {"nombre": "Viña Concha y Toro", "sort": "CONCHA_TORO", "trailer": "concha_toro"},
+    "spinelli":        {"nombre": "Viña Concha y Toro Bodegas", "sort": "CONCHA_TORO", "trailer": "concha_toro"},
 
     # Alimentos, Carnes, Lácteos y Frutas
     "euroacres":       {"nombre": "Agrosuper Chile", "sort": "AGROSUPER", "trailer": "agrosuper"},
     "euroacres_grv":   {"nombre": "Agrosuper Faenadora", "sort": "AGROSUPER", "trailer": "agrosuper"},
+    "libellula":       {"nombre": "Agrosuper Complejo Lo Miranda", "sort": "AGROSUPER", "trailer": "agrosuper"},
     "trameri":         {"nombre": "Colun - La Magia del Sur", "sort": "COLUN", "trailer": "colun"},
     "trameri_grv":     {"nombre": "Colun Planta Lechera", "sort": "COLUN", "trailer": "colun"},
+    "charmey":         {"nombre": "Colun Quesos del Sur", "sort": "COLUN", "trailer": "colun"},
     "fcp":             {"nombre": "Soprole Lácteos", "sort": "SOPROLE", "trailer": "soprole"},
     "fcp_grv":         {"nombre": "Soprole Acopio Sur", "sort": "SOPROLE", "trailer": "soprole"},
     "bcp":             {"nombre": "Carozzi Alimentos", "sort": "CAROZZI", "trailer": "carozzi"},
     "bcp_grv":         {"nombre": "Carozzi Molienda", "sort": "CAROZZI", "trailer": "carozzi"},
+    "granoro":         {"nombre": "Carozzi Molinera de Trigo", "sort": "CAROZZI", "trailer": "carozzi"},
     "dfh":             {"nombre": "Empresas Iansa", "sort": "IANSA", "trailer": "iansa"},
+    "suikersmij":      {"nombre": "Empresas Iansa Planta Azucarera", "sort": "IANSA", "trailer": "iansa"},
     "bhv":             {"nombre": "Frigorífico Simunovic Patagonia", "sort": "SIMUNOVIC", "trailer": "simunovic"},
     "polar_fish":      {"nombre": "AquaChile Salmones del Sur", "sort": "AQUACHILE", "trailer": "aquachile"},
     "globe_eur":       {"nombre": "Dole Chile Frutícola", "sort": "DOLE", "trailer": "dole_cl"},
     "fallow":          {"nombre": "Panadería Ideal Bimbo", "sort": "IDEAL", "trailer": "ideal_cl"},
     "drekkar":         {"nombre": "Watt's Alimentos", "sort": "WATTS", "trailer": "watts"},
     "agronord":        {"nombre": "Watt's Loncoleche", "sort": "WATTS", "trailer": "watts"},
+    "tesore_gust":     {"nombre": "Watt's Plantas Lecheras", "sort": "WATTS", "trailer": "watts"},
 
     # Minería, Siderurgia y Química
     "quarry":          {"nombre": "Codelco Minería del Cobre", "sort": "CODELCO", "trailer": "codelco"},
@@ -850,7 +858,10 @@ REBRAND_BASE_COMPANIES = {
     "steinbr_str":     {"nombre": "Minera Escondida (BHP)", "sort": "ESCONDIDA", "trailer": "escondida"},
     "wgcc":            {"nombre": "SQM Salar de Atacama", "sort": "SQM", "trailer": "sqm"},
     "kathode":         {"nombre": "CAP Acero Huachipato", "sort": "CAP", "trailer": "cap_acero"},
+    "piac":            {"nombre": "CAP Minería Hierro Atacama", "sort": "CAP", "trailer": "cap_acero"},
+    "aci":             {"nombre": "Aceros AZA Siderúrgica", "sort": "AZA", "trailer": "cap_acero"},
     "ns_chem":         {"nombre": "Molymet Molibdenos y Metales", "sort": "MOLYMET", "trailer": "molymet"},
+    "cnp":             {"nombre": "Molymet Renio y Molibdeno", "sort": "MOLYMET", "trailer": "molymet"},
 
     # Forestal y Madera
     "tree_et":         {"nombre": "Arauco Celulosa y Maderas", "sort": "ARAUCO", "trailer": "arauco"},
@@ -865,9 +876,21 @@ REBRAND_BASE_COMPANIES = {
     "brawen":          {"nombre": "Melón Hormigones", "sort": "MELON", "trailer": "melon"},
     "batisse":         {"nombre": "Cementos Polpaico", "sort": "POLPAICO", "trailer": "polpaico"},
     "batisse_hs":      {"nombre": "Cementos Polpaico Planta", "sort": "POLPAICO", "trailer": "polpaico"},
+    "stronghold":      {"nombre": "Cementos Polpaico Hormigones", "sort": "POLPAICO", "trailer": "polpaico"},
+    "domdepo":         {"nombre": "Homecenter Sodimac Constructor", "sort": "SODIMAC", "trailer": "sodimac"},
+    "cesare_smar":     {"nombre": "Falabella Retail San Bernardo", "sort": "FALABELLA", "trailer": "falabella"},
+    "villco_mkt":      {"nombre": "Unimarc Mercado Central", "sort": "UNIMARC", "trailer": "unimarc"},
+
+    # Automotriz, Energía y Transporte Ferroviario
+    "ai":              {"nombre": "Kaufmann Camiones Chile", "sort": "KAUFMANN", "trailer": "scania"},
+    "skoda":           {"nombre": "Automotriz Kaufmann", "sort": "KAUFMANN", "trailer": "volvo"},
+    "voitureux":       {"nombre": "Automotriz Gildemeister", "sort": "GILDEMEISTER", "trailer": "renault"},
+    "vitas_pwr":       {"nombre": "Colbún Generación Eléctrica", "sort": "COLBUN", "trailer": "enap"},
+    "balkan_loco":     {"nombre": "Fepasa Ferrocarril del Pacífico", "sort": "FEPASA", "trailer": "arauco"},
 
     # Puertos y Conectividad Marítima
     "euroflow":        {"nombre": "Puerto San Antonio (STI)", "sort": "STI", "trailer": "sti_san_ant"},
+    "tdc_auto":        {"nombre": "Puerto San Antonio Automóviles", "sort": "STI", "trailer": "sti_san_ant"},
     "cont_port":       {"nombre": "Puerto Valparaíso (TPS)", "sort": "TPS", "trailer": "tps_valp"},
     "subse":           {"nombre": "Puerto Valparaíso Terminal", "sort": "TPS", "trailer": "tps_valp"},
     "cont_port_it":    {"nombre": "Puerto Coronel", "sort": "CORONEL", "trailer": "pto_coronel"},
@@ -1308,14 +1331,31 @@ def generar_empresas():
         if inc not in master_includes:
             master_includes.append(inc)
 
-    # Incluir también empresas base restantes para compatibilidad con prefabs importados
-    base_company_sii = BASE_DIR / "scratch" / "def" / "def" / "company.sii"
-    if base_company_sii.exists():
-        with open(base_company_sii, "r", encoding="utf-8", errors="ignore") as f:
-            for line in f:
-                line_s = line.strip()
-                if line_s.startswith("@include") and line_s not in master_includes:
-                    master_includes.append(line_s)
+        # Generar cargas chilenas activas para la empresa base rebrandeada
+        trailer_key = bdata.get("trailer")
+        if trailer_key in EMPRESAS_CHILENAS:
+            chile_comp_data = EMPRESAS_CHILENAS[trailer_key]
+            b_in_dir = company_dir / base_id / "in"
+            b_in_dir.mkdir(parents=True, exist_ok=True)
+            for cargo_in in chile_comp_data.get("cargas_in", []):
+                cargo_sii = b_in_dir / f"{cargo_in}.sii"
+                cargo_sii.write_text(f'SiiNunit\n{{\ncargo_def : .{cargo_in} {{\n cargo: "cargo.{cargo_in}"\n}}\n}}\n', encoding="utf-8")
+
+            b_out_dir = company_dir / base_id / "out"
+            b_out_dir.mkdir(parents=True, exist_ok=True)
+            for cargo_out in chile_comp_data.get("cargas_out", []):
+                cargo_sii = b_out_dir / f"{cargo_out}.sii"
+                cargo_sii.write_text(f'SiiNunit\n{{\ncargo_def : .{cargo_out} {{\n cargo: "cargo.{cargo_out}"\n}}\n}}\n', encoding="utf-8")
+
+    # Incluir concesionarios oficiales de camiones (Scania, Volvo, DAF, etc.)
+    concesionarios = ["scania_dlr", "volvo_dlr", "daf_dlr", "daf_fac"]
+    for dlr in concesionarios:
+        dlr_sui = company_dir / f"{dlr}.sui"
+        if not dlr_sui.exists():
+            dlr_sui.write_text(f'company_permanent: company.permanent.{dlr}\n{{\n\tname: "{dlr.split("_")[0].upper()}"\n\tsort_name: "{dlr}"\n\ttrailer_look: {dlr.split("_")[0]}\n}}\n', encoding="utf-8")
+        inc = f'@include "company/{dlr}.sui"'
+        if inc not in master_includes:
+            master_includes.append(inc)
 
     master_path = DEF_DIR / "company.sii"
     master_content = "SiiNunit\n{\n" + "\n".join(master_includes) + "\n}\n"

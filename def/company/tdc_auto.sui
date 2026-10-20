@@ -1,6 +1,6 @@
-company_permanent: company.permanent.tdc_auto
+company_permanent : company.permanent.tdc_auto
 {
-	name: "TDC Auto Terminal"
-	sort_name: "tdc auto terminal"
-	trailer_look: tdc_auto
+    name: "Puerto San Antonio Automóviles"
+    sort_name: "STI"
+    trailer_look: "sti_san_ant"
 }

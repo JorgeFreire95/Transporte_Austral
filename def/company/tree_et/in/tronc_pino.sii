@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .tronc_pino {
+ cargo: "cargo.tronc_pino"
+}
+}

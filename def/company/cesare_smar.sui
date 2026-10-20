@@ -1,6 +1,6 @@
-company_permanent: company.permanent.cesare_smar
+company_permanent : company.permanent.cesare_smar
 {
-	name: "Cesare Supermercato"
-	sort_name: "cesare supermercato"
-	trailer_look: cesare_smar
+    name: "Falabella Retail San Bernardo"
+    sort_name: "FALABELLA"
+    trailer_look: "falabella"
 }

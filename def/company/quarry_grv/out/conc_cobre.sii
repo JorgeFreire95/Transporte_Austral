@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .conc_cobre {
+ cargo: "cargo.conc_cobre"
+}
+}

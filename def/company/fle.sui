@@ -1,6 +1,6 @@
-company_permanent: company.permanent.fle
+company_permanent : company.permanent.fle
 {
-	name: "FLE"
-	sort_name: "fle"
-	trailer_look: fle
+    name: "Chilexpress CTP Aeropuerto"
+    sort_name: "CHILEXPRESS"
+    trailer_look: "chilexpress"
 }

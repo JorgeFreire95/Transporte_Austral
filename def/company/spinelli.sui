@@ -1,6 +1,6 @@
-company_permanent: company.permanent.spinelli
+company_permanent : company.permanent.spinelli
 {
-	name: "Spinelli"
-	sort_name: "spinelli"
-	trailer_look: spinelli
+    name: "Viña Concha y Toro Bodegas"
+    sort_name: "CONCHA_TORO"
+    trailer_look: "concha_toro"
 }

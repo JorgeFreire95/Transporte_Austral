@@ -1,6 +1,6 @@
-company_permanent: company.permanent.lisette_log
+company_permanent : company.permanent.lisette_log
 {
-	name: "Lisette Logistics"
-	sort_name: "lisette logistics"
-	trailer_look: lisette_log
+    name: "Starken Hub Portuario"
+    sort_name: "STARKEN"
+    trailer_look: "starken"
 }
