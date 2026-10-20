@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .putre {
+ city: putre
+ prefab: 32
+}
+}

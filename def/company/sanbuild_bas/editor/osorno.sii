@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .osorno {
+ city: osorno
+ prefab: d_con_1a001
+}
+}

@@ -162,44 +162,45 @@ def generar_mapa_fondo_chile():
         draw.line([(0, y), (w, y)], fill=(28, 38, 58, 120), width=1)
 
     # 17 Divisores limítrofes continuos para generar la franja esbelta y sin escalonamientos de Chile
+    # 17 Divisores limítrofes continuos para generar la franja esbelta y sin escalonamientos de Chile
     dividers = [
-        ((-45000, -59000), (-32000, -59000)),  # 0: Límite Norte Arica (Perú)
-        ((-49000, -51000), (-34000, -51000)),  # 1: Arica / Tarapacá
-        ((-48000, -43000), (-34000, -43000)),  # 2: Tarapacá / Antofagasta
-        ((-44000, -33000), (-32000, -33000)),  # 3: Antofagasta / Atacama
-        ((-42000, -21500), (-30000, -21500)),  # 4: Atacama / Coquimbo
-        ((-40000, -15200), (-28000, -15200)),  # 5: Coquimbo / Valparaíso
-        ((-37000,  -9500), (-25000,  -9500)),  # 6: Valparaíso / RM
-        ((-33000,  -3500), (-22000,  -3500)),  # 7: RM / O'Higgins
-        ((-28000,    500), (-15000,    500)),  # 8: O'Higgins / Maule
-        ((-23000,   5400), (-10000,   5400)),  # 9: Maule / Ñuble
-        ((-20000,   9500), ( -7000,   9500)),  # 10: Ñuble / Biobío
-        ((-17000,  15000), ( -4000,  15000)),  # 11: Biobío / La Araucanía
-        ((-18000,  19200), ( -5000,  19200)),  # 12: La Araucanía / Los Ríos
-        ((-21000,  22100), ( -7000,  22100)),  # 13: Los Ríos / Los Lagos
-        ((-26000,  25000), (-12000,  25000)),  # 14: Los Lagos / Aysén
-        ((-27000,  28500), (-13000,  28500)),  # 15: Aysén / Magallanes
-        ((-21000,  36000), ( -6000,  36000)),  # 16: Cabo de Hornos (Límite Sur)
+        ((-44000, -59000), (-35000, -59000)),  # 0: Límite Norte Arica (Perú)
+        ((-48000, -51000), (-39000, -51000)),  # 1: Arica / Tarapacá
+        ((-47000, -43000), (-38000, -43000)),  # 2: Tarapacá / Antofagasta
+        ((-43000, -33000), (-34000, -33000)),  # 3: Antofagasta / Atacama
+        ((-40000, -21500), (-32000, -21500)),  # 4: Atacama / Coquimbo
+        ((-39000, -15200), (-31000, -15200)),  # 5: Coquimbo / Valparaíso
+        ((-35000,  -9500), (-27000,  -9500)),  # 6: Valparaíso / RM
+        ((-33000,  -3500), (-25000,  -3500)),  # 7: RM / O'Higgins
+        ((-29000,    500), (-21000,    500)),  # 8: O'Higgins / Maule
+        ((-20000,   5400), (-12000,   5400)),  # 9: Maule / Ñuble
+        ((-19000,   9500), (-11000,   9500)),  # 10: Ñuble / Biobío
+        ((-15000,  15000), ( -7000,  15000)),  # 11: Biobío / La Araucanía
+        ((-15000,  19200), ( -6000,  19200)),  # 12: La Araucanía / Los Ríos
+        ((-17000,  22100), ( -8000,  22100)),  # 13: Los Ríos / Los Lagos
+        ((-23000,  25000), (-13000,  25000)),  # 14: Los Lagos / Aysén
+        ((-27000,  28500), (-17000,  28500)),  # 15: Aysén / Magallanes
+        ((-18000,  36000), ( -8000,  36000)),  # 16: Cabo de Hornos (Límite Sur)
     ]
 
     # Paleta de 16 colores idéntica a la infografía oficial regional de Chile
     colors = [
-        (140, 45, 71),   # XV Región de Arica y Parinacota (#8C2D47)
-        (230, 96, 77),   # I Región de Tarapacá (#E6604D)
-        (245, 166, 56),  # II Región de Antofagasta (#F5A638)
-        (242, 200, 75),  # III Región de Atacama (#F2C84B)
-        (215, 223, 101), # IV Región de Coquimbo (#D7DF65)
-        (145, 191, 72),  # V Región de Valparaíso (#91BF48)
-        (156, 43, 89),   # RM Región Metropolitana de Santiago (#9C2B59)
-        (240, 162, 60),  # VI Región de O'Higgins (#F0A23C)
-        (155, 198, 112), # VII Región del Maule (#9BC670)
-        (148, 43, 67),   # XVI Región de Ñuble (#942B43)
-        (236, 165, 106), # VIII Región del Biobío (#ECA56A)
-        (227, 232, 138), # IX Región de La Araucanía (#E3E88A)
-        (128, 187, 73),  # XIV Región de Los Ríos (#80BB49)
-        (132, 186, 80),  # X Región de Los Lagos (#84BA50)
-        (139, 46, 87),   # XI Región de Aysén (#8B2E57)
-        (134, 35, 67),   # XII Región de Magallanes (#862343)
+        (122,  32,  72),  # XV Región de Arica y Parinacota (#7A2048 - Vino Tinto)
+        (232,  72,  85),  # I Región de Tarapacá (#E84855 - Coral Terracota)
+        (232,  94,  38),  # II Región de Antofagasta (#E85E26 - Naranja Desierto)
+        (234, 160,  35),  # III Región de Atacama (#EAA023 - Dorado Ocre)
+        (254, 209,   0),  # IV Región de Coquimbo (#FED100 - Amarillo Solar)
+        (136, 166,  66),  # V Región de Valparaíso (#88A642 - Verde Oliva)
+        (158,  27,  50),  # RM Región Metropolitana de Santiago (#9E1B32 - Carmesí)
+        (243, 112,  33),  # VI Región de O'Higgins (#F37021 - Mandarina)
+        (  0, 168,  89),  # VII Región del Maule (#00A859 - Verde Esmeralda)
+        (196,  18,  48),  # XVI Región de Ñuble (#C41230 - Rojo Rubí)
+        (249, 160,  27),  # VIII Región del Biobío (#F9A01B - Ámbar)
+        (232, 119,  82),  # IX Región de La Araucanía (#E87752 - Coral Araucano)
+        (122, 193,  67),  # XIV Región de Los Ríos (#7AC143 - Verde Lima Fluvial)
+        ( 41, 169, 224),  # X Región de Los Lagos (#29A9E0 - Azul Cian Lagos y Fiordos)
+        (140,  71, 153),  # XI Región de Aysén (#8C4799 - Violeta Glaciares)
+        (216,  38, 114),  # XII Región de Magallanes (#D82672 - Magenta Austral)
     ]
 
     reg_names = [

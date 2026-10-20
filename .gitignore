@@ -7,6 +7,7 @@ scratch/
 temp/
 tmp/
 backups/
+map/chile/
 
 # Archivos temporales y de respaldo
 *.tmp

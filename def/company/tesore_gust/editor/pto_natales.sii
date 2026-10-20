@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .pto_natales {
+ city: pto_natales
+ prefab: dlc_it_135
+}
+}

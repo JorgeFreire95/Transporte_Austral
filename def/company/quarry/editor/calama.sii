@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .calama {
+ city: calama
+ prefab: 13
+}
+}
