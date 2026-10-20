@@ -2,7 +2,7 @@ city_data : city.los_angeles
 {
     city_name: "Los Ángeles"
     city_name_localized: "@@los_angeles@@"
-    country: chile
+    country: cl_viii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

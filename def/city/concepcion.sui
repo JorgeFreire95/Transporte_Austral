@@ -2,7 +2,7 @@ city_data : city.concepcion
 {
     city_name: "Concepción"
     city_name_localized: "@@concepcion@@"
-    country: chile
+    country: cl_viii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

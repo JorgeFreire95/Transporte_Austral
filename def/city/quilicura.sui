@@ -2,7 +2,7 @@ city_data : city.quilicura
 {
     city_name: "Quilicura"
     city_name_localized: "@@quilicura@@"
-    country: chile
+    country: cl_rm
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

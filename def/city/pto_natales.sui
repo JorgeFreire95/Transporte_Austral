@@ -2,7 +2,7 @@ city_data : city.pto_natales
 {
     city_name: "Puerto Natales"
     city_name_localized: "@@pto_natales@@"
-    country: chile
+    country: cl_xii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

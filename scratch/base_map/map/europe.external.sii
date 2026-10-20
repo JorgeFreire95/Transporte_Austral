@@ -1,0 +1,10 @@
+SiiNunit
+{
+external_map_data : .ext_map_dta 
+{
+	map_root_path: "/map/halloween_ets2"
+
+	ui_map_camera_min: (-139000.0, 97000)
+	ui_map_camera_max: (-135000.0, 99000)
+}
+}

@@ -2,7 +2,7 @@ city_data : city.vina_del_mar
 {
     city_name: "Viña del Mar"
     city_name_localized: "@@vina_del_mar@@"
-    country: chile
+    country: cl_v
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

@@ -2,7 +2,7 @@ city_data : city.la_union
 {
     city_name: "La Unión"
     city_name_localized: "@@la_union@@"
-    country: chile
+    country: cl_xiv
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

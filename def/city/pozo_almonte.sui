@@ -2,7 +2,7 @@ city_data : city.pozo_almonte
 {
     city_name: "Pozo Almonte"
     city_name_localized: "@@pozo_almonte@@"
-    country: chile
+    country: cl_i
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

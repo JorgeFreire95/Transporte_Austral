@@ -2,7 +2,7 @@ city_data : city.talcahuano
 {
     city_name: "Talcahuano"
     city_name_localized: "@@talcahuano@@"
-    country: chile
+    country: cl_viii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

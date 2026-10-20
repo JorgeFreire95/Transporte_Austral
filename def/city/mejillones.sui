@@ -2,7 +2,7 @@ city_data : city.mejillones
 {
     city_name: "Mejillones"
     city_name_localized: "@@mejillones@@"
-    country: chile
+    country: cl_ii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

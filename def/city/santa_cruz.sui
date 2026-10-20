@@ -2,7 +2,7 @@ city_data : city.santa_cruz
 {
     city_name: "Santa Cruz"
     city_name_localized: "@@santa_cruz@@"
-    country: chile
+    country: cl_vi
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

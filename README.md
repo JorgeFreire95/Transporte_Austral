@@ -202,7 +202,17 @@ python tools/build.py
 ```
 *Si detecta la instalación de ETS2 en tu equipo, copiará automáticamente el `.scs` a tu carpeta `Documents/Euro Truck Simulator 2/mod/`.*
 
-### 4. `sector_helper.py` (Gestor de Sectores y Copias de Seguridad)
+### 4. `launcher.py` / `iniciar_trayectoria.bat` (Selector de Regiones y Sorteo Aleatorio de Comunas)
+Permite al conductor seleccionar cualquiera de las 16 regiones de Chile y sortea automáticamente una comuna al azar con sus coordenadas y empresas disponibles para iniciar su recorrido:
+```bash
+# Ejecutar desde terminal
+python tools/launcher.py
+
+# O hacer doble clic en el archivo raíz:
+iniciar_trayectoria.bat
+```
+
+### 5. `sector_helper.py` (Gestor de Sectores y Copias de Seguridad)
 Audita los sectores binarios creados en `map/chile/` y genera backups con fecha y hora:
 ```bash
 # Auditar sectores guardados

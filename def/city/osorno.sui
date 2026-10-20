@@ -2,7 +2,7 @@ city_data : city.osorno
 {
     city_name: "Osorno"
     city_name_localized: "@@osorno@@"
-    country: chile
+    country: cl_x
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

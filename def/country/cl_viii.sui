@@ -1,0 +1,25 @@
+country_data : country.data.cl_viii
+{
+    country_id: 111
+    name: "Región del Biobío"
+    name_localized: "Región del Biobío"
+    country_code: "BI"
+    iso_country_code: chl
+
+    pos: (-116500, 0, 185900)
+
+    fuel_price: 1.15
+
+    lights_mandatory: true
+    left_hand_traffic: false
+    driving_tired_offence: true
+
+    time_zone: -180
+    time_zone_name: "CLT"
+
+    mass_limit_per_axle_count[]: 18000
+    mass_limit_per_axle_count[]: 26000
+    mass_limit_per_axle_count[]: 38000
+    mass_limit_per_axle_count[]: 44000
+    mass_limit_per_axle_count[]: 45000
+}

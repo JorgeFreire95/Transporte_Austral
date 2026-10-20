@@ -2,7 +2,7 @@ city_data : city.iquique
 {
     city_name: "Iquique"
     city_name_localized: "@@iquique@@"
-    country: chile
+    country: cl_i
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

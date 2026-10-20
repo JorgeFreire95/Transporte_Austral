@@ -2,7 +2,7 @@ city_data : city.ovalle
 {
     city_name: "Ovalle"
     city_name_localized: "@@ovalle@@"
-    country: chile
+    country: cl_iv
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

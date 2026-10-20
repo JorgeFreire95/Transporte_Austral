@@ -2,7 +2,7 @@ city_data : city.vallenar
 {
     city_name: "Vallenar"
     city_name_localized: "@@vallenar@@"
-    country: chile
+    country: cl_iii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

@@ -2,7 +2,7 @@ city_data : city.coyhaique
 {
     city_name: "Coyhaique"
     city_name_localized: "@@coyhaique@@"
-    country: chile
+    country: cl_xi
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

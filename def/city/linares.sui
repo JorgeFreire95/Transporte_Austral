@@ -2,7 +2,7 @@ city_data : city.linares
 {
     city_name: "Linares"
     city_name_localized: "@@linares@@"
-    country: chile
+    country: cl_vii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

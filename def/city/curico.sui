@@ -2,7 +2,7 @@ city_data : city.curico
 {
     city_name: "Curicó"
     city_name_localized: "@@curico@@"
-    country: chile
+    country: cl_vii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

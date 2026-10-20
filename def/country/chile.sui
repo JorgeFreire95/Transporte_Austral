@@ -1,12 +1,12 @@
 country_data : country.data.chile
 {
-    country_id: 101
-    name: "Chile"
-    name_localized: "@@chile@@"
+    country_id: 100
+    name: ""
+    name_localized: ""
     country_code: "CL"
     iso_country_code: chl
 
-    pos: (-116500, 0, 160000)
+    pos: (-130000, 0, 163000)
 
     fuel_price: 1.15
 
@@ -14,7 +14,7 @@ country_data : country.data.chile
     left_hand_traffic: false
     driving_tired_offence: true
 
-    time_zone: -180 # UTC-3 (Hora Continental verano / Magallanes permanente)
+    time_zone: -180 # UTC-3 (Hora Continental)
     time_zone_name: "CLT"
 
     mass_limit_per_axle_count[]: 18000

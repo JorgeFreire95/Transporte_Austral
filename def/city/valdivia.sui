@@ -2,7 +2,7 @@ city_data : city.valdivia
 {
     city_name: "Valdivia"
     city_name_localized: "@@valdivia@@"
-    country: chile
+    country: cl_xiv
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

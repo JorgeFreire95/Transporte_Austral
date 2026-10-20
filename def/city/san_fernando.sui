@@ -2,7 +2,7 @@ city_data : city.san_fernando
 {
     city_name: "San Fernando"
     city_name_localized: "@@san_fernando@@"
-    country: chile
+    country: cl_vi
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

@@ -2,7 +2,7 @@ city_data : city.valparaiso
 {
     city_name: "Valparaíso"
     city_name_localized: "@@valparaiso@@"
-    country: chile
+    country: cl_v
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

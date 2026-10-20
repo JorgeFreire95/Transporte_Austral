@@ -1,0 +1,25 @@
+country_data : country.data.cl_ii
+{
+    country_id: 103
+    name: "Región de Antofagasta"
+    name_localized: "Región de Antofagasta"
+    country_code: "AN"
+    iso_country_code: chl
+
+    pos: (-116300, 0, 103000)
+
+    fuel_price: 1.15
+
+    lights_mandatory: true
+    left_hand_traffic: false
+    driving_tired_offence: true
+
+    time_zone: -180
+    time_zone_name: "CLT"
+
+    mass_limit_per_axle_count[]: 18000
+    mass_limit_per_axle_count[]: 26000
+    mass_limit_per_axle_count[]: 38000
+    mass_limit_per_axle_count[]: 44000
+    mass_limit_per_axle_count[]: 45000
+}

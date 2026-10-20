@@ -2,7 +2,7 @@ city_data : city.talca
 {
     city_name: "Talca"
     city_name_localized: "@@talca@@"
-    country: chile
+    country: cl_vii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

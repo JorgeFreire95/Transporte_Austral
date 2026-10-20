@@ -2,7 +2,7 @@ city_data : city.chaiten
 {
     city_name: "Chaitén"
     city_name_localized: "@@chaiten@@"
-    country: chile
+    country: cl_x
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

@@ -7,7 +7,6 @@ cargo_data : cargo.combust_cl
     mass: 26000.0
     unit_reward_per_km: 0.35
     unit_load_time: 40
-    body_types[]: _curtain_s
-    body_types[]: _dryvan_s
-    body_types[]: _insulated_s
+    body_types[]: tank_fuel
+    body_types[]: tank_food
 }

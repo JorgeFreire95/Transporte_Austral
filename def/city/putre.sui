@@ -2,7 +2,7 @@ city_data : city.putre
 {
     city_name: "Putre"
     city_name_localized: "@@putre@@"
-    country: chile
+    country: cl_xv
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

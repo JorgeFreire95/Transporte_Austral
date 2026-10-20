@@ -654,14 +654,38 @@ CARGAS_CHILENAS = {
 }
 
 
+# Mapeo oficial de las 16 Regiones de Chile (IDs, nombres y centroides para mapa SCS)
+CONFIG_REGIONES = {
+    "XV": {"id": "cl_xv", "num": 101, "nombre": "Región de Arica y Parinacota", "pos": (-117300, 0, 84100), "code": "AP"},
+    "I": {"id": "cl_i", "num": 102, "nombre": "Región de Tarapacá", "pos": (-117500, 0, 92750), "code": "TA"},
+    "II": {"id": "cl_ii", "num": 103, "nombre": "Región de Antofagasta", "pos": (-116300, 0, 103000), "code": "AN"},
+    "III": {"id": "cl_iii", "num": 104, "nombre": "Región de Atacama", "pos": (-117100, 0, 119500), "code": "AT"},
+    "IV": {"id": "cl_iv", "num": 105, "nombre": "Región de Coquimbo", "pos": (-116700, 0, 137400), "code": "CO"},
+    "V": {"id": "cl_v", "num": 106, "nombre": "Región de Valparaíso", "pos": (-116500, 0, 153200), "code": "VA"},
+    "RM": {"id": "cl_rm", "num": 107, "nombre": "Región Metropolitana", "pos": (-116400, 0, 163000), "code": "RM"},
+    "VI": {"id": "cl_vi", "num": 108, "nombre": "Región de O'Higgins", "pos": (-116300, 0, 168700), "code": "OH"},
+    "VII": {"id": "cl_vii", "num": 109, "nombre": "Región del Maule", "pos": (-116300, 0, 174000), "code": "MA"},
+    "XVI": {"id": "cl_xvi", "num": 110, "nombre": "Región de Ñuble", "pos": (-115850, 0, 180000), "code": "NB"},
+    "VIII": {"id": "cl_viii", "num": 111, "nombre": "Región del Biobío", "pos": (-116500, 0, 185900), "code": "BI"},
+    "IX": {"id": "cl_ix", "num": 112, "nombre": "Región de La Araucanía", "pos": (-115400, 0, 193800), "code": "AR"},
+    "XIV": {"id": "cl_xiv", "num": 113, "nombre": "Región de Los Ríos", "pos": (-116350, 0, 202750), "code": "LR"},
+    "X": {"id": "cl_x", "num": 114, "nombre": "Región de Los Lagos", "pos": (-116250, 0, 213100), "code": "LL"},
+    "XI": {"id": "cl_xi", "num": 115, "nombre": "Región de Aysén", "pos": (-114600, 0, 233100), "code": "AI"},
+    "XII": {"id": "cl_xii", "num": 116, "nombre": "Región de Magallanes", "pos": (-111900, 0, 263300), "code": "MG"},
+}
+
+
 def generar_ciudades():
-    """Genera los archivos .sui para cada ciudad y el master city.chile.sii"""
+    """Genera los archivos .sui para cada ciudad vinculada a su región administrativa"""
     city_dir = DEF_DIR / "city"
     city_dir.mkdir(parents=True, exist_ok=True)
 
     master_includes = []
 
     for reg_code, reg_data in REGIONES_CHILE.items():
+        reg_cfg = CONFIG_REGIONES.get(reg_code, {"id": "chile", "nombre": reg_data["nombre"]})
+        country_id_str = reg_cfg["id"]
+
         for ciudad in reg_data["ciudades"]:
             cid = ciudad["id"]
             master_includes.append(f'@include "city/{cid}.sui"')
@@ -671,7 +695,7 @@ def generar_ciudades():
 {{
     city_name: "{ciudad['nombre']}"
     city_name_localized: "@@{cid}@@"
-    country: chile
+    country: {country_id_str}
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0
@@ -710,7 +734,7 @@ def generar_ciudades():
     if old_master.exists():
         old_master.unlink()
 
-    print(f"-> {len(master_includes)} ciudades generadas en def/city/ y def/city.sii")
+    print(f"-> {len(master_includes)} ciudades generadas en def/city/ asignadas a sus 16 regiones")
 
 
 def generar_empresas():
@@ -758,6 +782,17 @@ def generar_cargas():
 
         sui_path = cargo_dir / f"{cargo_id}.sui"
         valiosa_flag = "true" if cdata["valiosa"] else "false"
+
+        # Compatibilidad de remolques según tipo de carga
+        if cdata["grupo"] == "adr_liquid" or cdata["grupo"] == "liquid":
+            body_types_str = "    body_types[]: tank_fuel\n    body_types[]: tank_food"
+        elif cdata["grupo"] == "refrigerated":
+            body_types_str = "    body_types[]: refrigerated\n    body_types[]: insulated\n    body_types[]: dryvan"
+        elif cdata["grupo"] == "bulk":
+            body_types_str = "    body_types[]: flatbed\n    body_types[]: dryvan\n    body_types[]: curtainside"
+        else:
+            body_types_str = "    body_types[]: curtainside\n    body_types[]: dryvan\n    body_types[]: container"
+
         content = f"""cargo_data : cargo.{cargo_id}
 {{
     name: "{cdata['nombre']}"
@@ -767,9 +802,7 @@ def generar_cargas():
     mass: {cdata['masa']}.0
     unit_reward_per_km: 0.35
     unit_load_time: 40
-    body_types[]: _curtain_s
-    body_types[]: _dryvan_s
-    body_types[]: _insulated_s
+{body_types_str}
 }}
 """
         with open(sui_path, "w", encoding="utf-8") as f:
@@ -784,39 +817,30 @@ def generar_cargas():
     if old_master.exists():
         old_master.unlink()
 
-    print(f"-> {len(master_includes)} cargas chilenas generadas en def/cargo/ y def/cargo.sii")
+    print(f"-> {len(master_includes)} cargas chilenas generadas en def/cargo/ y def/cargo.sii (con body_types oficiales)")
 
 
 def generar_pais():
-    """Genera def/country.sii y def/country/chile.sui (mapa standalone puro)"""
+    """Genera def/country.sii y las 16 regiones de Chile en def/country/ (mapa standalone puro)"""
     country_dir = DEF_DIR / "country"
     country_dir.mkdir(parents=True, exist_ok=True)
 
-    # Master country.sii (sobreescribe la lista de países base de Europa y carga patentes)
-    master_path = DEF_DIR / "country.sii"
-    master_content = """SiiNunit
-{
-@include "country/chile.sui"
-@include "country/chile/license_plates.sui"
-}
-"""
-    with open(master_path, "w", encoding="utf-8") as f:
-        f.write(master_content)
+    master_includes = [
+        '@include "country/chile.sui"',
+        '@include "country/chile/license_plates.sui"'
+    ]
 
-    old_master = DEF_DIR / "country.chile.sii"
-    if old_master.exists():
-        old_master.unlink()
-
+    # 1. País principal Chile (sin etiqueta de texto visible para evitar superposición con Región Metropolitana)
     chile_sui_path = country_dir / "chile.sui"
     chile_content = """country_data : country.data.chile
 {
-    country_id: 101
-    name: "Chile"
-    name_localized: "@@chile@@"
+    country_id: 100
+    name: ""
+    name_localized: ""
     country_code: "CL"
     iso_country_code: chl
 
-    pos: (-116500, 0, 160000)
+    pos: (-130000, 0, 163000)
 
     fuel_price: 1.15
 
@@ -824,7 +848,7 @@ def generar_pais():
     left_hand_traffic: false
     driving_tired_offence: true
 
-    time_zone: -180 # UTC-3 (Hora Continental verano / Magallanes permanente)
+    time_zone: -180 # UTC-3 (Hora Continental)
     time_zone_name: "CLT"
 
     mass_limit_per_axle_count[]: 18000
@@ -837,7 +861,52 @@ def generar_pais():
     with open(chile_sui_path, "w", encoding="utf-8") as f:
         f.write(chile_content)
 
-    print("-> País Chile generado en def/country.sii y def/country/chile.sui (sin errores de sintaxis)")
+    # 2. Las 16 Regiones de Chile como entidades territoriales en el mapa
+    for reg_code, rinfo in CONFIG_REGIONES.items():
+        reg_id = rinfo["id"]
+        reg_sui_path = country_dir / f"{reg_id}.sui"
+        master_includes.append(f'@include "country/{reg_id}.sui"')
+
+        reg_content = f"""country_data : country.data.{reg_id}
+{{
+    country_id: {rinfo["num"]}
+    name: "{rinfo["nombre"]}"
+    name_localized: "{rinfo["nombre"]}"
+    country_code: "{rinfo["code"]}"
+    iso_country_code: chl
+
+    pos: ({rinfo["pos"][0]}, {rinfo["pos"][1]}, {rinfo["pos"][2]})
+
+    fuel_price: 1.15
+
+    lights_mandatory: true
+    left_hand_traffic: false
+    driving_tired_offence: true
+
+    time_zone: -180
+    time_zone_name: "CLT"
+
+    mass_limit_per_axle_count[]: 18000
+    mass_limit_per_axle_count[]: 26000
+    mass_limit_per_axle_count[]: 38000
+    mass_limit_per_axle_count[]: 44000
+    mass_limit_per_axle_count[]: 45000
+}}
+"""
+        with open(reg_sui_path, "w", encoding="utf-8") as f:
+            f.write(reg_content)
+
+    # Master country.sii
+    master_path = DEF_DIR / "country.sii"
+    master_content = "SiiNunit\n{\n" + "\n".join(master_includes) + "\n}\n"
+    with open(master_path, "w", encoding="utf-8") as f:
+        f.write(master_content)
+
+    old_master = DEF_DIR / "country.chile.sii"
+    if old_master.exists():
+        old_master.unlink()
+
+    print("-> 16 Regiones de Chile generadas en def/country/ y def/country.sii con coordenadas geográficas")
 
 
 def desactivar_dlcs_europa():

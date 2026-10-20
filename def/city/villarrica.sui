@@ -2,7 +2,7 @@ city_data : city.villarrica
 {
     city_name: "Villarrica"
     city_name_localized: "@@villarrica@@"
-    country: chile
+    country: cl_ix
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

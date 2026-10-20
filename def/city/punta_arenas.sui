@@ -2,7 +2,7 @@ city_data : city.punta_arenas
 {
     city_name: "Punta Arenas"
     city_name_localized: "@@punta_arenas@@"
-    country: chile
+    country: cl_xii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

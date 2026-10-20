@@ -2,7 +2,7 @@ city_data : city.san_pedro
 {
     city_name: "San Pedro de Atacama"
     city_name_localized: "@@san_pedro@@"
-    country: chile
+    country: cl_ii
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0
