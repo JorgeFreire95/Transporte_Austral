@@ -1286,6 +1286,44 @@ def generar_locales():
     print(f"-> Localización de 52 ciudades y avenidas generada en {len(idiomas)} idiomas (locale/)")
 
 
+def desactivar_dlcs_europa():
+    """Neutraliza ciudades y países de DLCs europeos para garantizar un mapa 100% chileno sin ciudades extranjeras"""
+    dlc_files = [
+        # Ciudades de DLCs europeos
+        DEF_DIR / "city.balt.sii",       # Beyond the Baltic Sea (Lappeenranta, etc.)
+        DEF_DIR / "city.north.sii",      # Scandinavia
+        DEF_DIR / "city.iberia.sii",     # Iberia
+        DEF_DIR / "city.it.sii",         # Italia
+        DEF_DIR / "city.fr.sii",         # Vive la France
+        DEF_DIR / "city.east.sii",       # Going East
+        DEF_DIR / "city.balkan_e.sii",   # Road to the Black Sea
+        DEF_DIR / "city.balkan_w.sii",   # West Balkans
+        DEF_DIR / "city.greece.sii",     # Greece
+        DEF_DIR / "city.halloween.sii",
+        DEF_DIR / "city.mod_halloween_2025_event.sii",
+
+        # Países de DLCs europeos
+        DEF_DIR / "country.balt.sii",
+        DEF_DIR / "country.north.sii",
+        DEF_DIR / "country.iberia.sii",
+        DEF_DIR / "country.it.sii",
+        DEF_DIR / "country.fr.sii",
+        DEF_DIR / "country.east.sii",
+        DEF_DIR / "country.balkan_e.sii",
+        DEF_DIR / "country.balkan_w.sii",
+        DEF_DIR / "country.greece.sii",
+        DEF_DIR / "country.halloween.sii",
+        DEF_DIR / "country.mod_polar_circle.sii",
+        DEF_DIR / "country.mod_halloween_2025_event.sii",
+    ]
+    empty_content = "SiiNunit\n{\n}\n"
+    for dlc_f in dlc_files:
+        dlc_f.parent.mkdir(parents=True, exist_ok=True)
+        with open(dlc_f, "w", encoding="utf-8") as f:
+            f.write(empty_content)
+    print(f"-> {len(dlc_files)} archivos de DLCs europeos neutralizados (mapa 100% puro de Chile)")
+
+
 def main():
     print("================================================================")
     print(" TRANSPORTE AUSTRAL - GENERADOR DE DEFINICIONES DE CHILE (ETS2)")

@@ -177,13 +177,42 @@ def importar_y_parchear_sectores():
     for euro_brand, cl_brand in ESTACIONES_MAPEO.items():
         reemplazos[token_bytes(euro_brand)] = token_bytes(cl_brand)
 
-    # 4. Obtener todos los sectores activos del mapa (>1KB) para una red vial 100% continua
+    # 4. Obtener los sectores de la red vial continua de Chile
+    # (Filtra automáticamente sectores aislados de Europa como Lappeenranta, Rusia, etc.)
     extensiones = [".aux", ".base", ".data", ".desc", ".snd"]
-    sectores_disponibles = sorted([
+    sectores_candidatos = sorted([
         p.stem for p in SRC_EUROPE_DIR.glob("sec*.base") if p.stat().st_size > 1000
     ])
 
-    print(f"[2/4] Copiando y parcheando {len(sectores_disponibles)} sectores para carreteras 100% continuas...")
+    sector_coords = {}
+    for name in sectores_candidatos:
+        x = int(name[3:8])
+        z = int(name[8:13])
+        sector_coords[(x, z)] = name
+
+    visited = set()
+    components = []
+    for pos in sector_coords:
+        if pos in visited:
+            continue
+        comp = []
+        queue = [pos]
+        visited.add(pos)
+        while queue:
+            curr = queue.pop(0)
+            comp.append(curr)
+            for dx, dz in [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1)]:
+                neigh = (curr[0] + dx, curr[1] + dz)
+                if neigh in sector_coords and neigh not in visited:
+                    visited.add(neigh)
+                    queue.append(neigh)
+        components.append(comp)
+
+    components.sort(key=len, reverse=True)
+    main_comp = set(components[0]) # Los 240 sectores conectados que albergan a Chile
+    sectores_disponibles = sorted([sector_coords[c] for c in main_comp])
+
+    print(f"[2/4] Copiando y parcheando {len(sectores_disponibles)} sectores conectados de Chile (excluyendo Lappeenranta y fragmentos aislados)...")
     total_archivos = 0
     total_reemplazos = 0
 
