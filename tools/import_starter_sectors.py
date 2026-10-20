@@ -84,7 +84,6 @@ TOKENS_SECUNDARIOS = {
     "manchester":  "ovalle",
     "plymouth":    "los_vilos",
     "southampton": "vina_del_mar",
-    "liege":       "san_antonio",
     "leipzig":     "curico",
     "nurnberg":    "linares",
     "bremen":      "mejillones",
@@ -123,13 +122,6 @@ SECTORES_CONECTORES = [
     # Coyhaique a Punta Arenas
     "sec-0004+0006"
 ]
-
-# Garajes en sectores de paso a neutralizar para que sólo las 16 capitales regionales sean seleccionables
-GARAJES_A_NEUTRALIZAR = {
-    "sec-0005-0001": ["liege"],
-    "sec-0006-0001": ["brussel"],
-    "sec-0009-0002": ["dover"]
-}
 
 
 def importar_y_parchear_sectores():
@@ -175,22 +167,9 @@ def importar_y_parchear_sectores():
                 continue
 
             dest_file = DEST_CHILE_DIR / f"{sec_name}{ext}"
-            data = bytearray(src_file.read_bytes())
-
-            # En archivos .base, neutralizar garajes extra en sectores de paso
-            if ext == ".base" and sec_name in GARAJES_A_NEUTRALIZAR:
-                for cname in GARAJES_A_NEUTRALIZAR[sec_name]:
-                    tb = token_bytes(cname)
-                    idx = 0
-                    while True:
-                        pos = data.find(tb, idx)
-                        if pos == -1: break
-                        idx = pos + 1
-                        if pos >= 57 and data[pos-57:pos-53] == b'\x16\x00\x00\x00':
-                            data[pos-57:pos-53] = b'\x00\x00\x00\x00'
+            data_bytes = src_file.read_bytes()
 
             # Reemplazar tokens de ciudades
-            data_bytes = bytes(data)
             for src_b, dst_b in reemplazos.items():
                 cnt = data_bytes.count(src_b)
                 if cnt > 0:

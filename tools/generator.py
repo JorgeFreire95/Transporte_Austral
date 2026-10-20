@@ -814,7 +814,7 @@ def generar_cargas():
 
         # Compatibilidad de remolques según tipo de carga
         if cdata["grupo"] == "adr_liquid" or cdata["grupo"] == "liquid":
-            body_types_str = "    body_types[]: tank_fuel\n    body_types[]: tank_food"
+            body_types_str = "    body_types[]: fueltank\n    body_types[]: foodtank"
         elif cdata["grupo"] == "refrigerated":
             body_types_str = "    body_types[]: refrigerated\n    body_types[]: insulated\n    body_types[]: dryvan"
         elif cdata["grupo"] == "bulk":
