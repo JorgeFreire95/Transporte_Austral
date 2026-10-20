@@ -3,6 +3,7 @@ city_data : city.temuco
     city_name: "Temuco"
     city_name_localized: "@@temuco@@"
     country: cl_ix
+    vehicle_brands[]: "renault"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

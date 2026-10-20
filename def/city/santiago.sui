@@ -3,6 +3,7 @@ city_data : city.santiago
     city_name: "Santiago"
     city_name_localized: "@@santiago@@"
     country: cl_rm
+    vehicle_brands[]: "iveco"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

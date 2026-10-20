@@ -6,7 +6,7 @@ country_data : country.data.cl_iii
     country_code: "AT"
     iso_country_code: chl
 
-    pos: (-117100, 0, 119500)
+    pos: (-36466, 0, -26835)
 
     fuel_price: 1.15
 

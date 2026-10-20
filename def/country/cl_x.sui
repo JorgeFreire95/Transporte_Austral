@@ -6,7 +6,7 @@ country_data : country.data.cl_x
     country_code: "LL"
     iso_country_code: chl
 
-    pos: (-116250, 0, 213100)
+    pos: (-17861, 0, 24140)
 
     fuel_price: 1.15
 

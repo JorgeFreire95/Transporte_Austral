@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .talca {
+ city: talca
+ prefab: dlc_it_141
+}
+}

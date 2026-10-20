@@ -3,6 +3,7 @@ city_data : city.arica
     city_name: "Arica"
     city_name_localized: "@@arica@@"
     country: cl_xv
+    vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

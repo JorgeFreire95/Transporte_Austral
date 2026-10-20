@@ -24,12 +24,12 @@ OUTPUT_NAME = "Transporte_Austral_Chile.scs"
 # Extensiones y archivos a incluir en el mod
 INCLUDED_EXTENSIONS = {
     ".sii", ".sui", ".txt", ".png", ".jpg", ".dds", ".tobj",
-    ".mat", ".pmd", ".pmg", ".pma", ".mbd", ".base", ".data", ".desc", ".aux"
+    ".mat", ".pmd", ".pmg", ".pma", ".mbd", ".base", ".data", ".desc", ".aux", ".snd"
 }
 
 # Carpetas o archivos a ignorar durante el empaquetado
 EXCLUDED_PATTERNS = {
-    ".git", "__pycache__", "tools", "dist", ".vscode", ".idea", ".agents"
+    ".git", "__pycache__", "tools", "dist", ".vscode", ".idea", ".agents", "scratch", "backups", "temp", "tmp"
 }
 
 
@@ -144,9 +144,11 @@ def empaquetar_scs(output_path: Path):
                 file_path = Path(root) / file
                 rel_path = file_path.relative_to(BASE_DIR)
 
-                # Comprobar si pertenece a las carpetas raíz del mod (def, map, manifest, icon, description)
                 first_part = rel_path.parts[0]
                 if first_part in EXCLUDED_PATTERNS:
+                    continue
+
+                if file.startswith(".") or file.endswith((".tmp", ".bak", ".swp", "~")):
                     continue
 
                 if file_path.suffix.lower() in INCLUDED_EXTENSIONS or file in ["manifest.sii", "description.txt", "mod_icon.png", "mod_icon.jpg"]:

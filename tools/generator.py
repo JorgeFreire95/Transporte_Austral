@@ -654,24 +654,43 @@ CARGAS_CHILENAS = {
 }
 
 
-# Mapeo oficial de las 16 Regiones de Chile (IDs, nombres y centroides para mapa SCS)
+# Mapeo oficial de las 16 Regiones de Chile con coordenadas exactas alineadas a los garajes en los sectores
 CONFIG_REGIONES = {
-    "XV": {"id": "cl_xv", "num": 101, "nombre": "Región de Arica y Parinacota", "pos": (-117300, 0, 84100), "code": "AP"},
-    "I": {"id": "cl_i", "num": 102, "nombre": "Región de Tarapacá", "pos": (-117500, 0, 92750), "code": "TA"},
-    "II": {"id": "cl_ii", "num": 103, "nombre": "Región de Antofagasta", "pos": (-116300, 0, 103000), "code": "AN"},
-    "III": {"id": "cl_iii", "num": 104, "nombre": "Región de Atacama", "pos": (-117100, 0, 119500), "code": "AT"},
-    "IV": {"id": "cl_iv", "num": 105, "nombre": "Región de Coquimbo", "pos": (-116700, 0, 137400), "code": "CO"},
-    "V": {"id": "cl_v", "num": 106, "nombre": "Región de Valparaíso", "pos": (-116500, 0, 153200), "code": "VA"},
-    "RM": {"id": "cl_rm", "num": 107, "nombre": "Región Metropolitana", "pos": (-116400, 0, 163000), "code": "RM"},
-    "VI": {"id": "cl_vi", "num": 108, "nombre": "Región de O'Higgins", "pos": (-116300, 0, 168700), "code": "OH"},
-    "VII": {"id": "cl_vii", "num": 109, "nombre": "Región del Maule", "pos": (-116300, 0, 174000), "code": "MA"},
-    "XVI": {"id": "cl_xvi", "num": 110, "nombre": "Región de Ñuble", "pos": (-115850, 0, 180000), "code": "NB"},
-    "VIII": {"id": "cl_viii", "num": 111, "nombre": "Región del Biobío", "pos": (-116500, 0, 185900), "code": "BI"},
-    "IX": {"id": "cl_ix", "num": 112, "nombre": "Región de La Araucanía", "pos": (-115400, 0, 193800), "code": "AR"},
-    "XIV": {"id": "cl_xiv", "num": 113, "nombre": "Región de Los Ríos", "pos": (-116350, 0, 202750), "code": "LR"},
-    "X": {"id": "cl_x", "num": 114, "nombre": "Región de Los Lagos", "pos": (-116250, 0, 213100), "code": "LL"},
-    "XI": {"id": "cl_xi", "num": 115, "nombre": "Región de Aysén", "pos": (-114600, 0, 233100), "code": "AI"},
-    "XII": {"id": "cl_xii", "num": 116, "nombre": "Región de Magallanes", "pos": (-111900, 0, 263300), "code": "MG"},
+    "XV": {"id": "cl_xv", "num": 101, "nombre": "Región de Arica y Parinacota", "pos": (-38999, 0, -54871), "code": "AP"},
+    "I": {"id": "cl_i", "num": 102, "nombre": "Región de Tarapacá", "pos": (-44882, 0, -46900), "code": "TA"},
+    "II": {"id": "cl_ii", "num": 103, "nombre": "Región de Antofagasta", "pos": (-39807, 0, -38549), "code": "AN"},
+    "III": {"id": "cl_iii", "num": 104, "nombre": "Región de Atacama", "pos": (-36466, 0, -26835), "code": "AT"},
+    "IV": {"id": "cl_iv", "num": 105, "nombre": "Región de Coquimbo", "pos": (-36768, 0, -16268), "code": "CO"},
+    "V": {"id": "cl_v", "num": 106, "nombre": "Región de Valparaíso", "pos": (-31578, 0, -14044), "code": "VA"},
+    "RM": {"id": "cl_rm", "num": 107, "nombre": "Región Metropolitana", "pos": (-30174, 0, -4751), "code": "RM"},
+    "VI": {"id": "cl_vi", "num": 108, "nombre": "Región de O'Higgins", "pos": (-26395, 0, -2170), "code": "OH"},
+    "VII": {"id": "cl_vii", "num": 109, "nombre": "Región del Maule", "pos": (-16450, 0, 3310), "code": "MA"},
+    "XVI": {"id": "cl_xvi", "num": 110, "nombre": "Región de Ñuble", "pos": (-16230, 0, 7437), "code": "NB"},
+    "VIII": {"id": "cl_viii", "num": 111, "nombre": "Región del Biobío", "pos": (-11085, 0, 11548), "code": "BI"},
+    "IX": {"id": "cl_ix", "num": 112, "nombre": "Región de La Araucanía", "pos": (-9769, 0, 18357), "code": "AR"},
+    "XIV": {"id": "cl_xiv", "num": 113, "nombre": "Región de Los Ríos", "pos": (-12794, 0, 20153), "code": "LR"},
+    "X": {"id": "cl_x", "num": 114, "nombre": "Región de Los Lagos", "pos": (-17861, 0, 24140), "code": "LL"},
+    "XI": {"id": "cl_xi", "num": 115, "nombre": "Región de Aysén", "pos": (-22265, 0, 25768), "code": "AI"},
+    "XII": {"id": "cl_xii", "num": 116, "nombre": "Región de Magallanes", "pos": (-13182, 0, 31278), "code": "MG"},
+}
+
+CIUDAD_BRANDS = {
+    "arica": "scania",
+    "iquique": "volvo",
+    "antofagasta": "man",
+    "copiapo": "mercedes",
+    "la_serena": "renault",
+    "valparaiso": "daf",
+    "santiago": "iveco",
+    "rancagua": "scania",
+    "talca": "volvo",
+    "chillan": "man",
+    "concepcion": "mercedes",
+    "temuco": "renault",
+    "valdivia": "daf",
+    "puerto_montt": "iveco",
+    "coyhaique": "scania",
+    "punta_arenas": "volvo",
 }
 
 
@@ -691,11 +710,12 @@ def generar_ciudades():
             master_includes.append(f'@include "city/{cid}.sui"')
 
             sui_path = city_dir / f"{cid}.sui"
+            brand_str = f'\n    vehicle_brands[]: "{CIUDAD_BRANDS[cid]}"' if cid in CIUDAD_BRANDS else ""
             content = f"""city_data : city.{cid}
 {{
     city_name: "{ciudad['nombre']}"
     city_name_localized: "@@{cid}@@"
-    country: {country_id_str}
+    country: {country_id_str}{brand_str}
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0
@@ -758,6 +778,15 @@ def generar_empresas():
         with open(sui_path, "w", encoding="utf-8") as f:
             f.write(content)
 
+    # Incluir también empresas base para compatibilidad con prefabs importados
+    base_company_sii = BASE_DIR / "scratch" / "def" / "def" / "company.sii"
+    if base_company_sii.exists():
+        with open(base_company_sii, "r", encoding="utf-8", errors="ignore") as f:
+            for line in f:
+                line_s = line.strip()
+                if line_s.startswith("@include") and line_s not in master_includes:
+                    master_includes.append(line_s)
+
     master_path = DEF_DIR / "company.sii"
     master_content = "SiiNunit\n{\n" + "\n".join(master_includes) + "\n}\n"
     with open(master_path, "w", encoding="utf-8") as f:
@@ -767,7 +796,7 @@ def generar_empresas():
     if old_master.exists():
         old_master.unlink()
 
-    print(f"-> {len(master_includes)} empresas chilenas generadas en def/company/ y def/company.sii")
+    print(f"-> {len(master_includes)} empresas registradas en def/company.sii (chilenas y prefabs base)")
 
 
 def generar_cargas():
@@ -808,6 +837,15 @@ def generar_cargas():
         with open(sui_path, "w", encoding="utf-8") as f:
             f.write(content)
 
+    # Incluir también cargas del juego base para abastecer los comercios importados
+    base_cargo_sii = BASE_DIR / "scratch" / "def" / "def" / "cargo.sii"
+    if base_cargo_sii.exists():
+        with open(base_cargo_sii, "r", encoding="utf-8", errors="ignore") as f:
+            for line in f:
+                line_s = line.strip()
+                if line_s.startswith("@include") and line_s not in master_includes:
+                    master_includes.append(line_s)
+
     master_path = DEF_DIR / "cargo.sii"
     master_content = "SiiNunit\n{\n" + "\n".join(master_includes) + "\n}\n"
     with open(master_path, "w", encoding="utf-8") as f:
@@ -817,7 +855,7 @@ def generar_cargas():
     if old_master.exists():
         old_master.unlink()
 
-    print(f"-> {len(master_includes)} cargas chilenas generadas en def/cargo/ y def/cargo.sii (con body_types oficiales)")
+    print(f"-> {len(master_includes)} cargas registradas en def/cargo.sii (chilenas y catálogo base)")
 
 
 def generar_pais():
@@ -840,7 +878,7 @@ def generar_pais():
     country_code: "CL"
     iso_country_code: chl
 
-    pos: (-130000, 0, 163000)
+    pos: (-28000, 0, -12000)
 
     fuel_price: 1.15
 

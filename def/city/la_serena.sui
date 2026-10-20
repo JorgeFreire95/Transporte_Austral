@@ -3,6 +3,7 @@ city_data : city.la_serena
     city_name: "La Serena"
     city_name_localized: "@@la_serena@@"
     country: cl_iv
+    vehicle_brands[]: "renault"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

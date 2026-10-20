@@ -6,7 +6,7 @@ country_data : country.data.cl_vii
     country_code: "MA"
     iso_country_code: chl
 
-    pos: (-116300, 0, 174000)
+    pos: (-16450, 0, 3310)
 
     fuel_price: 1.15
 

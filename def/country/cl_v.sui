@@ -6,7 +6,7 @@ country_data : country.data.cl_v
     country_code: "VA"
     iso_country_code: chl
 
-    pos: (-116500, 0, 153200)
+    pos: (-31578, 0, -14044)
 
     fuel_price: 1.15
 

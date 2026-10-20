@@ -6,7 +6,7 @@ country_data : country.data.cl_xii
     country_code: "MG"
     iso_country_code: chl
 
-    pos: (-111900, 0, 263300)
+    pos: (-13182, 0, 31278)
 
     fuel_price: 1.15
 

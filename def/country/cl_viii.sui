@@ -6,7 +6,7 @@ country_data : country.data.cl_viii
     country_code: "BI"
     iso_country_code: chl
 
-    pos: (-116500, 0, 185900)
+    pos: (-11085, 0, 11548)
 
     fuel_price: 1.15
 

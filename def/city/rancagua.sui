@@ -3,6 +3,7 @@ city_data : city.rancagua
     city_name: "Rancagua"
     city_name_localized: "@@rancagua@@"
     country: cl_vi
+    vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

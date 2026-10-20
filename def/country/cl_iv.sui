@@ -6,7 +6,7 @@ country_data : country.data.cl_iv
     country_code: "CO"
     iso_country_code: chl
 
-    pos: (-116700, 0, 137400)
+    pos: (-36768, 0, -16268)
 
     fuel_price: 1.15
 

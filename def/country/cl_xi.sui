@@ -6,7 +6,7 @@ country_data : country.data.cl_xi
     country_code: "AI"
     iso_country_code: chl
 
-    pos: (-114600, 0, 233100)
+    pos: (-22265, 0, 25768)
 
     fuel_price: 1.15
 

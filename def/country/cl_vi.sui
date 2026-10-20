@@ -6,7 +6,7 @@ country_data : country.data.cl_vi
     country_code: "OH"
     iso_country_code: chl
 
-    pos: (-116300, 0, 168700)
+    pos: (-26395, 0, -2170)
 
     fuel_price: 1.15
 

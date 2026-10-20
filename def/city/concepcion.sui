@@ -3,6 +3,7 @@ city_data : city.concepcion
     city_name: "Concepción"
     city_name_localized: "@@concepcion@@"
     country: cl_viii
+    vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

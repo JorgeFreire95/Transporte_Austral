@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .chillan {
+ city: chillan
+ prefab: 33
+}
+}

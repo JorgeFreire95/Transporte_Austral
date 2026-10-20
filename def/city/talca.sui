@@ -3,6 +3,7 @@ city_data : city.talca
     city_name: "Talca"
     city_name_localized: "@@talca@@"
     country: cl_vii
+    vehicle_brands[]: "volvo"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

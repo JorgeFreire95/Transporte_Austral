@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .coyhaique {
+ city: coyhaique
+ prefab: dlc_it_156
+}
+}

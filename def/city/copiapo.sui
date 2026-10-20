@@ -3,6 +3,7 @@ city_data : city.copiapo
     city_name: "Copiapó"
     city_name_localized: "@@copiapo@@"
     country: cl_iii
+    vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

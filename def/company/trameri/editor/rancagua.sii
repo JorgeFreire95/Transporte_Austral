@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .rancagua {
+ city: rancagua
+ prefab: 68
+}
+}

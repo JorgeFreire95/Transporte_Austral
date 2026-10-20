@@ -6,7 +6,7 @@ country_data : country.data.cl_xvi
     country_code: "NB"
     iso_country_code: chl
 
-    pos: (-115850, 0, 180000)
+    pos: (-16230, 0, 7437)
 
     fuel_price: 1.15
 

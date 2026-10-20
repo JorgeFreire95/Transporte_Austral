@@ -6,7 +6,7 @@ country_data : country.data.cl_i
     country_code: "TA"
     iso_country_code: chl
 
-    pos: (-117500, 0, 92750)
+    pos: (-44882, 0, -46900)
 
     fuel_price: 1.15
 

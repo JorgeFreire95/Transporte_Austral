@@ -6,7 +6,7 @@ country_data : country.data.cl_ix
     country_code: "AR"
     iso_country_code: chl
 
-    pos: (-115400, 0, 193800)
+    pos: (-9769, 0, 18357)
 
     fuel_price: 1.15
 

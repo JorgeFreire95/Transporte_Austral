@@ -3,6 +3,7 @@ city_data : city.chillan
     city_name: "Chillán"
     city_name_localized: "@@chillan@@"
     country: cl_xvi
+    vehicle_brands[]: "man"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

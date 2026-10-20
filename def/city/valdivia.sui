@@ -3,6 +3,7 @@ city_data : city.valdivia
     city_name: "Valdivia"
     city_name_localized: "@@valdivia@@"
     country: cl_xiv
+    vehicle_brands[]: "daf"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

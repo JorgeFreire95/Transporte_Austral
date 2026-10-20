@@ -3,6 +3,7 @@ city_data : city.puerto_montt
     city_name: "Puerto Montt"
     city_name_localized: "@@puerto_montt@@"
     country: cl_x
+    vehicle_brands[]: "iveco"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0
