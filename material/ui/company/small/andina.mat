@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/small/andina.tobj"
+    texture_name : "texture"
+}

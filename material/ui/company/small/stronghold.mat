@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/small/stronghold.tobj"
+    texture_name : "texture"
+}

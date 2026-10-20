@@ -1732,6 +1732,13 @@ def main():
     generar_estaciones_servicio()
     generar_locales()
     desactivar_dlcs_europa()
+
+    try:
+        import generate_company_logos
+        generate_company_logos.generar_todos_los_logos()
+    except Exception as e:
+        print(f"Aviso al generar logos: {e}")
+
     print("================================================================")
     print("Todas las definiciones se han generado correctamente.")
 

@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/small/cont_port.tobj"
+    texture_name : "texture"
+}

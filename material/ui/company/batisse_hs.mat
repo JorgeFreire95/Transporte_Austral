@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/batisse_hs.tobj"
+    texture_name : "texture"
+}

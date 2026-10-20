@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/small/sanbuild_cem.tobj"
+    texture_name : "texture"
+}

@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/daf_fac.tobj"
+    texture_name : "texture"
+}

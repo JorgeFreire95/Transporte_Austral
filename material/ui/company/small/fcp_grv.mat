@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/small/fcp_grv.tobj"
+    texture_name : "texture"
+}

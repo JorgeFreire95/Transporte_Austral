@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/ika_bohag.tobj"
+    texture_name : "texture"
+}

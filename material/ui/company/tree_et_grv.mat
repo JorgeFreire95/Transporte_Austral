@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/tree_et_grv.tobj"
+    texture_name : "texture"
+}

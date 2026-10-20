@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/itcc_scrap.tobj"
+    texture_name : "texture"
+}

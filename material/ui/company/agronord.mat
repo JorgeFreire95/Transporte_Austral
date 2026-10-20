@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/agronord.tobj"
+    texture_name : "texture"
+}

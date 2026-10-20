@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/balkan_loco.tobj"
+    texture_name : "texture"
+}

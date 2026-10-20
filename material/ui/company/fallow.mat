@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/fallow.tobj"
+    texture_name : "texture"
+}

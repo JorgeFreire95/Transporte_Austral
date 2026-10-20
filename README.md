@@ -4,6 +4,8 @@
 
 [![ETS2 Version](https://img.shields.io/badge/ETS2-1.50%20%7C%201.51%20%7C%201.52%20%7C%201.53-orange.svg)](https://eurotrucksimulator2.com/)
 [![Language](https://img.shields.io/badge/Automation-Python%203.12-blue.svg)](https://www.python.org/)
+[![Architecture](https://img.shields.io/badge/Architecture-3--Tier%20Pattern-blueviolet.svg)]()
+[![Methodology](https://img.shields.io/badge/Methodology-SCRUM%20Agile-success.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active%20Development-success.svg)]()
 
@@ -13,44 +15,177 @@
 
 ## 📑 Tabla de Contenidos
 
-1. [Visión y Filosofía del Proyecto](#-visión-y-filosofía-del-proyecto)
-2. [Arquitectura Tecnológica: ¿Por qué Python?](#-arquitectura-tecnológica-por-qué-python)
-3. [Las 16 Regiones de Chile Recreadas](#-las-16-regiones-de-chile-recreadas)
-4. [Red de Rutas y Carreteras Chilenas](#-red-de-rutas-y-carreteras-chilenas)
-5. [Empresas Chilenas y Cadenas Logísticas](#-empresas-chilenas-y-cadenas-logísticas)
-6. [Estaciones de Servicio y Áreas de Descanso](#-estaciones-de-servicio-y-áreas-de-descanso)
-7. [Cargas y Mercancías Nacionales](#-cargas-y-mercancías-nacionales)
-8. [Sistema de Patentes Chilenas Oficiales](#-sistema-de-patentes-chilenas-oficiales)
-9. [Suite de Automatización en Python (`tools/`)](#-suite-de-automatización-en-python-tools)
-10. [Guía Paso a Paso: SCS Map Editor](#-guía-paso-a-paso-scs-map-editor)
-11. [Flujo 3D: Blender y SCS Blender Tools](#-flujo-3d-blender-y-scs-blender-tools)
-12. [Estructura del Proyecto](#-estructura-del-proyecto)
-13. [Compilación e Instalación](#-compilación-e-instalación)
-14. [Hoja de Ruta (Roadmap)](#-hoja-de-ruta-roadmap)
+1. [Visión y Alcance del Proyecto](#-visión-y-alcance-del-proyecto)
+2. [Arquitectura del Sistema: Patrón de 3 Capas](#-arquitectura-del-sistema-patrón-de-3-capas)
+3. [Metodología de Desarrollo: SCRUM Ágil](#-metodología-de-desarrollo-scrum-ágil)
+4. [Stack Tecnológico y Herramientas](#-stack-tecnológico-y-herramientas)
+5. [Las 16 Regiones de Chile Recreadas](#-las-16-regiones-de-chile-recreadas)
+6. [Red de Rutas y Carreteras Chilenas](#-red-de-rutas-y-carreteras-chilenas)
+7. [Empresas Chilenas y Cadenas Logísticas](#-empresas-chilenas-y-cadenas-logísticas)
+8. [Estaciones de Servicio y Áreas de Descanso](#-estaciones-de-servicio-y-áreas-de-descanso)
+9. [Cargas y Mercancías Nacionales](#-cargas-y-mercancías-nacionales)
+10. [Sistema de Patentes Chilenas Oficiales](#-sistema-de-patentes-chilenas-oficiales)
+11. [Suite de Automatización y DevOps (`tools/`)](#-suite-de-automatización-y-devops-tools)
+12. [Guía Paso a Paso: SCS Map Editor](#-guía-paso-a-paso-scs-map-editor)
+13. [Flujo 3D: Blender y SCS Blender Tools](#-flujo-3d-blender-y-scs-blender-tools)
+14. [Estructura del Proyecto](#-estructura-del-proyecto)
+15. [Compilación e Instalación](#-compilación-e-instalación)
+16. [Hoja de Ruta (Roadmap)](#-hoja-de-ruta-roadmap)
 
 ---
 
-## 🌟 Visión y Filosofía del Proyecto
+## 🌟 Visión y Alcance del Proyecto
 
-Chile posee una de las geografías más diversas y extremas del planeta: más de **4.300 km de longitud**, una anchura promedio de 177 km y un relieve dominado por la imponente **Cordillera de los Andes**, la Depresión Intermedia y la Cordillera de la Costa. 
+Chile posee una de las geografías más singulares y desafiantes del planeta: más de **4.300 km de longitud**, una anchura promedio de 177 km y un relieve dominado por la **Cordillera de los Andes**, la Depresión Intermedia y la Cordillera de la Costa. 
 
-Transporte Austral busca capturar esa esencia única para los entusiastas del transporte pesado:
-* **Desafíos reales de conducción:** Cuestas pronunciadas (Cuesta Caracoles, Cuesta de Lipán, Cuesta Queulat), rutas costeras sinuosas, vientos cruzados extremos en Magallanes, autopistas de alta velocidad con peajes automatizados (TAG) y pasos fronterizos a más de 3.000 metros de altitud.
-* **Economía y logística chilena:** Centros de distribución de retail nacional, faenas mineras en altura de rajo abierto, plantas de celulosa forestal, pesqueras australes y puertos de exportación de contenedores.
-* **Ambientación fotorrealista:** Señalización vial reglamentaria según el **Manual de Señalización de Tránsito del MOP (Ministerio de Obras Públicas)**, estaciones de servicio de bandera nacional (Copec, Shell, Petrobras) y vehículos de emergencia de **Carabineros de Chile** y **Bomberos**.
+Transporte Austral recrea la experiencia de conducción y transporte pesado chileno con máxima fidelidad técnica:
+* **Desafíos reales de conducción:** Cuestas extremas (Cuesta Caracoles, Cuesta de Lipán, Cuesta Queulat), rutas costeras sinuosas, vientos cruzados patagónicos, autopistas urbanas concesionadas con pórticos TAG y pasos fronterizos sobre los 3.000 msnm.
+* **Economía y logística nacional:** Reemplazo integral del mercado de fletes europeo por 146 empresas activas de bandera chilena (retail, faenas mineras en rajo abierto, plantas de celulosa forestal, cooperativas lecheras, salmoneras y puertos internacionales).
+* **Ambientación fotorrealista:** Señalización vial según el **Manual de Señalización de Tránsito del MOP**, servicentros Copec Pronto, Shell Upa! y Petrobras Spacio 1, y patentes oficiales reguladas por el Registro Civil.
 
 ---
 
-## ⚙️ Arquitectura Tecnológica: ¿Por qué Python?
+## 🏛️ Arquitectura del Sistema: Patrón de 3 Capas
 
-Euro Truck Simulator 2 se ejecuta sobre el motor propietario **Prism3D** de SCS Software. Dicho motor utiliza formatos de datos declarativos propietarios estructurados en sintaxis **SiiNunit** (`.sii`, `.sui`), archivos binarios de sectores (`.base`, `.data`, `.desc`, `.aux`, `.mbd`) y formatos 3D convertidos (`.pmd`, `.pmg`, `.tobj`, `.mat`).
+El proyecto está diseñado bajo una **Arquitectura de 3 Capas (Three-Tier Architecture)** para garantizar una estricta separación de responsabilidades, alta mantenibilidad, escalabilidad cartográfica y aislamiento frente a fallos del motor de juego:
 
-Para el desarrollo y orquestación de un mapa de escala continental como Chile, el **lenguaje de programación más apto y estándar en la industria del modding de SCS es Python 3**, debido a las siguientes razones clave:
+```mermaid
+graph TD
+    subgraph CapaPresentacion["1. Capa de Presentación (UI & Simulación Visual)"]
+        UI["Interfaz Gráfica SCS (Mercado de Fletes, Tarjetas de Trabajo, Mapa GPS)"]
+        Render["Motor Gráfico Prism3D (DirectX 11 / OpenGL)"]
+        Assets3D["Modelos 3D (.pmd/.pmg) & Texturas DDS (Pórticos TAG, Casetas MOP, Letreros)"]
+        AudioLoc["Audio FMOD & Localización de Textos (locale/)"]
+    end
 
-1. **Ecosistema Nativo con Blender:** Las herramientas oficiales de SCS Software (**SCS Blender Tools**) están escritas íntegramente como add-ons en Python para Blender. El uso de Python permite crear scripts que se comunican directamente con la API de Blender para la exportación por lotes de modelos 3D (letreros viales, peajes, edificios de Copec, postes de kilometraje MOP).
-2. **Generación Procedural de Definiciones:** Un mapa completo requiere miles de líneas de configuración para más de 50 comunas, 18 empresas, cadenas de cargas y reglas viales. Gestionarlas a mano genera inconsistencias de sintaxis. El script [`tools/generator.py`](file:///e:/Proyectos/Transporte_Austral/tools/generator.py) automatiza y sincroniza todas las definiciones a partir de una única fuente de verdad (Single Source of Truth).
-3. **Conversión Cartográfica y Georreferenciación:** Chile requiere proyecciones geodésicas (WGS84 a coordenadas planas cartesianas del motor de juego). [`tools/geo_converter.py`](file:///e:/Proyectos/Transporte_Austral/tools/geo_converter.py) traduce grados de Latitud y Longitud reales a los ejes $(X, Z)$ del SCS Map Editor e identifica el sector binario exacto (`sec-0003+0011.base`), ahorrando cientos de horas de cálculo manual.
-4. **Validación Estricta y Empaquetado Automático:** El motor de ETS2 no tolera dependencias circulares ni archivos faltantes en los `@include`. [`tools/build.py`](file:///e:/Proyectos/Transporte_Austral/tools/build.py) valida todo el árbol de dependencias, comprueba las cabeceras `SiiNunit` y empaqueta el archivo `.scs` en formato ZIP sin compresión (`STORED`), requisito indispensable para evitar tirones de rendimiento (*stuttering*) durante el renderizado en juego.
+    subgraph CapaNegocio["2. Capa de Lógica de Negocio (Reglas de Dominio & Economía)"]
+        Empresas["Motor de Empresas (def/company/): Rebranding, Ofertas In/Out, Sucursales"]
+        Cargas["Motor de Cargas (def/cargo/): Masas, Valores, Categorías ADR y Perecibles"]
+        Geografia["Reglas Geográficas (def/city/, def/country/): Huso horario, Moneda CLP, Patentes"]
+        SCSLimiter["Validador de Restricciones Prism3D (Tokens <= 12 Caracteres)"]
+        AutoGenerators["Suite Procedural Python (tools/generator.py)"]
+    end
+
+    subgraph CapaDatos["3. Capa de Persistencia y Almacenamiento (Data Access & Storage)"]
+        MapSectors["Sectores Binarios Cartográficos (map/chile/ *.base, *.data, *.desc, *.aux)"]
+        MapModule["Módulo Autónomo de Mapa (map/chile.mbd - Standalone)"]
+        DeclarativeSII["Definiciones Declarativas SiiNunit (def/ *.sii, *.sui)"]
+        ModPackage["Contenedor Optimizado (Transporte_Austral_Chile.scs - ZIP STORED)"]
+        ConfigProfile["Configuración de Juego (config.cfg -> g_force_economy_reset)"]
+    end
+
+    UI --> Empresas
+    UI --> Cargas
+    Render --> Assets3D
+    Empresas --> SCSLimiter
+    Cargas --> SCSLimiter
+    AutoGenerators --> DeclarativeSII
+    SCSLimiter --> DeclarativeSII
+    DeclarativeSII --> ModPackage
+    MapSectors --> ModPackage
+    MapModule --> ModPackage
+    ModPackage --> UI
+    ModPackage --> Render
+```
+
+### 1. Capa de Presentación (Presentation / Client Layer)
+Responsable de todo lo que el usuario final visualiza e interactúa en cabina y en los menús del simulador:
+* **Interfaz de Usuario (UI):** Menús de selección de fletes (Trabajo Rápido / Mercado de Cargas), visualizador de ofertas de trabajo con tarjetas de ciudades limpias y sin desbordes de texto (`Curicó (CL) ► Copiapó (CL)`), minimapa GPS con marcadores de iconos personalizados.
+* **Pipeline de Renderizado 3D:** Motor gráfico **Prism3D** ejecutando shaders especializados de SCS (`eut2.dif.spec.weight`, `eut2.road.airship`, `eut2.glass`), modelos de terreno, puentes y vegetación autóctona.
+* **Activos Gráficos y Multimedia:** Texturas comprimidas en DirectDraw Surface (DDS) con canales alfa BC1/BC3, sistemas de partículas de polvo/lluvia y soporte multilingüe en `locale/`.
+
+### 2. Capa de Lógica de Negocio (Business Logic / Domain Layer)
+Controla las reglas operativas, flujos de transporte y restricciones del universo simulado:
+* **Dominio Económico y Logístico:** Definición de cadenas de suministro (ofertas de origen `out/` y recepción `in/`), asignación de sucursales en editor (`company_def`) y vinculación directa de prefabs 3D del mapa base con marcas chilenas sin rotura de dependencias.
+* **Reglas Normativas Chilenas:** Implementación del formato oficial de matrículas del Servicio de Registro Civil (`BB·BB-00` y remolques `R0·12-34`), moneda nacional (Peso Chileno `$CLP`), husos horarios continentales (`UTC-3` / `UTC-4`) e insulares, y límites de velocidad viales.
+* **Guardias y Validadores de Arquitectura:** Módulo de validación de identificadores de SCS (imposición matemática de nombres de tokens $\le 12$ caracteres para prevenir fallos de carga en el Sii loader).
+* **Automatización Procedural:** Orquestador de definiciones en Python que asegura el principio de *Single Source of Truth* (SSOT) para más de 146 empresas y 52 comunas.
+
+### 3. Capa de Persistencia y Datos (Data & Persistence Layer)
+Maneja el almacenamiento en disco, los formatos binarios del mapa y la persistencia de perfiles:
+* **Bases de Datos Cartográficas:** Archivos de sectores binarios indexados por coordenadas cartesianas (`sec-XXXX+YYYY.base/data/desc/aux`) y el archivo de cabecera de mundo independiente (`map/chile.mbd`).
+* **Formatos Declarativos:** Esquemas de datos en formato **SiiNunit** (`.sii`, `.sui`) que alimentan al motor de base de datos relacional interna del simulador.
+* **Paquete de Distribución y Caché:** Archivo contenedor `Transporte_Austral_Chile.scs` estructurado como un archivo ZIP sin compresión (método `STORED`), eliminando penalizaciones de descompresión en tiempo real y asegurando *frame times* estables.
+
+---
+
+## 🏃 Metodología de Desarrollo: SCRUM Ágil
+
+El desarrollo de **Transporte Austral** se ejecuta bajo el marco de trabajo **SCRUM**, adaptado al desarrollo iterativo e incremental de software y modding para simuladores de mundo abierto:
+
+```mermaid
+graph LR
+    subgraph Planificacion["1. Planificación"]
+        PB["Product Backlog<br/>(Rutas, Regiones, Prefabs, Empresas)"] --> SP["Sprint Planning"]
+        SP --> SB["Sprint Backlog"]
+    end
+
+    subgraph Ejecucion["2. Ejecución del Sprint (Iteraciones de 1 a 2 semanas)"]
+        SB --> Daily["Daily Scrum & Sector Sync"]
+        Daily --> Dev["Desarrollo Modular:<br/>• Map Editor<br/>• Blender 3D<br/>• Python Automation"]
+    end
+
+    subgraph Entrega["3. Inspección y Adaptación"]
+        Dev --> BuildCI["Pipeline CI/CD:<br/>tools/generator.py<br/>tools/build.py"]
+        BuildCI --> Increment["Incremento .SCS Entregable<br/>(Pruebas In-Game)"]
+        Increment --> Review["Sprint Review"]
+        Review --> Retro["Sprint Retrospective"]
+        Retro --> PB
+    end
+```
+
+### Roles Scrum
+* **Product Owner (PO):** Define la visión del producto, prioriza la hoja de ruta nacional (selección de rutas troncales, puertos prioritarios y acuerdos con la comunidad de camioneros virtuales).
+* **Scrum Master (SM):** Facilita los procesos ágiles, elimina impedimentos técnicos del motor Prism3D (resolución de crasheos, optimización de draw-calls), supervisa los estándares de SCS Software y vela por la integración continua.
+* **Development Team (Equipo Multidisciplinario):**
+  * *Ingenieros de Software / Automatización:* Mantenimiento de la suite de Python (`tools/`), lógica de compilación, generadores y validadores.
+  * *Diseñadores de Nivel / Cartógrafos:* Trazado de carreteras, elevaciones topográficas, paisajismo y colocación de prefabs en SCS Map Editor.
+  * *Artistas Técnicos 3D:* Modelado en Blender de señalética MOP, garitas, peajes y optimización de texturas DDS.
+
+### Artefactos Scrum
+1. **Product Backlog:** Registro centralizado de historias de usuario, épicas territoriales (e.g., *"Como camionero virtual quiero recorrer la Cuesta Caracoles con curvas cerradas para experimentar el transporte cordillerano real"*).
+2. **Sprint Backlog:** Subconjunto de ítems, sectores cartográficos y definiciones seleccionadas para el Sprint actual.
+3. **Incremento de Software (Potentially Shippable Product):** Un archivo `.scs` completamente funcional, compilado y testeado tras cada iteración, libre de advertencias críticas en `game.log.txt`.
+
+### Ceremonias Scrum
+* **Sprint Planning:** Definición del objetivo del Sprint (Sprint Goal) y asignación de sectores geográficos.
+* **Daily Scrum:** Sincronización sobre sectores binarios editados con [`tools/sector_helper.py`](file:///e:/Proyectos/Transporte_Austral/tools/sector_helper.py) para evitar colisiones y sobrescritura de archivos binarios.
+* **Sprint Review:** Pruebas de conducción in-game en perfiles limpios, validando la economía de fletes y la visibilidad de empresas chilenas.
+* **Sprint Retrospective:** Análisis de incidentes (por ejemplo, identificación del límite de 12 caracteres en tokens) y creación de reglas automáticas preventivas en el pipeline.
+
+### Registro de Sprints
+* **Sprint 1 — Cimientos & Módulo Independiente (Completado):**
+  * Configuración del mapa standalone `chile.mbd`.
+  * Generación de las 16 regiones administrativas y 52 comunas base.
+  * Sistema de patentes oficiales según Registro Civil chileno.
+* **Sprint 2 — Ecosistema Empresarial & Cadenas Logísticas (Completado):**
+  * Integración de 47 empresas nacionales y sustitución de prefabs europeos mediante 146 marcas activas.
+  * Mapeo de servicentros Copec Pronto, Shell Upa! y Petrobras Spacio 1.
+  * Ingesta de 340 cargas locales e importadas.
+* **Sprint 3 — Estabilización, Refactorización UI & Zero Crashes (Completado):**
+  * Diagnóstico y solución del fallo de token >12 caracteres en Prism3D.
+  * Saneamiento de nombres de ciudades en tarjetas UI de fletes.
+  * Blindaje preventivo en [`tools/build.py`](file:///e:/Proyectos/Transporte_Austral/tools/build.py).
+* **Sprint 4 — Trazado Cartográfico Zona Central (En Curso):**
+  * Modelado de la Ruta 5 Sur (Santiago - Talca) y conexión a San Antonio (Ruta 78).
+
+---
+
+## 💻 Stack Tecnológico y Herramientas
+
+| Categoría | Tecnología / Herramienta | Versión | Rol en el Proyecto |
+| :--- | :--- | :--- | :--- |
+| **Core & Automatización** | **Python** | 3.12+ | Generación procedimental de definiciones SiiNunit, validación de integridad, parsers y compilación. |
+| **Shell & Scripting** | **PowerShell & Batch** | Windows Shell | Automatización de lanzadores con un clic (`run_editor.bat`, `iniciar_trayectoria.bat`). |
+| **Lenguaje Declarativo** | **SiiNunit DSL** | SCS Proprietary | Definición de estructuras de datos para entidades de juego (`.sii`, `.sui`). |
+| **Motor de Juego** | **SCS Prism3D** | v1.50 - 1.53+ | Motor de físicas, renderizado gráfico en tiempo real, simulación y gestión de tráfico IA. |
+| **Editor de Nivel** | **SCS Map Editor** | 64-bit Native | Trazado de geometría vial, topografía, colocación de prefabs y nodos de ciudades. |
+| **Modelado 3D** | **Blender** | 3.6 LTS / 4.x | Creación de modelos 3D de infraestructura chilena (pórticos TAG, peajes, letreros). |
+| **Pipeline 3D** | **SCS Blender Tools** | v2.4+ | Exportación de mallas, materiales, locators y colisiones al formato nativo `.pmd`/`.pmg`. |
+| **Formatos Gráficos** | **DirectDraw Surface (DDS)** | BC1 / BC3 / BC7 | Texturas optimizadas con compresión por hardware para minimización de consumo VRAM. |
+| **Audio & SFX** | **FMOD Studio** | SCS Spec | Integración de sonidos ambientales y efectos acústicos regionales. |
+| **Control de Versiones** | **Git & GitHub** | 2.40+ | Control de versiones del código fuente, definiciones y documentación. |
+| **Pipeline CI/CD Local** | **Custom Python Runner** | In-House | Validación automática, linter de sintaxis, empaquetado STORED e inyección en directorio de ETS2. |
 
 ---
 
@@ -81,164 +216,99 @@ El proyecto abarca la totalidad del territorio continental de Chile, dividido en
 
 ## 🛣️ Red de Rutas y Carreteras Chilenas
 
-La red vial chilena tiene particularidades únicas que se recrean con precisión milimétrica:
-
 ### 1. Ruta 5 Panamericana (Eje Troncal Nacional)
-* **Ruta 5 Norte (Arica - Santiago):** Dobles vías modernas alternadas con tramos desérticos épicos, amplias rectas rodeadas de cerros de arena, cuestas desafiantes (Cuesta Pajonales, Cuesta Buenos Aires) y plazas de peaje troncales.
-* **Autopistas Urbanas de Santiago:** Sistema de autopistas concesionadas con **pórticos TAG electrónicos**, túneles bajo el Río Mapocho (Costanera Norte) y enlaces de alta capacidad en Autopista Central y Américo Vespucio.
-* **Ruta 5 Sur (Santiago - Puerto Montt - Chiloé):** Doble calzada con separador central arbolado, puentes sobre ríos caudalosos, áreas de pesaje de camiones de la Dirección de Vialidad, paso por el By-pass Rancagua, Talca, Chillán, Temuco y el viaducto del Río Biobío.
-* **Cruce Marítimo Bimodal Canal de Chacao:** Cruce en barcaza/transbordador para ingresar a la Isla Grande de Chiloé (Ancud, Castro y Quellón).
+* **Ruta 5 Norte (Arica - Santiago):** Dobles vías alternadas con tramos desérticos épicos, amplias rectas rodeadas de cerros de arena, cuestas desafiantes (Cuesta Pajonales, Cuesta Buenos Aires) y plazas de peaje troncales.
+* **Autopistas Urbanas de Santiago:** Concesiones urbanas con **pórticos TAG electrónicos**, túneles bajo el Río Mapocho (Costanera Norte) y enlaces troncales en Autopista Central y Américo Vespucio.
+* **Ruta 5 Sur (Santiago - Puerto Montt):** Doble calzada con separador arbolado, puentes sobre ríos caudalosos, básculas de pesaje MOP, pasos por By-pass Rancagua, Talca, Chillán, Temuco y el viaducto del Río Biobío.
+* **Cruce Marítimo Bimodal Canal de Chacao:** Transbordadores para ingresar a la Isla Grande de Chiloé (Ancud, Castro y Quellón).
 
 ### 2. Ruta 7 (La Carretera Austral)
-Considerada una de las rutas escénicas y de aventura más famosas del mundo:
-* **Tramo Norte (Puerto Montt a Chaitén):** Ruta Bimodal con transbordadores marítimos entre Hornopirén, Leptepu y Caleta Gonzalo, atravesando densos bosques templados lluviosos y fiordos.
-* **Tramo Central (Puyuhuapi - Coyhaique):** Ascenso dramático por la **Cuesta Queulat**, curvas cerradas en pendiente extrema, cascadas junto a la calzada y puentes colgantes mecanos monovía de madera y acero.
-* **Tramo Sur (Coyhaique a Villa O'Higgins):** Bordeando el Río Baker de aguas turquesas, Lago General Carrera y el final de la ruta en Villa O'Higgins. Superficie de ripio compactado de alta exigencia para la suspensión del camión.
+* **Tramo Norte (Puerto Montt a Chaitén):** Ruta Bimodal con transbordadores marítimos entre Hornopirén, Leptepu y Caleta Gonzalo.
+* **Tramo Central (Puyuhuapi - Coyhaique):** Ascenso por la dramática **Cuesta Queulat**, curvas cerradas en pendiente extrema, cascadas y puentes monovía de madera y acero.
+* **Tramo Sur (Coyhaique a Villa O'Higgins):** Bordeando el Río Baker y Lago General Carrera, con superficie de ripio compactado de alta exigencia técnica.
 
-### 3. Rutas Conexas y Pasos Internacionales
-* **Ruta 68 (Santiago - Valparaíso / Viña del Mar):** Túnel Lo Prado y Túnel Zapata, Cuesta Zapata y descenso hacia la costa.
-* **Ruta 78 (Autopista del Sol):** Conexión logística de camiones cargueros de contenedores y fruta fresca entre Santiago, Melipilla y el megapuerto de San Antonio.
-* **Ruta 60-CH (Paso Los Libertadores):** La legendaria subida de los **Caracoles de Juncal**, con más de 29 curvas en herradura que ascienden hacia la boca del túnel Cristo Redentor rumbo a Argentina.
-* **Ruta 9 y Rutas Fueguinas (Magallanes):** Pampas patagónicas azotadas por ráfagas de viento blanco y cruce en ferry por el Estrecho de Magallanes (Punta Delgada - Bahía Azul).
+### 3. Pasos Internacionales y Rutas Conexas
+* **Ruta 68:** Santiago a Valparaíso y Viña del Mar, atravesando los túneles Lo Prado y Zapata.
+* **Ruta 78 (Autopista del Sol):** Conexión logística hacia el megapuerto de San Antonio.
+* **Ruta 60-CH (Paso Los Libertadores):** La icónica subida de los **Caracoles de Juncal** con 29 curvas en herradura hacia el túnel Cristo Redentor.
+* **Ruta 9 y Rutas Fueguinas:** Pampas patagónicas con cruce en barcaza por el Estrecho de Magallanes (Punta Delgada - Bahía Azul).
 
 ---
 
 ## 🏢 Empresas Chilenas y Cadenas Logísticas
 
-El mod incorpora las compañías reales más representativas de la economía chilena, cada una con patios de carga, depósitos de remolques y mercancías asociadas:
+El mod incorpora **146 empresas activas** en la economía del mapa, conectando cadenas de valor realistas:
 
 ```mermaid
 graph TD
-    Copec["Copec Combustibles / Lubricantes"] -->|Cisterna Combustible| Shell["Estaciones de Servicio"]
-    Codelco["Codelco Chile (Chuquicamata / El Teniente)"] -->|Cátodos de Cobre| Puertos["Puertos STI San Antonio / TPA Arica / TPS"]
-    Arauco["Arauco / CMPC (Forestal)"] -->|Celulosa y Madera| Puertos
-    Agrosuper["Agrosuper (Alimentos)"] -->|Refrigerados Carnes| Retail["Falabella / Cencosud / Supermercados"]
-    Colun["Colun (La Magia del Sur)"] -->|Leche en Cisterna y Lácteos| Retail
-    AquaChile["AquaChile (Salmones del Sur)"] -->|Salmón en Hielo Isotérmico| Aeropuerto["Aeropuerto Pudahuel / Exportación"]
-    Viñas["Concha y Toro / San Pedro"] -->|Vino Reserva en Botella| Puertos
-    Starken["Starken / Chilexpress"] -->|Paquetería y Encomiendas| HubLogistico["Centros Urbanos y Regiones"]
+    Copec["Copec Combustibles / ENAP"] -->|Cisterna Combustible| Shell["Red de Estaciones (Pronto / Upa / Spacio 1)"]
+    Codelco["Codelco Chile / Escondida"] -->|Cátodos de Cobre / Ácido| Puertos["Puertos STI San Antonio / TPA Arica / TPS"]
+    Arauco["Arauco / CMPC (Forestal)"] -->|Celulosa Kraft y Madera| Puertos
+    Agrosuper["Agrosuper (Alimentos)"] -->|Refrigerados Carnes| Retail["Lider / Cencosud / Unimarc"]
+    Colun["Colun / Soprole"] -->|Lácteos y Leche en Cisterna| Retail
+    AquaChile["AquaChile"] -->|Salmón en Hielo| Aeropuerto["Aeropuerto Pudahuel / Exportación"]
+    Vinas["Concha y Toro / San Pedro"] -->|Vino Reserva| Puertos
+    Starken["Starken / Chilexpress"] -->|Paquetería y Encomiendas| HubLogistico["Hubs Urbanos Regionales"]
 ```
 
-### Directorio de 47 Empresas Chilenas Implementadas en el Mapa
-
-El mod conecta los 240 sectores del mapa con 47 empresas emblemáticas chilenas distribuidas estratégicamente a lo largo de las 16 regiones y 52 comunas:
-
-#### 1. ⛽ Combustibles, Energía y Refinerías
-* **Copec (`copec`):** Mayor distribuidora nacional de hidrocarburos. Presente en las 52 comunas con patios de camiones, paradas de autopista y tiendas **Pronto Copec** y **Punto Copec**.
-* **Shell Enex (`shell_cl`):** Red de estaciones de servicio y áreas de descanso con tiendas **Upa!** y **Upita** en las principales ciudades y rutas troncales.
-* **Petrobras Esmax (`petrobras`, `petrobras_cl`):** Red interurbana de abastecimiento y tiendas **Spacio 1**.
-* **Aramco Chile (`aramco`):** Nueva red global de combustibles con estaciones de alto flujo en autopistas chilenas.
-* **ENAP (`enap`):** Empresa Nacional del Petróleo con refinerías en Concón, Biobío y plantas de extracción en Magallanes (movimiento de petróleo crudo, gasolinas y productos químicos).
-
-#### 2. ⛏️ Minería, Siderurgia y Química Pesada
-* **Codelco (`codelco`):** Corporación Nacional del Cobre. Operaciones en Calama (Chuquicamata), Rancagua (El Teniente), Los Andes (Andina) y Diego de Almagro (Salvador). Cargas de cátodos de cobre, concentrado, ácido sulfúrico y maquinaria pesada.
-* **Minera Escondida - BHP (`escondida`):** El mayor yacimiento de cobre a rajo abierto del planeta, ubicado en Antofagasta y Mejillones.
-* **SQM (`sqm`):** Sociedad Química y Minera de Chile. Explotación de litio en el Salar de Atacama, nitratos y yodo en Tarapacá y Antofagasta.
-* **CAP Acero (`cap_acero`):** Siderúrgica Huachipato (Talcahuano) y Compañía Minera del Pacífico en Copiapó/Vallenar (barras de acero, rieles y minerales de hierro).
-* **Molymet (`molymet`):** Mayor procesador mundial de molibdeno y renio con planta industrial en Nos / San Bernardo.
-
-#### 3. 🌲 Forestal, Celulosa y Madera
-* **Arauco (`arauco`):** Gigante forestal con complejos de clase mundial: Complejo MAPA (Arauco), Horcones, Planta Celulosa Constitución y Aserraderos en Biobío y Maule. Fletes de fardos de celulosa Kraft y madera aserrada.
-* **Empresas CMPC (`cmpc`):** "La Papelera", Forestal Mininco y plantas de celulosa y cartones en Los Ángeles, Laja y Puente Alto.
-
-#### 4. 🥩 Alimentos, Lácteos, Carnes y Agroindustria
-* **Agrosuper (`agrosuper`):** Mayor productor cárnico de Chile (Super Pollo, Super Cerdo, La Crianza, Sopraval). Despachos frigoríficos desde Lo Miranda, Rosario y San Bernardo hacia todo Chile.
-* **Colun (`colun`):** Cooperativa Agrícola y Lechera de La Unión ("La Magia del Sur"). Fletes de leche cruda en camiones cisterna isotérmicos, quesos y mantequillas desde Los Ríos hacia el resto del país.
-* **Soprole (`soprole`):** Líder lácteo nacional con plantas de acopio y elaboración de yogures, leches y postres en San Bernardo y Los Lagos.
-* **Carozzi (`carozzi`):** Megacomplejo alimenticio en Nos (Pastas Carozzi, Galletas Costa, Chocolates Ambrosoli y Harinas).
-* **Empresas Iansa (`iansa`):** Plantas agroindustriales de azúcar de remolacha, endulzantes y pulpas de tomate en Los Ángeles, Chillán y Maule.
-* **Panadería Ideal - Bimbo (`ideal_cl`):** Mayor planta de panificación de Chile en Quilicura y distribución continua a nivel nacional.
-* **Watt's (`watts`):** Procesadora de jugos Watt's, leches Loncoleche, margarinas Calo y aceites Chef en Osorno y San Bernardo.
-* **Frigorífico Simunovic (`simunovic`):** Planta faenadora en Punta Arenas especializada en cortes de cordero patagónico y carnes de exportación.
-* **Dole Chile Frutícola (`dole_cl`):** Packing de paltas Hass de Quillota/Petorca, uvas de mesa, arándanos y manzanas para los puertos de Valparaíso y San Antonio.
-* **AquaChile (`aquachile`):** Mayor salmonera de Chile con centros de cultivo y plantas de empaque en Puerto Montt, Castro, Quellón y Aysén.
-
-#### 5. 🍻 Bebidas, Cervezas y Viñedos
-* **CCU (`ccu`):** Compañía de Cervecerías Unidas. Cervezas Cristal, Escudo y Royal Guard; gaseosas Bilz y Pap; y aguas minerales Cachantún.
-* **Coca-Cola Andina (`andina`):** Embotelladora en Renca y San Bernardo para la zona central de Chile.
-* **Coca-Cola Embonor (`embonor`):** Distribución de bebidas gaseosas, jugos y aguas en las zonas norte y sur (Arica, Iquique, Concepción, Temuco).
-* **Viña Concha y Toro (`concha_toro`):** La viña más icónica de Chile (Casillero del Diablo, Don Melchor) con bodegas en Pirque, Curicó y San Fernando.
-* **Cervecería Kunstmann (`kunstmann`):** Cerveza craft tradicional nacida en Torobayo (Valdivia).
-* **Cervecería Austral (`austral_pza`):** La cerveza más austral del mundo, elaborada en Punta Arenas con aguas de la Patagonia.
-
-#### 6. 🛒 Retail, Supermercados y Mejoramiento del Hogar
-* **Lider - Walmart Chile (`lider`):** Red de hipermercados Lider, Express de Lider y el megacentro de distribución Lo Aguirre en Pudahuel.
-* **Cencosud (`cencosud`):** Cadena de abastecimiento de Hipermercados Jumbo, Supermercados Santa Isabel y tiendas de construcción Easy.
-* **Unimarc (`unimarc`):** Supermercado presente en las 16 regiones de Chile, desde Arica hasta Magallanes.
-* **Falabella Logística (`falabella`):** Grandes tiendas por departamento y centros logísticos en San Bernardo y Pudahuel.
-* **Ripley Retail (`ripley`):** Tiendas departamentales, electrónica y centro de distribución Pudahuel.
-* **Homecenter Sodimac (`sodimac`):** Red líder de ferretería, mejoramiento del hogar y Sodimac Constructor (cemento, maderas, herramientas).
-
-#### 7. 🏗️ Cemento y Materiales de Construcción
-* **Cemento Melón (`melon`):** Producción histórica de cemento y áridos desde La Calera y San Antonio.
-* **Cementos Bío Bío - CBB (`cbb_cemento`):** Plantas de molienda de cemento y cal en Talcahuano, Curicó y Teno.
-* **Cementos Polpaico (`polpaico`):** Complejos de cemento y hormigón en Cerro Blanco (Tiltil) y Coronel.
-
-#### 8. 📦 Courier, Encomiendas y Logística Nacional
-* **Starken (`starken`):** Hub de paquetería express y carga pesada del grupo TurBus con terminales en todo el territorio chileno.
-* **Chilexpress (`chilexpress`):** Courier de paquetería urgente y entregas e-commerce nacional con hubs en aeropuertos y carreteras.
-* **CorreosChile (`correos_cl`):** Correo oficial del Estado de Chile y su Centro Tecnológico Postal (CTP) en el Aeropuerto de Pudahuel.
-* **Blue Express (`bluex`):** Operador logístico líder en distribución de última milla para comercio electrónico.
-
-#### 9. ⚓ Puertos, Terminales Marítimos y Conectividad Austral
-* **STI San Antonio (`sti_san_ant`):** San Antonio Terminal Internacional, el puerto de mayor transferencia de contenedores del país.
-* **TPS Valparaíso (`tps_valp`):** Terminal Pacífico Sur, muelle histórico para el embarque de fruta fresca y vinos chilenos.
-* **TPA Arica (`tpa_arica`):** Terminal Puerto Arica, muelle multipropósito del extremo norte y salida bioceánica.
-* **Puerto Coronel (`pto_coronel`):** Principal puerto de exportación de celulosa, tableros y maderas del sur de Chile.
-* **TABSA (`tabsa`):** Transbordadora Austral Broom. Servicio de ferries y barcazas para cruce de camiones pesados en Primera Angostura (Estrecho de Magallanes) y Porvenir (Tierra del Fuego).
+### Principales Sectores Industriales
+1. **⛽ Combustibles y Energía:** Copec (`copec`), Shell Enex (`shell_cl`), Petrobras (`petrobras`), Aramco (`aramco`), ENAP (`enap`).
+2. **⛏️ Minería y Siderurgia:** Codelco (`codelco`), Minera Escondida (`escondida`), SQM (`sqm`), CAP Acero (`cap_acero`), Molymet (`molymet`).
+3. **🌲 Forestal y Papel:** Arauco (`arauco`), Empresas CMPC (`cmpc`).
+4. **🥩 Alimentos y Agroindustria:** Agrosuper (`agrosuper`), Colun (`colun`), Soprole (`soprole`), Carozzi (`carozzi`), Iansa (`iansa`), Panadería Ideal (`ideal_cl`), Watt's (`watts`), Dole Chile (`dole_cl`), AquaChile (`aquachile`).
+5. **🍻 Bebidas y Viñedos:** CCU (`ccu`), Coca-Cola Andina (`andina`), Coca-Cola Embonor (`embonor`), Viña Concha y Toro (`concha_toro`), Cerveza Kunstmann (`kunstmann`), Cerveza Austral (`austral_pza`).
+6. **🛒 Retail y Construcción:** Lider Walmart (`lider`), Cencosud Jumbo/Easy (`cencosud`), Unimarc (`unimarc`), Falabella (`falabella`), Sodimac (`sodimac`), Cemento Melón (`melon`), Polpaico (`polpaico`).
+7. **📦 Courier y Logística:** Starken (`starken`), Chilexpress (`chilexpress`), CorreosChile (`correos_cl`), Blue Express (`bluex`).
+8. **⚓ Puertos y Ferries:** STI San Antonio (`sti_san_ant`), TPS Valparaíso (`tps_valp`), TPA Arica (`tpa_arica`), Puerto Coronel (`pto_coronel`), TABSA (`tabsa`).
 
 ---
 
 ## ⛽ Estaciones de Servicio y Áreas de Descanso
 
-En el mod, las paradas de combustible han sido diseñadas reflejando los puntos de parada reales más concurridos por los camioneros chilenos en la Ruta 5:
-
-* **Copec Pronto:** Estaciones de gran formato con estacionamientos para camiones de 45 toneladas, duchas para conductores, cajeros y restaurantes Pronto (ejemplos recreados: *Copec Pronto San Francisco de Mostazal*, *Copec Pronto Los Vilos*, *Copec Salto del Laja*, *Copec La Negra en Antofagasta*).
-* **Shell Upa!:** Estaciones con arquitectura moderna Shell Enex y áreas de descanso.
-* **Petrobras Spacio 1:** Estaciones urbanas e interurbanas.
-* **Plazas de Pesaje MOP:** Estaciones de pesaje por eje obligatorias con básculas activas donde el camión debe ingresar si la señal luminosa lo indica.
+* **Copec Pronto:** Diseños con estacionamientos para combinaciones pesadas de 45 toneladas, servicios higiénicos, duchas y áreas de descanso (ej: *Copec Pronto San Francisco de Mostazal*, *Copec Pronto Los Vilos*, *Copec Salto del Laja*, *Copec La Negra en Antofagasta*).
+* **Shell Upa! / Upita:** Estaciones modernas con paradores de descanso interurbanos.
+* **Petrobras Spacio 1:** Módulos de abastecimiento en autopistas y radios urbanos.
+* **Básculas de Pesaje MOP:** Estaciones oficiales de pesaje dinámico y estático por eje de la Dirección de Vialidad.
 
 ---
 
 ## 📦 Cargas y Mercancías Nacionales
 
-Se han creado cargas a la medida de la economía chilena en [`def/cargo/`](file:///e:/Proyectos/Transporte_Austral/def/cargo/):
-
-* `catodos_cobre`: Cátodos electrolíticos de cobre grado A de alta pureza (24 toneladas, alto valor).
-* `celulosa_fardo`: Fardos prensados de celulosa Kraft para embalaje y exportación marítima (22,5 toneladas).
-* `salmon_fresco`: Cajas isotérmicas con salmón del Atlántico fresco sobre lecho de hielo (19 toneladas, carga refrigerada perecible).
-* `vino_reserva`: Pallets de botellas de vino chileno reserva en barricas y cajas (18,5 toneladas, frágil y valiosa).
-* `leche_sur`: Cisterna alimentaria con leche entera cruda y pasteurizada Colun (25 toneladas líquidas).
-* `combustible_cl`: Cisterna de hidrocarburos con gasolinas de 93, 95, 97 octanos y Diésel Copec Ultra (26 toneladas, mercancía ADR inflamable).
-* `palta_hass`: Pallets de palta Hass de los valles de Quillota y Petorca (17,5 toneladas, refrigerada).
-* `encomiendas_cl`: Cargas consolidadas de mensajería y paquetería Starken / Chilexpress (12 toneladas).
+Ubicadas y configuradas en [`def/cargo/`](file:///e:/Proyectos/Transporte_Austral/def/cargo/):
+* `catodos_cobre`: Cátodos electrolíticos de alta pureza (24 t, alto valor).
+* `celulosa_fardo`: Fardos prensados de celulosa Kraft (22,5 t).
+* `salmon_fresco`: Cajas isotérmicas con salmón fresco en hielo (19 t, perecible).
+* `vino_reserva`: Pallets de vino embotellado de exportación (18,5 t, frágil).
+* `leche_sur`: Cisterna isotérmica con leche fresca Colun (25 t líquidas).
+* `combustible_cl`: Gasolinas y diésel Ultra Copec (26 t, carga ADR).
+* `palta_hass`: Pallets de exportación de valles de Quillota/Petorca (17,5 t).
+* `encomiendas_cl`: Cargas consolidadas de courier y paquetería (12 t).
 
 ---
 
 ## 🪪 Sistema de Patentes Chilenas Oficiales
 
-En Chile, el **Servicio de Registro Civil e Identificación** regula el formato de patentes vehiculares (implementado en [`def/country/chile/license_plates.sui`](file:///e:/Proyectos/Transporte_Austral/def/country/chile/license_plates.sui)):
-
-* **Estructura oficial:** `BB·BB-00` (4 consonantes seguidas de 2 números).
-* **Filtro estricto del Registro Civil:** Quedan formalmente excluidas las **5 vocales** ($A, E, I, O, U$) para evitar palabras indecorosas, y también las letras $M, N, Ñ, Q$ para evitar falsificaciones o confusiones ópticas con la $0, 1, O$.
-* **Patentes de semirremolques:** Incorpora series con prefijo `R` para remolques pesados (`R0·12-34`).
+Implementado en [`def/country/chile/license_plates.sui`](file:///e:/Proyectos/Transporte_Austral/def/country/chile/license_plates.sui) según la normativa del **Servicio de Registro Civil e Identificación**:
+* **Patentes de Vehículos:** Estructura `BB·BB-00` (4 consonantes y 2 dígitos).
+* **Restricción de Caracteres:** Exclusión formal de las 5 vocales ($A, E, I, O, U$) y de las letras $M, N, Ñ, Q$ para prevenir duplicidades y confusiones ópticas con dígitos.
+* **Patentes de Remolques:** Series con prefijo `R` para semirremolques pesados (`R0·12-34`).
 
 ---
 
-## 🐍 Suite de Automatización en Python (`tools/`)
+## 🐍 Suite de Automatización y DevOps (`tools/`)
 
 Ubicada en la carpeta [`tools/`](file:///e:/Proyectos/Transporte_Austral/tools/):
 
 ### 1. `generator.py` (Generador de Definiciones)
-Regenera de forma automática los archivos `.sui` y `.sii` de ciudades, empresas, cargas y estaciones de servicio con un solo comando:
+Regenera procedimentalmente todas las definiciones `.sui` y `.sii` de regiones, ciudades, empresas, cargas, gasolineras y localización con un solo comando:
 ```bash
 python tools/generator.py
 ```
 
-### 2. `geo_converter.py` (Conversor GPS a Coordenadas de Juego)
-Permite transformar cualquier coordenada real de Chile a los ejes de coordenadas del mapa y calcular en qué archivo de sector caerá:
+### 2. `geo_converter.py` (Conversor GPS WGS84 a Coordenadas SCS)
+Traduce coordenadas de Latitud y Longitud reales a los ejes $(X, Z)$ del editor e identifica el sector binario exacto:
 ```bash
-# Ejemplo: Obtener coordenadas de las Torres del Paine
+# Ejemplo: Coordenadas de las Torres del Paine
 python tools/geo_converter.py -51.7269 -72.5069
 ```
 *Salida:*
@@ -246,75 +316,60 @@ python tools/geo_converter.py -51.7269 -72.5069
 Lat: -51.7269, Lon: -72.5069 -> ETS2 X: -7918, Z: 106970 -> Sector: sec-0002+0026.base
 ```
 
-### 3. `build.py` (Compilador y Empaquetador `.scs`)
-Valida la integridad de los archivos, comprueba que ningún include esté roto y genera el archivo empaquetado final `dist/Transporte_Austral_Chile.scs`:
+### 3. `build.py` (Pipeline de Compilación, Validación y Despliegue)
+Valida la integridad del árbol de dependencias, comprueba límites de tokens ($\le 12$ caracteres) y compila el paquete final `Transporte_Austral_Chile.scs` en modo `STORED`:
 ```bash
 python tools/build.py
 ```
-*Si detecta la instalación de ETS2 en tu equipo, copiará automáticamente el `.scs` a tu carpeta `Documents/Euro Truck Simulator 2/mod/`.*
+*Si detecta la instalación de ETS2, copia automáticamente el paquete compilado a la carpeta `Documents/Euro Truck Simulator 2/mod/` y activa `g_force_economy_reset` para refrescar fletes.*
 
-### 4. `launcher.py` / `iniciar_trayectoria.bat` (Selector de Regiones y Sorteo Aleatorio de Comunas)
-Permite al conductor seleccionar cualquiera de las 16 regiones de Chile y sortea automáticamente una comuna al azar con sus coordenadas y empresas disponibles para iniciar su recorrido:
+### 4. `sector_helper.py` (Gestor de Sectores y Copias de Seguridad)
+Audita los sectores binarios creados en `map/chile/` y genera respaldos fechados:
 ```bash
-# Ejecutar desde terminal
-python tools/launcher.py
-
-# O hacer doble clic en el archivo raíz:
-iniciar_trayectoria.bat
+python tools/sector_helper.py
+python tools/sector_helper.py backup
 ```
 
-### 5. `sector_helper.py` (Gestor de Sectores y Copias de Seguridad)
-Audita los sectores binarios creados en `map/chile/` y genera backups con fecha y hora:
+### 5. `launcher.py` / `iniciar_trayectoria.bat`
+Lanzador interactivo para seleccionar regiones y sortear comunas de inicio:
 ```bash
-# Auditar sectores guardados
-python tools/sector_helper.py
-
-# Crear copia de seguridad completa del mapa
-python tools/sector_helper.py backup
+python tools/launcher.py
+# O doble clic en iniciar_trayectoria.bat
 ```
 
 ---
 
 ## 🛠️ Guía Paso a Paso: SCS Map Editor
 
-Para comenzar a trazar las carreteras y colocar los modelos en el editor de ETS2:
-
-### Paso 1: Habilitar Consola y Modo Desarrollador
-Abre el archivo `Documents\Euro Truck Simulator 2\config.cfg` en el Bloc de Notas y modifica estos dos parámetros:
+### Paso 1: Habilitar Modo Desarrollador y Consola
+En `Documents\Euro Truck Simulator 2\config.cfg`:
 ```text
 uset g_developer "1"
 uset g_console "1"
 ```
 
 ### Paso 2: Ejecutar el Editor
-Puedes ejecutar el script automatizado [`tools/run_editor.bat`](file:///e:/Proyectos/Transporte_Austral/tools/run_editor.bat) o lanzar manualmente desde la terminal:
+Ejecuta el script [`tools/run_editor.bat`](file:///e:/Proyectos/Transporte_Austral/tools/run_editor.bat) o inicia desde terminal:
 ```powershell
 & "C:\Program Files (x86)\Steam\steamapps\common\Euro Truck Simulator 2\bin\win_x64\eurotrucks2.exe" -edit chile -force_mods
 ```
 
-### Paso 3: Comandos Esenciales de la Consola del Editor (Tecla `~`)
-* `c_goto <X> 100 <Z>`: Salta la cámara instantáneamente a las coordenadas de cualquier ciudad calculadas con `geo_converter.py`.
-* `save chile`: Guarda todos los cambios en los sectores binarios dentro de `map/chile/`.
+### Paso 3: Comandos Esenciales (Tecla `~`)
+* `c_goto <X> 100 <Z>`: Salto instantáneo a coordenadas calculadas con `geo_converter.py`.
+* `save chile`: Guarda todos los cambios en `map/chile/`.
 * `load chile`: Recarga el mapa guardado.
-* `F5`: Abre el diálogo de búsqueda de sectores e información de entidades.
-* `E`: Herramienta de colocación de carreteras (Road Item).
-* `P`: Herramienta de prefabs y cruces viales (Prefab Item).
-* `M`: Mover o ajustar nodos de elevación del terreno.
-* `C`: Herramienta de ciudades (City Node) para vincular los nombres del mapa con las definiciones de `def/city/*.sui`.
+* `F5`: Diálogo de búsqueda y sectores.
+* Atajos de edición: `E` (Carreteras), `P` (Prefabs/Cruces), `M` (Nodos/Alturas), `C` (Ciudades).
 
 ---
 
 ## 🎨 Flujo 3D: Blender y SCS Blender Tools
 
-Para modelar activos característicos de Chile (pórticos TAG de autopistas, casetas de peaje manual MOP, letreros viales verdes y azules chilenos, garitas de Carabineros):
-
-1. **Instalar Blender:** Versión recomendada 3.6 LTS o 4.x.
-2. **Instalar SCS Blender Tools:** Descarga oficial del portal de desarrolladores de SCS Software e instalar como plugin en Blender.
-3. **Configurar el Project Root:** Apuntar el directorio base a la raíz de este repositorio (`Transporte_Austral`).
-4. **Texturizado y Shaders:**
-   * Utilizar shaders SCS (`eut2.dif.spec.weight`, `eut2.road.airship`, etc.).
-   * Las texturas deben guardarse en formato DDS con canales alfa correctos (BC1/DXT1 para opacas, BC3/DXT5 para transparencias).
-5. **Exportación:** Exportar las piezas usando el operador SCS para generar los modelos listos para el motor del juego.
+Para modelar activos propios de Chile (pórticos TAG, peajes manuales MOP, letreros viales, garitas):
+1. **Blender:** Versión 3.6 LTS o 4.x.
+2. **SCS Blender Tools:** Plugin oficial configurado con Project Root en la raíz de `Transporte_Austral`.
+3. **Texturas y Shaders:** Usar shaders `eut2.*` y exportar texturas en formato DDS (BC1 opaco, BC3 con transparencia).
+4. **Exportación:** Compilar los modelos para generar los formatos `.pmd`, `.pmg` y `.mat`.
 
 ---
 
@@ -323,80 +378,80 @@ Para modelar activos característicos de Chile (pórticos TAG de autopistas, cas
 ```text
 Transporte_Austral/
 │
-├── manifest.sii                  # Descriptor y metadatos del mod para ETS2
-├── description.txt               # Descripción formateada con bbcode para el juego
-├── mod_icon.png                  # Icono de portada oficial en el Gestor de Mods
-├── README.md                     # Manual maestro y documentación arquitectónica
+├── manifest.sii                  # Descriptor y metadatos oficiales del mod para ETS2
+├── description.txt               # Descripción con formato bbcode para el Gestor de Mods
+├── mod_icon.png                  # Icono oficial de portada del mod
+├── README.md                     # Manual maestro y arquitectura del proyecto
 │
-├── def/                          # Definiciones SiiNunit del motor Prism3D
-│   ├── country.chile.sii         # Inclusión maestra de país
+├── def/                          # Capa de Lógica de Negocio (SiiNunit DSL)
+│   ├── country.sii               # Inclusión maestra de país
 │   ├── country/
-│   │   ├── chile.sui             # Datos país: moneda CLP, límites velocidad, huso horario
+│   │   ├── chile.sui             # Definición de país: moneda CLP, velocidades, husos
 │   │   └── chile/
-│   │       └── license_plates.sui# Patentes chilenas (BB-BB-00) según Registro Civil
-│   ├── city.chile.sii            # Inclusión maestra de ciudades
+│   │       └── license_plates.sui# Formato oficial de patentes según Registro Civil
+│   ├── city.sii                  # Inclusión maestra de ciudades
 │   ├── city/                     # 52 archivos .sui para comunas y ciudades de Chile
-│   ├── company.chile.sii         # Inclusión maestra de empresas
-│   ├── company/                  # 18 empresas chilenas (Copec, Codelco, Arauco, etc.)
-│   ├── cargo.chile.sii           # Inclusión maestra de cargas nacionales
-│   ├── cargo/                    # 8 cargas típicas chilenas
+│   ├── company.sii               # Inclusión maestra de 146 empresas activas
+│   ├── company/                  # Definiciones .sui, sucursales (editor/) e in/out
+│   ├── cargo.sii                 # Inclusión maestra de cargas nacionales
+│   ├── cargo/                    # Cargas chilenas (cobre, celulosa, salmón, vino, etc.)
 │   └── world/
-│       └── gasoline_station.chile.sii # Mapeo de marcas Copec Pronto, Shell Upa, Petrobras
+│       └── gasoline_station*.sii # Red de servicentros Copec, Shell, Petrobras, Aramco
 │
-├── map/                          # Base de datos y sectores del SCS Map Editor
-│   ├── chile.mbd                 # Archivo de cabecera del mapa
-│   ├── README.txt                # Instrucciones de guardado de sectores
-│   └── chile/                    # Sectores binarios (secXXXX+YYYY.base/data/desc)
+├── map/                          # Capa de Persistencia: Sectores del SCS Map Editor
+│   ├── chile.mbd                 # Archivo de cabecera del mapa (Módulo Standalone)
+│   ├── README.txt                # Protocolo de guardado y manejo de sectores
+│   └── chile/                    # Sectores binarios (sec-XXXX+YYYY.base/data/desc/aux)
 │
-├── tools/                        # Suite de desarrollo y automatización en Python
-│   ├── generator.py              # Generador dinámico de definiciones .sii y .sui
-│   ├── geo_converter.py          # Conversor de GPS WGS84 chileno a coordenadas SCS
-│   ├── build.py                  # Validador y empaquetador del archivo final .scs
-│   ├── sector_helper.py          # Auditor y respaldador de sectores binarios
-│   ├── requirements.txt          # Requisitos de Python (zero-dependency core)
-│   └── run_editor.bat            # Lanzador automático de 1 clic para el Map Editor
+├── tools/                        # Suite de Automatización, CI/CD y DevOps en Python
+│   ├── generator.py              # Generador procedural de definiciones
+│   ├── geo_converter.py          # Conversor WGS84 a coordenadas SCS
+│   ├── build.py                  # Linter, validador de tokens y empaquetador .scs
+│   ├── sector_helper.py          # Auditor y respaldador de sectores del mapa
+│   ├── launcher.py               # Selector y sorteador interactivo de rutas
+│   ├── run_editor.bat            # Lanzador de un clic para el SCS Map Editor
+│   └── requirements.txt          # Dependencias mínimas de Python
 │
-└── dist/                         # Archivo final compilado listo para jugar
-    └── Transporte_Austral_Chile.scs
+└── dist/                         # Capa de Distribución
+    └── Transporte_Austral_Chile.scs # Paquete final compilado listo para jugar
 ```
 
 ---
 
 ## 🚀 Compilación e Instalación
 
-### Método 1: Automatizado con Python
-Ejecuta el script de empaquetado:
+### Método 1: Automatizado con Python (Recomendado)
+Ejecuta el pipeline completo de validación y compilación:
 ```bash
 python tools/build.py
 ```
-El script generará el archivo `Transporte_Austral_Chile.scs` en la carpeta `dist/` y lo colocará automáticamente en tu carpeta de mods si tienes ETS2 instalado.
+El script validará que ningún token exceda 12 caracteres, construirá `dist/Transporte_Austral_Chile.scs` e inyectará automáticamente el mod en tu directorio de Euro Truck Simulator 2.
 
 ### Método 2: Instalación Manual
 1. Copia el archivo `dist/Transporte_Austral_Chile.scs`.
-2. Pégalo en tu carpeta de mods de Euro Truck Simulator 2:
+2. Pégalo en tu carpeta de mods de ETS2:
    ```text
    C:\Users\<TuUsuario>\Documents\Euro Truck Simulator 2\mod\
    ```
 3. Inicia Euro Truck Simulator 2.
-4. En la pantalla de selección de perfil, haz clic en **Gestor de Modificaciones**.
-5. Activa el mod **"Transporte Austral - Mapa de Chile"** y dale máxima prioridad.
-6. Si juegas como mapa independiente (*Standalone*), al crear un perfil nuevo selecciona el módulo de mapa `chile.mbd` en lugar de `europe.mbd`.
+4. En la pantalla de perfiles, entra al **Gestor de Modificaciones** y dale máxima prioridad a **"Transporte Austral - Mapa de Chile"**.
+5. Al crear un perfil nuevo independiente, asegúrate de seleccionar el módulo de mapa `chile.mbd`.
 
 ---
 
 ## 🗺️ Hoja de Ruta (Roadmap)
 
 - [x] **Fase 1: Fundación y Automatización**
-  - [x] Estructura base de paquetes `manifest.sii` y diseño de icono oficial.
+  - [x] Estructura base de paquetes `manifest.sii` e icono oficial.
   - [x] Suite de automatización en Python (`generator.py`, `geo_converter.py`, `build.py`, `sector_helper.py`).
   - [x] Base de datos y definiciones de las 16 regiones de Chile y 52 comunas.
-  - [x] Catálogo de empresas chilenas (Copec, Codelco, Arauco, Agrosuper, Colun, etc.).
+  - [x] Catálogo de 146 empresas activas y rebranding completo de prefabs base.
   - [x] Sistema oficial de patentes chilenas sin vocales ni caracteres ambiguos.
-  - [x] Mapeo de estaciones de servicio Copec Pronto, Shell Upa! y Petrobras Spacio 1.
+  - [x] Red de servicentros Copec Pronto, Shell Upa! y Petrobras Spacio 1.
 - [ ] **Fase 2: Trazado en Map Editor (Zona Central)**
   - [ ] Modelado de la Ruta 5 Sur (Santiago - Rancagua - Talca).
   - [ ] Modelado de la Ruta 68 (Santiago - Valparaíso / Viña del Mar) con peajes y túneles.
-  - [ ] Conexión al puerto de San Antonio (Ruta 78 Autopista del Sol).
+  - [ ] Conexión al megapuerto de San Antonio (Ruta 78 Autopista del Sol).
 - [ ] **Fase 3: Carreteras Australes y Geografía Extrema**
   - [ ] Paso Los Libertadores y la Cuesta Caracoles (Ruta 60-CH).
   - [ ] Puerto Montt a Chaitén (Ruta Bimodal con transbordadores).

@@ -1,0 +1,5 @@
+material : "ui"
+{
+    texture : "/material/ui/company/small/globe_eur.tobj"
+    texture_name : "texture"
+}
