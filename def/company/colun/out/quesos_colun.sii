@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .quesos_colun {
- cargo: "cargo.quesos_colun"
-}
-}

@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .papel_kraft {
- cargo: "cargo.papel_kraft"
-}
-}

@@ -13,6 +13,7 @@ y estaciones de servicio (Copec, Shell, Petrobras).
 
 import os
 import sys
+import shutil
 from pathlib import Path
 
 # Directorio raíz del proyecto
@@ -476,131 +477,132 @@ EMPRESAS_CHILENAS = {
     "copec": {
         "nombre": "Copec - Combustibles y Lubricantes",
         "rubro": "Red de Estaciones de Servicio Copec, Pronto Copec y Punto Copec",
-        "cargas_in": ["petroleo_ref", "combust_cl", "lubricantes_copec", "diesel", "petrol", "abarrotes"],
-        "cargas_out": ["combust_cl", "lubricantes_copec"]
+        "cargas_in": ["petrol_ref", "combust_cl", "lubric_cl", "diesel", "petrol", "beverages"],
+        "cargas_out": ["combust_cl", "lubric_cl", "diesel", "petrol", "empty_barr"]
     },
     "shell_cl": {
         "nombre": "Shell Enex Chile",
         "rubro": "Red de Estaciones de Servicio Shell y Tiendas Upa! / Upita",
-        "cargas_in": ["petroleo_ref", "combust_cl", "diesel", "petrol", "bebidas", "snacks"],
-        "cargas_out": ["combust_cl", "lubricantes_shell"]
+        "cargas_in": ["petrol_ref", "combust_cl", "diesel", "petrol", "lubric_cl", "beverages"],
+        "cargas_out": ["combust_cl", "lubric_cl", "diesel", "petrol"]
     },
     "petrobras": {
         "nombre": "Petrobras Chile - Esmax",
         "rubro": "Red de Estaciones de Servicio Petrobras y Tiendas Spacio 1",
-        "cargas_in": ["combust_cl", "diesel", "petrol", "lubricantes_petro"],
-        "cargas_out": ["combust_cl"]
+        "cargas_in": ["combust_cl", "diesel", "petrol", "lubric_cl", "beverages"],
+        "cargas_out": ["combust_cl", "lubric_cl", "diesel", "petrol"]
     },
     "petrobras_cl": {
         "nombre": "Petrobras Chile - Esmax",
         "rubro": "Red de Estaciones de Servicio Petrobras y Tiendas Spacio 1",
-        "cargas_in": ["combust_cl", "diesel", "petrol", "lubricantes_petro"],
-        "cargas_out": ["combust_cl"]
+        "cargas_in": ["combust_cl", "diesel", "petrol", "lubric_cl", "beverages"],
+        "cargas_out": ["combust_cl", "lubric_cl", "diesel", "petrol"]
     },
     "aramco": {
         "nombre": "Aramco Chile",
         "rubro": "Red Global de Combustibles y Estaciones de Servicio Aramco",
-        "cargas_in": ["combust_cl", "diesel", "petrol"],
-        "cargas_out": ["combust_cl"]
+        "cargas_in": ["combust_cl", "diesel", "petrol", "lubric_cl", "beverages"],
+        "cargas_out": ["combust_cl", "lubric_cl", "diesel", "petrol"]
     },
     "codelco": {
         "nombre": "Codelco Chile",
         "rubro": "Minería Estatal del Cobre (Chuquicamata, El Teniente, Andina)",
-        "cargas_in": ["maquinaria_pesada", "explosivos_min", "acido_sulfurico", "repuestos_cat"],
-        "cargas_out": ["catod_cobre", "concentrado_cobre", "anodos_cobre"]
+        "cargas_in": ["maq_pesada", "acid_sulf", "cables", "tires"],
+        "cargas_out": ["catod_cobre", "conc_cobre"]
     },
     "arauco": {
         "nombre": "Arauco Celulosa y Maderas",
         "rubro": "Complejo Forestal y Celulosa (MAPA, Constitución)",
-        "cargas_in": ["troncos_pino", "quimicos_blanqueo", "repuestos_ind"],
-        "cargas_out": ["cel_fardo", "madera_aserrada", "tableros_mdf"]
+        "cargas_in": ["tronc_pino", "chemicals"],
+        "cargas_out": ["cel_fardo", "mad_aserr"]
     },
     "cmpc": {
         "nombre": "Empresas CMPC",
         "rubro": "Forestal Mininco y Papeles del Pacífico",
-        "cargas_in": ["troncos_eucalipto", "bobinas_papel", "combust_cl"],
-        "cargas_out": ["cel_fardo", "papel_kraft", "madera_aserrada"]
+        "cargas_in": ["tronc_pino", "combust_cl"],
+        "cargas_out": ["cel_fardo", "mad_aserr"]
     },
     "agrosuper": {
         "nombre": "Agrosuper Chile",
         "rubro": "Alimentos (Super Pollo, Super Cerdo, La Crianza, Sopraval)",
-        "cargas_in": ["granos_maiz", "alimento_animal", "envases_empaque"],
-        "cargas_out": ["carnes_frescas", "cecinas_envasadas", "congelados_cl"]
+        "cargas_in": ["wheat", "barley"],
+        "cargas_out": ["carne_fresc", "pork_meat", "beef_meat"]
     },
     "falabella": {
         "nombre": "Falabella Logística & Retail",
         "rubro": "Centro de Distribución Nacional San Bernardo y Tiendas",
-        "cargas_in": ["electronica", "ropa_confeccion", "muebles_hogar"],
-        "cargas_out": ["paqueteria_retail", "electrodomesticos", "muebles_hogar"]
+        "cargas_in": ["electronics", "clothes", "furniture"],
+        "cargas_out": ["encomiendas", "paquet_exp", "furniture"]
     },
     "cencosud": {
         "nombre": "Cencosud (Jumbo / Easy / Santa Isabel)",
         "rubro": "Supermercados y Mejoramiento del Hogar",
-        "cargas_in": ["abarrotes", "carnes_frescas", "materiales_construccion"],
-        "cargas_out": ["alimentos_retail", "herramientas_easy"]
+        "cargas_in": ["food", "carne_fresc", "beverages"],
+        "cargas_out": ["encomiendas", "food", "palta_hass"]
     },
     "ccu": {
         "nombre": "CCU - Compañía de Cervecerías Unidas",
         "rubro": "Bebidas, Cervezas (Cristal, Royal) y Aguas (Cachantún)",
-        "cargas_in": ["cebada_malta", "botellas_vidrio", "azucar_industrial"],
-        "cargas_out": ["cervezas_ccu", "bebidas_gaseosas", "aguas_minerales"]
+        "cargas_in": ["sugar", "beverages", "bottles"],
+        "cargas_out": ["cervez_ccu", "beverages"]
     },
     "colun": {
         "nombre": "Colun - La Magia del Sur",
         "rubro": "Cooperativa Agrícola y Lechera de La Unión",
-        "cargas_in": ["leche_cruda", "envases_tetra", "sal_industrial"],
-        "cargas_out": ["leche_sur", "quesos_colun", "mantequilla_sur", "yogurt_colun"]
+        "cargas_in": ["milk", "salt"],
+        "cargas_out": ["leche_sur", "quesos_col", "milk"]
     },
     "aquachile": {
         "nombre": "AquaChile Salmones",
         "rubro": "Acuicultura y Exportación de Salmón",
-        "cargas_in": ["alimento_peces", "cajas_poliestireno", "hielo_escamas"],
-        "cargas_out": ["salm_fresco", "salmon_congelado", "filetes_salmon"]
+        "cargas_in": ["food", "packaging"],
+        "cargas_out": ["salm_fresco", "fish"]
     },
     "concha_toro": {
         "nombre": "Viña Concha y Toro",
         "rubro": "Viñedos y Exportación de Vinos (Casillero del Diablo)",
-        "cargas_in": ["uva_vinifera", "botellas_vino", "corchos_roble", "barricas_roble"],
-        "cargas_out": ["vino_reserva", "vino_exportacion"]
+        "cargas_in": ["bottles", "grapes"],
+        "cargas_out": ["vino_res", "beverages"]
     },
     "starken": {
         "nombre": "Starken Encomiendas y Logística",
         "rubro": "Transporte de carga express y encomiendas en todo Chile",
-        "cargas_in": ["encomiendas", "paquetes_express"],
-        "cargas_out": ["encomiendas", "carga_consolidada"]
+        "cargas_in": ["encomiendas", "paquet_exp"],
+        "cargas_out": ["encomiendas", "paquet_exp"]
     },
     "chilexpress": {
         "nombre": "Chilexpress Courier",
         "rubro": "Logística urgente y paquetería e-commerce nacional",
-        "cargas_in": ["paqueteria_courier", "documentos_val"],
-        "cargas_out": ["paquetes_express", "cargas_aereas_terrestres"]
+        "cargas_in": ["paquet_exp", "encomiendas"],
+        "cargas_out": ["paquet_exp", "encomiendas"]
     },
     "tpa_arica": {
         "nombre": "Terminal Puerto Arica (TPA)",
         "rubro": "Puerto multipropósito y conexión internacional con Bolivia",
-        "cargas_in": ["minerales_export", "contenedores_import"],
-        "cargas_out": ["contenedores_import", "carga_general"]
+        "cargas_in": ["catod_cobre", "conc_cobre", "palta_hass"],
+        "cargas_out": ["machinery", "fertilizer", "chemicals"]
     },
     "sti_san_ant": {
         "nombre": "San Antonio Terminal Internacional (STI)",
         "rubro": "Mayor puerto de transferencia de contenedores de Chile",
-        "cargas_in": ["fruta_export", "vino_reserva", "cobre_export"],
-        "cargas_out": ["contenedores_import", "vehiculos_nuevos", "maquinaria"]
+        "cargas_in": ["vino_res", "catod_cobre", "palta_hass", "salm_fresco"],
+        "cargas_out": ["cars", "machinery", "electronics"]
     },
     "kunstmann": {
         "nombre": "Cervecería Kunstmann (Valdivia)",
         "rubro": "Cerveza artesanal de Valdivia (Torobayo)",
-        "cargas_in": ["lupulo_valdivia", "cebada_malta", "botellas_vidrio"],
-        "cargas_out": ["cerveza_kunstmann", "barriles_cerveza"]
+        "cargas_in": ["barley", "bottles"],
+        "cargas_out": ["cervez_ccu", "beverages"]
     }
 }
 
 # ==============================================================================
-# BASE DE DATOS: CARGAS CHILENAS CON PAGOS PROPORCIONALES A PESO, CARGA Y DISTANCIA
+# BASE DE DATOS: CARGAS CHILENAS (TOKENS <= 12 CARACTERES PARA MOTOR SCS)
+# Con pagos proporcionales a peso, tipo de carga y distancia
 # ==============================================================================
 CARGAS_CHILENAS = {
     # 1. Cargas Pesadas y Minería (24 - 28.5 Toneladas)
-    "maquinaria_pesada": {
+    "maq_pesada": {
         "nombre": "Maquinaria Pesada Minera Cat/Komatsu",
         "masa_total_ton": 28.5,
         "volume": 50,
@@ -610,7 +612,7 @@ CARGAS_CHILENAS = {
         "valiosa": True,
         "grupo": "machinery"
     },
-    "concentrado_cobre": {
+    "conc_cobre": {
         "nombre": "Concentrado de Cobre a Granel",
         "masa_total_ton": 27.2,
         "volume": 2.6,
@@ -643,7 +645,7 @@ CARGAS_CHILENAS = {
         "valiosa": True,
         "grupo": "adr_liquid"
     },
-    "petroleo_ref": {
+    "petrol_ref": {
         "nombre": "Petróleo Crudo y Refinado ENAP",
         "masa_total_ton": 26.0,
         "volume": 1,
@@ -654,7 +656,7 @@ CARGAS_CHILENAS = {
         "valiosa": True,
         "grupo": "adr_liquid"
     },
-    "acido_sulfurico": {
+    "acid_sulf": {
         "nombre": "Ácido Sulfúrico Minero en Cisterna",
         "masa_total_ton": 26.0,
         "volume": 1,
@@ -687,7 +689,7 @@ CARGAS_CHILENAS = {
         "valiosa": True,
         "grupo": "refrigerated"
     },
-    "vino_reserva": {
+    "vino_res": {
         "nombre": "Vino Chileno Reserva Embotellado",
         "masa_total_ton": 18.4,
         "volume": 2.6,
@@ -697,7 +699,7 @@ CARGAS_CHILENAS = {
         "valiosa": True,
         "grupo": "containers"
     },
-    "carnes_frescas": {
+    "carne_fresc": {
         "nombre": "Carnes Frescas y Cecinas Agrosuper",
         "masa_total_ton": 21.9,
         "volume": 2.6,
@@ -717,7 +719,7 @@ CARGAS_CHILENAS = {
         "valiosa": True,
         "grupo": "refrigerated"
     },
-    "quesos_colun": {
+    "quesos_col": {
         "nombre": "Quesos y Mantequillas Colun",
         "masa_total_ton": 16.0,
         "volume": 2.6,
@@ -729,7 +731,7 @@ CARGAS_CHILENAS = {
     },
 
     # 4. Forestal y Materiales (21 - 25 Toneladas)
-    "troncos_pino": {
+    "tronc_pino": {
         "nombre": "Trozas y Troncos de Pino Arauco",
         "masa_total_ton": 25.0,
         "volume": 2.6,
@@ -749,7 +751,7 @@ CARGAS_CHILENAS = {
         "valiosa": False,
         "grupo": "bulk"
     },
-    "madera_aserrada": {
+    "mad_aserr": {
         "nombre": "Madera Aserrada y Tableros MDF",
         "masa_total_ton": 21.0,
         "volume": 2.6,
@@ -761,7 +763,7 @@ CARGAS_CHILENAS = {
     },
 
     # 5. Comercio, Bebidas y Cargas Generales (17 - 19 Toneladas)
-    "cervezas_ccu": {
+    "cervez_ccu": {
         "nombre": "Cervezas CCU Cristal y Aguas Minerales",
         "masa_total_ton": 18.9,
         "volume": 2.6,
@@ -771,7 +773,7 @@ CARGAS_CHILENAS = {
         "valiosa": False,
         "grupo": "containers"
     },
-    "lubricantes_copec": {
+    "lubric_cl": {
         "nombre": "Lubricantes y Aceites Mobil/Copec",
         "masa_total_ton": 17.9,
         "volume": 2.6,
@@ -793,7 +795,7 @@ CARGAS_CHILENAS = {
         "valiosa": False,
         "grupo": "containers"
     },
-    "paquetes_express": {
+    "paquet_exp": {
         "nombre": "Paquetería Courier y Documentos Chilexpress",
         "masa_total_ton": 7.0,
         "volume": 2.6,
@@ -826,7 +828,9 @@ CONFIG_REGIONES = {
     "XII": {"id": "cl_xii", "num": 116, "nombre": "Región de Magallanes", "pos": (-13182, 0, 31278), "code": "MG"},
 }
 
+# Concesionarios oficiales para las 52 ciudades de Chile (elimina errores de missing brand en prefabs del mapa)
 CIUDAD_BRANDS = {
+    # 16 Capitales Regionales (Concesionarios principales verificados)
     "arica": "scania",
     "iquique": "volvo",
     "antofagasta": "man",
@@ -843,6 +847,46 @@ CIUDAD_BRANDS = {
     "puerto_montt": "iveco",
     "coyhaique": "scania",
     "punta_arenas": "volvo",
+
+    # Comunas con concesionarios importados en sectores del mapa
+    "vallenar": "mercedes",
+    "porvenir": "iveco",
+    "quilicura": "scania",
+    "san_bernardo": "renault",
+    "ovalle": "daf",
+    "vina_del_mar": "volvo",
+    "pto_natales": "iveco",
+    "mejillones": "scania",
+    "puerto_aysen": "daf",
+    "cochrane": "man",
+    "coquimbo": "mercedes",
+    "quellon": "mercedes",
+    "osorno": "man",
+    "putre": "scania",
+    "san_fernando": "iveco",
+    "coronel": "mercedes",
+    "los_angeles": "iveco",
+    "caldera": "volvo",
+    "castro": "daf",
+
+    # Demás comunas de la red vial chilena
+    "pozo_almonte": "volvo",
+    "calama": "man",
+    "san_pedro": "scania",
+    "los_vilos": "renault",
+    "san_antonio": "daf",
+    "los_andes": "scania",
+    "santa_cruz": "renault",
+    "curico": "volvo",
+    "linares": "mercedes",
+    "constitucion": "man",
+    "san_carlos": "daf",
+    "talcahuano": "mercedes",
+    "villarrica": "scania",
+    "angol": "renault",
+    "la_union": "volvo",
+    "chaiten": "iveco",
+    "v_ohiggins": "man",
 }
 
 
@@ -932,12 +976,16 @@ def generar_empresas():
 
         # 1. Generar carpetas in/ y out/ para cargas de transporte
         in_dir = company_dir / comp_id / "in"
+        if in_dir.exists():
+            shutil.rmtree(in_dir)
         in_dir.mkdir(parents=True, exist_ok=True)
         for cargo_in in comp_data.get("cargas_in", []):
             cargo_sii = in_dir / f"{cargo_in}.sii"
             cargo_sii.write_text(f'SiiNunit\n{{\ncargo_def : .{cargo_in} {{\n cargo: "cargo.{cargo_in}"\n}}\n}}\n', encoding="utf-8")
 
         out_dir = company_dir / comp_id / "out"
+        if out_dir.exists():
+            shutil.rmtree(out_dir)
         out_dir.mkdir(parents=True, exist_ok=True)
         for cargo_out in comp_data.get("cargas_out", []):
             cargo_sii = out_dir / f"{cargo_out}.sii"
@@ -985,6 +1033,11 @@ def generar_cargas():
     """Genera las definiciones de cargas chilenas en def/cargo/ y def/cargo.sii"""
     cargo_dir = DEF_DIR / "cargo"
     cargo_dir.mkdir(parents=True, exist_ok=True)
+
+    # Limpiar cualquier cargo sui viejo que exceda 12 caracteres
+    for old_sui in cargo_dir.glob("*.sui"):
+        if len(old_sui.stem) > 12:
+            old_sui.unlink()
 
     master_includes = []
 

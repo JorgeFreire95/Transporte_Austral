@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .herramientas_easy {
- cargo: "cargo.herramientas_easy"
-}
-}

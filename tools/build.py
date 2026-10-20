@@ -118,6 +118,15 @@ def validar_mod():
                 if not included_file.exists():
                     errores.append(f"Archivo incluido no encontrado: {rel_include} (referenciado en {master.name})")
 
+    # Validar que los identificadores de cargas y sucursales no excedan el límite de 12 caracteres de SCS
+    for c_file in (BASE_DIR / "def" / "cargo").glob("*.sui"):
+        if len(c_file.stem) > 12:
+            errores.append(f"El nombre de la carga '{c_file.stem}' supera los 12 caracteres máximos de SCS.")
+
+    for comp_sii in (BASE_DIR / "def" / "company").glob("**/*.sii"):
+        if comp_sii.parent.name in ("in", "out") and len(comp_sii.stem) > 12:
+            errores.append(f"El archivo de carga '{comp_sii.relative_to(BASE_DIR)}' supera los 12 caracteres de SCS.")
+
     if errores:
         print("ERROR: Se encontraron problemas en el mod:")
         for err in errores:
@@ -134,6 +143,7 @@ def empaquetar_scs(output_path: Path):
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     archivos_empaquetados = 0
+    packed_arcnames = set()
 
     with zipfile.ZipFile(output_path, "w", compression=zipfile.ZIP_STORED) as scs_zip:
         for root, dirs, files in os.walk(BASE_DIR):
@@ -155,7 +165,43 @@ def empaquetar_scs(output_path: Path):
                     # Guardar con separador UNIX '/' requerido por el motor SCS
                     zip_arcname = rel_path.as_posix()
                     scs_zip.write(file_path, arcname=zip_arcname)
+                    packed_arcnames.add(zip_arcname)
                     archivos_empaquetados += 1
+
+        # Empaquetar definiciones completas de in/ y out/ para empresas base activas en Chile
+        # desde scratch/def/def/company/ para garantizar ofertas de trabajo sin inflar Git
+        scratch_comp_dir = BASE_DIR / "scratch" / "def" / "def" / "company"
+        def_comp_dir = BASE_DIR / "def" / "company"
+        if scratch_comp_dir.exists() and def_comp_dir.exists():
+            for comp_folder in def_comp_dir.iterdir():
+                if not comp_folder.is_dir():
+                    continue
+                ed_dir = comp_folder / "editor"
+                if not ed_dir.exists() or not list(ed_dir.glob("*.sii")):
+                    continue
+                src_comp = scratch_comp_dir / comp_folder.name
+                if not src_comp.exists():
+                    continue
+
+                # Incluir archivo .sui de la empresa si falta
+                sui_file = src_comp / f"{comp_folder.name}.sui"
+                if sui_file.exists():
+                    arc = f"def/company/{comp_folder.name}.sui"
+                    if arc not in packed_arcnames:
+                        scs_zip.write(sui_file, arcname=arc)
+                        packed_arcnames.add(arc)
+                        archivos_empaquetados += 1
+
+                # Incluir todos los archivos in/ y out/ de cargas
+                for subfolder in ["in", "out"]:
+                    sub_src = src_comp / subfolder
+                    if sub_src.exists():
+                        for sii_file in sub_src.glob("*.sii"):
+                            arc = f"def/company/{comp_folder.name}/{subfolder}/{sii_file.name}"
+                            if arc not in packed_arcnames:
+                                scs_zip.write(sii_file, arcname=arc)
+                                packed_arcnames.add(arc)
+                                archivos_empaquetados += 1
 
     size_mb = output_path.stat().st_size / (1024 * 1024)
     print(f" -> Empaquetado completado: {archivos_empaquetados} archivos | Tamaño: {size_mb:.2f} MB")

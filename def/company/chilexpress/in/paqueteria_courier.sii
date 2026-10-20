@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .paqueteria_courier {
- cargo: "cargo.paqueteria_courier"
-}
-}

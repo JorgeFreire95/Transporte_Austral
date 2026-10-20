@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .azucar_industrial {
- cargo: "cargo.azucar_industrial"
-}
-}

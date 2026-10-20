@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .congelados_cl {
- cargo: "cargo.congelados_cl"
-}
-}

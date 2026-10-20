@@ -3,6 +3,7 @@ city_data : city.los_vilos
     city_name: "Los Vilos (Costanera Salvador Allende)"
     city_name_localized: "Los Vilos (Costanera Salvador Allende)"
     country: cl_iv
+    vehicle_brands[]: "renault"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

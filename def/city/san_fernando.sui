@@ -3,6 +3,7 @@ city_data : city.san_fernando
     city_name: "San Fernando (Av. Manuel Rodríguez)"
     city_name_localized: "San Fernando (Av. Manuel Rodríguez)"
     country: cl_vi
+    vehicle_brands[]: "iveco"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

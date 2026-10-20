@@ -3,6 +3,7 @@ city_data : city.puerto_aysen
     city_name: "Puerto Aysén (Puente Presidente Ibáñez)"
     city_name_localized: "Puerto Aysén (Puente Presidente Ibáñez)"
     country: cl_xi
+    vehicle_brands[]: "daf"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

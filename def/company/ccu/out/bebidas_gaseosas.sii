@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .bebidas_gaseosas {
- cargo: "cargo.bebidas_gaseosas"
-}
-}

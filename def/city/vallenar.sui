@@ -3,6 +3,7 @@ city_data : city.vallenar
     city_name: "Vallenar (Av. Brasil - Valle del Huasco)"
     city_name_localized: "Vallenar (Av. Brasil - Valle del Huasco)"
     country: cl_iii
+    vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

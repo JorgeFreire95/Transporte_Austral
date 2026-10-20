@@ -3,6 +3,7 @@ city_data : city.curico
     city_name: "Curicó (Av. Manso de Velasco - Alameda)"
     city_name_localized: "Curicó (Av. Manso de Velasco - Alameda)"
     country: cl_vii
+    vehicle_brands[]: "volvo"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

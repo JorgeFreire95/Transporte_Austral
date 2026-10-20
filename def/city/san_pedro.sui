@@ -3,6 +3,7 @@ city_data : city.san_pedro
     city_name: "San Pedro de Atacama (Caracoles - Valle de la Luna)"
     city_name_localized: "San Pedro de Atacama (Caracoles - Valle de la Luna)"
     country: cl_ii
+    vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

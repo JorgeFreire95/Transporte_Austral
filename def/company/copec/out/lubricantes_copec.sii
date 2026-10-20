@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .lubricantes_copec {
- cargo: "cargo.lubricantes_copec"
-}
-}

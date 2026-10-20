@@ -1,0 +1,14 @@
+cargo_data : cargo.tronc_pino
+{
+    name: "Trozas y Troncos de Pino Arauco"
+    fragility: 0.1
+    valuable: false
+    group[]: bulk
+    volume: 2.6
+    mass: 780.0
+    unit_reward_per_km: 0.6
+    unit_load_time: 40
+    body_types[]: flatbed
+    body_types[]: dryvan
+    body_types[]: curtainside
+}

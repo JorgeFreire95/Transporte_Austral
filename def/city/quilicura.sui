@@ -3,6 +3,7 @@ city_data : city.quilicura
     city_name: "Quilicura (Américo Vespucio - Panamericana Norte)"
     city_name_localized: "Quilicura (Américo Vespucio - Panamericana Norte)"
     country: cl_rm
+    vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

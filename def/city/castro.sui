@@ -3,6 +3,7 @@ city_data : city.castro
     city_name: "Castro (Palafitos Gamboa - San Martín)"
     city_name_localized: "Castro (Palafitos Gamboa - San Martín)"
     country: cl_x
+    vehicle_brands[]: "daf"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

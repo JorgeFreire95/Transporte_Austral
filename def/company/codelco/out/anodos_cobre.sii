@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .anodos_cobre {
- cargo: "cargo.anodos_cobre"
-}
-}

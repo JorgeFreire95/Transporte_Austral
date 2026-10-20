@@ -3,6 +3,7 @@ city_data : city.san_bernardo
     city_name: "San Bernardo (Av. Portales - Eje Sur)"
     city_name_localized: "San Bernardo (Av. Portales - Eje Sur)"
     country: cl_rm
+    vehicle_brands[]: "renault"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

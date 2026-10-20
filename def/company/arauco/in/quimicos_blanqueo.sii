@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .quimicos_blanqueo {
- cargo: "cargo.quimicos_blanqueo"
-}
-}

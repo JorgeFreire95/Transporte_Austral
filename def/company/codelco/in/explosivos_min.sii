@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .explosivos_min {
- cargo: "cargo.explosivos_min"
-}
-}

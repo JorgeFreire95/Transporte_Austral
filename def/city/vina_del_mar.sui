@@ -3,6 +3,7 @@ city_data : city.vina_del_mar
     city_name: "Viña del Mar (Av. Libertad - 1 Norte)"
     city_name_localized: "Viña del Mar (Av. Libertad - 1 Norte)"
     country: cl_v
+    vehicle_brands[]: "volvo"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

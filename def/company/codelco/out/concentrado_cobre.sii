@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .concentrado_cobre {
- cargo: "cargo.concentrado_cobre"
-}
-}

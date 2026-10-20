@@ -3,6 +3,7 @@ city_data : city.mejillones
     city_name: "Mejillones (Av. Fertilizantes - Puerto)"
     city_name_localized: "Mejillones (Av. Fertilizantes - Puerto)"
     country: cl_ii
+    vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

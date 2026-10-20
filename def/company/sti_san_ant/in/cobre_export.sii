@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .cobre_export {
- cargo: "cargo.cobre_export"
-}
-}

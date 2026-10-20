@@ -1,0 +1,14 @@
+cargo_data : cargo.maq_pesada
+{
+    name: "Maquinaria Pesada Minera Cat/Komatsu"
+    fragility: 0.5
+    valuable: true
+    group[]: machinery
+    volume: 50
+    mass: 28500.0
+    unit_reward_per_km: 28.5
+    unit_load_time: 40
+    body_types[]: lowboy
+    body_types[]: lowbed
+    body_types[]: flatbed
+}

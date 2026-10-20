@@ -1,0 +1,14 @@
+cargo_data : cargo.petrol_ref
+{
+    name: "Petróleo Crudo y Refinado ENAP"
+    fragility: 0.8
+    valuable: true
+    adr_class: 3
+    group[]: adr_liquid
+    volume: 1
+    mass: 866.0
+    unit_reward_per_km: 1.22
+    unit_load_time: 40
+    body_types[]: fueltank
+    body_types[]: foodtank
+}

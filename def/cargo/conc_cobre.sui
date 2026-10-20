@@ -1,0 +1,14 @@
+cargo_data : cargo.conc_cobre
+{
+    name: "Concentrado de Cobre a Granel"
+    fragility: 0.1
+    valuable: true
+    group[]: bulk
+    volume: 2.6
+    mass: 850.0
+    unit_reward_per_km: 0.95
+    unit_load_time: 40
+    body_types[]: flatbed
+    body_types[]: dryvan
+    body_types[]: curtainside
+}

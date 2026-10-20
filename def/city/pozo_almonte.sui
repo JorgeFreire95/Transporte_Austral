@@ -3,6 +3,7 @@ city_data : city.pozo_almonte
     city_name: "Pozo Almonte (Panamericana - Salitreras)"
     city_name_localized: "Pozo Almonte (Panamericana - Salitreras)"
     country: cl_i
+    vehicle_brands[]: "volvo"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

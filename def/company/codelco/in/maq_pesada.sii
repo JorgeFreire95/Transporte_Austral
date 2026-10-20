@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .maq_pesada {
+ cargo: "cargo.maq_pesada"
+}
+}

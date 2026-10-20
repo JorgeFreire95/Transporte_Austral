@@ -3,6 +3,7 @@ city_data : city.linares
     city_name: "Linares (Av. Aníbal León Bustos)"
     city_name_localized: "Linares (Av. Aníbal León Bustos)"
     country: cl_vii
+    vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

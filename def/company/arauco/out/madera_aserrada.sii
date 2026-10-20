@@ -1,6 +1,0 @@
-SiiNunit
-{
-cargo_def : .madera_aserrada {
- cargo: "cargo.madera_aserrada"
-}
-}
