@@ -1,7 +1,7 @@
 city_data : city.copiapo
 {
-    city_name: "Copiapó"
-    city_name_localized: "@@copiapo@@"
+    city_name: "Copiapó (Av. Copayapu - Los Carrera)"
+    city_name_localized: "Copiapó (Av. Copayapu - Los Carrera)"
     country: cl_iii
     vehicle_brands[]: "mercedes"
 

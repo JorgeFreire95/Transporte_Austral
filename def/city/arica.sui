@@ -1,7 +1,7 @@
 city_data : city.arica
 {
-    city_name: "Arica"
-    city_name_localized: "@@arica@@"
+    city_name: "Arica (Av. Comandante San Martín - Morro)"
+    city_name_localized: "Arica (Av. Comandante San Martín - Morro)"
     country: cl_xv
     vehicle_brands[]: "scania"
 

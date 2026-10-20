@@ -1,7 +1,7 @@
 city_data : city.antofagasta
 {
-    city_name: "Antofagasta"
-    city_name_localized: "@@antofagasta@@"
+    city_name: "Antofagasta (Av. Pérez Zujovic - Costanera)"
+    city_name_localized: "Antofagasta (Av. Pérez Zujovic - Costanera)"
     country: cl_ii
     vehicle_brands[]: "man"
 

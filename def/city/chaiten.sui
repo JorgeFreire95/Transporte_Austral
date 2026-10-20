@@ -1,7 +1,7 @@
 city_data : city.chaiten
 {
-    city_name: "Chaitén"
-    city_name_localized: "@@chaiten@@"
+    city_name: "Chaitén (Costanera - Carretera Austral)"
+    city_name_localized: "Chaitén (Costanera - Carretera Austral)"
     country: cl_x
 
     map_x_offsets[]: 0

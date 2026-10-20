@@ -1,7 +1,7 @@
 city_data : city.villarrica
 {
-    city_name: "Villarrica"
-    city_name_localized: "@@villarrica@@"
+    city_name: "Villarrica (Av. Pedro de Valdivia - Costanera)"
+    city_name_localized: "Villarrica (Av. Pedro de Valdivia - Costanera)"
     country: cl_ix
 
     map_x_offsets[]: 0

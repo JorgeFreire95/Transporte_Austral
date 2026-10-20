@@ -1,7 +1,7 @@
 city_data : city.putre
 {
-    city_name: "Putre"
-    city_name_localized: "@@putre@@"
+    city_name: "Putre (Paso Chungará - Ruta 11-CH)"
+    city_name_localized: "Putre (Paso Chungará - Ruta 11-CH)"
     country: cl_xv
 
     map_x_offsets[]: 0

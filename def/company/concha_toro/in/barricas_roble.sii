@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .barricas_roble {
+ cargo: "cargo.barricas_roble"
+}
+}

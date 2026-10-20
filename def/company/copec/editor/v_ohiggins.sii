@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .v_ohiggins {
+ city: v_ohiggins
+ prefab: d_cust_1w1
+}
+}

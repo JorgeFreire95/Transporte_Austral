@@ -137,6 +137,19 @@ CIUDADES_MAPEO = {
 }
 
 
+# ==============================================================================
+# MAPEO INTEGRAL: ESTACIONES DE SERVICIO DE CHILE (RED OFICIAL)
+# ==============================================================================
+ESTACIONES_MAPEO = {
+    "primel": "copec",       # 197 estaciones base -> Copec Pronto / Punto (Líder en Chile)
+    "bts":    "copec",       # 13 estaciones base -> Copec
+    "pegi":   "shell_cl",    # 31 estaciones base -> Shell Upa! / Enex Chile
+    "tqg":    "shell_cl",    # 10 estaciones base -> Shell Chile
+    "nada":   "petrobras",   # 25 estaciones base -> Petrobras Spacio 1 / Esmax
+    "apus":   "aramco",      # 22 estaciones base -> Aramco Chile
+}
+
+
 def importar_y_parchear_sectores():
     print("=" * 70)
     print(" TRANSPORTE AUSTRAL - GENERACIÓN COMPLETA DE SECTORES Y COMUNAS (ETS2)")
@@ -156,10 +169,13 @@ def importar_y_parchear_sectores():
         shutil.copy2(SRC_MBD, DEST_MBD)
         print(f"[1/4] Archivo chile.mbd instalado con éxito ({DEST_MBD.stat().st_size} bytes)")
 
-    # 3. Preparar diccionario de reemplazo de tokens de 64 bits
+    # 3. Preparar diccionario de reemplazo de tokens de 64 bits (ciudades y gasolineras)
     reemplazos = {}
     for euro_city, cl_city in CIUDADES_MAPEO.items():
         reemplazos[token_bytes(euro_city)] = token_bytes(cl_city)
+
+    for euro_brand, cl_brand in ESTACIONES_MAPEO.items():
+        reemplazos[token_bytes(euro_brand)] = token_bytes(cl_brand)
 
     # 4. Obtener todos los sectores activos del mapa (>1KB) para una red vial 100% continua
     extensiones = [".aux", ".base", ".data", ".desc", ".snd"]
@@ -191,7 +207,7 @@ def importar_y_parchear_sectores():
             total_archivos += 1
 
     print(f" -> {total_archivos} archivos de sectores generados en {DEST_CHILE_DIR}")
-    print(f" -> {total_reemplazos} ocurrencias de tokens de ciudades reemplazadas por comunas de Chile")
+    print(f" -> {total_reemplazos} ocurrencias de tokens reemplazadas (ciudades y marcas Copec, Shell, Petrobras, Aramco)")
 
     # 5. Generar sucursales de empresas para cada una de las 52 ciudades chilenas
     print("[3/4] Generando sucursales de empresas en def/company/*/editor/ para las 52 comunas...")

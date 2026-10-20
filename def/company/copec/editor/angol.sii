@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .angol {
+ city: angol
+ prefab: d_cust_1w1
+}
+}

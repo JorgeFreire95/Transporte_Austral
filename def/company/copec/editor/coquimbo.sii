@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .coquimbo {
+ city: coquimbo
+ prefab: d_cust_1w1
+}
+}

@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .cargas_aereas_terrestres {
+ cargo: "cargo.cargas_aereas_terrestres"
+}
+}

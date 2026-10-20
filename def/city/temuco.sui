@@ -1,7 +1,7 @@
 city_data : city.temuco
 {
-    city_name: "Temuco"
-    city_name_localized: "@@temuco@@"
+    city_name: "Temuco (Av. Alemania - Caupolicán)"
+    city_name_localized: "Temuco (Av. Alemania - Caupolicán)"
     country: cl_ix
     vehicle_brands[]: "renault"
 

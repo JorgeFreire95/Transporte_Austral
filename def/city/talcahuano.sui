@@ -1,7 +1,7 @@
 city_data : city.talcahuano
 {
-    city_name: "Talcahuano"
-    city_name_localized: "@@talcahuano@@"
+    city_name: "Talcahuano (Autopista - Puerto San Vicente)"
+    city_name_localized: "Talcahuano (Autopista - Puerto San Vicente)"
     country: cl_viii
 
     map_x_offsets[]: 0

@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .vallenar {
+ city: vallenar
+ prefab: d_cust_1w1
+}
+}

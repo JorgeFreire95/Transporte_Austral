@@ -1,7 +1,7 @@
 city_data : city.vina_del_mar
 {
-    city_name: "Viña del Mar"
-    city_name_localized: "@@vina_del_mar@@"
+    city_name: "Viña del Mar (Av. Libertad - 1 Norte)"
+    city_name_localized: "Viña del Mar (Av. Libertad - 1 Norte)"
     country: cl_v
 
     map_x_offsets[]: 0

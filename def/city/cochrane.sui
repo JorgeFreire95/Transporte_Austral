@@ -1,7 +1,7 @@
 city_data : city.cochrane
 {
-    city_name: "Cochrane"
-    city_name_localized: "@@cochrane@@"
+    city_name: "Cochrane (Av. San Valentín - Río Baker)"
+    city_name_localized: "Cochrane (Av. San Valentín - Río Baker)"
     country: cl_xi
 
     map_x_offsets[]: 0

@@ -1,0 +1,95 @@
+SiiNunit
+{
+# ==============================================================================
+# RED OFICIAL DE ESTACIONES DE SERVICIO EN CARRETERAS Y RUTAS DE CHILE
+# ==============================================================================
+
+# Copec - Red Líder de Chile (Tiendas Pronto en Autopistas y Punto en Ciudades)
+gasoline_station : gas.copec
+{
+    name: "Copec Pronto"
+    fuel_price: 1.05
+}
+
+gasoline_station : gas.copec_pronto
+{
+    name: "Copec Pronto"
+    fuel_price: 1.05
+}
+
+gasoline_station : gas.copec_punto
+{
+    name: "Copec Punto"
+    fuel_price: 1.05
+}
+
+# Shell Enex Chile - Tiendas Upa! / Upita
+gasoline_station : gas.shell_cl
+{
+    name: "Shell Upa!"
+    fuel_price: 1.06
+}
+
+gasoline_station : gas.shell_upa
+{
+    name: "Shell Upa!"
+    fuel_price: 1.06
+}
+
+# Petrobras Chile (Esmax) - Tiendas Spacio 1
+gasoline_station : gas.petrobras
+{
+    name: "Petrobras Spacio 1"
+    fuel_price: 1.04
+}
+
+gasoline_station : gas.petrobras_spacio
+{
+    name: "Petrobras Spacio 1"
+    fuel_price: 1.04
+}
+
+# Aramco Chile - Presencia Nacional
+gasoline_station : gas.aramco
+{
+    name: "Aramco Chile"
+    fuel_price: 1.05
+}
+
+# Fallbacks retrocompatibles para prefabs de gasolineras importadas
+gasoline_station : gas.primel
+{
+    name: "Copec Pronto"
+    fuel_price: 1.05
+}
+
+gasoline_station : gas.bts
+{
+    name: "Copec Punto"
+    fuel_price: 1.05
+}
+
+gasoline_station : gas.pegi
+{
+    name: "Shell Upa!"
+    fuel_price: 1.06
+}
+
+gasoline_station : gas.tqg
+{
+    name: "Shell Chile"
+    fuel_price: 1.06
+}
+
+gasoline_station : gas.nada
+{
+    name: "Petrobras Spacio 1"
+    fuel_price: 1.04
+}
+
+gasoline_station : gas.apus
+{
+    name: "Aramco Chile"
+    fuel_price: 1.05
+}
+}

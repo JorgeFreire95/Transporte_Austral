@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .maquinaria {
+ cargo: "cargo.maquinaria"
+}
+}

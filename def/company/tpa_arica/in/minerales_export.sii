@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .minerales_export {
+ cargo: "cargo.minerales_export"
+}
+}

@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .carga_consolidada {
+ cargo: "cargo.carga_consolidada"
+}
+}

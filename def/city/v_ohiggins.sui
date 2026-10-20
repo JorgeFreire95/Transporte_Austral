@@ -1,7 +1,7 @@
 city_data : city.v_ohiggins
 {
-    city_name: "Villa O'Higgins"
-    city_name_localized: "@@v_ohiggins@@"
+    city_name: "Villa O'Higgins (Fin Carretera Austral)"
+    city_name_localized: "Villa O'Higgins (Fin Carretera Austral)"
     country: cl_xi
 
     map_x_offsets[]: 0

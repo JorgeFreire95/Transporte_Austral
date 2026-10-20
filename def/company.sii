@@ -2,7 +2,9 @@ SiiNunit
 {
 @include "company/copec.sui"
 @include "company/shell_cl.sui"
+@include "company/petrobras.sui"
 @include "company/petrobras_cl.sui"
+@include "company/aramco.sui"
 @include "company/codelco.sui"
 @include "company/arauco.sui"
 @include "company/cmpc.sui"

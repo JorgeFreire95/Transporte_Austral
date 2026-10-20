@@ -1,7 +1,7 @@
 city_data : city.san_carlos
 {
-    city_name: "San Carlos"
-    city_name_localized: "@@san_carlos@@"
+    city_name: "San Carlos (Av. Arturo Prat - Violeta Parra)"
+    city_name_localized: "San Carlos (Av. Arturo Prat - Violeta Parra)"
     country: cl_xvi
 
     map_x_offsets[]: 0

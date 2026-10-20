@@ -1,7 +1,7 @@
 city_data : city.la_serena
 {
-    city_name: "La Serena"
-    city_name_localized: "@@la_serena@@"
+    city_name: "La Serena (Av. Francisco de Aguirre - El Faro)"
+    city_name_localized: "La Serena (Av. Francisco de Aguirre - El Faro)"
     country: cl_iv
     vehicle_brands[]: "renault"
 

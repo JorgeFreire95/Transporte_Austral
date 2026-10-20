@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .cajas_poliestireno {
+ cargo: "cargo.cajas_poliestireno"
+}
+}

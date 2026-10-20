@@ -1,7 +1,7 @@
 city_data : city.constitucion
 {
-    city_name: "Constitución"
-    city_name_localized: "@@constitucion@@"
+    city_name: "Constitución (Costanera Río Maule)"
+    city_name_localized: "Constitución (Costanera Río Maule)"
     country: cl_vii
 
     map_x_offsets[]: 0

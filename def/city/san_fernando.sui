@@ -1,7 +1,7 @@
 city_data : city.san_fernando
 {
-    city_name: "San Fernando"
-    city_name_localized: "@@san_fernando@@"
+    city_name: "San Fernando (Av. Manuel Rodríguez)"
+    city_name_localized: "San Fernando (Av. Manuel Rodríguez)"
     country: cl_vi
 
     map_x_offsets[]: 0

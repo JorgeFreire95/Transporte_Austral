@@ -1,0 +1,6 @@
+SiiNunit
+{
+cargo_def : .sal_industrial {
+ cargo: "cargo.sal_industrial"
+}
+}

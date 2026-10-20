@@ -1,4 +1,4 @@
-﻿SiiNunit
+SiiNunit
 {
 economy_data : economy.data.storage
 {
@@ -27,10 +27,10 @@ economy_data : economy.data.storage
 	late_delivery_max_overtime[1]: 720	# 12 hours for "normal" deliveries
 	late_delivery_max_overtime[2]: 240	# 4 hours for "urgent" deliveries
 
-	simulation_avg_speed: 62.0	# km/h
+	simulation_avg_speed: 68.0	# km/h (Velocidad promedio realista en Rutas 5 Panamericana y ejes viales de Chile)
 
-	default_time_zone: 120		# +2 hours
-	default_time_zone_name: "CEST"
+	default_time_zone: -180		# UTC-3 (Hora Oficial Continental de Chile CLT)
+	default_time_zone_name: "CLT"
 
 	maximum_driving_time: 660	# how long the driver can drive (in minutes)
 	sleeping_time: 540		# length of sleep (in minutes)

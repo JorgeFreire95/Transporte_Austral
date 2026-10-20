@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .castro {
+ city: castro
+ prefab: d_cust_1w1
+}
+}

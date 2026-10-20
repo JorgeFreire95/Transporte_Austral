@@ -28,14 +28,14 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "arica",
-                "nombre": "Arica",
+                "nombre": "Arica (Av. Comandante San Martín - Morro)",
                 "x": -118200, "z": 85000,
                 "icon": "arica",
                 "empresas": ["copec", "tpa_arica", "corpesca", "starken"]
             },
             {
                 "id": "putre",
-                "nombre": "Putre",
+                "nombre": "Putre (Paso Chungará - Ruta 11-CH)",
                 "x": -116400, "z": 83200,
                 "icon": "putre",
                 "empresas": ["copec", "aduana_cl"]
@@ -47,14 +47,14 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "iquique",
-                "nombre": "Iquique",
+                "nombre": "Iquique (Av. Arturo Prat - Costanera)",
                 "x": -118100, "z": 92000,
                 "icon": "iquique",
                 "empresas": ["copec", "zofri", "camanchaca", "shell_cl"]
             },
             {
                 "id": "pozo_almonte",
-                "nombre": "Pozo Almonte",
+                "nombre": "Pozo Almonte (Panamericana - Salitreras)",
                 "x": -116900, "z": 93500,
                 "icon": "pozo_almonte",
                 "empresas": ["copec", "sqm_minera"]
@@ -66,28 +66,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "antofagasta",
-                "nombre": "Antofagasta",
+                "nombre": "Antofagasta (Av. Pérez Zujovic - Costanera)",
                 "x": -117800, "z": 105000,
                 "icon": "antofagasta",
                 "empresas": ["copec", "finning_cat", "puerto_antof", "falabella", "starken"]
             },
             {
                 "id": "calama",
-                "nombre": "Calama",
+                "nombre": "Calama (Av. Granaderos - Chuquicamata)",
                 "x": -115400, "z": 101000,
                 "icon": "calama",
                 "empresas": ["codelco", "copec", "shell_cl"]
             },
             {
                 "id": "san_pedro",
-                "nombre": "San Pedro de Atacama",
+                "nombre": "San Pedro de Atacama (Caracoles - Valle de la Luna)",
                 "x": -113800, "z": 102500,
                 "icon": "san_pedro",
                 "empresas": ["copec", "turismo_atacama"]
             },
             {
                 "id": "mejillones",
-                "nombre": "Mejillones",
+                "nombre": "Mejillones (Av. Fertilizantes - Puerto)",
                 "x": -118150, "z": 103200,
                 "icon": "mejillones",
                 "empresas": ["puerto_mej", "petrobras_cl"]
@@ -99,21 +99,21 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "copiapo",
-                "nombre": "Copiapó",
+                "nombre": "Copiapó (Av. Copayapu - Los Carrera)",
                 "x": -116900, "z": 118000,
                 "icon": "copiapo",
                 "empresas": ["copec", "cmp_minera", "agrosuper", "shell_cl"]
             },
             {
                 "id": "caldera",
-                "nombre": "Caldera",
+                "nombre": "Caldera (Costanera - Bahía Inglesa)",
                 "x": -118200, "z": 116500,
                 "icon": "caldera",
                 "empresas": ["copec", "pesquera_atacama"]
             },
             {
                 "id": "vallenar",
-                "nombre": "Vallenar",
+                "nombre": "Vallenar (Av. Brasil - Valle del Huasco)",
                 "x": -116400, "z": 124000,
                 "icon": "vallenar",
                 "empresas": ["copec", "agro_huasco"]
@@ -125,28 +125,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "la_serena",
-                "nombre": "La Serena",
+                "nombre": "La Serena (Av. Francisco de Aguirre - El Faro)",
                 "x": -117200, "z": 135000,
                 "icon": "la_serena",
                 "empresas": ["copec", "falabella", "cencosud", "shell_cl"]
             },
             {
                 "id": "coquimbo",
-                "nombre": "Coquimbo",
+                "nombre": "Coquimbo (Av. Costanera - Puerto)",
                 "x": -117350, "z": 136200,
                 "icon": "coquimbo",
                 "empresas": ["puerto_coq", "copec", "tottus_cl"]
             },
             {
                 "id": "ovalle",
-                "nombre": "Ovalle",
+                "nombre": "Ovalle (Av. Ariztía - Valle del Limarí)",
                 "x": -116100, "z": 140000,
                 "icon": "ovalle",
                 "empresas": ["copec", "pisco_capel"]
             },
             {
                 "id": "los_vilos",
-                "nombre": "Los Vilos",
+                "nombre": "Los Vilos (Costanera Salvador Allende)",
                 "x": -117000, "z": 148500,
                 "icon": "los_vilos",
                 "empresas": ["copec", "shell_cl"]
@@ -158,28 +158,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "valparaiso",
-                "nombre": "Valparaíso",
+                "nombre": "Valparaíso (Av. España - Errázuriz)",
                 "x": -117100, "z": 158000,
                 "icon": "valparaiso",
                 "empresas": ["tps_valpo", "copec", "chilexpress", "falabella"]
             },
             {
                 "id": "vina_del_mar",
-                "nombre": "Viña del Mar",
+                "nombre": "Viña del Mar (Av. Libertad - 1 Norte)",
                 "x": -116900, "z": 157200,
                 "icon": "vina_del_mar",
                 "empresas": ["cencosud", "copec", "shell_cl"]
             },
             {
                 "id": "san_antonio",
-                "nombre": "San Antonio",
+                "nombre": "San Antonio (Av. Barros Luco - Puerto STI)",
                 "x": -117200, "z": 162000,
                 "icon": "san_antonio",
                 "empresas": ["sti_san_ant", "copec", "starken", "petrobras_cl"]
             },
             {
                 "id": "los_andes",
-                "nombre": "Los Andes",
+                "nombre": "Los Andes (Av. Santa Teresa - Paso Los Libertadores)",
                 "x": -114800, "z": 156500,
                 "icon": "los_andes",
                 "empresas": ["codelco", "copec", "aduana_loslib"]
@@ -191,21 +191,21 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "santiago",
-                "nombre": "Santiago",
+                "nombre": "Santiago (Alameda - Autopista Central)",
                 "x": -115800, "z": 160000,
                 "icon": "santiago",
                 "empresas": ["falabella", "cencosud", "ccu", "chilexpress", "copec", "shell_cl"]
             },
             {
                 "id": "san_bernardo",
-                "nombre": "San Bernardo",
+                "nombre": "San Bernardo (Av. Portales - Eje Sur)",
                 "x": -115700, "z": 162500,
                 "icon": "san_bernardo",
                 "empresas": ["sodimac_log", "starken", "copec", "agrosuper"]
             },
             {
                 "id": "quilicura",
-                "nombre": "Quilicura",
+                "nombre": "Quilicura (Américo Vespucio - Panamericana Norte)",
                 "x": -115900, "z": 158500,
                 "icon": "quilicura",
                 "empresas": ["ccu", "falabella", "petrobras_cl"]
@@ -217,21 +217,21 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "rancagua",
-                "nombre": "Rancagua",
+                "nombre": "Rancagua (Av. O'Higgins - Carretera El Cobre)",
                 "x": -115500, "z": 165500,
                 "icon": "rancagua",
                 "empresas": ["codelco", "agrosuper", "copec", "shell_cl"]
             },
             {
                 "id": "san_fernando",
-                "nombre": "San Fernando",
+                "nombre": "San Fernando (Av. Manuel Rodríguez)",
                 "x": -115300, "z": 169000,
                 "icon": "san_fernando",
                 "empresas": ["concha_toro", "copec", "fruticola_cl"]
             },
             {
                 "id": "santa_cruz",
-                "nombre": "Santa Cruz",
+                "nombre": "Santa Cruz (Av. Errázuriz - Valle de Colchagua)",
                 "x": -116400, "z": 170500,
                 "icon": "santa_cruz",
                 "empresas": ["concha_toro", "copec"]
@@ -243,28 +243,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "talca",
-                "nombre": "Talca",
+                "nombre": "Talca (Av. San Miguel - 2 Sur)",
                 "x": -115200, "z": 175000,
                 "icon": "talca",
                 "empresas": ["pf_alimentos", "copec", "iansa", "shell_cl"]
             },
             {
                 "id": "curico",
-                "nombre": "Curicó",
+                "nombre": "Curicó (Av. Manso de Velasco - Alameda)",
                 "x": -115100, "z": 172000,
                 "icon": "curico",
                 "empresas": ["vina_sanpedro", "copec", "fruticola_cl"]
             },
             {
                 "id": "linares",
-                "nombre": "Linares",
+                "nombre": "Linares (Av. Aníbal León Bustos)",
                 "x": -115300, "z": 178000,
                 "icon": "linares",
                 "empresas": ["iansa", "copec"]
             },
             {
                 "id": "constitucion",
-                "nombre": "Constitución",
+                "nombre": "Constitución (Costanera Río Maule)",
                 "x": -117200, "z": 174800,
                 "icon": "constitucion",
                 "empresas": ["arauco", "copec"]
@@ -276,14 +276,14 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "chillan",
-                "nombre": "Chillán",
+                "nombre": "Chillán (Av. O'Higgins - Av. Brasil)",
                 "x": -115000, "z": 183000,
                 "icon": "chillan",
                 "empresas": ["cecinas_chillan", "copec", "arauco", "shell_cl"]
             },
             {
                 "id": "san_carlos",
-                "nombre": "San Carlos",
+                "nombre": "San Carlos (Av. Arturo Prat - Violeta Parra)",
                 "x": -114900, "z": 181200,
                 "icon": "san_carlos",
                 "empresas": ["molino_sc", "copec"]
@@ -295,28 +295,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "concepcion",
-                "nombre": "Concepción",
+                "nombre": "Concepción (Av. O'Higgins - Paicaví)",
                 "x": -116800, "z": 185000,
                 "icon": "concepcion",
                 "empresas": ["arauco", "svti_talcahuano", "copec", "falabella", "shell_cl"]
             },
             {
                 "id": "talcahuano",
-                "nombre": "Talcahuano",
+                "nombre": "Talcahuano (Autopista - Puerto San Vicente)",
                 "x": -117000, "z": 184200,
                 "icon": "talcahuano",
                 "empresas": ["huachipato", "camanchaca", "petrobras_cl"]
             },
             {
                 "id": "los_angeles",
-                "nombre": "Los Ángeles",
+                "nombre": "Los Ángeles (Av. Alemania - Ricardo Vicuña)",
                 "x": -115200, "z": 188000,
                 "icon": "los_angeles",
                 "empresas": ["cmpc", "arauco", "copec", "starken"]
             },
             {
                 "id": "coronel",
-                "nombre": "Coronel",
+                "nombre": "Coronel (Ruta 160 - Puerto Coronel)",
                 "x": -116900, "z": 186800,
                 "icon": "coronel",
                 "empresas": ["puerto_coronel", "pesquera_coronel"]
@@ -328,21 +328,21 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "temuco",
-                "nombre": "Temuco",
+                "nombre": "Temuco (Av. Alemania - Caupolicán)",
                 "x": -115400, "z": 194000,
                 "icon": "temuco",
                 "empresas": ["rosen_chile", "copec", "frigorifico_tem", "shell_cl"]
             },
             {
                 "id": "villarrica",
-                "nombre": "Villarrica",
+                "nombre": "Villarrica (Av. Pedro de Valdivia - Costanera)",
                 "x": -115100, "z": 197000,
                 "icon": "villarrica",
                 "empresas": ["copec", "maderas_sur"]
             },
             {
                 "id": "angol",
-                "nombre": "Angol",
+                "nombre": "Angol (Av. O'Higgins - Cordillera de Nahuelbuta)",
                 "x": -115800, "z": 190500,
                 "icon": "angol",
                 "empresas": ["cmpc", "copec"]
@@ -354,14 +354,14 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "valdivia",
-                "nombre": "Valdivia",
+                "nombre": "Valdivia (Costanera Prat - Ramón Picarte)",
                 "x": -116500, "z": 201000,
                 "icon": "valdivia",
                 "empresas": ["kunstmann", "copec", "asenav", "shell_cl"]
             },
             {
                 "id": "la_union",
-                "nombre": "La Unión",
+                "nombre": "La Unión (Av. Arturo Prat - Planta Colun)",
                 "x": -116200, "z": 204500,
                 "icon": "la_union",
                 "empresas": ["colun", "copec", "arauco"]
@@ -373,35 +373,35 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "puerto_montt",
-                "nombre": "Puerto Montt",
+                "nombre": "Puerto Montt (Diego Portales - Angelmó)",
                 "x": -116100, "z": 210000,
                 "icon": "puerto_montt",
                 "empresas": ["aquachile", "copec", "somarco_ferries", "shell_cl", "starken"]
             },
             {
                 "id": "osorno",
-                "nombre": "Osorno",
+                "nombre": "Osorno (Av. Mackenna - Errázuriz)",
                 "x": -116200, "z": 206500,
                 "icon": "osorno",
                 "empresas": ["colun", "frigorifico_osorno", "copec"]
             },
             {
                 "id": "castro",
-                "nombre": "Castro",
+                "nombre": "Castro (Palafitos Gamboa - San Martín)",
                 "x": -116800, "z": 214500,
                 "icon": "castro",
                 "empresas": ["aquachile", "copec", "naviera_chiloe"]
             },
             {
                 "id": "quellon",
-                "nombre": "Quellón",
+                "nombre": "Quellón (Hito Cero Panamericana)",
                 "x": -116700, "z": 218500,
                 "icon": "quellon",
                 "empresas": ["salmones_quellon", "copec"]
             },
             {
                 "id": "chaiten",
-                "nombre": "Chaitén",
+                "nombre": "Chaitén (Costanera - Carretera Austral)",
                 "x": -115500, "z": 216000,
                 "icon": "chaiten",
                 "empresas": ["copec", "barcazas_austral"]
@@ -413,28 +413,28 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "coyhaique",
-                "nombre": "Coyhaique",
+                "nombre": "Coyhaique (Baquedano - Carretera Austral)",
                 "x": -114800, "z": 228000,
                 "icon": "coyhaique",
                 "empresas": ["copec", "ganadera_aysen", "starken"]
             },
             {
                 "id": "puerto_aysen",
-                "nombre": "Puerto Aysén",
+                "nombre": "Puerto Aysén (Puente Presidente Ibáñez)",
                 "x": -115600, "z": 226500,
                 "icon": "puerto_aysen",
                 "empresas": ["friosur", "copec", "navimag"]
             },
             {
                 "id": "cochrane",
-                "nombre": "Cochrane",
+                "nombre": "Cochrane (Av. San Valentín - Río Baker)",
                 "x": -114200, "z": 236000,
                 "icon": "cochrane",
                 "empresas": ["terpel", "copec"]
             },
             {
                 "id": "v_ohiggins",
-                "nombre": "Villa O'Higgins",
+                "nombre": "Villa O'Higgins (Fin Carretera Austral)",
                 "x": -113800, "z": 242000,
                 "icon": "v_ohiggins",
                 "empresas": ["copec", "logistica_austral"]
@@ -446,21 +446,21 @@ REGIONES_CHILE = {
         "ciudades": [
             {
                 "id": "punta_arenas",
-                "nombre": "Punta Arenas",
+                "nombre": "Punta Arenas (Costanera del Estrecho - Av. España)",
                 "x": -111500, "z": 265000,
                 "icon": "punta_arenas",
                 "empresas": ["enap_magallanes", "copec", "tabsa_ferries", "shell_cl"]
             },
             {
                 "id": "pto_natales",
-                "nombre": "Puerto Natales",
+                "nombre": "Puerto Natales (Costanera Pedro Montt)",
                 "x": -113200, "z": 258000,
                 "icon": "pto_natales",
                 "empresas": ["australis_seafood", "copec", "frigorifico_sur"]
             },
             {
                 "id": "porvenir",
-                "nombre": "Porvenir",
+                "nombre": "Porvenir (Costanera Chiloé - Tierra del Fuego)",
                 "x": -111100, "z": 267000,
                 "icon": "porvenir",
                 "empresas": ["nova_austral", "copec"]
@@ -475,20 +475,32 @@ REGIONES_CHILE = {
 EMPRESAS_CHILENAS = {
     "copec": {
         "nombre": "Copec - Combustibles y Lubricantes",
-        "rubro": "Combustibles, Tiendas Pronto Copec y Punto Copec",
-        "cargas_in": ["petroleo_ref", "combust_cl", "lubricantes_copec", "abarrotes"],
+        "rubro": "Red de Estaciones de Servicio Copec, Pronto Copec y Punto Copec",
+        "cargas_in": ["petroleo_ref", "combust_cl", "lubricantes_copec", "diesel", "petrol", "abarrotes"],
         "cargas_out": ["combust_cl", "lubricantes_copec"]
     },
     "shell_cl": {
         "nombre": "Shell Enex Chile",
-        "rubro": "Combustibles y Tiendas Upa! / Upita",
-        "cargas_in": ["petroleo_ref", "combust_cl", "bebidas", "snacks"],
+        "rubro": "Red de Estaciones de Servicio Shell y Tiendas Upa! / Upita",
+        "cargas_in": ["petroleo_ref", "combust_cl", "diesel", "petrol", "bebidas", "snacks"],
         "cargas_out": ["combust_cl", "lubricantes_shell"]
+    },
+    "petrobras": {
+        "nombre": "Petrobras Chile - Esmax",
+        "rubro": "Red de Estaciones de Servicio Petrobras y Tiendas Spacio 1",
+        "cargas_in": ["combust_cl", "diesel", "petrol", "lubricantes_petro"],
+        "cargas_out": ["combust_cl"]
     },
     "petrobras_cl": {
         "nombre": "Petrobras Chile - Esmax",
-        "rubro": "Combustibles y Tiendas Spacio 1",
-        "cargas_in": ["combust_cl", "lubricantes_petro"],
+        "rubro": "Red de Estaciones de Servicio Petrobras y Tiendas Spacio 1",
+        "cargas_in": ["combust_cl", "diesel", "petrol", "lubricantes_petro"],
+        "cargas_out": ["combust_cl"]
+    },
+    "aramco": {
+        "nombre": "Aramco Chile",
+        "rubro": "Red Global de Combustibles y Estaciones de Servicio Aramco",
+        "cargas_in": ["combust_cl", "diesel", "petrol"],
         "cargas_out": ["combust_cl"]
     },
     "codelco": {
@@ -714,7 +726,7 @@ def generar_ciudades():
             content = f"""city_data : city.{cid}
 {{
     city_name: "{ciudad['nombre']}"
-    city_name_localized: "@@{cid}@@"
+    city_name_localized: "{ciudad['nombre']}"
     country: {country_id_str}{brand_str}
 
     map_x_offsets[]: 0
@@ -758,7 +770,7 @@ def generar_ciudades():
 
 
 def generar_empresas():
-    """Genera las definiciones de empresas en def/company/ y def/company.sii"""
+    """Genera las definiciones de empresas en def/company/ y def/company.sii con sucursales e in/out de cargas"""
     company_dir = DEF_DIR / "company"
     company_dir.mkdir(parents=True, exist_ok=True)
 
@@ -778,6 +790,36 @@ def generar_empresas():
         with open(sui_path, "w", encoding="utf-8") as f:
             f.write(content)
 
+        # 1. Generar carpetas in/ y out/ para cargas de transporte
+        in_dir = company_dir / comp_id / "in"
+        in_dir.mkdir(parents=True, exist_ok=True)
+        for cargo_in in comp_data.get("cargas_in", []):
+            cargo_sii = in_dir / f"{cargo_in}.sii"
+            cargo_sii.write_text(f'SiiNunit\n{{\ncargo_def : .{cargo_in} {{\n cargo: "cargo.{cargo_in}"\n}}\n}}\n', encoding="utf-8")
+
+        out_dir = company_dir / comp_id / "out"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        for cargo_out in comp_data.get("cargas_out", []):
+            cargo_sii = out_dir / f"{cargo_out}.sii"
+            cargo_sii.write_text(f'SiiNunit\n{{\ncargo_def : .{cargo_out} {{\n cargo: "cargo.{cargo_out}"\n}}\n}}\n', encoding="utf-8")
+
+        # 2. Generar sucursales activas en editor/ para las comunas y estaciones de servicio
+        editor_dir = company_dir / comp_id / "editor"
+        editor_dir.mkdir(parents=True, exist_ok=True)
+
+        for reg_code, reg_info in REGIONES_CHILE.items():
+            for ciudad in reg_info["ciudades"]:
+                cid = ciudad["id"]
+                es_copec = (comp_id == "copec")
+                es_shell = (comp_id == "shell_cl" and (cid in ["arica", "iquique", "antofagasta", "calama", "copiapo", "la_serena", "los_vilos", "vina_del_mar", "santiago", "rancagua", "talca", "chillan", "concepcion", "temuco", "valdivia", "puerto_montt", "punta_arenas"]))
+                es_petro = (comp_id in ("petrobras", "petrobras_cl") and (cid in ["antofagasta", "mejillones", "san_antonio", "santiago", "quilicura", "talcahuano", "concepcion"]))
+                es_aramco = (comp_id == "aramco" and (cid in ["arica", "antofagasta", "la_serena", "valparaiso", "santiago", "rancagua", "talca", "chillan", "concepcion", "temuco", "puerto_montt"]))
+                en_lista = comp_id in ciudad.get("empresas", [])
+
+                if es_copec or es_shell or es_petro or es_aramco or en_lista:
+                    ed_sii = editor_dir / f"{cid}.sii"
+                    ed_sii.write_text(f'SiiNunit\n{{\ncompany_def : .{cid} {{\n city: {cid}\n prefab: d_cust_1w1\n}}\n}}\n', encoding="utf-8")
+
     # Incluir también empresas base para compatibilidad con prefabs importados
     base_company_sii = BASE_DIR / "scratch" / "def" / "def" / "company.sii"
     if base_company_sii.exists():
@@ -796,7 +838,7 @@ def generar_empresas():
     if old_master.exists():
         old_master.unlink()
 
-    print(f"-> {len(master_includes)} empresas registradas en def/company.sii (chilenas y prefabs base)")
+    print(f"-> {len(master_includes)} empresas registradas en def/company.sii con sucursales e in/out de cargas")
 
 
 def generar_cargas():
@@ -969,45 +1011,130 @@ def desactivar_dlcs_europa():
 
 
 def generar_estaciones_servicio():
-    """Genera mapeos de estaciones de servicio chilenas (Copec, Shell, Petrobras)"""
+    """Genera definiciones de las estaciones de servicio más icónicas de Chile (Copec, Shell, Petrobras, Aramco)"""
     world_dir = DEF_DIR / "world"
     world_dir.mkdir(parents=True, exist_ok=True)
 
-    gas_path = world_dir / "gasoline_station.chile.sii"
-    content = """SiiNunit
+    gas_content = """SiiNunit
 {
-# Estaciones de Servicio Oficiales en Rutas y Carreteras de Chile
-# Red Copec (Pronto / Punto), Shell Enex (Upa!), Petrobras (Spacio 1)
+# ==============================================================================
+# RED OFICIAL DE ESTACIONES DE SERVICIO EN CARRETERAS Y RUTAS DE CHILE
+# ==============================================================================
+
+# Copec - Red Líder de Chile (Tiendas Pronto en Autopistas y Punto en Ciudades)
+gasoline_station : gas.copec
+{
+    name: "Copec Pronto"
+    fuel_price: 1.05
+}
 
 gasoline_station : gas.copec_pronto
 {
     name: "Copec Pronto"
-    fuel_price: 1.15
+    fuel_price: 1.05
 }
 
 gasoline_station : gas.copec_punto
 {
     name: "Copec Punto"
-    fuel_price: 1.15
+    fuel_price: 1.05
+}
+
+# Shell Enex Chile - Tiendas Upa! / Upita
+gasoline_station : gas.shell_cl
+{
+    name: "Shell Upa!"
+    fuel_price: 1.06
 }
 
 gasoline_station : gas.shell_upa
 {
     name: "Shell Upa!"
-    fuel_price: 1.16
+    fuel_price: 1.06
+}
+
+# Petrobras Chile (Esmax) - Tiendas Spacio 1
+gasoline_station : gas.petrobras
+{
+    name: "Petrobras Spacio 1"
+    fuel_price: 1.04
 }
 
 gasoline_station : gas.petrobras_spacio
 {
     name: "Petrobras Spacio 1"
-    fuel_price: 1.14
+    fuel_price: 1.04
+}
+
+# Aramco Chile - Presencia Nacional
+gasoline_station : gas.aramco
+{
+    name: "Aramco Chile"
+    fuel_price: 1.05
+}
+
+# Fallbacks retrocompatibles para prefabs de gasolineras importadas
+gasoline_station : gas.primel
+{
+    name: "Copec Pronto"
+    fuel_price: 1.05
+}
+
+gasoline_station : gas.bts
+{
+    name: "Copec Punto"
+    fuel_price: 1.05
+}
+
+gasoline_station : gas.pegi
+{
+    name: "Shell Upa!"
+    fuel_price: 1.06
+}
+
+gasoline_station : gas.tqg
+{
+    name: "Shell Chile"
+    fuel_price: 1.06
+}
+
+gasoline_station : gas.nada
+{
+    name: "Petrobras Spacio 1"
+    fuel_price: 1.04
+}
+
+gasoline_station : gas.apus
+{
+    name: "Aramco Chile"
+    fuel_price: 1.05
 }
 }
 """
-    with open(gas_path, "w", encoding="utf-8") as f:
-        f.write(content)
+    (world_dir / "gasoline_station.sii").write_text(gas_content, encoding="utf-8")
+    (world_dir / "gasoline_station.chile.sii").write_text(gas_content, encoding="utf-8")
+    print("-> Red Copec, Shell, Petrobras y Aramco registrada en def/world/gasoline_station*.sii")
 
-    print("-> Estaciones de servicio generadas en def/world/gasoline_station.chile.sii")
+
+def generar_locales():
+    """Genera diccionarios de localización en locale/*/locale.sii para ciudades, avenidas y gasolineras"""
+    idiomas = ["es_es", "es_la", "en_us"]
+    loc_lines = []
+
+    for reg_code, reg_info in REGIONES_CHILE.items():
+        for ciudad in reg_info["ciudades"]:
+            cid = ciudad["id"]
+            cname = ciudad["nombre"]
+            loc_lines.append(f'    key[]: "{cid}"\n    val[]: "{cname}"')
+
+    loc_content = "SiiNunit\n{\nlocalization_db : .localization\n{\n" + "\n".join(loc_lines) + "\n}\n}\n"
+
+    for lang in idiomas:
+        ldir = BASE_DIR / "locale" / lang
+        ldir.mkdir(parents=True, exist_ok=True)
+        (ldir / "locale.sii").write_text(loc_content, encoding="utf-8")
+
+    print(f"-> Localización de 52 ciudades y avenidas generada en {len(idiomas)} idiomas (locale/)")
 
 
 def main():
@@ -1019,6 +1146,7 @@ def main():
     generar_empresas()
     generar_cargas()
     generar_estaciones_servicio()
+    generar_locales()
     desactivar_dlcs_europa()
     print("================================================================")
     print("Todas las definiciones se han generado correctamente.")
@@ -1026,3 +1154,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

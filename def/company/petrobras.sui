@@ -1,0 +1,6 @@
+company_permanent : company.permanent.petrobras
+{
+    name: "Petrobras Chile - Esmax"
+    sort_name: "PETROBRAS"
+    trailer_look: "petrobras"
+}

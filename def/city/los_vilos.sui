@@ -1,7 +1,7 @@
 city_data : city.los_vilos
 {
-    city_name: "Los Vilos"
-    city_name_localized: "@@los_vilos@@"
+    city_name: "Los Vilos (Costanera Salvador Allende)"
+    city_name_localized: "Los Vilos (Costanera Salvador Allende)"
     country: cl_iv
 
     map_x_offsets[]: 0

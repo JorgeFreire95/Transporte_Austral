@@ -1,7 +1,7 @@
 city_data : city.angol
 {
-    city_name: "Angol"
-    city_name_localized: "@@angol@@"
+    city_name: "Angol (Av. O'Higgins - Cordillera de Nahuelbuta)"
+    city_name_localized: "Angol (Av. O'Higgins - Cordillera de Nahuelbuta)"
     country: cl_ix
 
     map_x_offsets[]: 0
