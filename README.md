@@ -330,7 +330,19 @@ python tools/sector_helper.py
 python tools/sector_helper.py backup
 ```
 
-### 5. `launcher.py` / `iniciar_trayectoria.bat`
+### 5. `generate_company_logos.py` (Logos Corporativos UI y GPS)
+Genera automáticamente las texturas DDS (256x128 y 64x64), descriptores TOBJ y materiales MAT para todas las empresas chilenas en el Mercado de Trabajo y el GPS:
+```bash
+python tools/generate_company_logos.py
+```
+
+### 6. `generate_3d_textures.py` (Texturas 3D de Carteles y Estaciones de Servicio)
+Genera texturas DDS con compresión DXT5 y pirámide completa de mipmaps para sustituir físicamente los carteles 3D y marcas en el mundo abierto (Blue Express, ENAP, Unimarc, Lider, Starken) y las estaciones de servicio (Copec Pronto, Shell Upa!, Petrobras Spacio 1):
+```bash
+python tools/generate_3d_textures.py
+```
+
+### 7. `launcher.py` / `iniciar_trayectoria.bat`
 Lanzador interactivo para seleccionar regiones y sortear comunas de inicio:
 ```bash
 python tools/launcher.py

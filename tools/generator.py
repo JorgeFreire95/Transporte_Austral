@@ -1737,7 +1737,13 @@ def main():
         import generate_company_logos
         generate_company_logos.generar_todos_los_logos()
     except Exception as e:
-        print(f"Aviso al generar logos: {e}")
+        print(f"Aviso al generar logos UI: {e}")
+
+    try:
+        import generate_3d_textures
+        generate_3d_textures.main()
+    except Exception as e:
+        print(f"Aviso al generar texturas 3D: {e}")
 
     print("================================================================")
     print("Todas las definiciones se han generado correctamente.")
