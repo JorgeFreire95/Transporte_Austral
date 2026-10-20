@@ -1,0 +1,54 @@
+# ==============================================================================
+# TRANSPORTE AUSTRAL - GITIGNORE
+# ==============================================================================
+
+# Directorios de trabajo temporal y scratch
+scratch/
+temp/
+tmp/
+backups/
+
+# Archivos temporales y de respaldo
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+*.orig
+
+# Python cache y compilados
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyd
+.pytest_cache/
+
+# Paquetes y distribución compilada
+dist/
+build/
+*.scs.zip
+
+# Registros y logs de ejecución
+*.log
+game.log.txt
+game.crash.txt
+
+# Configuraciones de IDE y editores
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosv
+*.sln.docstates
+
+# Archivos del sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Metadatos del agente
+.agents/
