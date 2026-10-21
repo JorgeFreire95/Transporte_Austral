@@ -671,6 +671,672 @@ def generar_totems_carretera():
 
 
 # ==============================================================================
+# 7. CARTELES MODERNOS DE EMPRESAS EN CIUDADES Y PREFABS (/model2/sign/company_logos/)
+# ==============================================================================
+# Sustituye los carteles de edificios, pórticos y tótems de los prefabs modernos
+# (Euro Flow Ports -> STI Puerto San Antonio, ITCC -> ENAP, Transinet -> Blue Express, etc.)
+MODEL2_COMPANY_MAPPING = {
+    "euroflow": {
+        "file": "euroflow",
+        "title": "STI",
+        "sub": "PUERTO SAN ANTONIO",
+        "sec": "TERMINAL PORTUARIO",
+        "bg": (0, 43, 73),
+        "fg": (255, 255, 255),
+        "accent": (0, 174, 239),
+        "size": (512, 512),
+    },
+    "itcc": {
+        "file": "itcc",
+        "title": "ENAP",
+        "sub": "REFINERÍAS DE CHILE",
+        "sec": "PETRÓLEO Y ENERGÍA",
+        "bg": (0, 45, 95),
+        "fg": (255, 255, 255),
+        "accent": (211, 17, 30),
+        "size": (512, 256),
+    },
+    "transinet": {
+        "file": "transinet_de",
+        "title": "BLUE EXPRESS",
+        "sub": "DISTRIBUCIÓN NACIONAL",
+        "sec": "COURIER & CARGA CHILE",
+        "bg": (0, 150, 214),
+        "fg": (255, 255, 255),
+        "accent": (255, 120, 0),
+        "size": (512, 256),
+    },
+    "cargotras": {
+        "file": "cargotras_it",
+        "title": "BLUE EXPRESS",
+        "sub": "CARGA PESADA",
+        "sec": "DISTRIBUCIÓN NACIONAL",
+        "bg": (0, 150, 214),
+        "fg": (255, 255, 255),
+        "accent": (255, 120, 0),
+        "size": (512, 256),
+    },
+    "tradeaux": {
+        "file": "tradeaux",
+        "title": "STARKEN",
+        "sub": "CARGA Y ENCOMIENDAS",
+        "sec": "LOGÍSTICA INTEGRAL CHILE",
+        "bg": (255, 102, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 235, 210),
+        "size": (1024, 512),
+    },
+    "lkw": {
+        "file": "lkw",
+        "title": "STARKEN",
+        "sub": "ENCOMIENDAS NACIONALES",
+        "sec": "RED DE DISTRIBUCIÓN",
+        "bg": (255, 102, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 235, 210),
+        "size": (512, 256),
+    },
+    "gnt": {
+        "file": "gnt_sc",
+        "title": "STARKEN",
+        "sub": "CENTRO DE ACOPIO",
+        "sec": "HUB LOGÍSTICO",
+        "bg": (255, 102, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 235, 210),
+        "size": (512, 256),
+    },
+    "posped": {
+        "file": "posped",
+        "title": "CHILEXPRESS",
+        "sub": "COURIER & LOGÍSTICA",
+        "sec": "ENTREGAS EXPRESS",
+        "bg": (255, 204, 0),
+        "fg": (204, 0, 0),
+        "accent": (35, 35, 35),
+        "size": (512, 256),
+    },
+    "rt_log": {
+        "file": "rt_log_ibe",
+        "title": "CHILEXPRESS",
+        "sub": "HUB DE DISTRIBUCIÓN",
+        "sec": "LOGÍSTICA REGIONAL",
+        "bg": (255, 204, 0),
+        "fg": (204, 0, 0),
+        "accent": (35, 35, 35),
+        "size": (512, 256),
+    },
+    "fle": {
+        "file": "fle_fr",
+        "title": "CHILEXPRESS",
+        "sub": "CTP AEROPUERTO",
+        "sec": "CARGA AÉREA Y ENCOMIENDAS",
+        "bg": (255, 204, 0),
+        "fg": (204, 0, 0),
+        "accent": (35, 35, 35),
+        "size": (512, 256),
+    },
+    "euro_goodies": {
+        "file": "euro_goodies",
+        "title": "LIDER",
+        "sub": "WALMART CHILE",
+        "sec": "CENTRO DE DISTRIBUCIÓN",
+        "bg": (0, 70, 145),
+        "fg": (255, 255, 255),
+        "accent": (255, 194, 32),
+        "size": (512, 256),
+    },
+    "renat": {
+        "file": "renat_balt",
+        "title": "LIDER",
+        "sub": "LIDER LOGÍSTICA",
+        "sec": "ABASTECIMIENTO NACIONAL",
+        "bg": (0, 70, 145),
+        "fg": (255, 255, 255),
+        "accent": (255, 194, 32),
+        "size": (512, 256),
+    },
+    "sellplan": {
+        "file": "sellplan",
+        "title": "UNIMARC",
+        "sub": "SUPERMERCADO CHILENO",
+        "sec": "EL SUPERMERCADO DE CHILE",
+        "bg": (211, 17, 30),
+        "fg": (255, 255, 255),
+        "accent": (255, 220, 220),
+        "size": (512, 256),
+    },
+    "kaarfor": {
+        "file": "kaarfor_fr",
+        "title": "CENCOSUD",
+        "sub": "JUMBO / EASY / SANTA ISABEL",
+        "sec": "RETAIL Y DISTRIBUCIÓN",
+        "bg": (0, 122, 51),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "renar_logistik": {
+        "file": "renar_logistik_sc",
+        "title": "CENCOSUD",
+        "sub": "CENCOSUD LOGÍSTICA",
+        "sec": "CENTRO DE DISTRIBUCIÓN",
+        "bg": (0, 122, 51),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "san_builders": {
+        "file": "san_builders",
+        "title": "SODIMAC",
+        "sub": "HOMECENTER CHILE",
+        "sec": "CONSTRUCCIÓN Y HOGAR",
+        "bg": (0, 68, 124),
+        "fg": (255, 255, 255),
+        "accent": (245, 179, 36),
+        "size": (512, 256),
+    },
+    "eumefa": {
+        "file": "eumefa",
+        "title": "SODIMAC",
+        "sub": "HOMECENTER",
+        "sec": "MATERIALES DE CONSTRUCCIÓN",
+        "bg": (0, 68, 124),
+        "fg": (255, 255, 255),
+        "accent": (245, 179, 36),
+        "size": (512, 256),
+    },
+    "domdepo": {
+        "file": "domdepo_balt",
+        "title": "SODIMAC",
+        "sub": "CONSTRUCTOR",
+        "sec": "GRANDES OBRAS Y MATERIALES",
+        "bg": (0, 68, 124),
+        "fg": (255, 255, 255),
+        "accent": (245, 179, 36),
+        "size": (512, 256),
+    },
+    "ika_bohag": {
+        "file": "ika_bohag_sc",
+        "title": "FALABELLA",
+        "sub": "RETAIL CHILE",
+        "sec": "TIENDA POR DEPARTAMENTOS",
+        "bg": (0, 168, 89),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "cesare_smar": {
+        "file": "cesare_smar_it",
+        "title": "FALABELLA",
+        "sub": "FALABELLA LOGÍSTICA",
+        "sec": "DISTRIBUCIÓN NACIONAL",
+        "bg": (0, 168, 89),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "fcp": {
+        "file": "fcp",
+        "title": "SOPROLE",
+        "sub": "LÁCTEOS Y DERIVADOS",
+        "sec": "ALIMENTACIÓN SALUDABLE",
+        "bg": (0, 51, 153),
+        "fg": (255, 255, 255),
+        "accent": (220, 20, 60),
+        "size": (512, 256),
+    },
+    "bcp": {
+        "file": "bcp_de",
+        "title": "CAROZZI",
+        "sub": "ALIMENTOS Y PASTAS",
+        "sec": "TRADICIÓN CHILENA",
+        "bg": (179, 0, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "granoro": {
+        "file": "granoro",
+        "title": "CAROZZI",
+        "sub": "MOLINOS Y HARINAS",
+        "sec": "MOLIENDA DE TRIGO",
+        "bg": (179, 0, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "euro_acres": {
+        "file": "euro_acres",
+        "title": "AGROSUPER",
+        "sub": "ALIMENTOS DE CHILE",
+        "sec": "PRODUCCIÓN PECUARIA",
+        "bg": (227, 6, 19),
+        "fg": (255, 255, 255),
+        "accent": (255, 215, 0),
+        "size": (512, 256),
+    },
+    "libellula": {
+        "file": "libellula_it",
+        "title": "AGROSUPER",
+        "sub": "COMPLEJO LO MIRANDA",
+        "sec": "AGROINDUSTRIA CHILE",
+        "bg": (227, 6, 19),
+        "fg": (255, 255, 255),
+        "accent": (255, 215, 0),
+        "size": (512, 256),
+    },
+    "trameri": {
+        "file": "trameri",
+        "title": "COLUN",
+        "sub": "LA MAGIA DEL SUR",
+        "sec": "COOPERATIVA LECHERA",
+        "bg": (0, 102, 178),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "charmey": {
+        "file": "charmey_ch",
+        "title": "COLUN",
+        "sub": "QUESOS DEL SUR",
+        "sec": "PLANTA LECHERA LA UNIÓN",
+        "bg": (0, 102, 178),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "treeet": {
+        "file": "treeet",
+        "title": "ARAUCO",
+        "sub": "CELULOSA Y MADERAS",
+        "sec": "FORESTAL ARAUCO",
+        "bg": (0, 90, 54),
+        "fg": (255, 255, 255),
+        "accent": (144, 238, 144),
+        "size": (512, 256),
+    },
+    "scs_paper": {
+        "file": "scs_paper_blke",
+        "title": "CMPC",
+        "sub": "PAPELES Y CELULOSA",
+        "sec": "FORESTAL MININCO",
+        "bg": (0, 102, 68),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "stokes": {
+        "file": "stokes",
+        "title": "CCU",
+        "sub": "BEBIDAS Y CERVEZAS",
+        "sec": "COMPAÑÍA CERVECERÍAS UNIDAS",
+        "bg": (11, 35, 65),
+        "fg": (255, 255, 255),
+        "accent": (212, 175, 55),
+        "size": (512, 256),
+    },
+    "nbfc": {
+        "file": "nbfc",
+        "title": "EMBONOR",
+        "sub": "COCA-COLA CHILE",
+        "sec": "EMBOTELLADORA EMBONOR",
+        "bg": (204, 0, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "shuttle_cola": {
+        "file": "shuttle_cola",
+        "title": "ANDINA",
+        "sub": "COCA-COLA CHILE",
+        "sec": "EMBOTELLADORA ANDINA",
+        "bg": (227, 6, 19),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "spinelli": {
+        "file": "spinelli_it",
+        "title": "CONCHA Y TORO",
+        "sub": "VIÑA DE CHILE",
+        "sec": "BODEGAS Y VINIFICACIÓN",
+        "bg": (88, 17, 26),
+        "fg": (255, 255, 255),
+        "accent": (212, 175, 55),
+        "size": (512, 256),
+    },
+    "wgcc": {
+        "file": "wgcc",
+        "title": "SQM",
+        "sub": "LITIO Y MINERALES",
+        "sec": "SALAR DE ATACAMA",
+        "bg": (0, 75, 135),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "kathode": {
+        "file": "kathode_at",
+        "title": "CAP ACERO",
+        "sub": "SIDERÚRGICA HUACHIPATO",
+        "sec": "ACEROS DE CHILE",
+        "bg": (45, 55, 72),
+        "fg": (255, 255, 255),
+        "accent": (245, 158, 11),
+        "size": (512, 256),
+    },
+    "aci": {
+        "file": "aci_it",
+        "title": "ACEROS AZA",
+        "sub": "SIDERÚRGICA DE CHILE",
+        "sec": "ACEROS RECICLADOS",
+        "bg": (35, 45, 60),
+        "fg": (255, 255, 255),
+        "accent": (220, 38, 38),
+        "size": (512, 256),
+    },
+    "cnp": {
+        "file": "cnp_it",
+        "title": "MOLYMET",
+        "sub": "MOLIBDENO & RENIO",
+        "sec": "MINERÍA ESPECIALIZADA",
+        "bg": (30, 58, 138),
+        "fg": (255, 255, 255),
+        "accent": (96, 165, 250),
+        "size": (512, 256),
+    },
+    "piac": {
+        "file": "piac_it",
+        "title": "CAP MINERÍA",
+        "sub": "HIERRO ATACAMA",
+        "sec": "MINA LOS COLORADOS",
+        "bg": (120, 53, 15),
+        "fg": (255, 255, 255),
+        "accent": (245, 158, 11),
+        "size": (512, 256),
+    },
+    "stronghold": {
+        "file": "stronghold",
+        "title": "POLPAICO",
+        "sub": "CEMENTO & HORMIGÓN",
+        "sec": "MATERIALES DE CONSTRUCCIÓN",
+        "bg": (208, 16, 24),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "dfh": {
+        "file": "dfh_de",
+        "title": "IANSA",
+        "sub": "EMPRESAS IANSA",
+        "sec": "ALIMENTOS Y AZÚCAR",
+        "bg": (0, 132, 61),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "suikersmij": {
+        "file": "suikersmij",
+        "title": "IANSA",
+        "sub": "PLANTA AZUCARERA",
+        "sec": "REMOLACHA Y DERIVADOS",
+        "bg": (0, 132, 61),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "polar_fish": {
+        "file": "polar_fish_sc",
+        "title": "AQUACHILE",
+        "sub": "SALMONES DEL SUR",
+        "sec": "PUERTO MONTT - AYSÉN",
+        "bg": (0, 102, 153),
+        "fg": (255, 255, 255),
+        "accent": (135, 206, 250),
+        "size": (512, 256),
+    },
+    "globeur": {
+        "file": "globeur_fr",
+        "title": "DOLE CHILE",
+        "sub": "FRUTAS DE EXPORTACIÓN",
+        "sec": "VALLES DE CHILE",
+        "bg": (0, 128, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 215, 0),
+        "size": (512, 256),
+    },
+    "fallow_cargo": {
+        "file": "fallow_cargo_blke",
+        "title": "IDEAL",
+        "sub": "PANIFICACIÓN BIMBO",
+        "sec": "PLANTA QUILICURA",
+        "bg": (240, 240, 240),
+        "fg": (0, 51, 153),
+        "accent": (204, 0, 0),
+        "size": (512, 256),
+    },
+    "drekkartrans": {
+        "file": "drekkartrans_sc",
+        "title": "WATT'S",
+        "sub": "ALIMENTOS Y LÁCTEOS",
+        "sec": "DISTRIBUCIÓN NACIONAL",
+        "bg": (255, 119, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "agronord": {
+        "file": "agronord_sc",
+        "title": "WATT'S",
+        "sub": "LONCOLECHE",
+        "sec": "PLANTA OSORNO",
+        "bg": (255, 119, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "tesore_gust": {
+        "file": "tesore_gust_it",
+        "title": "WATT'S",
+        "sub": "PLANTAS LECHERAS",
+        "sec": "LACTEOS DEL SUR",
+        "bg": (255, 119, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "bhv": {
+        "file": "bhv_sc",
+        "title": "SIMUNOVIC",
+        "sub": "FRIGORÍFICO AUSTRAL",
+        "sec": "PUNTA ARENAS PATAGONIA",
+        "bg": (102, 0, 0),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "balkan_loco": {
+        "file": "balkan_loco_blke",
+        "title": "FEPASA",
+        "sub": "FERROCARRIL DEL PACÍFICO",
+        "sec": "TRANSPORTE FERROVIARIO",
+        "bg": (0, 75, 140),
+        "fg": (255, 255, 255),
+        "accent": (245, 158, 11),
+        "size": (512, 256),
+    },
+    "eolo_lines": {
+        "file": "eolo_lines_it",
+        "title": "TRANSMARCHILAY",
+        "sub": "FERRIES DE CHILE",
+        "sec": "CONECTIVIDAD CANAL DE CHACAO",
+        "bg": (0, 51, 102),
+        "fg": (255, 255, 255),
+        "accent": (0, 180, 230),
+        "size": (512, 256),
+    },
+    "marina": {
+        "file": "marina_it",
+        "title": "TABSA",
+        "sub": "TRANSBORDADORES AUSTRAL",
+        "sec": "CONECTIVIDAD MAGALLANES",
+        "bg": (0, 40, 85),
+        "fg": (255, 255, 255),
+        "accent": (255, 204, 0),
+        "size": (512, 256),
+    },
+    "cont_port_it": {
+        "file": "cont_port_it",
+        "title": "PUERTO CORONEL",
+        "sub": "TERMINAL MARÍTIMO",
+        "sec": "EXPORTACIÓN FORESTAL BÍOBÍO",
+        "bg": (0, 102, 102),
+        "fg": (255, 255, 255),
+        "accent": (255, 255, 255),
+        "size": (512, 256),
+    },
+    "subse": {
+        "file": "subse_fr",
+        "title": "TPS",
+        "sub": "PUERTO VALPARAÍSO",
+        "sec": "TERMINAL PACÍFICO SUR",
+        "bg": (0, 51, 102),
+        "fg": (255, 255, 255),
+        "accent": (0, 204, 255),
+        "size": (512, 256),
+    },
+    "tdc_auto": {
+        "file": "tdc_auto_ibe",
+        "title": "PUERTO SAN ANTONIO",
+        "sub": "TERMINAL AUTOMÓVILES",
+        "sec": "DESEMBARQUE VEHICULAR",
+        "bg": (0, 43, 73),
+        "fg": (255, 255, 255),
+        "accent": (0, 174, 239),
+        "size": (512, 256),
+    },
+    "voitureux": {
+        "file": "voitureux_fr",
+        "title": "GILDEMEISTER",
+        "sub": "AUTOMOTRIZ CHILE",
+        "sec": "IMPORTACIÓN VEHÍCULOS",
+        "bg": (20, 35, 60),
+        "fg": (255, 255, 255),
+        "accent": (220, 38, 38),
+        "size": (512, 256),
+    },
+}
+
+
+def render_model2_sign_512x256(title: str, sub: str, sec: str, bg: tuple, fg: tuple, accent: tuple, w: int = 512, h: int = 256) -> Image.Image:
+    """Renderiza el cartel corporativo moderno para model2/sign/company_logos (512x256 o 1024x512)."""
+    scale = w / 512.0
+    im = Image.new("RGBA", (w, h), (218, 220, 222, 255))
+    draw = ImageDraw.Draw(im)
+
+    # Marco exterior metálico
+    draw.rectangle([0, 0, w - 1, h - 1], outline=(145, 148, 150, 255), width=int(3 * scale))
+
+    # Panel principal del cartel (blanco con borde del color de marca)
+    pad_x = int(12 * scale)
+    pad_y = int(20 * scale)
+    draw.rounded_rectangle([pad_x, pad_y, w - pad_x, h - pad_y], radius=int(12 * scale), fill=(255, 255, 255, 255), outline=(*bg, 255), width=int(4 * scale))
+
+    # Barra superior de acento con color de marca
+    bar_top_h = int(24 * scale)
+    draw.rounded_rectangle([pad_x, pad_y, w - pad_x, pad_y + bar_top_h], radius=int(12 * scale), fill=(*bg, 255))
+    draw.rectangle([pad_x, pad_y + int(12 * scale), w - pad_x, pad_y + bar_top_h], fill=(*bg, 255))
+
+    # Título principal de la empresa chilena
+    font_size_t = int((54 if len(title) <= 6 else (42 if len(title) <= 10 else 32)) * scale)
+    font_t = ImageFont.truetype(FONT_BOLD, font_size_t)
+    draw.text((w // 2, int(108 * scale)), title, font=font_t, fill=(*bg, 255), anchor="mm")
+
+    # Franja intermedia de acento
+    accent_y = int(155 * scale)
+    accent_h = int(8 * scale)
+    draw.rectangle([int(30 * scale), accent_y, w - int(30 * scale), accent_y + accent_h], fill=(*accent, 255))
+
+    # Subtítulo (ej. REFINERÍAS DE CHILE, DISTRIBUCIÓN NACIONAL)
+    font_size_s = int(20 * scale)
+    font_s = ImageFont.truetype(FONT_BOLD, font_size_s)
+    draw.text((w // 2, int(185 * scale)), sub.upper(), font=font_s, fill=(*bg, 255), anchor="mm")
+
+    # Línea secundaria de ubicación / giro
+    font_size_sec = int(12 * scale)
+    font_sec = ImageFont.truetype(FONT_BOLD, font_size_sec)
+    draw.text((w // 2, int(216 * scale)), sec.upper(), font=font_sec, fill=(100, 105, 110, 255), anchor="mm")
+
+    return im
+
+
+def render_model2_euroflow_512x512() -> Image.Image:
+    """Renderiza el cartel de Puerto San Antonio (STI) adaptado a la geometría de euroflow.dds (512x512)."""
+    im = Image.new("RGBA", (512, 512), (210, 212, 215, 255))
+    draw = ImageDraw.Draw(im)
+
+    # Marco exterior metálico
+    draw.rectangle([0, 0, 511, 511], outline=(150, 153, 156, 255), width=4)
+
+    # Panel del letrero de azotea y tótem (x=20..492, y=60..360)
+    draw.rounded_rectangle([20, 60, 492, 360], radius=16, fill=(255, 255, 255, 255), outline=(0, 43, 73, 255), width=5)
+
+    font_sti = ImageFont.truetype(FONT_BOLD, 78)
+    font_sub = ImageFont.truetype(FONT_BOLD, 28)
+    font_sec = ImageFont.truetype(FONT_BOLD, 16)
+
+    # Título STI
+    draw.text((256, 140), "STI", font=font_sti, fill=(0, 43, 73, 255), anchor="mm")
+
+    # Franja cian marítima
+    draw.rectangle([60, 195, 452, 205], fill=(0, 174, 239, 255))
+
+    # PUERTO SAN ANTONIO
+    draw.text((256, 245), "PUERTO SAN ANTONIO", font=font_sub, fill=(0, 43, 73, 255), anchor="mm")
+
+    # SAN ANTONIO TERMINAL INTERNACIONAL
+    draw.text((256, 305), "SAN ANTONIO TERMINAL INTERNACIONAL", font=font_sec, fill=(0, 120, 180, 255), anchor="mm")
+
+    # Paneles direccionales y flechas inferiores (y=380..500)
+    draw.rounded_rectangle([20, 380, 246, 500], radius=8, fill=(255, 255, 255, 255), outline=(0, 43, 73, 255), width=3)
+    draw.text((133, 425), "STI", font=ImageFont.truetype(FONT_BOLD, 36), fill=(0, 43, 73, 255), anchor="mm")
+    draw.text((133, 470), "ACCESO PUERTO", font=ImageFont.truetype(FONT_BOLD, 13), fill=(0, 174, 239, 255), anchor="mm")
+
+    draw.rounded_rectangle([266, 380, 492, 500], radius=8, fill=(0, 43, 73, 255))
+    draw.text((379, 425), "ENTRADA", font=ImageFont.truetype(FONT_BOLD, 24), fill=(255, 255, 255, 255), anchor="mm")
+    draw.text((379, 470), "CARGA Y CONTENEDORES", font=ImageFont.truetype(FONT_BOLD, 11), fill=(0, 174, 239, 255), anchor="mm")
+
+    return im
+
+
+def generar_carteles_model2_modernos():
+    print("-> Generando carteles modernos de prefabs en model2/sign/company_logos/...")
+    base_m2 = BASE_DIR / "model2" / "sign" / "company_logos"
+
+    count = 0
+    for comp_dir, info in MODEL2_COMPANY_MAPPING.items():
+        fname = info["file"]
+        target_dir = base_m2 / comp_dir
+        target_dir.mkdir(parents=True, exist_ok=True)
+
+        w, h = info["size"]
+        if comp_dir == "euroflow":
+            im = render_model2_euroflow_512x512()
+        else:
+            im = render_model2_sign_512x256(info["title"], info["sub"], info["sec"], info["bg"], info["fg"], info["accent"], w, h)
+
+        dds_path = target_dir / f"{fname}.dds"
+        save_dds(im, dds_path)
+
+        tobj_path = target_dir / f"{fname}.tobj"
+        copy_or_create_tobj(f"model2/sign/company_logos/{comp_dir}/{fname}.tobj", tobj_path, clamp=False)
+        count += 1
+
+    print(f"   [OK] {count} carteles modernos generados exitosamente en model2/sign/company_logos/")
+
+
+# ==============================================================================
 # FUNCIÓN PRINCIPAL
 # ==============================================================================
 def main():
@@ -682,6 +1348,7 @@ def main():
     generar_totems_combustible()
     generar_estaciones_servicio_prefabs()
     generar_totems_carretera()
+    generar_carteles_model2_modernos()
     print("=" * 75)
     print("¡Generación 3D completada con éxito!")
     print("=" * 75)
