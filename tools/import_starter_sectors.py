@@ -197,28 +197,44 @@ def importar_y_parchear_sectores():
         p.stem for p in SRC_EUROPE_DIR.glob("sec*.base") if p.stat().st_size > 1000
     ])
 
-    # 20 sectores que conforman la espina dorsal lineal continua de Chile (Ruta 5 / Ruta 7, estilo Mapa EAA)
+    # 30 sectores ortogonales continuos que conforman la red ininterrumpida de carreteras de Chile (Ruta 5 / Ruta 7, estilo Mapa EAA)
     SPINE_SECTOR_COORDS = [
-        (-4, 7),   # XII Punta Arenas (Torino)
-        (-3, 2),   # XVI Chillán (Strasbourg)
-        (-3, 5),   # X Puerto Montt (Bern)
-        (-3, 6),   # Conector Carretera Austral
+        # Norte Grande: Arica, Iquique, Antofagasta
+        (0, -6),   # XV Arica (Kiel)
+        (0, -5),   # Conector Arica - Antofagasta
+        (1, -5),   # I Iquique (Rostock)
+        (1, -6),   # Conector Iquique Norte
+        (-1, -5),  # Conector Iquique - Antofagasta
+        (-1, -4),  # II Antofagasta (Hamburg)
+        (0, -4),   # Conector Antofagasta Este
+        # Norte Chico y Centro: Copiapó, La Serena, Valparaíso
+        (-1, -3),  # III Copiapó (Hannover)
+        (0, -3),   # Conector Copiapó - La Serena
+        (0, -2),   # IV La Serena (Magdeburg)
+        (-1, -2),  # Conector La Serena - Valparaíso (Göttingen)
+        (-1, -1),  # V Valparaíso (Kassel)
+        # Zona Central: Santiago, Rancagua
+        (-1, 0),   # Conector Valparaíso - Santiago
         (-2, 0),   # RM Santiago (Frankfurt)
         (-2, 1),   # VI Rancagua (Mannheim)
-        (-2, 2),   # Conector Rancagua - Talca
-        (-2, 5),   # XIV Valdivia (Zürich)
-        (-2, 6),   # XI Coyhaique (Milano)
-        (-1, -4),  # II Antofagasta (Hamburg)
-        (-1, -3),  # III Copiapó (Hannover)
-        (-1, -1),  # V Valparaíso (Kassel)
+        # Maule, Ñuble, Biobío: Talca, Chillán, Concepción
+        (-2, 2),   # Conector Rancagua - Talca (Karlsruhe)
         (-1, 2),   # VII Talca (Stuttgart)
-        (-1, 4),   # Conector Talca - Temuco
-        (0, -6),   # XV Arica (Kiel)
-        (0, -5),   # Conector Arica - Iquique
-        (0, -2),   # IV La Serena (Magdeburg)
+        (-3, 2),   # XVI Chillán (Strasbourg)
+        (-1, 3),   # Conector Talca - Concepción (Ulm Norte)
         (0, 3),    # VIII Concepción (München)
+        # Araucanía, Los Ríos, Los Lagos: Temuco, Valdivia, Puerto Montt
         (0, 4),    # IX Temuco (Innsbruck)
-        (1, -5),   # I Iquique (Rostock)
+        (-1, 4),   # Conector Temuco - Valdivia (Bregenz)
+        (-1, 5),   # Conector Valdivia Este (St. Gallen)
+        (-2, 5),   # XIV Valdivia (Zürich)
+        (-3, 5),   # X Puerto Montt (Bern)
+        # Carretera Austral y Magallanes: Coyhaique, Punta Arenas
+        (-3, 6),   # Conector Puerto Montt - Coyhaique (Ticino)
+        (-2, 6),   # XI Coyhaique (Milano)
+        (-2, 7),   # Conector Coyhaique Sur (Pavia)
+        (-3, 7),   # Conector Magallanes Norte (Asti)
+        (-4, 7),   # XII Punta Arenas (Torino)
     ]
     sectores_disponibles = sorted([f"sec{x:+05d}{z:+05d}" for x, z in SPINE_SECTOR_COORDS if f"sec{x:+05d}{z:+05d}" in all_europe_sectors])
 
