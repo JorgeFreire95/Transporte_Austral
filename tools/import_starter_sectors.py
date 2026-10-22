@@ -14,11 +14,14 @@ Importa la espina dorsal vial continua de Chile:
 """
 
 import os
+import sys
 import shutil
 import struct
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
 SCRATCH_MAP = BASE_DIR / "scratch" / "base_map" / "map"
 SRC_EUROPE_DIR = SCRATCH_MAP / "europe"
 SRC_MBD = SCRATCH_MAP / "europe.mbd"
@@ -27,6 +30,8 @@ SRC_COMPANY_DIR = BASE_DIR / "scratch" / "def" / "def" / "company"
 MAP_DIR = BASE_DIR / "map"
 DEST_CHILE_DIR = MAP_DIR / "chile"
 DEST_MBD = MAP_DIR / "chile.mbd"
+DEST_EUROPE_DIR = MAP_DIR / "europe"
+DEST_EUROPE_MBD = MAP_DIR / "europe.mbd"
 DEST_DEF_COMPANY = BASE_DIR / "def" / "company"
 
 CHARSET = '\0' + '0123456789abcdefghijklmnopqrstuvwxyz_'
@@ -147,15 +152,19 @@ def importar_y_parchear_sectores():
     if not SRC_EUROPE_DIR.exists():
         raise FileNotFoundError(f"No se encontró la carpeta base de Europa en {SRC_EUROPE_DIR}")
 
-    # 1. Preparar carpeta map/chile
+    # 1. Preparar carpetas map/chile y map/europe
     if DEST_CHILE_DIR.exists():
         shutil.rmtree(DEST_CHILE_DIR)
     DEST_CHILE_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 2. Copiar chile.mbd desde europe.mbd
-    if SRC_MBD.exists():
-        shutil.copy2(SRC_MBD, DEST_MBD)
-        print(f"[1/4] Archivo chile.mbd instalado con éxito ({DEST_MBD.stat().st_size} bytes)")
+    if DEST_EUROPE_DIR.exists():
+        shutil.rmtree(DEST_EUROPE_DIR)
+    DEST_EUROPE_DIR.mkdir(parents=True, exist_ok=True)
+
+    # 2. Generar encabezados MBD oficiales (chile.mbd y europe.mbd con inicio en Santiago)
+    from tools.create_mbd import crear_chile_mbd
+    crear_chile_mbd()
+    print(f"[1/4] Archivos chile.mbd y europe.mbd generados con éxito.")
 
     # 3. Preparar diccionario de reemplazo de tokens de 64 bits
     reemplazos_ciudades = {}
@@ -164,6 +173,7 @@ def importar_y_parchear_sectores():
 
     # 4. Obtener los sectores de la espina dorsal continua (sin ramales este a Alemania/Benelux)
     extensiones = [".aux", ".base", ".data", ".desc", ".snd"]
+    all_europe_sectors = sorted([p.stem for p in SRC_EUROPE_DIR.glob("sec*.base")])
     sectores_candidatos = sorted([
         p.stem for p in SRC_EUROPE_DIR.glob("sec*.base") if p.stat().st_size > 1000
     ])
@@ -211,7 +221,8 @@ def importar_y_parchear_sectores():
             if not src_file.exists():
                 continue
 
-            dest_file = DEST_CHILE_DIR / f"{sec_name}{ext}"
+            dest_chile_file = DEST_CHILE_DIR / f"{sec_name}{ext}"
+            dest_europe_file = DEST_EUROPE_DIR / f"{sec_name}{ext}"
 
             if ext == ".base":
                 data_bytes = src_file.read_bytes()
@@ -220,14 +231,40 @@ def importar_y_parchear_sectores():
                     if cnt > 0:
                         data_bytes = data_bytes.replace(src_b, dst_b)
                         total_reemplazos += cnt
-                dest_file.write_bytes(data_bytes)
+                dest_chile_file.write_bytes(data_bytes)
+                dest_europe_file.write_bytes(data_bytes)
             else:
-                shutil.copy2(src_file, dest_file)
+                shutil.copy2(src_file, dest_chile_file)
+                shutil.copy2(src_file, dest_europe_file)
 
             total_archivos += 1
 
-    print(f" -> {total_archivos} archivos de sectores generados en {DEST_CHILE_DIR}")
+    print(f" -> {total_archivos} archivos de sectores generados en map/chile/ y map/europe/")
     print(f" -> {total_reemplazos} ocurrencias de ciudades chilenas vinculadas en archivos .base")
+
+    # Neutralizar el 100% de los sectores restantes de Europa (Alemania, Francia, etc.)
+    # Sobrescribiéndolos con sectores vacíos para anular por completo el mapa base de Europa
+    sectores_a_neutralizar = [s for s in all_europe_sectors if s not in sectores_disponibles]
+    print(f" -> Neutralizando {len(sectores_a_neutralizar)} sectores extranjeros de Europa...")
+
+    EMPTY_BASE = b'\x8b\x03\x00\x00a\x04u\x00\x00\x00\x00\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+    EMPTY_DATA = b'\x8b\x03\x00\x00a\x04u\x00\x00\x00\x00\x00\x03\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff'
+    EMPTY_DESC = b'\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe7\xc3s\x15\x00\x00\x00'
+    EMPTY_SND = b'\x8b\x03\x00\x00a\x04u\x00\x00\x00\x00\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+
+    sample_aux = SRC_EUROPE_DIR / "sec+0003-0005.aux"
+    EMPTY_AUX = sample_aux.read_bytes() if sample_aux.exists() else EMPTY_BASE
+
+    neutralizados = 0
+    for sec_name in sectores_a_neutralizar:
+        (DEST_EUROPE_DIR / f"{sec_name}.base").write_bytes(EMPTY_BASE)
+        (DEST_EUROPE_DIR / f"{sec_name}.data").write_bytes(EMPTY_DATA)
+        (DEST_EUROPE_DIR / f"{sec_name}.desc").write_bytes(EMPTY_DESC)
+        (DEST_EUROPE_DIR / f"{sec_name}.snd").write_bytes(EMPTY_SND)
+        (DEST_EUROPE_DIR / f"{sec_name}.aux").write_bytes(EMPTY_AUX)
+        neutralizados += 1
+
+    print(f" -> {neutralizados} sectores europeos neutralizados (mapa base de Europa 100% eliminado)")
 
     # 5. Generar sucursales de empresas
     print("[3/4] Generando sucursales de empresas en def/company/*/editor/...")

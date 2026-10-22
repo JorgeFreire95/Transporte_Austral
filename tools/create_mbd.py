@@ -14,6 +14,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 MAP_DIR = BASE_DIR / "map"
 MBD_FILE = MAP_DIR / "chile.mbd"
+EUROPE_MBD = MAP_DIR / "europe.mbd"
 
 # Token charset SCS
 CHARSET = [
@@ -40,9 +41,9 @@ def crear_chile_mbd():
 
     # 2. Map descriptor
     editor_map_id = 0x123456789ABCDEF0 # ulong
-    start_pos_x = -116400.0            # Santiago centro
+    start_pos_x = -39700.0            # Santiago centro (coordenadas reales en sector sec-0010-0003)
     start_pos_y = 100.0
-    start_pos_z = 163000.0
+    start_pos_z = -11000.0
     start_sector_magic = 0x4B000800    # uint32
     rot_x = 0.0                        # Quaternion identity
     rot_y = 0.0
@@ -71,8 +72,12 @@ def crear_chile_mbd():
 
     with open(MBD_FILE, "wb") as f:
         f.write(binary_data)
-
     print(f"-> Archivo '{MBD_FILE.name}' generado exitosamente ({len(binary_data)} bytes).")
+
+    with open(EUROPE_MBD, "wb") as f:
+        f.write(binary_data)
+    print(f"-> Archivo '{EUROPE_MBD.name}' generado exitosamente ({len(binary_data)} bytes, sustituye el mapa base de Europa).")
+
     return MBD_FILE
 
 

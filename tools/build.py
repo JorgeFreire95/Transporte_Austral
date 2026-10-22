@@ -78,6 +78,10 @@ def validar_mod():
     else:
         print(" -> Módulo de mapa independiente 'chile.mbd' detectado: OK.")
 
+    europe_mbd = BASE_DIR / "map" / "europe.mbd"
+    if europe_mbd.exists():
+        print(" -> Módulo de reemplazo integral 'europe.mbd' detectado (Europa 100% eliminada): OK.")
+
     # Verificar manifest y description
     manifest = BASE_DIR / "manifest.sii"
     if not manifest.exists():
