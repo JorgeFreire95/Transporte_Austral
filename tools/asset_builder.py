@@ -186,54 +186,32 @@ def generar_mapa_fondo_chile():
     with open(geojson_path, "r", encoding="utf-8") as f:
         gj = json.load(f)
 
-    # Anclas geográficas y de coordenadas de juego para las 16 capitales de Chile (Corredor Continental 100% Terrestre):
-    ANCHORS = [
-        (-17.50, -69.50,   1200.0, -23500.0, "Visviri", 15),
-        (-18.48, -70.32,    500.9, -21496.7, "Arica", 15),
-        (-20.22, -70.14,   5334.6, -19522.9, "Iquique", 1),
-        (-23.65, -70.40,  -3605.2, -16059.9, "Antofagasta", 2),
-        (-27.37, -70.33,  -1794.4, -10313.4, "Copiapó", 3),
-        (-29.90, -71.25,   2303.8,  -7399.3, "La Serena", 4),
-        (-33.05, -71.62,  -3717.1,  -3065.8, "Valparaíso", 5),
-        (-33.45, -70.67,  -6586.0,   1030.3, "Santiago", 13),
-        (-34.17, -70.74,  -6738.2,   6945.9, "Rancagua", 6),
-        (-35.43, -71.66,  -3955.0,   9993.8, "Talca", 7),
-        (-36.61, -72.10,  -9904.9,   8881.1, "Chillán", 16),
-        (-36.83, -73.05,   3263.2,  14739.6, "Concepción", 8),
-        (-38.74, -72.60,   2899.6,  19676.6, "Temuco", 9),
-        (-39.81, -73.25,  -7781.4,  23914.8, "Valdivia", 14),
-        (-41.47, -72.94, -11786.0,  21011.9, "Puerto Montt", 10),
-        (-45.57, -72.07,  -7298.5,  27668.5, "Coyhaique", 11),
-        (-53.16, -70.91, -14552.8,  30550.9, "Punta Arenas", 12),
-        (-56.00, -68.00, -12000.0,  35000.0, "Cabo de Hornos", 12),
-    ]
-
-    LATS = [-a[0] for a in ANCHORS]
-    LONS = [a[1] for a in ANCHORS]
-    WXS  = [a[2] for a in ANCHORS]
-    WZS  = [a[3] for a in ANCHORS]
-
-    def interp(x, xp, yp):
-        if x <= xp[0]: return yp[0]
-        if x >= xp[-1]: return yp[-1]
-        i = bisect.bisect_right(xp, x)
-        t = (x - xp[i - 1]) / (xp[i] - xp[i - 1])
-        return yp[i - 1] + t * (yp[i] - yp[i - 1])
+    # Definición del World Box en coordenadas de juego de ETS2:
+    # X va de -38000 a +26000 (Centro X = -6000, Span = 64000 unidades)
+    # Z va de -29000 a +35000 (Centro Z = +3000, Span = 64000 unidades)
+    WORLD_MIN_X = -38000.0
+    WORLD_MAX_X =  26000.0
+    WORLD_MIN_Z = -29000.0
+    WORLD_MAX_Z =  35000.0
+    WORLD_SPAN  =  64000.0
+    CANVAS_SIZE =  4096
 
     def geo_to_world(lon, lat):
-        plat = -lat
-        c_wx = interp(plat, LATS, WXS)
-        c_wz = interp(plat, LATS, WZS)
-        c_lon = interp(plat, LATS, LONS)
-        lon_diff = max(-3.5, min(3.5, lon - c_lon))
-        wx = c_wx + lon_diff * 2800.0
-        wz = c_wz
+        # Proyección lineal conformada de Chile hacia el corredor vial
+        # Latitud -17.5 (Visviri) -> Z = -24000.0
+        # Latitud -55.5 (Cabo de Hornos) -> Z = +30500.0
+        lat_t = (lat - (-17.5)) / (-55.5 - (-17.5))
+        wz = -24000.0 + lat_t * (30500.0 - (-24000.0))
+        
+        # Longitud: meridiano central de Chile -71.0 en X = -6000.0
+        # Desviación natural del litoral chileno (curvatura suave norte-sur)
+        ref_lon = -70.5 + lat_t * (-2.0)
+        wx = -6000.0 + (lon - ref_lon) * 4200.0
         return wx, wz
 
     def world_to_pixel(wx, wz):
-        # World range: X de -39000 a +29000 (ancho 68000), Z de -30000 a +38000 (alto 68000)
-        px = (wx - (-39000.0)) / 68000.0 * 4096.0
-        py = (wz - (-30000.0)) / 68000.0 * 4096.0
+        px = (wx - WORLD_MIN_X) / WORLD_SPAN * CANVAS_SIZE
+        py = (wz - WORLD_MIN_Z) / WORLD_SPAN * CANVAS_SIZE
         return px, py
 
     REGIONAL_COLORS = {
@@ -255,142 +233,52 @@ def generar_mapa_fondo_chile():
         12: (215,  40, 115),   # XII Magallanes (#D72873 - Magenta Austral)
     }
 
-    REGION_NAMES = {
-        15: "XV REG. ARICA Y PARINACOTA",
-        1:  "I REG. TARAPACÁ",
-        2:  "II REG. ANTOFAGASTA",
-        3:  "III REG. ATACAMA",
-        4:  "IV REG. COQUIMBO",
-        5:  "V REG. VALPARAÍSO",
-        13: "RM REG. METROPOLITANA",
-        6:  "VI REG. O'HIGGINS",
-        7:  "VII REG. MAULE",
-        16: "XVI REG. ÑUBLE",
-        8:  "VIII REG. BIOBÍO",
-        9:  "IX REG. ARAUCANÍA",
-        14: "XIV REG. LOS RÍOS",
-        10: "X REG. LOS LAGOS",
-        11: "XI REG. AYSÉN",
-        12: "XII REG. MAGALLANES",
-    }
-
     # Fondo oceánico cartográfico profundo (Océano Pacífico)
-    map_img = Image.new("RGBA", (4096, 4096), (22, 27, 38, 255))
+    map_img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (17, 22, 32, 255))
     draw = ImageDraw.Draw(map_img)
 
-    # 1. Cuadrícula cartográfica sutil en el océano
-    grid_color = (28, 36, 50, 255)
-    for x in range(0, 4096, 256):
-        draw.line([(x, 0), (x, 4096)], fill=grid_color, width=1)
-    for y in range(0, 4096, 256):
-        draw.line([(0, y), (4096, y)], fill=grid_color, width=1)
+    # 1. Cuadrícula batimétrica sutil en el océano
+    grid_color = (23, 31, 44, 255)
+    for x in range(0, CANVAS_SIZE, 256):
+        draw.line([(x, 0), (x, CANVAS_SIZE)], fill=grid_color, width=1)
+    for y in range(0, CANVAS_SIZE, 256):
+        draw.line([(0, y), (CANVAS_SIZE, y)], fill=grid_color, width=1)
+
+    # Función auxiliar para extraer anillos
+    def extract_rings(g, min_len):
+        rings = []
+        if g['type'] == 'Polygon':
+            for r in g['coordinates']:
+                if len(r) >= min_len:
+                    pts = [world_to_pixel(*geo_to_world(p[0], p[1])) for p in r if p[0] > -76.0]
+                    if len(pts) >= 3: rings.append(pts)
+        elif g['type'] == 'MultiPolygon':
+            for poly in g['coordinates']:
+                for r in poly:
+                    if len(r) >= min_len:
+                        pts = [world_to_pixel(*geo_to_world(p[0], p[1])) for p in r if p[0] > -76.0]
+                        if len(pts) >= 3: rings.append(pts)
+        return rings
 
     # 2. Dibujar sombra de la masa continental
     for feat in gj['features']:
         cod = int(feat['properties']['codregion'])
         geom = feat['geometry']
-        rings = []
-        min_len = 30 if cod in [11, 12] else 4
+        min_len = 20 if cod in [11, 12] else 4
+        rings = extract_rings(geom, min_len)
+        for r in rings:
+            shadow = [(p[0] + 5, p[1] + 5) for p in r]
+            draw.polygon(shadow, fill=(10, 13, 20, 160))
 
-        if geom['type'] == 'Polygon':
-            for ring in geom['coordinates']:
-                if len(ring) >= min_len:
-                    pts = [world_to_pixel(*geo_to_world(p[0], p[1])) for p in ring if p[0] > -76.0]
-                    if len(pts) >= 3: rings.append(pts)
-        elif geom['type'] == 'MultiPolygon':
-            for poly in geom['coordinates']:
-                for ring in poly:
-                    if len(ring) >= min_len:
-                        pts = [world_to_pixel(*geo_to_world(p[0], p[1])) for p in ring if p[0] > -76.0]
-                        if len(pts) >= 3: rings.append(pts)
-
-        for ring in rings:
-            shadow = [(p[0] + 6, p[1] + 6) for p in ring]
-            draw.polygon(shadow, fill=(10, 13, 20, 180))
-
-    # 3. Dibujar regiones con sus colores característicos y bordes blancos nítidos
+    # 3. Dibujar regiones con sus colores característicos y bordes blancos nítidos (Estilo Cartográfico Puro, sin textos fijos)
     for feat in gj['features']:
         cod = int(feat['properties']['codregion'])
         color = REGIONAL_COLORS.get(cod, (70, 80, 95))
         geom = feat['geometry']
-        rings = []
-        min_len = 30 if cod in [11, 12] else 4
-
-        if geom['type'] == 'Polygon':
-            for ring in geom['coordinates']:
-                if len(ring) >= min_len:
-                    pts = [world_to_pixel(*geo_to_world(p[0], p[1])) for p in ring if p[0] > -76.0]
-                    if len(pts) >= 3: rings.append(pts)
-        elif geom['type'] == 'MultiPolygon':
-            for poly in geom['coordinates']:
-                for ring in poly:
-                    if len(ring) >= min_len:
-                        pts = [world_to_pixel(*geo_to_world(p[0], p[1])) for p in ring if p[0] > -76.0]
-                        if len(pts) >= 3: rings.append(pts)
-
-        for ring in rings:
-            draw.polygon(ring, fill=(*color, 255), outline=(255, 255, 255, 240), width=2)
-
-    # Tipografías del sistema
-    try:
-        font_title = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 52)
-        font_sub = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 28)
-        font_reg = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 26)
-        font_city = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 24)
-        font_ant = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 22)
-    except Exception:
-        font_title = ImageFont.load_default()
-        font_sub = font_title
-        font_reg = font_title
-        font_city = font_title
-        font_ant = font_title
-
-    # 4. Tarjeta de Encabezado Oficial
-    header_box = [(80, 80), (1200, 300)]
-    draw.rectangle(header_box, fill=(16, 21, 30, 240), outline=(210, 220, 240, 255), width=3)
-    draw.text((120, 110), "REPÚBLICA DE CHILE", font=font_title, fill=(255, 255, 255, 255))
-    draw.text((120, 185), "TRANSPORTE AUSTRAL - MAPA LOGÍSTICO Y VIAL", font=font_sub, fill=(220, 180, 60, 255))
-    draw.text((120, 230), "Espina Dorsal Norte-Sur (16 Regiones Autónomas)", font=font_sub, fill=(180, 195, 215, 255))
-
-    # 5. Marcadores de Capitales Regionales con líneas guía hacia la derecha
-    capitals = [a for a in ANCHORS if a[4] not in ["Visviri", "Cabo de Hornos"]]
-    y_step = (3600 - 450) / len(capitals)
-
-    for idx, cap in enumerate(capitals):
-        lat, lon, wx, wz, city_name, codreg = cap
-        c_px, c_py = world_to_pixel(wx, wz)
-        label_y = int(450 + idx * y_step)
-        reg_color = REGIONAL_COLORS.get(codreg, (220, 220, 220))
-
-        # Círculo selector sobre la ciudad en el mapa
-        r = 14
-        draw.ellipse([(c_px - r, c_py - r), (c_px + r, c_py + r)], fill=(255, 255, 255, 255), outline=(20, 25, 35, 255), width=3)
-        draw.ellipse([(c_px - 6, c_py - 6), (c_px + 6, c_py + 6)], fill=reg_color, outline=None)
-
-        # Línea estilizada conectando al panel derecho
-        lx1 = c_px + r + 15
-        lx2 = max(lx1 + 80, 2900)
-        lx3 = 3100
-        lx_end = 3150
-        draw.line([(lx1, c_py), (lx2, c_py), (lx3, label_y), (lx_end, label_y)], fill=(160, 180, 210, 200), width=2)
-        draw.ellipse([(lx_end - 5, label_y - 5), (lx_end + 5, label_y + 5)], fill=(255, 255, 255, 255))
-
-        # Nombre de la Región y de la Capital
-        reg_title = REGION_NAMES.get(codreg, "")
-        draw.text((lx_end + 20, label_y - 28), reg_title, font=font_reg, fill=(*reg_color, 255))
-        draw.text((lx_end + 20, label_y + 2), f"• {city_name.upper()}", font=font_city, fill=(240, 245, 255, 255))
-
-    # 6. Recuadro inferior izquierdo: Territorio Chileno Antártico
-    abox = [(150, 3100), (950, 3850)]
-    draw.rectangle(abox, fill=(18, 23, 33, 240), outline=(200, 215, 235, 255), width=3)
-    draw.text((180, 3130), "TERRITORIO CHILENO ANTÁRTICO", font=font_ant, fill=(240, 240, 250, 255))
-    draw.text((180, 3165), "Comuna Antártica - Base P. Frei", font=font_city, fill=(170, 190, 210, 255))
-
-    ant_poly = [
-        (300, 3750), (320, 3600), (380, 3450), (450, 3320), (510, 3250),
-        (560, 3300), (520, 3400), (470, 3520), (410, 3680), (350, 3780)
-    ]
-    draw.polygon(ant_poly, fill=(100, 120, 145, 255), outline=(255, 255, 255, 255), width=2)
+        min_len = 20 if cod in [11, 12] else 4
+        rings = extract_rings(geom, min_len)
+        for r in rings:
+            draw.polygon(r, fill=(*color, 255), outline=(255, 255, 255, 240), width=2)
 
     # Guardar las 4 texturas de cuadrante (map0..map3) de 2048x2048 en DX10 BGRA
     map_ui_dir = BASE_DIR / "material" / "ui" / "map"
@@ -496,15 +384,15 @@ map_data : .map.data {
 	navigation_fade_color:		0xFF07077C
 	navigation_arrow_color: 	0xFF06FB11
 
-	# Niveles de Zoom completos (0 a 7 requeridos por Prism3D)
+	# Niveles de Zoom completos (0 a 3 Minimap/GPS; 4 a 7 Mapa del Mundo M)
 	zoom_uplift[0]: 50.0
-	zoom_uplift[1]: 220.0
-	zoom_uplift[2]: 900.0
-	zoom_uplift[3]: 4000.0
-	zoom_uplift[4]: 1000.0
-	zoom_uplift[5]: 4500.0
-	zoom_uplift[6]: 16000.0
-	zoom_uplift[7]: 55000.0
+	zoom_uplift[1]: 200.0
+	zoom_uplift[2]: 700.0
+	zoom_uplift[3]: 2000.0
+	zoom_uplift[4]: 2500.0
+	zoom_uplift[5]: 7500.0
+	zoom_uplift[6]: 22000.0
+	zoom_uplift[7]: 58000.0
 
 	player_size[0]: 15.0
 	player_size[1]: 35.0
@@ -565,19 +453,19 @@ map_data : .map.data {
 	camera_limits_min[1]: (-1000000.0, -1000000.0)
 	camera_limits_min[2]: (-1000000.0, -1000000.0)
 	camera_limits_min[3]: (-1000000.0, -1000000.0)
-	camera_limits_min[4]: (-25000.0, -30000.0)
-	camera_limits_min[5]: (-25000.0, -30000.0)
-	camera_limits_min[6]: (-25000.0, -30000.0)
-	camera_limits_min[7]: (-25000.0, -30000.0)
+	camera_limits_min[4]: (-22000.0, -28000.0)
+	camera_limits_min[5]: (-22000.0, -28000.0)
+	camera_limits_min[6]: (-22000.0, -28000.0)
+	camera_limits_min[7]: (-22000.0, -28000.0)
 
 	camera_limits_max[0]: (1000000.0, 1000000.0)
 	camera_limits_max[1]: (1000000.0, 1000000.0)
 	camera_limits_max[2]: (1000000.0, 1000000.0)
 	camera_limits_max[3]: (1000000.0, 1000000.0)
-	camera_limits_max[4]: (15000.0, 38000.0)
-	camera_limits_max[5]: (15000.0, 38000.0)
-	camera_limits_max[6]: (15000.0, 38000.0)
-	camera_limits_max[7]: (15000.0, 38000.0)
+	camera_limits_max[4]: (10000.0, 34000.0)
+	camera_limits_max[5]: (10000.0, 34000.0)
+	camera_limits_max[6]: (10000.0, 34000.0)
+	camera_limits_max[7]: (10000.0, 34000.0)
 
 	map_items_flags[0]: 0x685FFF
 	map_items_flags[1]: 0x685FFF
@@ -590,12 +478,12 @@ map_data : .map.data {
 
 	map_3d_camera_pitch: 40.0
 
-	# Centro del mapa UI en coordenadas de Chile y escala calibrada (1292.0 km reales = 68000 unidades en escala 1:19)
-	ui_map_center:	(-5000.0, 4000.0)
-	ui_map_size:	(1292.0, 1292.0)
+	# Centro del mapa UI en coordenadas de Chile y escala calibrada (1216.0 km reales = 64000 unidades en escala 1:19)
+	ui_map_center:	(-6000.0, 3000.0)
+	ui_map_size:	(1216.0, 1216.0)
 
-	ui_map_camera_min: (-25000.0, -30000.0)
-	ui_map_camera_max: (15000.0, 38000.0)
+	ui_map_camera_min: (-22000.0, -28000.0)
+	ui_map_camera_max: (10000.0, 34000.0)
 	ui_map_camera_start: (-6586.0, 1030.0)
 
 	ui_map_always_draw_city: true

@@ -197,32 +197,30 @@ def importar_y_parchear_sectores():
         p.stem for p in SRC_EUROPE_DIR.glob("sec*.base") if p.stat().st_size > 1000
     ])
 
-    def is_corridor_sector(x, z):
-        # Corredor continental central: 100% terrestre, carreteras continuas, circulación por la derecha
-        # Excluye por completo el Reino Unido (isla, trenes Eurotunnel, Calais/Folkestone, tráfico por la izquierda)
-        return -6 <= x <= 4 and -6 <= z <= 9
-
-    sector_coords = {}
-    for name in sectores_candidatos:
-        x = int(name[3:8])
-        z = int(name[8:13])
-        if is_corridor_sector(x, z):
-            sector_coords[(x, z)] = name
-
-    # Componente conexo continuo a partir de Santiago (Frankfurt, x=-2, z=0)
-    visited = set()
-    start_sec = (-2, 0)
-    q = [start_sec]
-    visited.add(start_sec)
-    while q:
-        curr = q.pop(0)
-        for dx, dz in [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1)]:
-            neigh = (curr[0] + dx, curr[1] + dz)
-            if neigh in sector_coords and neigh not in visited:
-                visited.add(neigh)
-                q.append(neigh)
-
-    sectores_disponibles = sorted([sector_coords[c] for c in visited])
+    # 20 sectores que conforman la espina dorsal lineal continua de Chile (Ruta 5 / Ruta 7, estilo Mapa EAA)
+    SPINE_SECTOR_COORDS = [
+        (-4, 7),   # XII Punta Arenas (Torino)
+        (-3, 2),   # XVI Chillán (Strasbourg)
+        (-3, 5),   # X Puerto Montt (Bern)
+        (-3, 6),   # Conector Carretera Austral
+        (-2, 0),   # RM Santiago (Frankfurt)
+        (-2, 1),   # VI Rancagua (Mannheim)
+        (-2, 2),   # Conector Rancagua - Talca
+        (-2, 5),   # XIV Valdivia (Zürich)
+        (-2, 6),   # XI Coyhaique (Milano)
+        (-1, -4),  # II Antofagasta (Hamburg)
+        (-1, -3),  # III Copiapó (Hannover)
+        (-1, -1),  # V Valparaíso (Kassel)
+        (-1, 2),   # VII Talca (Stuttgart)
+        (-1, 4),   # Conector Talca - Temuco
+        (0, -6),   # XV Arica (Kiel)
+        (0, -5),   # Conector Arica - Iquique
+        (0, -2),   # IV La Serena (Magdeburg)
+        (0, 3),    # VIII Concepción (München)
+        (0, 4),    # IX Temuco (Innsbruck)
+        (1, -5),   # I Iquique (Rostock)
+    ]
+    sectores_disponibles = sorted([f"sec{x:+05d}{z:+05d}" for x, z in SPINE_SECTOR_COORDS if f"sec{x:+05d}{z:+05d}" in all_europe_sectors])
 
     print(f"[2/4] Copiando sectores de la espina dorsal de Chile ({len(sectores_disponibles)} sectores)...")
     total_archivos = 0
