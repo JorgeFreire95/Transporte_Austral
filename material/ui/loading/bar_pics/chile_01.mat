@@ -1,5 +1,8 @@
-material : "ui"
-{
-    texture : "/material/ui/loading/bar_pics/chile_01.tobj"
-    texture_name : "texture"
+effect : "ui.rfx" {
+	texture : "texture" {
+		source : "chile_01.tobj"
+		u_address : clamp
+		v_address : clamp
+		mip_filter : none
+	}
 }

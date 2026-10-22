@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .curico {
  city: curico
- prefab: at_0j00b
+ prefab: 13
 }
 }

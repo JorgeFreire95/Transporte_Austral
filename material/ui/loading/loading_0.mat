@@ -1,5 +1,8 @@
-material : "ui"
-{
-    texture : "/material/ui/loading/loading_0.tobj"
-    texture_name : "texture"
+effect : "ui.rfx" {
+	texture : "texture" {
+		source : "loading_0.tobj"
+		u_address : clamp
+		v_address : clamp
+		mip_filter : none
+	}
 }

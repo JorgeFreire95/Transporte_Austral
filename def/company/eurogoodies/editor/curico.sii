@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .curico {
+ city: curico
+ prefab: 32
+}
+}

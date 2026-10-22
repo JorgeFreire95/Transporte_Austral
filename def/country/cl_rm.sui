@@ -1,12 +1,12 @@
 country_data : country.data.cl_rm
 {
     country_id: 107
-    name: "Región Metropolitana"
-    name_localized: "Región Metropolitana"
+    name: ""
+    name_localized: ""
     country_code: "RM"
     iso_country_code: chl
 
-    pos: (-30174, 0, -4751)
+    pos: (-31624, 0, -16309)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_rm
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

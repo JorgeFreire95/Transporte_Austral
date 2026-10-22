@@ -2,7 +2,7 @@ city_data : city.caldera
 {
     city_name: "Caldera"
     city_name_localized: "Caldera"
-    country: chile
+    country: cl_iii
     vehicle_brands[]: "volvo"
 
     map_x_offsets[]: 0

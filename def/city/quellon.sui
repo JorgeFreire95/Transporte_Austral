@@ -2,7 +2,7 @@ city_data : city.quellon
 {
     city_name: "Quellón"
     city_name_localized: "Quellón"
-    country: chile
+    country: cl_x
     vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0

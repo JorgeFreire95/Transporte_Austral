@@ -2,7 +2,7 @@ city_data : city.san_pedro
 {
     city_name: "San Pedro de Atacama"
     city_name_localized: "San Pedro de Atacama"
-    country: chile
+    country: cl_ii
     vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0

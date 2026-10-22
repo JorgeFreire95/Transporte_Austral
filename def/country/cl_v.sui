@@ -1,12 +1,12 @@
 country_data : country.data.cl_v
 {
     country_id: 106
-    name: "Región de Valparaíso"
-    name_localized: "Región de Valparaíso"
+    name: ""
+    name_localized: ""
     country_code: "VA"
     iso_country_code: chl
 
-    pos: (-31578, 0, -14044)
+    pos: (-32665, 0, -17635)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_v
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

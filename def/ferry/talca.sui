@@ -1,0 +1,6 @@
+ferry_data: ferry.talca
+{
+	ferry_name: "Estación Talca"
+	ferry_name_localized: "@@calais@@"
+	transport_type: "train"
+}

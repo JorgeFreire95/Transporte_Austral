@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .temuco {
  city: temuco
- prefab: at_0j002
+ prefab: 32
 }
 }

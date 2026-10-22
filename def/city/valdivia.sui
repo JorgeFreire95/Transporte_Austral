@@ -2,26 +2,26 @@ city_data : city.valdivia
 {
     city_name: "Valdivia"
     city_name_localized: "Valdivia"
-    country: chile
+    country: cl_xiv
     vehicle_brands[]: "daf"
 
-    map_x_offsets[]: 0
-    map_x_offsets[]: 0
-    map_x_offsets[]: 0
-    map_x_offsets[]: -10
-    map_x_offsets[]: 0
-    map_x_offsets[]: 0
-    map_x_offsets[]: -20
-    map_x_offsets[]: -15
+	map_x_offsets[]: 0
+	map_x_offsets[]: 0
+	map_x_offsets[]: 0
+	map_x_offsets[]: -10
+	map_x_offsets[]: -50
+	map_x_offsets[]: -50
+	map_x_offsets[]: -50
+	map_x_offsets[]: -50
 
-    map_y_offsets[]: 0
-    map_y_offsets[]: 0
-    map_y_offsets[]: 25
-    map_y_offsets[]: -10
-    map_y_offsets[]: -5
-    map_y_offsets[]: -15
-    map_y_offsets[]: -15
-    map_y_offsets[]: -15
+	map_y_offsets[]: 0
+	map_y_offsets[]: 0
+	map_y_offsets[]: 25
+	map_y_offsets[]: -10
+	map_y_offsets[]: 0
+	map_y_offsets[]: 0
+	map_y_offsets[]: 0
+	map_y_offsets[]: 0
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: Región de Los Ríos (XIV)

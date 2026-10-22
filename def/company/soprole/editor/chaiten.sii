@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .chaiten {
+ city: chaiten
+ prefab: de_2x002
+}
+}

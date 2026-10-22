@@ -1,12 +1,12 @@
 country_data : country.data.cl_x
 {
     country_id: 114
-    name: "Región de Los Lagos"
-    name_localized: "Región de Los Lagos"
+    name: ""
+    name_localized: ""
     country_code: "LL"
     iso_country_code: chl
 
-    pos: (-17861, 0, 24140)
+    pos: (-28104, 0, 2171)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_x
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

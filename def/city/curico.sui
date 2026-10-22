@@ -2,7 +2,7 @@ city_data : city.curico
 {
     city_name: "Curicó"
     city_name_localized: "Curicó"
-    country: chile
+    country: cl_vii
     vehicle_brands[]: "volvo"
 
     map_x_offsets[]: 0

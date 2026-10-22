@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .quellon {
+ city: quellon
+ prefab: d_con_1a001
+}
+}

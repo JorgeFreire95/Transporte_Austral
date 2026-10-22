@@ -2,7 +2,7 @@ city_data : city.angol
 {
     city_name: "Angol"
     city_name_localized: "Angol"
-    country: chile
+    country: cl_ix
     vehicle_brands[]: "renault"
 
     map_x_offsets[]: 0

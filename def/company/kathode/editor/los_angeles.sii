@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .los_angeles {
+ city: los_angeles
+ prefab: at_0j008
+}
+}

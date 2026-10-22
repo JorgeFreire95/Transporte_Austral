@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .copiapo {
  city: copiapo
- prefab: 31
+ prefab: 36
 }
 }

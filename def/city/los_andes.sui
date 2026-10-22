@@ -2,7 +2,7 @@ city_data : city.los_andes
 {
     city_name: "Los Andes"
     city_name_localized: "Los Andes"
-    country: chile
+    country: cl_v
     vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0

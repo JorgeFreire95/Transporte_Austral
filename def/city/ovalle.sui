@@ -2,7 +2,7 @@ city_data : city.ovalle
 {
     city_name: "Ovalle"
     city_name_localized: "Ovalle"
-    country: chile
+    country: cl_iv
     vehicle_brands[]: "daf"
 
     map_x_offsets[]: 0

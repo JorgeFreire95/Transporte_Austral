@@ -4,12 +4,13 @@
 ==============================================================================
 TRANSPORTE AUSTRAL - IMPORTADOR Y PARCHEADOR DE SECTORES PARA CHILE (ETS2)
 ==============================================================================
-Importa la red completa de sectores reales del juego base, garantizando:
-1. CARRETERAS 100% INTERCONECTADAS: Red continua sin baches ni cortes.
-2. 52 COMUNAS Y CIUDADES: Todas las comunas de cada región con sus nombres,
-   puntos en el mapa y sucursales de empresas activas.
-3. 16 GARAJES VERIFICADOS: Para iniciar la trayectoria en cualquier región.
-4. ECONOMÍA ACTIVA: Genera sedes de empresas para todas las comunas.
+Importa la espina dorsal vial continua de Chile:
+1. ESPINA DORSAL CONTINUA NORTE-SUR: Conexión lineal desde Escocia a Turín,
+   evitando ramales caóticos hacia Alemania o el Benelux.
+2. 52 COMUNAS Y 16 REGIONES EN SECUENCIA ESTRICTA:
+   Las 16 capitales regionales ordenadas estrictamente de norte a sur.
+3. 16 GARAJES VERIFICADOS: Un garaje verificado por región.
+4. ECONOMÍA ACTIVA: Genera sucursales de empresas para las comunas.
 """
 
 import os
@@ -47,156 +48,106 @@ def token_bytes(s: str) -> bytes:
 
 
 # ==============================================================================
-# MAPEO INTEGRAL: 52 COMUNAS DE CHILE -> CIUDADES ORIGINALES DE SCS
-# Incluye las 16 capitales regionales (con garajes verificados) y 36 comunas
+# MAPEO INTEGRAL: COMUNAS DE CHILE -> CIUDADES DE LA ESPINA DORSAL CONTINUA
+# 16 capitales regionales en secuencia estrictamente creciente de Norte a Sur:
+# Aberdeen -> Edinburgh -> Newcastle -> Manchester -> Birmingham -> Cambridge ->
+# London -> Southampton -> Dover -> Calais -> Lille -> Reims -> Paris -> Dijon ->
+# Lyon -> Torino
 # ==============================================================================
 CIUDADES_MAPEO = {
-    # XV Región de Arica y Parinacota
-    "aberdeen":    "arica",         # Capital XV (Garaje verificado)
-    "glasgow":     "putre",
-
-    # I Región de Tarapacá
-    "edinburgh":   "iquique",       # Capital I (Garaje verificado)
-    "carlisle":    "pozo_almonte",
-
-    # II Región de Antofagasta
-    "newcastle":   "antofagasta",   # Capital II (Garaje verificado)
-    "sheffield":   "calama",
-    "liverpool":   "san_pedro",
-    "manchester":  "mejillones",
-
-    # III Región de Atacama
-    "grimsby":     "copiapo",       # Capital III (Garaje verificado)
-    "hannover":    "caldera",
-    "birmingham":  "vallenar",
-
-    # IV Región de Coquimbo
-    "cambridge":   "la_serena",     # Capital IV (Garaje verificado)
-    "rotterdam":   "coquimbo",
-    "cardiff":     "ovalle",
-    "swansea":     "los_vilos",
-
-    # V Región de Valparaíso
-    "felixstowe":  "valparaiso",    # Capital V (Garaje verificado)
-    "london":      "vina_del_mar",
-    "dover":       "san_antonio",
-    "southampton": "los_andes",
-
-    # Región Metropolitana de Santiago
-    "calais":      "santiago",      # Capital RM (Garaje verificado)
-    "paris":       "san_bernardo",
-    "plymouth":    "quilicura",
-
-    # VI Región de O'Higgins
-    "lille":       "rancagua",      # Capital VI (Garaje verificado)
-    "brussel":     "san_fernando",
-    "antwerp":     "santa_cruz",
-
-    # VII Región del Maule
-    "luxembourg":  "talca",         # Capital VII (Garaje verificado)
-    "liege":       "curico",
-    "koln":        "linares",
-    "dusseldorf":  "constitucion",
-
-    # XVI Región de Ñuble
-    "metz":        "chillan",       # Capital XVI (Garaje verificado)
-    "reims":       "san_carlos",
-
-    # VIII Región del Biobío
-    "strasbourg":  "concepcion",    # Capital VIII (Garaje verificado)
-    "mannheim":    "talcahuano",
-    "frankfurt":   "los_angeles",
-    "stuttgart":   "coronel",
-
-    # IX Región de La Araucanía
-    "zurich":      "temuco",        # Capital IX (Garaje verificado)
-    "innsbruck":   "villarrica",
-    "erfurt":      "angol",
-
-    # XIV Región de Los Ríos
-    "bern":        "valdivia",      # Capital XIV (Garaje verificado)
-    "dijon":       "la_union",
-
-    # X Región de Los Lagos
-    "geneve":      "puerto_montt",  # Capital X (Garaje verificado)
-    "munchen":     "osorno",
-    "nurnberg":    "castro",
-    "salzburg":    "quellon",
-    "linz":        "chaiten",
-
-    # XI Región de Aysén
-    "lyon":        "coyhaique",     # Capital XI (Garaje verificado)
-    "dortmund":    "puerto_aysen",
-    "duisburg":    "cochrane",
-    "kassel":      "v_ohiggins",
-
-    # XII Región de Magallanes
-    "torino":      "punta_arenas",  # Capital XII (Garaje verificado)
-    "milano":      "pto_natales",
-    "verona":      "porvenir"
+    # 16 Capitales Regionales de Chile en secuencia estrictamente creciente de Norte a Sur:
+    "aberdeen":    "arica",         # Capital XV (Z = -44905)
+    "edinburgh":   "iquique",       # Capital I  (Z = -46914)
+    "manchester":  "antofagasta",   # Capital II (Z = -31531)
+    "sheffield":   "copiapo",       # Capital III (Z = -30108)
+    "birmingham":  "la_serena",     # Capital IV (Z = -28721)
+    "cambridge":   "valparaiso",    # Capital V  (Z = -27369)
+    "london":      "santiago",      # Capital RM (Z = -20476)
+    "dover":       "rancagua",      # Capital VI (Z = -10133)
+    "calais":      "talca",         # Capital VII (Z = -4639)
+    "lille":       "chillan",       # Capital XVI (Z = -303)
+    "reims":       "concepcion",    # Capital VIII (Z = +5572)
+    "strasbourg":  "temuco",        # Capital IX (Z = +12284)
+    "dijon":       "valdivia",      # Capital XIV (Z = +16726)
+    "bern":        "puerto_montt",  # Capital X  (Z = +19662)
+    "lyon":        "coyhaique",     # Capital XI (Z = +24024)
+    "torino":      "punta_arenas",  # Capital XII (Z = +30551)
 }
 
 
 # ==============================================================================
 # MAPEO INTEGRAL: EMPRESAS CHILENAS Y ESTACIONES DE SERVICIO EN EL MAPA
-# Transforma los prefabs europeos en las marcas chilenas más famosas
 # ==============================================================================
 EMPRESAS_MAPEO = {
     # Red de Combustibles y Estaciones de Servicio
-    "primel":       "copec",       # 197 estaciones base -> Copec Pronto / Punto (Líder en Chile)
-    "bts":          "copec",       # 13 estaciones base -> Copec
-    "pegi":         "shell_cl",    # 31 estaciones base -> Shell Upa! / Enex Chile
-    "tqg":          "shell_cl",    # 10 estaciones base -> Shell Chile
-    "nada":         "petrobras",   # 25 estaciones base -> Petrobras Spacio 1 / Esmax
-    "apus":         "aramco",      # 22 estaciones base -> Aramco Chile
+    "primel":       "copec",       # Copec Pronto / Punto
+    "bts":          "copec",       # Copec
+    "pegi":         "shell_cl",    # Shell Upa! / Enex Chile
+    "tqg":          "shell_cl",    # Shell Chile
+    "nada":         "petrobras",   # Petrobras Spacio 1 / Esmax
+    "apus":         "aramco",      # Aramco Chile
 
     # Supermercados, Retail y Comercio Nacional
-    "eurogoodies":  "lider",       # 20 sedes base -> Lider / Walmart Chile
-    "kaarfor":      "cencosud",    # 12 sedes base -> Cencosud (Jumbo / Easy)
-    "sellplan":     "unimarc",     # 16 sedes base -> Unimarc / SMU
-    "ika_bohag":    "falabella",   # 9 sedes base -> Falabella Retail
-    "sanbuilders":  "sodimac",     # 9 sedes base -> Homecenter Sodimac
+    "eurogoodies":  "lider",       # Lider / Walmart Chile
+    "kaarfor":      "cencosud",    # Cencosud (Jumbo / Easy)
+    "sellplan":     "unimarc",     # Unimarc / SMU
+    "ika_bohag":    "falabella",   # Falabella Retail
+    "sanbuilders":  "sodimac",     # Homecenter Sodimac
 
     # Forestal, Celulosa y Madera
-    "tree_et":      "arauco",      # 13 sedes base -> Arauco Celulosa y Maderas
+    "tree_et":      "arauco",      # Celulosa Arauco y Constitución
+    "scs_paper":    "cmpc",        # CMPC Celulosa / Papeles
 
-    # Minería, Siderurgia y Química
-    "quarry":       "codelco",     # 15 sedes base -> Codelco Minería del Cobre
-    "steinbr_str":  "escondida",   # 6 sedes base -> Minera Escondida (BHP)
-    "wgcc":         "sqm",         # 10 sedes base -> SQM Salar de Atacama
-    "itcc":         "enap",        # 7 sedes base -> ENAP Refinerías
-    "kathode":      "cap_acero",   # 8 sedes base -> CAP Acero
+    # Minería, Metales y Cemento
+    "quarry":       "codelco",     # Codelco Chile
+    "steinbr_str":  "escondida",   # Minera Escondida (BHP)
+    "wgcc":         "sqm",         # SQM Litio & Yodo
+    "itcc":         "enap",        # ENAP Refinerías Aconcagua/Bío Bío
+    "kathode":      "cap_acero",   # CAP Acero / Huachipato
+    "ns_chem":      "molymet",     # Molymet Nos
+    "sanbuild_cem": "melon",       # Cemento Melón
+    "sanbuild_bas": "cbb_cemento", # Cementos Bío Bío (CBB)
+    "batisse":      "polpaico",    # Polpaico BSA
 
-    # Cemento y Construcción
-    "sanbuild_cem": "melon",       # 5 sedes base -> Cemento Melón
-    "sanbuild_bas": "cbb_cemento", # 5 sedes base -> Cementos Bío Bío (CBB)
+    # Agroindustria, Alimentos y Lácteos
+    "euroacres":    "agrosuper",   # Agrosuper
+    "trameri":      "colun",       # Colun
+    "fcp":          "soprole",     # Soprole
+    "bcp":          "carozzi",     # Carozzi
+    "dfh":          "iansa",       # Empresas Iansa
+    "fallow":       "ideal_cl",    # Ideal Bimbo Chile
+    "drekkar":      "watts",       # Watt's
+    "bhv":          "simunovic",   # Frigorífico Simunovic
+    "globe_eur":    "dole_cl",     # Dole Chile
+    "polar_fish":   "aquachile",   # AquaChile Salmon
 
-    # Alimentos, Lácteos, Pastas y Bebidas
-    "euroacres":    "agrosuper",   # 15 sedes base -> Agrosuper Chile
-    "trameri":      "colun",       # 10 sedes base -> Colun - La Magia del Sur
-    "fcp":          "soprole",     # 6 sedes base -> Soprole Lácteos
-    "bcp":          "carozzi",     # 7 sedes base -> Carozzi Alimentos
-    "stokes":       "ccu",         # 11 sedes base -> CCU Cervezas y Bebidas
-    "nbfc":         "embonor",     # 4 sedes base -> Coca-Cola Embonor
-    "dfh":          "iansa",       # 5 sedes base -> Empresas Iansa
+    # Bebidas, Cervezas y Vinos
+    "stokes":       "ccu",         # Compañía de Cervecerías Unidas
+    "shuttle":      "andina",      # Coca-Cola Embonor / Andina
+    "nbfc":         "embonor",     # Embonor
+    "scout":        "concha_toro", # Viña Concha y Toro
 
-    # Encomiendas, Courier y Transporte de Carga
-    "tradeaux":     "starken",     # 9 sedes base -> Starken Encomiendas
-    "posped":       "chilexpress", # 10 sedes base -> Chilexpress Courier
-    "transinet":    "bluex",       # 12 sedes base -> Blue Express
+    # Logística, Courier y Puertos
+    "lkwlog":       "starken",     # Starken Envíos
+    "posped":       "chilexpress", # Chilexpress
+    "tradeaux":     "correos_cl",  # Correos de Chile
+    "transinet":    "bluex",       # Blue Express
+    "cont_port":    "tpa_arica",   # Terminal Puerto Arica
+    "euroflow":     "sti_san_ant", # San Antonio Terminal Internacional
+    "marina":       "tabsa",       # Transbordadora Austral Broom
 }
 
 
 def importar_y_parchear_sectores():
-    print("=" * 70)
-    print(" TRANSPORTE AUSTRAL - GENERACIÓN COMPLETA DE SECTORES Y COMUNAS (ETS2)")
-    print("=" * 70)
+    """Importa la red de sectores conectados de la espina dorsal de Chile."""
+    print("======================================================================")
+    print(" TRANSPORTE AUSTRAL - GENERACIÓN DE ESPINA DORSAL LINEAL (ETS2)")
+    print("======================================================================")
 
     if not SRC_EUROPE_DIR.exists():
-        print(f"ERROR: No se encuentra la carpeta base extraída en {SRC_EUROPE_DIR}")
-        return False
+        raise FileNotFoundError(f"No se encontró la carpeta base de Europa en {SRC_EUROPE_DIR}")
 
-    # 1. Limpiar sectores anteriores en map/chile/
+    # 1. Preparar carpeta map/chile
     if DEST_CHILE_DIR.exists():
         shutil.rmtree(DEST_CHILE_DIR)
     DEST_CHILE_DIR.mkdir(parents=True, exist_ok=True)
@@ -206,47 +157,51 @@ def importar_y_parchear_sectores():
         shutil.copy2(SRC_MBD, DEST_MBD)
         print(f"[1/4] Archivo chile.mbd instalado con éxito ({DEST_MBD.stat().st_size} bytes)")
 
-    # 3. Preparar diccionario de reemplazo de tokens de 64 bits (ÚNICAMENTE para ciudades en .base)
+    # 3. Preparar diccionario de reemplazo de tokens de 64 bits
     reemplazos_ciudades = {}
     for euro_city, cl_city in CIUDADES_MAPEO.items():
         reemplazos_ciudades[token_bytes(euro_city)] = token_bytes(cl_city)
 
-    # 4. Obtener los sectores de la red vial continua de Chile
-    # (Filtra automáticamente sectores aislados de Europa como Lappeenranta, Rusia, etc.)
+    # 4. Obtener los sectores de la espina dorsal continua (sin ramales este a Alemania/Benelux)
     extensiones = [".aux", ".base", ".data", ".desc", ".snd"]
     sectores_candidatos = sorted([
         p.stem for p in SRC_EUROPE_DIR.glob("sec*.base") if p.stat().st_size > 1000
     ])
 
+    def is_spine_sector(x, z):
+        # Excluir Europa Central y Oriental (Alemania, Austria, Chequia)
+        if x >= -3:
+            return False
+        # Excluir Benelux oriental/norte para evitar bulto de carreteras
+        if -5 <= z <= -1 and x >= -6:
+            return False
+        # Excluir Gales y Cornualles (oeste del Reino Unido) para evitar puntos flotantes en el océano
+        if x <= -13 and -8 <= z <= -2:
+            return False
+        return True
+
     sector_coords = {}
     for name in sectores_candidatos:
         x = int(name[3:8])
         z = int(name[8:13])
-        sector_coords[(x, z)] = name
+        if is_spine_sector(x, z):
+            sector_coords[(x, z)] = name
 
+    # Componente conexo continuo a partir de Escocia (-11, -9)
     visited = set()
-    components = []
-    for pos in sector_coords:
-        if pos in visited:
-            continue
-        comp = []
-        queue = [pos]
-        visited.add(pos)
-        while queue:
-            curr = queue.pop(0)
-            comp.append(curr)
-            for dx, dz in [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1)]:
-                neigh = (curr[0] + dx, curr[1] + dz)
-                if neigh in sector_coords and neigh not in visited:
-                    visited.add(neigh)
-                    queue.append(neigh)
-        components.append(comp)
+    q = [(-11, -9)]
+    visited.add((-11, -9))
+    while q:
+        curr = q.pop(0)
+        for dx, dz in [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1)]:
+            neigh = (curr[0] + dx, curr[1] + dz)
+            if neigh in sector_coords and neigh not in visited:
+                visited.add(neigh)
+                q.append(neigh)
 
-    components.sort(key=len, reverse=True)
-    main_comp = set(components[0]) # Los 240 sectores conectados que albergan a Chile
-    sectores_disponibles = sorted([sector_coords[c] for c in main_comp])
+    sectores_disponibles = sorted([sector_coords[c] for c in visited])
 
-    print(f"[2/4] Copiando sectores conectados de Chile ({len(sectores_disponibles)} sectores)...")
+    print(f"[2/4] Copiando sectores de la espina dorsal de Chile ({len(sectores_disponibles)} sectores)...")
     total_archivos = 0
     total_reemplazos = 0
 
@@ -258,9 +213,6 @@ def importar_y_parchear_sectores():
 
             dest_file = DEST_CHILE_DIR / f"{sec_name}{ext}"
 
-            # CRÍTICO: .aux, .desc, .data y .snd son índices espaciales compilados por SCS.
-            # NO deben ser alterados byte por byte, ya que corrompe la lectura del motor (cached read too big).
-            # Solo .base contiene las definiciones de entidades y nombres de ciudades.
             if ext == ".base":
                 data_bytes = src_file.read_bytes()
                 for src_b, dst_b in reemplazos_ciudades.items():
@@ -277,8 +229,8 @@ def importar_y_parchear_sectores():
     print(f" -> {total_archivos} archivos de sectores generados en {DEST_CHILE_DIR}")
     print(f" -> {total_reemplazos} ocurrencias de ciudades chilenas vinculadas en archivos .base")
 
-    # 5. Generar sucursales de empresas para cada una de las 52 ciudades chilenas
-    print("[3/4] Generando sucursales de empresas en def/company/*/editor/ para las 52 comunas...")
+    # 5. Generar sucursales de empresas
+    print("[3/4] Generando sucursales de empresas en def/company/*/editor/...")
     total_sucursales = 0
 
     for euro_city, cl_city in CIUDADES_MAPEO.items():
@@ -287,7 +239,6 @@ def importar_y_parchear_sectores():
             orig_comp = sfile.parent.parent.name
             dest_comp = EMPRESAS_MAPEO.get(orig_comp, orig_comp)
 
-            # Sucursal para la marca chilena
             dest_editor_dir = DEST_DEF_COMPANY / dest_comp / "editor"
             dest_editor_dir.mkdir(parents=True, exist_ok=True)
             dest_sii = dest_editor_dir / f"{cl_city}.sii"
@@ -298,7 +249,6 @@ def importar_y_parchear_sectores():
             dest_sii.write_text(content, encoding="utf-8")
             total_sucursales += 1
 
-            # Sucursal de respaldo para la empresa original (retrocompatibilidad)
             if dest_comp != orig_comp:
                 orig_editor_dir = DEST_DEF_COMPANY / orig_comp / "editor"
                 orig_editor_dir.mkdir(parents=True, exist_ok=True)
@@ -306,8 +256,8 @@ def importar_y_parchear_sectores():
                 orig_sii.write_text(content, encoding="utf-8")
                 total_sucursales += 1
 
-    print(f" -> {total_sucursales} sedes de empresas generadas para las 52 comunas de Chile")
-    print(f"[4/4] Red vial continua y economía de 52 comunas 100% operativas.")
+    print(f" -> {total_sucursales} sedes de empresas generadas para las ciudades de Chile")
+    print(f"[4/4] Espina dorsal lineal de Chile 100% operativa.")
     return True
 
 

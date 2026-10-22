@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .constitucion {
+ city: constitucion
+ prefab: ibe_0g004
+}
+}

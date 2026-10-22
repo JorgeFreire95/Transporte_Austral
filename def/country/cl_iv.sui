@@ -1,12 +1,12 @@
 country_data : country.data.cl_iv
 {
     country_id: 105
-    name: "Región de Coquimbo"
-    name_localized: "Región de Coquimbo"
+    name: ""
+    name_localized: ""
     country_code: "CO"
     iso_country_code: chl
 
-    pos: (-36768, 0, -16268)
+    pos: (-34053, 0, -22813)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_iv
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

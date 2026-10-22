@@ -2,7 +2,7 @@ city_data : city.talcahuano
 {
     city_name: "Talcahuano"
     city_name_localized: "Talcahuano"
-    country: chile
+    country: cl_viii
     vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0

@@ -1,12 +1,12 @@
 country_data : country.data.cl_vii
 {
     country_id: 109
-    name: "Región del Maule"
-    name_localized: "Región del Maule"
+    name: ""
+    name_localized: ""
     country_code: "MA"
     iso_country_code: chl
 
-    pos: (-16450, 0, 3310)
+    pos: (-31334, 0, -13132)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_vii
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

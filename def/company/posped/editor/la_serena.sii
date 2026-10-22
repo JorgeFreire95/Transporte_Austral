@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .la_serena {
+ city: la_serena
+ prefab: 33
+}
+}

@@ -2,26 +2,26 @@ city_data : city.punta_arenas
 {
     city_name: "Punta Arenas"
     city_name_localized: "Punta Arenas"
-    country: chile
+    country: cl_xii
     vehicle_brands[]: "volvo"
 
-    map_x_offsets[]: 0
-    map_x_offsets[]: 0
-    map_x_offsets[]: 0
-    map_x_offsets[]: -10
-    map_x_offsets[]: 0
-    map_x_offsets[]: 0
-    map_x_offsets[]: -20
-    map_x_offsets[]: -15
+	map_x_offsets[]: 0
+	map_x_offsets[]: 0
+	map_x_offsets[]: 0
+	map_x_offsets[]: -10
+	map_x_offsets[]: 45
+	map_x_offsets[]: 45
+	map_x_offsets[]: 45
+	map_x_offsets[]: 45
 
-    map_y_offsets[]: 0
-    map_y_offsets[]: 0
-    map_y_offsets[]: 25
-    map_y_offsets[]: -10
-    map_y_offsets[]: -5
-    map_y_offsets[]: -15
-    map_y_offsets[]: -15
-    map_y_offsets[]: -15
+	map_y_offsets[]: 0
+	map_y_offsets[]: 0
+	map_y_offsets[]: 25
+	map_y_offsets[]: -10
+	map_y_offsets[]: 0
+	map_y_offsets[]: 0
+	map_y_offsets[]: 0
+	map_y_offsets[]: 0
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: Región de Magallanes y de la Antártica Chilena (XII)

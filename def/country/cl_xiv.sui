@@ -1,12 +1,12 @@
 country_data : country.data.cl_xiv
 {
     country_id: 113
-    name: "Región de Los Ríos"
-    name_localized: "Región de Los Ríos"
+    name: ""
+    name_localized: ""
     country_code: "LR"
     iso_country_code: chl
 
-    pos: (-12794, 0, 20153)
+    pos: (-29611, 0, -3058)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_xiv
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

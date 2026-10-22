@@ -2,7 +2,7 @@ city_data : city.los_vilos
 {
     city_name: "Los Vilos"
     city_name_localized: "Los Vilos"
-    country: chile
+    country: cl_iv
     vehicle_brands[]: "renault"
 
     map_x_offsets[]: 0

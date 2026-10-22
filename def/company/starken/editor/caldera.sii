@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .caldera {
  city: caldera
- prefab: at_0j009
+ prefab: 31
 }
 }

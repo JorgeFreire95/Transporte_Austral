@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .villarrica {
  city: villarrica
- prefab: at_0j002
+ prefab: 32
 }
 }

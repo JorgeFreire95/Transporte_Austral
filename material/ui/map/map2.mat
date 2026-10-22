@@ -1,5 +1,8 @@
-material : "ui"
-{
-    texture : "/material/ui/map/map2.tobj"
-    texture_name : "texture"
+effect : "ui.rfx" {
+	texture : "texture" {
+		source : "map2.tobj"
+		u_address : clamp
+		v_address : clamp
+		mip_filter : none
+	}
 }

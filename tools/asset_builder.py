@@ -4,28 +4,60 @@
 ==============================================================================
 TRANSPORTE AUSTRAL - CONVERSOR DE ACTIVOS UI, MAPA Y PANTALLAS DE CARGA (ETS2)
 ==============================================================================
-Genera las texturas DDS, descriptores TOBJ binarios, materiales MAT y definiciones
-SII para:
+Genera las texturas DDS (DX10 BGRA sin compresión), descriptores TOBJ binarios,
+materiales MAT (shader ui.rfx) y definiciones SII para:
 1. Pantallas de carga personalizadas usando mod_icon.png.
-2. Mapa de fondo de Chile en la interfaz UI (selección de ciudad y mapa M).
+2. Mapa de fondo de Chile en blanco y negro (monocromático elegante),
+   perfectamente alineado con las 16 sedes regionales y sin líneas de texto.
 """
 
 import os
+import re
+import math
 import struct
+import json
+import bisect
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Header binario DDS DX10 exacto de 148 bytes verificado al 100% de assets oficiales de ETS2 (DXGI 91 = B8G8R8A8_UNORM)
+DDS_DX10_HEADER_148 = bytes.fromhex(
+    "444453207c000000071002000008000000080000000000000000000001000000"
+    "0000000000000000000000000000000000000000000000000000000000000000"
+    "0000000000000000000000002000000004000000445831300000000000000000"
+    "0000000000000000000000000010000000000000000000000000000000000000"
+    "5b00000003000000000000000100000000000000"
+)
+
+
+def save_dx10_dds(img: Image.Image, output_path: Path):
+    """Guarda una imagen en formato DDS sin compresión DX10 B8G8R8A8_UNORM nativo de SCS."""
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    w, h = img.size
+    bgra_bytes = img.convert("RGBA").tobytes("raw", "BGRA")
+
+    if w == 2048 and h == 2048:
+        hdr = DDS_DX10_HEADER_148
+    else:
+        hdr_list = bytearray(DDS_DX10_HEADER_148)
+        hdr_list[12:16] = struct.pack("<I", h)
+        hdr_list[16:20] = struct.pack("<I", w)
+        hdr = bytes(hdr_list)
+
+    with open(output_path, "wb") as f:
+        f.write(hdr)
+        f.write(bgra_bytes)
+
 
 def write_tobj(file_path: Path, texture_rel_path: str, clamp: bool = True):
     """
     Escribe un archivo binario .tobj nativo de SCS Software (formato 0x70b10a01).
-    Header exacto de 40 bytes + string UTF-8 precedido por longitud de 8 bytes (uint64 little-endian).
+    Header exacto de 40 bytes verificado del juego base (u_address=clamp, v_address=clamp).
     """
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # Normalizar separadores de ruta a '/'
     norm_path = texture_rel_path.replace("\\", "/")
     if not norm_path.startswith("/"):
         norm_path = "/" + norm_path
@@ -33,8 +65,7 @@ def write_tobj(file_path: Path, texture_rel_path: str, clamp: bool = True):
     path_bytes = norm_path.encode("utf-8")
     path_len = len(path_bytes)
 
-    addr = 0x01 if clamp else 0x00
-    # Header de 40 bytes verificado de assets nativos de ETS2:
+    addr = 0x02 if clamp else 0x01
     header_bytes = bytes([
         0x01, 0x0A, 0xB1, 0x70,  # 0..3: magic version 0x70b10a01
         0x00, 0x00, 0x00, 0x00,  # 4..7
@@ -43,8 +74,8 @@ def write_tobj(file_path: Path, texture_rel_path: str, clamp: bool = True):
         0x00, 0x00, 0x00, 0x00,  # 16..19
         0x01, 0x00, 0x00, 0x00,  # 20..23: uint32 1
         0x02, 0x00,              # 24..25: uint16 2 (Map2D)
-        0x03, 0x03, 0x03, 0x00,  # 26..29: filters (mag, min, mip, bias)
-        addr, addr,              # 30..31: clamp/repeat (addr_u, addr_v)
+        0x03, 0x03, 0x02, 0x00,  # 26..29: filters (mag=linear, min=linear, mip=none: 0x02, bias=0)
+        addr, addr,              # 30..31: clamp/repeat (0x02 clamp)
         0x00, 0x00, 0x00, 0x00,  # 32..35: flags
         0x00, 0x01, 0x00, 0x00   # 36..39: color_space
     ])
@@ -56,13 +87,16 @@ def write_tobj(file_path: Path, texture_rel_path: str, clamp: bool = True):
 
 
 def write_mat(file_path: Path, tobj_rel_path: str):
-    """Escribe un archivo de material UI de texto plano para ETS2."""
+    """Escribe un archivo de material UI de texto plano para ETS2 con el shader moderno ui.rfx."""
     file_path.parent.mkdir(parents=True, exist_ok=True)
-    norm_path = tobj_rel_path.replace("\\", "/")
-    content = f"""material : "ui"
-{{
-    texture : "{norm_path}"
-    texture_name : "texture"
+    source_name = Path(tobj_rel_path).name
+    content = f"""effect : "ui.rfx" {{
+	texture : "texture" {{
+		source : "{source_name}"
+		u_address : clamp
+		v_address : clamp
+		mip_filter : none
+	}}
 }}
 """
     with open(file_path, "w", encoding="utf-8") as f:
@@ -79,13 +113,12 @@ def generar_pantallas_de_carga():
     img = Image.open(src_icon).convert("RGBA")
 
     # 1. Loading bar_pics (ETS2 1.43+)
-    # Tamaño recomendado para bar_pics: 1920x680 o 1920x1080
     bar_img = img.resize((1920, 680), Image.Resampling.LANCZOS)
     bar_dir = BASE_DIR / "material" / "ui" / "loading" / "bar_pics"
     bar_dir.mkdir(parents=True, exist_ok=True)
 
     dds_bar = bar_dir / "chile_01.dds"
-    bar_img.save(dds_bar, format="DDS")
+    save_dx10_dds(bar_img, dds_bar)
 
     tobj_bar = bar_dir / "chile_01.tobj"
     write_tobj(tobj_bar, "/material/ui/loading/bar_pics/chile_01.dds")
@@ -93,7 +126,6 @@ def generar_pantallas_de_carga():
     mat_bar = bar_dir / "chile_01.mat"
     write_mat(mat_bar, "/material/ui/loading/bar_pics/chile_01.tobj")
 
-    # Definición .sii para bar_pics
     sii_bar = bar_dir / "chile_01.sii"
     sii_content = """SiiNunit
 {
@@ -112,7 +144,7 @@ loading_screen_def : .screen {
 
     for name in ["loading_0", "loading_1", "loading_screen"]:
         dds_full = loading_dir / f"{name}.dds"
-        full_img.save(dds_full, format="DDS")
+        save_dx10_dds(full_img, dds_full)
 
         tobj_full = loading_dir / f"{name}.tobj"
         write_tobj(tobj_full, f"/material/ui/loading/{name}.dds")
@@ -124,188 +156,145 @@ loading_screen_def : .screen {
 
 
 def comprimir_mod_icon():
-    """Comprime mod_icon.jpg a 512x512 JPEG calidad 85 para cumplir con el límite estricto de 128 KB de SCS."""
+    """Comprime mod_icon.jpg a 276x162 JPEG calidad 90 para cumplir con el estándar exacto de SCS."""
     src = BASE_DIR / "mod_icon.png"
     if not src.exists():
         src = BASE_DIR / "mod_icon.jpg"
     if src.exists():
         im = Image.open(src).convert("RGB")
-        im_resized = im.resize((512, 512), Image.Resampling.LANCZOS)
+        im_resized = im.resize((276, 162), Image.Resampling.LANCZOS)
         dst = BASE_DIR / "mod_icon.jpg"
-        im_resized.save(dst, format="JPEG", quality=85)
-        print(f" -> Icono del mod optimizado: {dst.stat().st_size} bytes (límite SCS: 131072 bytes)")
+        im_resized.save(dst, format="JPEG", quality=90)
+        print(f" -> Icono del mod optimizado: {dst.stat().st_size} bytes (tamaño oficial SCS: 276x162 px)")
 
 
 def generar_mapa_fondo_chile():
-    """Genera la textura de mapa de fondo de Chile en alta resolución (4096x4096) dividida en 4 cuadrantes (map0..map3) y map.dds para el UI."""
-    print("[2/2] Generando mapa de fondo de Chile para la interfaz UI con 16 regiones coloreadas...")
+    """
+    Genera la textura de mapa de fondo de Chile en alta resolución (4096x4096)
+    dividida en 4 cuadrantes (map0..map3) y map.dds en BLANCO Y NEGRO,
+    utilizando la geometría geográfica real de las 16 regiones de Chile (GeoJSON),
+    proyectada suavemente para que cada ciudad/sede caiga exactamente dentro de su
+    territorio regional con bordes blancos nítidos y sin distorsión de tubo.
+    """
+    print("[2/2] Generando mapa de fondo geográfico auténtico de Chile (GeoJSON) en blanco y negro...")
 
-    # Crear imagen de fondo estilizada de Chile y Océano Pacífico (4096x4096)
-    w, h = 4096, 4096
-    # Coordenadas mundiales cubiertas por la textura (ui_map_size = 70000x110000 centrado en -28000, -12000)
-    x_min, x_max = -63000.0, 7000.0
-    z_min, z_max = -67000.0, 43000.0
+    geojson_path = BASE_DIR / "tools" / "data" / "chile_regiones.geojson"
+    if not geojson_path.exists():
+        raise FileNotFoundError(f"No se encontró el archivo GeoJSON en {geojson_path}")
 
-    def world_to_px(wx, wz):
-        px = int((wx - x_min) / (x_max - x_min) * w)
-        pz = int((wz - z_min) / (z_max - z_min) * h)
-        return (px, pz)
+    with open(geojson_path, "r", encoding="utf-8") as f:
+        gj = json.load(f)
 
-    # Color base: Azul marino profundo cartográfico moderno
-    map_img = Image.new("RGBA", (w, h), (18, 24, 38, 255))
+    # Anclas geográficas precisas y suaves para un trazado limpio y natural de Chile:
+    ANCHORS = [
+        (-17.50, -69.50, 1585.0, 1340.0),  # Extremo Norte (Visviri)
+        (-18.48, -70.32, 1585.0, 1376.4),  # XV Arica
+        (-20.22, -70.14, 1590.0, 1418.3),  # I Iquique
+        (-23.65, -70.40, 1610.0, 1650.2),  # II Antofagasta
+        (-27.37, -70.33, 1625.0, 1671.5),  # III Copiapó
+        (-29.90, -71.25, 1635.0, 1801.2),  # IV La Serena
+        (-33.05, -71.62, 1655.0, 1868.6),  # V Valparaíso
+        (-33.45, -70.67, 1665.0, 1924.9),  # RM Santiago
+        (-34.17, -70.74, 1690.0, 1980.2),  # VI Rancagua
+        (-35.43, -71.66, 1750.0, 2050.4),  # VII Talca
+        (-36.61, -72.10, 1810.0, 2091.9),  # XVI Chillán
+        (-36.83, -73.05, 1870.0, 2203.5),  # VIII Concepción
+        (-38.74, -72.60, 1930.0, 2305.9),  # IX Temuco
+        (-39.81, -73.25, 1960.0, 2380.3),  # XIV Valdivia
+        (-41.47, -72.94, 1990.0, 2429.5),  # X Puerto Montt
+        (-45.57, -72.07, 2020.0, 2500.2),  # XI Coyhaique
+        (-53.16, -70.91, 2050.0, 2574.8),  # XII Punta Arenas
+        (-56.00, -68.00, 2080.0, 2680.0),  # Cabo de Hornos
+    ]
+
+    POS_LATS = [-c[0] for c in ANCHORS]
+    LONS = [c[1] for c in ANCHORS]
+    PXS = [c[2] for c in ANCHORS]
+    PYS = [c[3] for c in ANCHORS]
+
+    def interp(x, xp, yp):
+        if x <= xp[0]: return yp[0]
+        if x >= xp[-1]: return yp[-1]
+        i = bisect.bisect_right(xp, x)
+        t = (x - xp[i - 1]) / (xp[i] - xp[i - 1])
+        return yp[i - 1] + t * (yp[i] - yp[i - 1])
+
+    def geo_to_screen(lon, lat):
+        plat = -lat
+        c_px = interp(plat, POS_LATS, PXS)
+        c_py = interp(plat, POS_LATS, PYS)
+        c_lon = interp(plat, POS_LATS, LONS)
+
+        # Proyección natural del ancho continental
+        lon_diff = max(-3.5, min(3.5, lon - c_lon))
+        px = c_px + lon_diff * 95.0
+        py = c_py
+        return px, py
+
+    # Paleta monocromática elegante (escala de grises equilibrada con bordes blancos nítidos)
+    BW_SHADES = {
+        15: (45, 48, 55),    # XV Arica
+        1:  (70, 75, 85),    # I Tarapacá
+        2:  (90, 95, 105),   # II Antofagasta
+        3:  (50, 54, 62),    # III Atacama
+        4:  (75, 80, 90),    # IV Coquimbo
+        5:  (100, 105, 115), # V Valparaíso
+        13: (45, 48, 55),    # RM Santiago
+        6:  (72, 77, 86),    # VI O'Higgins
+        7:  (55, 60, 68),    # VII Maule
+        16: (85, 90, 100),   # XVI Ñuble
+        8:  (60, 65, 75),    # VIII Biobío
+        9:  (90, 96, 106),   # IX Araucanía
+        14: (50, 54, 62),    # XIV Los Ríos
+        10: (78, 83, 92),    # X Los Lagos
+        11: (60, 65, 74),    # XI Aysén
+        12: (92, 98, 108),   # XII Magallanes
+    }
+
+    map_img = Image.new("RGBA", (4096, 4096), (0, 0, 0, 0))
     draw = ImageDraw.Draw(map_img)
 
-    # Cuadrícula cartográfica sutil
-    for x in range(0, w, 256):
-        draw.line([(x, 0), (x, h)], fill=(28, 38, 58, 120), width=1)
-    for y in range(0, h, 256):
-        draw.line([(0, y), (w, y)], fill=(28, 38, 58, 120), width=1)
+    for feat in gj['features']:
+        cod = int(feat['properties']['codregion'])
+        color = BW_SHADES.get(cod, (70, 75, 85))
+        geom = feat['geometry']
+        rings = []
 
-    # 17 Divisores limítrofes continuos para generar la franja esbelta y sin escalonamientos de Chile
-    # 17 Divisores limítrofes continuos para generar la franja esbelta y sin escalonamientos de Chile
-    dividers = [
-        ((-44000, -59000), (-35000, -59000)),  # 0: Límite Norte Arica (Perú)
-        ((-48000, -51000), (-39000, -51000)),  # 1: Arica / Tarapacá
-        ((-47000, -43000), (-38000, -43000)),  # 2: Tarapacá / Antofagasta
-        ((-43000, -33000), (-34000, -33000)),  # 3: Antofagasta / Atacama
-        ((-40000, -21500), (-32000, -21500)),  # 4: Atacama / Coquimbo
-        ((-39000, -15200), (-31000, -15200)),  # 5: Coquimbo / Valparaíso
-        ((-35000,  -9500), (-27000,  -9500)),  # 6: Valparaíso / RM
-        ((-33000,  -3500), (-25000,  -3500)),  # 7: RM / O'Higgins
-        ((-29000,    500), (-21000,    500)),  # 8: O'Higgins / Maule
-        ((-20000,   5400), (-12000,   5400)),  # 9: Maule / Ñuble
-        ((-19000,   9500), (-11000,   9500)),  # 10: Ñuble / Biobío
-        ((-15000,  15000), ( -7000,  15000)),  # 11: Biobío / La Araucanía
-        ((-15000,  19200), ( -6000,  19200)),  # 12: La Araucanía / Los Ríos
-        ((-17000,  22100), ( -8000,  22100)),  # 13: Los Ríos / Los Lagos
-        ((-23000,  25000), (-13000,  25000)),  # 14: Los Lagos / Aysén
-        ((-27000,  28500), (-17000,  28500)),  # 15: Aysén / Magallanes
-        ((-18000,  36000), ( -8000,  36000)),  # 16: Cabo de Hornos (Límite Sur)
-    ]
+        min_len = 40 if cod in [11, 12] else 4
 
-    # Paleta de 16 colores idéntica a la infografía oficial regional de Chile
-    colors = [
-        (122,  32,  72),  # XV Región de Arica y Parinacota (#7A2048 - Vino Tinto)
-        (232,  72,  85),  # I Región de Tarapacá (#E84855 - Coral Terracota)
-        (232,  94,  38),  # II Región de Antofagasta (#E85E26 - Naranja Desierto)
-        (234, 160,  35),  # III Región de Atacama (#EAA023 - Dorado Ocre)
-        (254, 209,   0),  # IV Región de Coquimbo (#FED100 - Amarillo Solar)
-        (136, 166,  66),  # V Región de Valparaíso (#88A642 - Verde Oliva)
-        (158,  27,  50),  # RM Región Metropolitana de Santiago (#9E1B32 - Carmesí)
-        (243, 112,  33),  # VI Región de O'Higgins (#F37021 - Mandarina)
-        (  0, 168,  89),  # VII Región del Maule (#00A859 - Verde Esmeralda)
-        (196,  18,  48),  # XVI Región de Ñuble (#C41230 - Rojo Rubí)
-        (249, 160,  27),  # VIII Región del Biobío (#F9A01B - Ámbar)
-        (232, 119,  82),  # IX Región de La Araucanía (#E87752 - Coral Araucano)
-        (122, 193,  67),  # XIV Región de Los Ríos (#7AC143 - Verde Lima Fluvial)
-        ( 41, 169, 224),  # X Región de Los Lagos (#29A9E0 - Azul Cian Lagos y Fiordos)
-        (140,  71, 153),  # XI Región de Aysén (#8C4799 - Violeta Glaciares)
-        (216,  38, 114),  # XII Región de Magallanes (#D82672 - Magenta Austral)
-    ]
+        if geom['type'] == 'Polygon':
+            for ring in geom['coordinates']:
+                if len(ring) >= min_len:
+                    pts = [geo_to_screen(p[0], p[1]) for p in ring if p[0] > -76.0]
+                    if len(pts) >= 3:
+                        rings.append(pts)
+        elif geom['type'] == 'MultiPolygon':
+            for poly in geom['coordinates']:
+                for ring in poly:
+                    if len(ring) >= min_len:
+                        pts = [geo_to_screen(p[0], p[1]) for p in ring if p[0] > -76.0]
+                        if len(pts) >= 3:
+                            rings.append(pts)
 
-    reg_names = [
-        "XV Región de Arica y Parinacota",
-        "I Región de Tarapacá",
-        "II Región de Antofagasta",
-        "III Región de Atacama",
-        "IV Región de Coquimbo",
-        "V Región de Valparaíso",
-        "RM Región Metropolitana de Santiago",
-        "VI Región del Libertador Bernardo O'Higgins",
-        "VII Región del Maule",
-        "XVI Región de Ñuble",
-        "VIII Región del Bío- Bío",
-        "IX Región de La Araucanía",
-        "XIV Región de Los Ríos",
-        "X Región de Los Lagos",
-        "XI Región de Aysén del General Ibáñez del Campo",
-        "XII Región de Magallanes y Antártica Chilena"
-    ]
+        for ring in rings:
+            draw.polygon(ring, fill=(*color, 255), outline=(255, 255, 255, 255), width=2)
 
-    cap_pos = [
-        (-38999, -54871), (-44882, -46900), (-39807, -38549), (-36466, -26835),
-        (-36768, -16268), (-31578, -14044), (-30174,  -4751), (-26395,  -2170),
-        (-16450,   3310), (-16230,   7437), (-11085,  11548), ( -9769,  18357),
-        (-12794,  20153), (-17861,  24140), (-22265,  25768), (-13182,  31278)
-    ]
-
-    # 1. Dibujar resplandor costero tenue y sombra
-    for i in range(16):
-        top_w, top_e = dividers[i]
-        bot_w, bot_e = dividers[i+1]
-        px_poly = [world_to_px(*pt) for pt in [top_w, top_e, bot_e, bot_w]]
-        c = colors[i]
-        shadow_poly = [(p[0]+4, p[1]+4) for p in px_poly]
-        draw.polygon(shadow_poly, fill=(10, 14, 22, 160))
-        draw.polygon(px_poly, fill=(c[0]//3, c[1]//3, c[2]//3, 100), outline=(c[0]//2, c[1]//2, c[2]//2, 140))
-
-    # 2. Dibujar polígonos de las 16 regiones con contorno blanco nítido
-    for i in range(16):
-        top_w, top_e = dividers[i]
-        bot_w, bot_e = dividers[i+1]
-        px_poly = [world_to_px(*pt) for pt in [top_w, top_e, bot_e, bot_w]]
-        c = colors[i]
-        draw.polygon(px_poly, fill=(*c, 255), outline=(255, 255, 255, 240), width=4)
-
-    # Tipografía del sistema para textos cartográficos
+    # Recuadro inferior izquierdo: Territorio Chileno Antártico
+    abox = [(1450, 2680), (1850, 2980)]
+    draw.rectangle(abox, fill=(30, 33, 40, 240), outline=(220, 225, 235, 255), width=2)
     try:
-        font = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 32)
-        font_bold = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 46)
-        font_sub = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 24)
-    except:
-        font = ImageFont.load_default()
-        font_bold = font
-        font_sub = font
+        font_sm = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 20)
+    except Exception:
+        font_sm = ImageFont.load_default()
 
-    # Título oficial de Chile en la esquina superior derecha
-    draw.text((2550, 150), "REPÚBLICA DE CHILE", font=font_bold, fill=(245, 248, 255, 255))
-    draw.text((2550, 215), "TRANSPORTE AUSTRAL - RED VIAL 1:19", font=font_sub, fill=(245, 166, 56, 255))
-    draw.text((2550, 250), "16 Regiones Político-Administrativas Conectadas", font=font_sub, fill=(160, 185, 215, 220))
+    draw.text((1465, 2695), "TERRITORIO CHILENO ANTÁRTICO", font=font_sm, fill=(240, 240, 245, 255))
+    ant_poly = [(1530, 2950), (1550, 2810), (1610, 2750), (1660, 2840), (1600, 2950)]
+    draw.polygon(ant_poly, fill=(80, 85, 95, 255), outline=(255, 255, 255, 255), width=2)
 
-    # Océano Pacífico (lado izquierdo)
-    draw.text((200, 2000), "OCÉANO PACÍFICO", font=font_bold, fill=(35, 55, 85, 180))
-
-    # Territorio Chileno Antártico (recuadro inferior izquierdo)
-    abox = [(200, 3250), (1050, 3950)]
-    draw.rectangle(abox, fill=(15, 20, 32, 230), outline=(80, 110, 150, 200), width=2)
-    draw.text((220, 3270), "TERRITORIO CHILENO ANTÁRTICO", font=font_sub, fill=(220, 230, 245, 220))
-    draw.polygon([(400, 3850), (600, 3380), (800, 3850)], fill=(134, 35, 67, 255), outline=(255, 255, 255, 220), width=2)
-
-    # 3. Dibujar círculos blancos y líneas guía a los títulos de las 16 regiones
-    y_start = 450
-    y_end = 3680
-    y_step = (y_end - y_start) / 15.0
-
-    for i in range(16):
-        cx, cz = cap_pos[i]
-        px, pz = world_to_px(cx, cz)
-        target_y = int(y_start + i * y_step)
-
-        # Círculo blanco selector con núcleo del color regional
-        r = 18
-        draw.ellipse([(px-r, pz-r), (px+r, pz+r)], fill=(255, 255, 255, 255), outline=(60, 60, 60, 255), width=3)
-        draw.ellipse([(px-6, pz-6), (px+6, pz+6)], fill=(colors[i]), outline=None)
-
-        # Línea guía estilizada hacia la derecha
-        lx1 = px + r + 10
-        lx2 = max(lx1 + 60, 2750)
-        lx3 = 3050
-        lx_end = 3100
-        draw.line([(lx1, pz), (lx2, pz), (lx3, target_y), (lx_end, target_y)], fill=(180, 195, 220, 220), width=2)
-        draw.ellipse([(lx_end-4, target_y-4), (lx_end+4, target_y+4)], fill=(255, 255, 255, 255))
-
-        # Texto de la región con sombra sutil
-        draw.text((lx_end + 18, target_y - 20), reg_names[i], font=font, fill=(10, 14, 22, 220))
-        draw.text((lx_end + 16, target_y - 22), reg_names[i], font=font, fill=(245, 248, 255, 255))
-
+    # Guardar las 4 texturas de cuadrante (map0..map3) de 2048x2048 en DX10 BGRA
     map_ui_dir = BASE_DIR / "material" / "ui" / "map"
     map_ui_dir.mkdir(parents=True, exist_ok=True)
 
-    # 4. Generar y guardar las 4 texturas de cuadrante (map0..map3) de 2048x2048 cada una
-    # Cuadrante 0: NW (0..2048, 0..2048)
-    # Cuadrante 1: NE (2048..4096, 0..2048)
-    # Cuadrante 2: SW (0..2048, 2048..4096)
-    # Cuadrante 3: SE (2048..4096, 2048..4096)
     quadrants = [
         ("map0", (0, 0, 2048, 2048)),
         ("map1", (2048, 0, 4096, 2048)),
@@ -316,7 +305,7 @@ def generar_mapa_fondo_chile():
     for qname, box in quadrants:
         tile = map_img.crop(box)
         tile_dds = map_ui_dir / f"{qname}.dds"
-        tile.save(tile_dds, format="DDS")
+        save_dx10_dds(tile, tile_dds)
 
         tile_tobj = map_ui_dir / f"{qname}.tobj"
         write_tobj(tile_tobj, f"/material/ui/map/{qname}.dds")
@@ -324,14 +313,13 @@ def generar_mapa_fondo_chile():
         tile_mat = map_ui_dir / f"{qname}.mat"
         write_mat(tile_mat, f"/material/ui/map/{qname}.tobj")
 
-        # Aliases con guion bajo (map_0..map_3) por compatibilidad
         alias_name = f"map_{qname[-1]}"
         write_mat(map_ui_dir / f"{alias_name}.mat", f"/material/ui/map/{qname}.tobj")
 
-    # 5. Generar textura general de resumen (map.dds) de 2048x2048
+    # Textura general de resumen (map.dds)
     overview_img = map_img.resize((2048, 2048), Image.Resampling.LANCZOS)
     dds_map = map_ui_dir / "map.dds"
-    overview_img.save(dds_map, format="DDS")
+    save_dx10_dds(overview_img, dds_map)
 
     tobj_map = map_ui_dir / "map.tobj"
     write_tobj(tobj_map, "/material/ui/map/map.dds")
@@ -339,7 +327,7 @@ def generar_mapa_fondo_chile():
     mat_map = map_ui_dir / "map.mat"
     write_mat(mat_map, "/material/ui/map/map.tobj")
 
-    # 6. Escribir def/map_data.sii calibrado exactamente a las coordenadas de Chile
+    # Configuración de def/map_data.sii centrada en la espina de Chile
     def_dir = BASE_DIR / "def"
     def_dir.mkdir(parents=True, exist_ok=True)
 
@@ -407,15 +395,15 @@ map_data : .map.data {
 	navigation_fade_color:		0xFF07077C
 	navigation_arrow_color: 	0xFF06FB11
 
-	# Niveles de Zoom completos (0 a 7 requeridos por Prism3D)
+	# Niveles de Zoom completos
 	zoom_uplift[0]: 50.0
 	zoom_uplift[1]: 220.0
 	zoom_uplift[2]: 900.0
 	zoom_uplift[3]: 4000.0
 	zoom_uplift[4]: 1000.0
 	zoom_uplift[5]: 5000.0
-	zoom_uplift[6]: 20000.0
-	zoom_uplift[7]: 75000.0
+	zoom_uplift[6]: 18500.0
+	zoom_uplift[7]: 70000.0
 
 	player_size[0]: 15.0
 	player_size[1]: 35.0
@@ -446,21 +434,21 @@ map_data : .map.data {
 
 	icon_size[0]: (13.0, 13.0)
 	icon_size[1]: (10.0, 10.0)
-	icon_size[2]: (10.0, 10.0)
-	icon_size[3]: (8.0, 8.0)
-	icon_size[4]: (15.0, 15.0)
-	icon_size[5]: (12.0, 12.0)
-	icon_size[6]: (10.0, 10.0)
-	icon_size[7]: (10.0, 10.0)
+	icon_size[2]: (7.0, 7.0)
+	icon_size[3]: (7.0, 7.0)
+	icon_size[4]: (17.0, 17.0)
+	icon_size[5]: (13.0, 13.0)
+	icon_size[6]: (11.0, 11.0)
+	icon_size[7]: (11.0, 11.0)
 
 	city_icon_size[0]: (13.0, 13.0)
 	city_icon_size[1]: (10.0, 10.0)
-	city_icon_size[2]: (10.0, 10.0)
-	city_icon_size[3]: (8.0, 8.0)
-	city_icon_size[4]: (15.0, 15.0)
-	city_icon_size[5]: (12.0, 12.0)
-	city_icon_size[6]: (10.0, 10.0)
-	city_icon_size[7]: (15.0, 15.0)
+	city_icon_size[2]: (7.0, 7.0)
+	city_icon_size[3]: (7.0, 7.0)
+	city_icon_size[4]: (17.0, 17.0)
+	city_icon_size[5]: (13.0, 13.0)
+	city_icon_size[6]: (11.0, 11.0)
+	city_icon_size[7]: (13.0, 13.0)
 
 	company_icon_size[0]: (32.0, 8.0)
 	company_icon_size[1]: (20.0, 5.0)
@@ -471,43 +459,42 @@ map_data : .map.data {
 	company_icon_size[6]: (16.0, 4.0)
 	company_icon_size[7]: (16.0, 4.0)
 
-	# Límites de cámara en coordenadas de Chile
-	camera_limits_min[0]: (-65000.0, -70000.0)
-	camera_limits_min[1]: (-65000.0, -70000.0)
-	camera_limits_min[2]: (-65000.0, -70000.0)
-	camera_limits_min[3]: (-65000.0, -70000.0)
-	camera_limits_min[4]: (-65000.0, -70000.0)
-	camera_limits_min[5]: (-65000.0, -70000.0)
-	camera_limits_min[6]: (-65000.0, -70000.0)
-	camera_limits_min[7]: (-65000.0, -70000.0)
+	camera_limits_min[0]: (-1000000.0, -1000000.0)
+	camera_limits_min[1]: (-1000000.0, -1000000.0)
+	camera_limits_min[2]: (-1000000.0, -1000000.0)
+	camera_limits_min[3]: (-1000000.0, -1000000.0)
+	camera_limits_min[4]: (-95000.0, -140000.0)
+	camera_limits_min[5]: (-95000.0, -140000.0)
+	camera_limits_min[6]: (-95000.0, -140000.0)
+	camera_limits_min[7]: (-95000.0, -150000.0)
 
-	camera_limits_max[0]: (15000.0, 48000.0)
-	camera_limits_max[1]: (15000.0, 48000.0)
-	camera_limits_max[2]: (15000.0, 48000.0)
-	camera_limits_max[3]: (15000.0, 48000.0)
-	camera_limits_max[4]: (15000.0, 48000.0)
-	camera_limits_max[5]: (15000.0, 48000.0)
-	camera_limits_max[6]: (15000.0, 48000.0)
-	camera_limits_max[7]: (15000.0, 48000.0)
+	camera_limits_max[0]: (1000000.0, 1000000.0)
+	camera_limits_max[1]: (1000000.0, 1000000.0)
+	camera_limits_max[2]: (1000000.0, 1000000.0)
+	camera_limits_max[3]: (1000000.0, 1000000.0)
+	camera_limits_max[4]: (80000.0, 90000.0)
+	camera_limits_max[5]: (80000.0, 90000.0)
+	camera_limits_max[6]: (80000.0, 90000.0)
+	camera_limits_max[7]: (80000.0, 90000.0)
 
-	map_items_flags[0]: 0x0F685FFF
-	map_items_flags[1]: 0x0F685FFF
-	map_items_flags[2]: 0x0F685FFF
-	map_items_flags[3]: 0x0F685FFF
-	map_items_flags[4]: 0x0F685FAF
-	map_items_flags[5]: 0x0F685FAF
-	map_items_flags[6]: 0x0F685487
-	map_items_flags[7]: 0x0C481402
+	map_items_flags[0]: 0x685FFF
+	map_items_flags[1]: 0x685FFF
+	map_items_flags[2]: 0x685F7F
+	map_items_flags[3]: 0x685F7F
+	map_items_flags[4]: 0x685FAF
+	map_items_flags[5]: 0x685F27
+	map_items_flags[6]: 0x685407
+	map_items_flags[7]: 0x481402
 
 	map_3d_camera_pitch: 40.0
 
-	# Centro del mapa UI en coordenadas de Chile
-	ui_map_center:	(-28000.0, -12000.0)
-	ui_map_size:	(70000.0, 110000.0)
+	# Centro del mapa UI y dimensiones de proyección estándar ETS2
+	ui_map_center:	(-13500.0, -4950.0)
+	ui_map_size:	(5308.2, 5200.0)
 
-	ui_map_camera_min: (-65000.0, -70000.0)
-	ui_map_camera_max: (15000.0, 48000.0)
-	ui_map_camera_start: (-28000.0, -12000.0)
+	ui_map_camera_min: (-95000.0, -150000.0)
+	ui_map_camera_max: (80000.0, 90000.0)
+	ui_map_camera_start: (-32000.0, -18000.0)
 
 	ui_map_always_draw_city: true
 
@@ -520,7 +507,7 @@ map_data : .map.data {
     with open(map_data_sii, "w", encoding="utf-8") as f:
         f.write(map_data_content)
 
-    print(" -> Mapa de fondo (map0..map3, map) y def/map_data.sii generados exitosamente.")
+    print(" -> Mapa de fondo blanco y negro (map0..map3, map) y def/map_data.sii generados exitosamente.")
 
 
 def main():
@@ -536,4 +523,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

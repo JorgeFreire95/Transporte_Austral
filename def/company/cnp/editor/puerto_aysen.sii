@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .puerto_aysen {
+ city: puerto_aysen
+ prefab: dlc_it_141
+}
+}

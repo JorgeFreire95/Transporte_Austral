@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .linares {
+ city: linares
+ prefab: 33
+}
+}

@@ -98,6 +98,7 @@ def validar_mod():
         BASE_DIR / "def" / "city.sii",
         BASE_DIR / "def" / "company.sii",
         BASE_DIR / "def" / "cargo.sii",
+        BASE_DIR / "def" / "ferry.sii",
     ]
 
     include_regex = re.compile(r'@include\s+"([^"]+)"')

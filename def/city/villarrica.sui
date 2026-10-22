@@ -2,7 +2,7 @@ city_data : city.villarrica
 {
     city_name: "Villarrica"
     city_name_localized: "Villarrica"
-    country: chile
+    country: cl_ix
     vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0

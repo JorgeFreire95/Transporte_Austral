@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .vina_del_mar {
+ city: vina_del_mar
+ prefab: 31
+}
+}

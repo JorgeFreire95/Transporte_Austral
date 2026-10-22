@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .punta_arenas {
  city: punta_arenas
- prefab: d_cust_1w1
+ prefab: 29
 }
 }

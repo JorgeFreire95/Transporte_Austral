@@ -1108,24 +1108,24 @@ CARGAS_CHILENAS = {
 }
 
 
-# Mapeo oficial de las 16 Regiones de Chile con coordenadas exactas alineadas a los garajes en los sectores
+# Mapeo oficial de las 16 Regiones de Chile con coordenadas exactas alineadas al mapa cartográfico de Chile
 CONFIG_REGIONES = {
-    "XV": {"id": "cl_xv", "num": 101, "nombre": "Región de Arica y Parinacota", "pos": (-38999, 0, -54871), "code": "AP"},
-    "I": {"id": "cl_i", "num": 102, "nombre": "Región de Tarapacá", "pos": (-44882, 0, -46900), "code": "TA"},
-    "II": {"id": "cl_ii", "num": 103, "nombre": "Región de Antofagasta", "pos": (-39807, 0, -38549), "code": "AN"},
-    "III": {"id": "cl_iii", "num": 104, "nombre": "Región de Atacama", "pos": (-36466, 0, -26835), "code": "AT"},
-    "IV": {"id": "cl_iv", "num": 105, "nombre": "Región de Coquimbo", "pos": (-36768, 0, -16268), "code": "CO"},
-    "V": {"id": "cl_v", "num": 106, "nombre": "Región de Valparaíso", "pos": (-31578, 0, -14044), "code": "VA"},
-    "RM": {"id": "cl_rm", "num": 107, "nombre": "Región Metropolitana", "pos": (-30174, 0, -4751), "code": "RM"},
-    "VI": {"id": "cl_vi", "num": 108, "nombre": "Región de O'Higgins", "pos": (-26395, 0, -2170), "code": "OH"},
-    "VII": {"id": "cl_vii", "num": 109, "nombre": "Región del Maule", "pos": (-16450, 0, 3310), "code": "MA"},
-    "XVI": {"id": "cl_xvi", "num": 110, "nombre": "Región de Ñuble", "pos": (-16230, 0, 7437), "code": "NB"},
-    "VIII": {"id": "cl_viii", "num": 111, "nombre": "Región del Biobío", "pos": (-11085, 0, 11548), "code": "BI"},
-    "IX": {"id": "cl_ix", "num": 112, "nombre": "Región de La Araucanía", "pos": (-9769, 0, 18357), "code": "AR"},
-    "XIV": {"id": "cl_xiv", "num": 113, "nombre": "Región de Los Ríos", "pos": (-12794, 0, 20153), "code": "LR"},
-    "X": {"id": "cl_x", "num": 114, "nombre": "Región de Los Lagos", "pos": (-17861, 0, 24140), "code": "LL"},
-    "XI": {"id": "cl_xi", "num": 115, "nombre": "Región de Aysén", "pos": (-22265, 0, 25768), "code": "AI"},
-    "XII": {"id": "cl_xii", "num": 116, "nombre": "Región de Magallanes", "pos": (-13182, 0, 31278), "code": "MG"},
+    "XV": {"id": "cl_xv", "num": 101, "nombre": "Región de Arica y Parinacota", "pos": (-41757, 0, -48427), "code": "AP"},
+    "I": {"id": "cl_i", "num": 102, "nombre": "Región de Tarapacá", "pos": (-40245, 0, -44046), "code": "TA"},
+    "II": {"id": "cl_ii", "num": 103, "nombre": "Región de Antofagasta", "pos": (-38191, 0, -38400), "code": "AN"},
+    "III": {"id": "cl_iii", "num": 104, "nombre": "Región de Atacama", "pos": (-35325, 0, -29683), "code": "AT"},
+    "IV": {"id": "cl_iv", "num": 105, "nombre": "Región de Coquimbo", "pos": (-34053, 0, -22813), "code": "CO"},
+    "V": {"id": "cl_v", "num": 106, "nombre": "Región de Valparaíso", "pos": (-32665, 0, -17635), "code": "VA"},
+    "RM": {"id": "cl_rm", "num": 107, "nombre": "Región Metropolitana de Santiago", "pos": (-31624, 0, -16309), "code": "RM"},
+    "VI": {"id": "cl_vi", "num": 108, "nombre": "Región del Libertador Bernardo O'Higgins", "pos": (-31683, 0, -14515), "code": "OH"},
+    "VII": {"id": "cl_vii", "num": 109, "nombre": "Región del Maule", "pos": (-31334, 0, -13132), "code": "MA"},
+    "XVI": {"id": "cl_xvi", "num": 110, "nombre": "Región de Ñuble", "pos": (-31193, 0, -10248), "code": "NB"},
+    "VIII": {"id": "cl_viii", "num": 111, "nombre": "Región del Biobío", "pos": (-31220, 0, -8245), "code": "BI"},
+    "IX": {"id": "cl_ix", "num": 112, "nombre": "Región de La Araucanía", "pos": (-29866, 0, -6023), "code": "AR"},
+    "XIV": {"id": "cl_xiv", "num": 113, "nombre": "Región de Los Ríos", "pos": (-29611, 0, -3058), "code": "LR"},
+    "X": {"id": "cl_x", "num": 114, "nombre": "Región de Los Lagos", "pos": (-28104, 0, 2171), "code": "LL"},
+    "XI": {"id": "cl_xi", "num": 115, "nombre": "Región de Aysén del General Carlos Ibáñez del Campo", "pos": (-26628, 0, 9871), "code": "AI"},
+    "XII": {"id": "cl_xii", "num": 116, "nombre": "Región de Magallanes y de la Antártica Chilena", "pos": (-19402, 0, 23733), "code": "MG"},
 }
 
 # Concesionarios oficiales para las 52 ciudades de Chile (elimina errores de missing brand en prefabs del mapa)
@@ -1212,7 +1212,7 @@ def generar_ciudades():
 {{
     city_name: "{cname}"
     city_name_localized: "{cname}"
-    country: chile{brand_str}
+    country: {country_id_str}{brand_str}
 
     map_x_offsets[]: 0
     map_x_offsets[]: 0

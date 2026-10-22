@@ -1,0 +1,8 @@
+SiiNunit
+{
+ferry_connection : conn.rancagua.talca {
+	price: 35000
+	time: 45
+	distance: 120
+}
+}

@@ -1,12 +1,12 @@
 country_data : country.data.cl_xvi
 {
     country_id: 110
-    name: "Región de Ñuble"
-    name_localized: "Región de Ñuble"
+    name: ""
+    name_localized: ""
     country_code: "NB"
     iso_country_code: chl
 
-    pos: (-16230, 0, 7437)
+    pos: (-31193, 0, -10248)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_xvi
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

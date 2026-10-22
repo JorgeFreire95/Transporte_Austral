@@ -2,7 +2,7 @@ city_data : city.san_fernando
 {
     city_name: "San Fernando"
     city_name_localized: "San Fernando"
-    country: chile
+    country: cl_vi
     vehicle_brands[]: "iveco"
 
     map_x_offsets[]: 0

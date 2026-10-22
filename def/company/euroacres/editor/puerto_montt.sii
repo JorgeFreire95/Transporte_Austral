@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .puerto_montt {
  city: puerto_montt
- prefab: at_0j001b
+ prefab: at_0j007
 }
 }

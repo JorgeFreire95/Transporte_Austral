@@ -61,15 +61,15 @@ map_data : .map.data {
 	navigation_fade_color:		0xFF07077C
 	navigation_arrow_color: 	0xFF06FB11
 
-	# Niveles de Zoom completos (0 a 7 requeridos por Prism3D)
+	# Niveles de Zoom completos
 	zoom_uplift[0]: 50.0
 	zoom_uplift[1]: 220.0
 	zoom_uplift[2]: 900.0
 	zoom_uplift[3]: 4000.0
 	zoom_uplift[4]: 1000.0
 	zoom_uplift[5]: 5000.0
-	zoom_uplift[6]: 20000.0
-	zoom_uplift[7]: 75000.0
+	zoom_uplift[6]: 18500.0
+	zoom_uplift[7]: 70000.0
 
 	player_size[0]: 15.0
 	player_size[1]: 35.0
@@ -100,21 +100,21 @@ map_data : .map.data {
 
 	icon_size[0]: (13.0, 13.0)
 	icon_size[1]: (10.0, 10.0)
-	icon_size[2]: (10.0, 10.0)
-	icon_size[3]: (8.0, 8.0)
-	icon_size[4]: (15.0, 15.0)
-	icon_size[5]: (12.0, 12.0)
-	icon_size[6]: (10.0, 10.0)
-	icon_size[7]: (10.0, 10.0)
+	icon_size[2]: (7.0, 7.0)
+	icon_size[3]: (7.0, 7.0)
+	icon_size[4]: (17.0, 17.0)
+	icon_size[5]: (13.0, 13.0)
+	icon_size[6]: (11.0, 11.0)
+	icon_size[7]: (11.0, 11.0)
 
 	city_icon_size[0]: (13.0, 13.0)
 	city_icon_size[1]: (10.0, 10.0)
-	city_icon_size[2]: (10.0, 10.0)
-	city_icon_size[3]: (8.0, 8.0)
-	city_icon_size[4]: (15.0, 15.0)
-	city_icon_size[5]: (12.0, 12.0)
-	city_icon_size[6]: (10.0, 10.0)
-	city_icon_size[7]: (15.0, 15.0)
+	city_icon_size[2]: (7.0, 7.0)
+	city_icon_size[3]: (7.0, 7.0)
+	city_icon_size[4]: (17.0, 17.0)
+	city_icon_size[5]: (13.0, 13.0)
+	city_icon_size[6]: (11.0, 11.0)
+	city_icon_size[7]: (13.0, 13.0)
 
 	company_icon_size[0]: (32.0, 8.0)
 	company_icon_size[1]: (20.0, 5.0)
@@ -125,43 +125,42 @@ map_data : .map.data {
 	company_icon_size[6]: (16.0, 4.0)
 	company_icon_size[7]: (16.0, 4.0)
 
-	# Límites de cámara en coordenadas de Chile
-	camera_limits_min[0]: (-65000.0, -70000.0)
-	camera_limits_min[1]: (-65000.0, -70000.0)
-	camera_limits_min[2]: (-65000.0, -70000.0)
-	camera_limits_min[3]: (-65000.0, -70000.0)
-	camera_limits_min[4]: (-65000.0, -70000.0)
-	camera_limits_min[5]: (-65000.0, -70000.0)
-	camera_limits_min[6]: (-65000.0, -70000.0)
-	camera_limits_min[7]: (-65000.0, -70000.0)
+	camera_limits_min[0]: (-1000000.0, -1000000.0)
+	camera_limits_min[1]: (-1000000.0, -1000000.0)
+	camera_limits_min[2]: (-1000000.0, -1000000.0)
+	camera_limits_min[3]: (-1000000.0, -1000000.0)
+	camera_limits_min[4]: (-95000.0, -140000.0)
+	camera_limits_min[5]: (-95000.0, -140000.0)
+	camera_limits_min[6]: (-95000.0, -140000.0)
+	camera_limits_min[7]: (-95000.0, -150000.0)
 
-	camera_limits_max[0]: (15000.0, 48000.0)
-	camera_limits_max[1]: (15000.0, 48000.0)
-	camera_limits_max[2]: (15000.0, 48000.0)
-	camera_limits_max[3]: (15000.0, 48000.0)
-	camera_limits_max[4]: (15000.0, 48000.0)
-	camera_limits_max[5]: (15000.0, 48000.0)
-	camera_limits_max[6]: (15000.0, 48000.0)
-	camera_limits_max[7]: (15000.0, 48000.0)
+	camera_limits_max[0]: (1000000.0, 1000000.0)
+	camera_limits_max[1]: (1000000.0, 1000000.0)
+	camera_limits_max[2]: (1000000.0, 1000000.0)
+	camera_limits_max[3]: (1000000.0, 1000000.0)
+	camera_limits_max[4]: (80000.0, 90000.0)
+	camera_limits_max[5]: (80000.0, 90000.0)
+	camera_limits_max[6]: (80000.0, 90000.0)
+	camera_limits_max[7]: (80000.0, 90000.0)
 
-	map_items_flags[0]: 0x0F685FFF
-	map_items_flags[1]: 0x0F685FFF
-	map_items_flags[2]: 0x0F685FFF
-	map_items_flags[3]: 0x0F685FFF
-	map_items_flags[4]: 0x0F685FAF
-	map_items_flags[5]: 0x0F685FAF
-	map_items_flags[6]: 0x0F685487
-	map_items_flags[7]: 0x0C481402
+	map_items_flags[0]: 0x685FFF
+	map_items_flags[1]: 0x685FFF
+	map_items_flags[2]: 0x685F7F
+	map_items_flags[3]: 0x685F7F
+	map_items_flags[4]: 0x685FAF
+	map_items_flags[5]: 0x685F27
+	map_items_flags[6]: 0x685407
+	map_items_flags[7]: 0x481402
 
 	map_3d_camera_pitch: 40.0
 
-	# Centro del mapa UI en coordenadas de Chile
-	ui_map_center:	(-28000.0, -12000.0)
-	ui_map_size:	(70000.0, 110000.0)
+	# Centro del mapa UI y dimensiones de proyección estándar ETS2
+	ui_map_center:	(-13500.0, -4950.0)
+	ui_map_size:	(5308.2, 5200.0)
 
-	ui_map_camera_min: (-65000.0, -70000.0)
-	ui_map_camera_max: (15000.0, 48000.0)
-	ui_map_camera_start: (-28000.0, -12000.0)
+	ui_map_camera_min: (-95000.0, -150000.0)
+	ui_map_camera_max: (80000.0, 90000.0)
+	ui_map_camera_start: (-32000.0, -18000.0)
 
 	ui_map_always_draw_city: true
 

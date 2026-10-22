@@ -2,26 +2,26 @@ city_data : city.valparaiso
 {
     city_name: "Valparaíso"
     city_name_localized: "Valparaíso"
-    country: chile
+    country: cl_v
     vehicle_brands[]: "daf"
 
-    map_x_offsets[]: 0
-    map_x_offsets[]: 0
-    map_x_offsets[]: 0
-    map_x_offsets[]: -10
-    map_x_offsets[]: 0
-    map_x_offsets[]: 0
-    map_x_offsets[]: -20
-    map_x_offsets[]: -15
+	map_x_offsets[]: 0
+	map_x_offsets[]: 0
+	map_x_offsets[]: 0
+	map_x_offsets[]: -10
+	map_x_offsets[]: -60
+	map_x_offsets[]: -60
+	map_x_offsets[]: -60
+	map_x_offsets[]: -60
 
-    map_y_offsets[]: 0
-    map_y_offsets[]: 0
-    map_y_offsets[]: 25
-    map_y_offsets[]: -10
-    map_y_offsets[]: -5
-    map_y_offsets[]: -15
-    map_y_offsets[]: -15
-    map_y_offsets[]: -15
+	map_y_offsets[]: 0
+	map_y_offsets[]: 0
+	map_y_offsets[]: 25
+	map_y_offsets[]: -10
+	map_y_offsets[]: -5
+	map_y_offsets[]: -5
+	map_y_offsets[]: -5
+	map_y_offsets[]: -5
 
     # Coordenadas en mapa SCS (escala 1:19)
     # Región: Región de Valparaíso (V)

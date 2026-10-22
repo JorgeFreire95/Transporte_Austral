@@ -1,12 +1,12 @@
 country_data : country.data.cl_vi
 {
     country_id: 108
-    name: "Región de O'Higgins"
-    name_localized: "Región de O'Higgins"
+    name: ""
+    name_localized: ""
     country_code: "OH"
     iso_country_code: chl
 
-    pos: (-26395, 0, -2170)
+    pos: (-31683, 0, -14515)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_vi
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

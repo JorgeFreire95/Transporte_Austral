@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .talca {
  city: talca
- prefab: blkw_1a008
+ prefab: 36
 }
 }

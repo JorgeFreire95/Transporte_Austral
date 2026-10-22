@@ -1,12 +1,12 @@
 country_data : country.data.cl_xi
 {
     country_id: 115
-    name: "Región de Aysén"
-    name_localized: "Región de Aysén"
+    name: ""
+    name_localized: ""
     country_code: "AI"
     iso_country_code: chl
 
-    pos: (-22265, 0, 25768)
+    pos: (-26628, 0, 9871)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_xi
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

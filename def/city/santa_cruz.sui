@@ -2,7 +2,7 @@ city_data : city.santa_cruz
 {
     city_name: "Santa Cruz"
     city_name_localized: "Santa Cruz"
-    country: chile
+    country: cl_vi
     vehicle_brands[]: "renault"
 
     map_x_offsets[]: 0

@@ -1,0 +1,7 @@
+SiiNunit
+{
+company_def : .antofagasta {
+ city: antofagasta
+ prefab: 80
+}
+}

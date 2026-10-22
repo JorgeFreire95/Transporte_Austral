@@ -1,0 +1,5 @@
+ferry_data: ferry.calais
+{
+	ferry_name: "Puerto Talca"
+	ferry_name_localized: "Puerto Talca"
+}

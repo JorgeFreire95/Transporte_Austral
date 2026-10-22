@@ -2,7 +2,7 @@ city_data : city.porvenir
 {
     city_name: "Porvenir"
     city_name_localized: "Porvenir"
-    country: chile
+    country: cl_xii
     vehicle_brands[]: "iveco"
 
     map_x_offsets[]: 0

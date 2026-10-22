@@ -2,7 +2,7 @@ city_data : city.san_bernardo
 {
     city_name: "San Bernardo"
     city_name_localized: "San Bernardo"
-    country: chile
+    country: cl_rm
     vehicle_brands[]: "renault"
 
     map_x_offsets[]: 0

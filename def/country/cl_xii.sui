@@ -1,12 +1,12 @@
 country_data : country.data.cl_xii
 {
     country_id: 116
-    name: "Región de Magallanes"
-    name_localized: "Región de Magallanes"
+    name: ""
+    name_localized: ""
     country_code: "MG"
     iso_country_code: chl
 
-    pos: (-13182, 0, 31278)
+    pos: (-19402, 0, 23733)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_xii
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

@@ -1,12 +1,12 @@
 country_data : country.data.cl_ix
 {
     country_id: 112
-    name: "Región de La Araucanía"
-    name_localized: "Región de La Araucanía"
+    name: ""
+    name_localized: ""
     country_code: "AR"
     iso_country_code: chl
 
-    pos: (-9769, 0, 18357)
+    pos: (-29866, 0, -6023)
 
     fuel_price: 1.15
 
@@ -15,7 +15,7 @@ country_data : country.data.cl_ix
     driving_tired_offence: true
 
     time_zone: -180
-    time_zone_name: "CLT"
+    time_zone_name: ""
 
     mass_limit_per_axle_count[]: 18000
     mass_limit_per_axle_count[]: 26000

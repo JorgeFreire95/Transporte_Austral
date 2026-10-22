@@ -2,7 +2,7 @@ city_data : city.coquimbo
 {
     city_name: "Coquimbo"
     city_name_localized: "Coquimbo"
-    country: chile
+    country: cl_iv
     vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0

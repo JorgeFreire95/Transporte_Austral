@@ -2,7 +2,7 @@ city_data : city.mejillones
 {
     city_name: "Mejillones"
     city_name_localized: "Mejillones"
-    country: chile
+    country: cl_ii
     vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0

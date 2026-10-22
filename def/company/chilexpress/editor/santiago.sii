@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .santiago {
  city: santiago
- prefab: d_cust_1w1
+ prefab: 33
 }
 }
