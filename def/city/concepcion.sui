@@ -2,7 +2,7 @@ city_data : city.concepcion
 {
     city_name: "Concepción"
     city_name_localized: "Concepción"
-    country: cl_viii
+    country: chile
     vehicle_brands[]: "mercedes"
 
 	map_x_offsets[]: 0

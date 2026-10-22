@@ -2,7 +2,7 @@ city_data : city.iquique
 {
     city_name: "Iquique"
     city_name_localized: "Iquique"
-    country: cl_i
+    country: chile
     vehicle_brands[]: "volvo"
 
 	map_x_offsets[]: 0

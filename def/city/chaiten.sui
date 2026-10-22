@@ -2,7 +2,7 @@ city_data : city.chaiten
 {
     city_name: "Chaitén"
     city_name_localized: "Chaitén"
-    country: cl_x
+    country: chile
     vehicle_brands[]: "iveco"
 
     map_x_offsets[]: 0

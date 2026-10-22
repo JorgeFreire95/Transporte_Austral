@@ -2,7 +2,7 @@ city_data : city.san_antonio
 {
     city_name: "San Antonio"
     city_name_localized: "San Antonio"
-    country: cl_v
+    country: chile
     vehicle_brands[]: "daf"
 
     map_x_offsets[]: 0

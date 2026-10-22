@@ -60,23 +60,42 @@ def token_bytes(s: str) -> bytes:
 # Lyon -> Torino
 # ==============================================================================
 CIUDADES_MAPEO = {
-    # 16 Capitales Regionales de Chile en secuencia estrictamente creciente de Norte a Sur:
-    "aberdeen":    "arica",         # Capital XV (Z = -44905)
-    "edinburgh":   "iquique",       # Capital I  (Z = -46914)
-    "manchester":  "antofagasta",   # Capital II (Z = -31531)
-    "sheffield":   "copiapo",       # Capital III (Z = -30108)
-    "birmingham":  "la_serena",     # Capital IV (Z = -28721)
-    "cambridge":   "valparaiso",    # Capital V  (Z = -27369)
-    "london":      "santiago",      # Capital RM (Z = -20476)
-    "dover":       "rancagua",      # Capital VI (Z = -10133)
-    "calais":      "talca",         # Capital VII (Z = -4639)
-    "lille":       "chillan",       # Capital XVI (Z = -303)
-    "reims":       "concepcion",    # Capital VIII (Z = +5572)
-    "strasbourg":  "temuco",        # Capital IX (Z = +12284)
-    "dijon":       "valdivia",      # Capital XIV (Z = +16726)
-    "bern":        "puerto_montt",  # Capital X  (Z = +19662)
-    "lyon":        "coyhaique",     # Capital XI (Z = +24024)
-    "torino":      "punta_arenas",  # Capital XII (Z = +30551)
+    # 16 Capitales Regionales de Norte a Sur (Corredor Continental 100% Terrestre, Derecha)
+    "kiel":        "arica",         # XV Arica (Z = -21500)
+    "rostock":     "iquique",       # I Iquique (Z = -19500)
+    "hamburg":     "antofagasta",   # II Antofagasta (Z = -16060)
+    "hannover":    "copiapo",       # III Copiapó (Z = -10313)
+    "magdeburg":   "la_serena",     # IV La Serena (Z = -7400)
+    "kassel":      "valparaiso",    # V Valparaíso (Z = -3066)
+    "frankfurt":   "santiago",      # RM Santiago (Z = +1030)
+    "mannheim":    "rancagua",      # VI Rancagua (Z = +6946)
+    "stuttgart":   "talca",         # VII Talca (Z = +9994)
+    "strasbourg":  "chillan",       # XVI Chillán (Z = +8881)
+    "munchen":     "concepcion",    # VIII Concepción (Z = +14740)
+    "innsbruck":   "temuco",        # IX Temuco (Z = +19677)
+    "zurich":      "valdivia",      # XIV Valdivia (Z = +23915)
+    "bern":        "puerto_montt",  # X Puerto Montt (Z = +21012)
+    "milano":      "coyhaique",     # XI Coyhaique (Z = +27668)
+    "torino":      "punta_arenas",  # XII Punta Arenas (Z = +30551)
+
+    # Comunas secundarias de la red vial chilena
+    "flensburg":   "putre",
+    "lubeck":      "pozo_almonte",
+    "bremen":      "calama",
+    "braunschweig":"caldera",
+    "berlin":      "ovalle",
+    "dresden":     "los_vilos",
+    "erfurt":      "san_antonio",
+    "wiesbaden":   "san_bernardo",
+    "heidelberg":  "san_fernando",
+    "karlsruhe":   "curico",
+    "augsburg":    "los_angeles",
+    "salzburg":    "villarrica",
+    "basel":       "osorno",
+    "geneve":      "castro",
+    "verona":      "puerto_aysen",
+    "genova":      "pto_natales",
+    "parma":       "porvenir",
 }
 
 
@@ -178,29 +197,23 @@ def importar_y_parchear_sectores():
         p.stem for p in SRC_EUROPE_DIR.glob("sec*.base") if p.stat().st_size > 1000
     ])
 
-    def is_spine_sector(x, z):
-        # Excluir Europa Central y Oriental (Alemania, Austria, Chequia)
-        if x >= -3:
-            return False
-        # Excluir Benelux oriental/norte para evitar bulto de carreteras
-        if -5 <= z <= -1 and x >= -6:
-            return False
-        # Excluir Gales y Cornualles (oeste del Reino Unido) para evitar puntos flotantes en el océano
-        if x <= -13 and -8 <= z <= -2:
-            return False
-        return True
+    def is_corridor_sector(x, z):
+        # Corredor continental central: 100% terrestre, carreteras continuas, circulación por la derecha
+        # Excluye por completo el Reino Unido (isla, trenes Eurotunnel, Calais/Folkestone, tráfico por la izquierda)
+        return -6 <= x <= 4 and -6 <= z <= 9
 
     sector_coords = {}
     for name in sectores_candidatos:
         x = int(name[3:8])
         z = int(name[8:13])
-        if is_spine_sector(x, z):
+        if is_corridor_sector(x, z):
             sector_coords[(x, z)] = name
 
-    # Componente conexo continuo a partir de Escocia (-11, -9)
+    # Componente conexo continuo a partir de Santiago (Frankfurt, x=-2, z=0)
     visited = set()
-    q = [(-11, -9)]
-    visited.add((-11, -9))
+    start_sec = (-2, 0)
+    q = [start_sec]
+    visited.add(start_sec)
     while q:
         curr = q.pop(0)
         for dx, dz in [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1)]:

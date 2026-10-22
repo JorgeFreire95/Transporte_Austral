@@ -1,6 +1,0 @@
-ferry_data: ferry.rancagua
-{
-	ferry_name: "Estación Rancagua"
-	ferry_name_localized: "@@folkestone@@"
-	transport_type: "train"
-}

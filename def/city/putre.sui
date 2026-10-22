@@ -2,7 +2,7 @@ city_data : city.putre
 {
     city_name: "Putre"
     city_name_localized: "Putre"
-    country: cl_xv
+    country: chile
     vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0

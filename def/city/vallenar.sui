@@ -2,7 +2,7 @@ city_data : city.vallenar
 {
     city_name: "Vallenar"
     city_name_localized: "Vallenar"
-    country: cl_iii
+    country: chile
     vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0

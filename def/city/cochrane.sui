@@ -2,7 +2,7 @@ city_data : city.cochrane
 {
     city_name: "Cochrane"
     city_name_localized: "Cochrane"
-    country: cl_xi
+    country: chile
     vehicle_brands[]: "man"
 
     map_x_offsets[]: 0

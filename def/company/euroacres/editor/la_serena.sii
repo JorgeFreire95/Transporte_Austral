@@ -2,6 +2,6 @@ SiiNunit
 {
 company_def : .la_serena {
  city: la_serena
- prefab: 200
+ prefab: at_0j007
 }
 }

@@ -2,7 +2,7 @@ city_data : city.coronel
 {
     city_name: "Coronel"
     city_name_localized: "Coronel"
-    country: cl_viii
+    country: chile
     vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0

@@ -1,8 +1,8 @@
 country_data : country.data.chile
 {
     country_id: 100
-    name: ""
-    name_localized: ""
+    name: "Chile"
+    name_localized: "Chile"
     country_code: "CL"
     iso_country_code: chl
 

@@ -2,7 +2,7 @@ city_data : city.quilicura
 {
     city_name: "Quilicura"
     city_name_localized: "Quilicura"
-    country: cl_rm
+    country: chile
     vehicle_brands[]: "scania"
 
     map_x_offsets[]: 0

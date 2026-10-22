@@ -32,7 +32,7 @@ echo ======================================================================
 echo El Map Editor se esta iniciando.
 echo Cuando estes dentro del editor:
 echo  1. Abre la consola con la tecla ~ (o la tecla al lado del 1).
-echo  2. Escribe: c_goto -39700 100 -11000  (para ir a Santiago)
+echo  2. Escribe: c_goto -6586 100 1030  (para ir a Santiago)
 echo ======================================================================
 echo.
 pause

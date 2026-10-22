@@ -2,7 +2,7 @@ city_data : city.calama
 {
     city_name: "Calama"
     city_name_localized: "Calama"
-    country: cl_ii
+    country: chile
     vehicle_brands[]: "man"
 
     map_x_offsets[]: 0

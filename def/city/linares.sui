@@ -2,7 +2,7 @@ city_data : city.linares
 {
     city_name: "Linares"
     city_name_localized: "Linares"
-    country: cl_vii
+    country: chile
     vehicle_brands[]: "mercedes"
 
     map_x_offsets[]: 0

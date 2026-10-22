@@ -144,15 +144,5 @@ localization_db : .localization
     val[]: "Cargas Express y Encomiendas Starken"
     key[]: "paquet_exp"
     val[]: "Paquetería Courier y Documentos Chilexpress"
-    key[]: "folkestone"
-    val[]: "Estación Rancagua (EFE)"
-    key[]: "calais"
-    val[]: "Estación Talca (EFE)"
-    key[]: "dover"
-    val[]: "Puerto Rancagua"
-    key[]: "tunnel_d"
-    val[]: "Estación Rancagua (EFE)"
-    key[]: "tunnel_c"
-    val[]: "Estación Talca (EFE)"
 }
 }

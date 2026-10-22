@@ -186,26 +186,26 @@ def generar_mapa_fondo_chile():
     with open(geojson_path, "r", encoding="utf-8") as f:
         gj = json.load(f)
 
-    # Anclas geográficas y de coordenadas de juego para las 16 capitales de Chile:
+    # Anclas geográficas y de coordenadas de juego para las 16 capitales de Chile (Corredor Continental 100% Terrestre):
     ANCHORS = [
-        (-17.50, -69.50, -39500.0, -58000.0, "Visviri", 15),
-        (-18.48, -70.32, -39500.0, -55000.0, "Arica", 15),
-        (-20.22, -70.14, -47000.0, -47000.0, "Iquique", 1),
-        (-23.65, -70.40, -46000.0, -32000.0, "Antofagasta", 2),
-        (-27.37, -70.33, -43000.0, -29000.0, "Copiapó", 3),
-        (-29.90, -71.25, -42500.0, -22500.0, "La Serena", 4),
-        (-33.05, -71.62, -39000.0, -19000.0, "Valparaíso", 5),
-        (-33.45, -70.67, -39700.0, -11000.0, "Santiago", 13),
-        (-34.17, -70.74, -34000.0,  -7500.0, "Rancagua", 6),
-        (-35.43, -71.66, -31000.0,  -6500.0, "Talca", 7),
-        (-36.61, -72.10, -27000.0,  -2500.0, "Chillán", 16),
-        (-36.83, -73.05, -23000.0,   5000.0, "Concepción", 8),
-        (-38.74, -72.60, -16000.0,  12000.0, "Temuco", 9),
-        (-39.81, -73.25, -23500.0,  16500.0, "Valdivia", 14),
-        (-41.47, -72.94, -15000.0,  19500.0, "Puerto Montt", 10),
-        (-45.57, -72.07, -23500.0,  24000.0, "Coyhaique", 11),
-        (-53.16, -70.91, -15000.0,  30500.0, "Punta Arenas", 12),
-        (-56.00, -68.00, -15000.0,  36000.0, "Cabo de Hornos", 12),
+        (-17.50, -69.50,   1200.0, -23500.0, "Visviri", 15),
+        (-18.48, -70.32,    500.9, -21496.7, "Arica", 15),
+        (-20.22, -70.14,   5334.6, -19522.9, "Iquique", 1),
+        (-23.65, -70.40,  -3605.2, -16059.9, "Antofagasta", 2),
+        (-27.37, -70.33,  -1794.4, -10313.4, "Copiapó", 3),
+        (-29.90, -71.25,   2303.8,  -7399.3, "La Serena", 4),
+        (-33.05, -71.62,  -3717.1,  -3065.8, "Valparaíso", 5),
+        (-33.45, -70.67,  -6586.0,   1030.3, "Santiago", 13),
+        (-34.17, -70.74,  -6738.2,   6945.9, "Rancagua", 6),
+        (-35.43, -71.66,  -3955.0,   9993.8, "Talca", 7),
+        (-36.61, -72.10,  -9904.9,   8881.1, "Chillán", 16),
+        (-36.83, -73.05,   3263.2,  14739.6, "Concepción", 8),
+        (-38.74, -72.60,   2899.6,  19676.6, "Temuco", 9),
+        (-39.81, -73.25,  -7781.4,  23914.8, "Valdivia", 14),
+        (-41.47, -72.94, -11786.0,  21011.9, "Puerto Montt", 10),
+        (-45.57, -72.07,  -7298.5,  27668.5, "Coyhaique", 11),
+        (-53.16, -70.91, -14552.8,  30550.9, "Punta Arenas", 12),
+        (-56.00, -68.00, -12000.0,  35000.0, "Cabo de Hornos", 12),
     ]
 
     LATS = [-a[0] for a in ANCHORS]
@@ -226,14 +226,14 @@ def generar_mapa_fondo_chile():
         c_wz = interp(plat, LATS, WZS)
         c_lon = interp(plat, LATS, LONS)
         lon_diff = max(-3.5, min(3.5, lon - c_lon))
-        wx = c_wx + lon_diff * 4500.0
+        wx = c_wx + lon_diff * 2800.0
         wz = c_wz
         return wx, wz
 
     def world_to_pixel(wx, wz):
-        # World range: X de -86500 a +23500 (ancho 110000), Z de -67000 a +43000 (alto 110000)
-        px = (wx - (-86500.0)) / 110000.0 * 4096.0
-        py = (wz - (-67000.0)) / 110000.0 * 4096.0
+        # World range: X de -39000 a +29000 (ancho 68000), Z de -30000 a +38000 (alto 68000)
+        px = (wx - (-39000.0)) / 68000.0 * 4096.0
+        py = (wz - (-30000.0)) / 68000.0 * 4096.0
         return px, py
 
     REGIONAL_COLORS = {
@@ -565,19 +565,19 @@ map_data : .map.data {
 	camera_limits_min[1]: (-1000000.0, -1000000.0)
 	camera_limits_min[2]: (-1000000.0, -1000000.0)
 	camera_limits_min[3]: (-1000000.0, -1000000.0)
-	camera_limits_min[4]: (-80000.0, -65000.0)
-	camera_limits_min[5]: (-80000.0, -65000.0)
-	camera_limits_min[6]: (-80000.0, -65000.0)
-	camera_limits_min[7]: (-80000.0, -65000.0)
+	camera_limits_min[4]: (-25000.0, -30000.0)
+	camera_limits_min[5]: (-25000.0, -30000.0)
+	camera_limits_min[6]: (-25000.0, -30000.0)
+	camera_limits_min[7]: (-25000.0, -30000.0)
 
 	camera_limits_max[0]: (1000000.0, 1000000.0)
 	camera_limits_max[1]: (1000000.0, 1000000.0)
 	camera_limits_max[2]: (1000000.0, 1000000.0)
 	camera_limits_max[3]: (1000000.0, 1000000.0)
-	camera_limits_max[4]: (20000.0, 40000.0)
-	camera_limits_max[5]: (20000.0, 40000.0)
-	camera_limits_max[6]: (20000.0, 40000.0)
-	camera_limits_max[7]: (20000.0, 40000.0)
+	camera_limits_max[4]: (15000.0, 38000.0)
+	camera_limits_max[5]: (15000.0, 38000.0)
+	camera_limits_max[6]: (15000.0, 38000.0)
+	camera_limits_max[7]: (15000.0, 38000.0)
 
 	map_items_flags[0]: 0x685FFF
 	map_items_flags[1]: 0x685FFF
@@ -590,13 +590,13 @@ map_data : .map.data {
 
 	map_3d_camera_pitch: 40.0
 
-	# Centro del mapa UI en coordenadas de Chile y escala calibrada (2090.0 km reales = 110000 unidades en escala 1:19)
-	ui_map_center:	(-31500.0, -12000.0)
-	ui_map_size:	(2090.0, 2090.0)
+	# Centro del mapa UI en coordenadas de Chile y escala calibrada (1292.0 km reales = 68000 unidades en escala 1:19)
+	ui_map_center:	(-5000.0, 4000.0)
+	ui_map_size:	(1292.0, 1292.0)
 
-	ui_map_camera_min: (-80000.0, -65000.0)
-	ui_map_camera_max: (20000.0, 40000.0)
-	ui_map_camera_start: (-31500.0, -12000.0)
+	ui_map_camera_min: (-25000.0, -30000.0)
+	ui_map_camera_max: (15000.0, 38000.0)
+	ui_map_camera_start: (-6586.0, 1030.0)
 
 	ui_map_always_draw_city: true
 

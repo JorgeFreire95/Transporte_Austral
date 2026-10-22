@@ -2,7 +2,7 @@ city_data : city.puerto_aysen
 {
     city_name: "Puerto Aysén"
     city_name_localized: "Puerto Aysén"
-    country: cl_xi
+    country: chile
     vehicle_brands[]: "daf"
 
     map_x_offsets[]: 0

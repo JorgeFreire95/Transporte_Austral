@@ -2,7 +2,7 @@ city_data : city.constitucion
 {
     city_name: "Constitución"
     city_name_localized: "Constitución"
-    country: cl_vii
+    country: chile
     vehicle_brands[]: "man"
 
     map_x_offsets[]: 0

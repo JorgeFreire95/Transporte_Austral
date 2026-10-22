@@ -2,7 +2,7 @@ city_data : city.castro
 {
     city_name: "Castro"
     city_name_localized: "Castro"
-    country: cl_x
+    country: chile
     vehicle_brands[]: "daf"
 
     map_x_offsets[]: 0

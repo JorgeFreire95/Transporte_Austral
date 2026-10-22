@@ -2,7 +2,7 @@ city_data : city.pozo_almonte
 {
     city_name: "Pozo Almonte"
     city_name_localized: "Pozo Almonte"
-    country: cl_i
+    country: chile
     vehicle_brands[]: "volvo"
 
     map_x_offsets[]: 0

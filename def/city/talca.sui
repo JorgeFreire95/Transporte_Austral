@@ -2,7 +2,7 @@ city_data : city.talca
 {
     city_name: "Talca"
     city_name_localized: "Talca"
-    country: cl_vii
+    country: chile
     vehicle_brands[]: "volvo"
 
 	map_x_offsets[]: 0

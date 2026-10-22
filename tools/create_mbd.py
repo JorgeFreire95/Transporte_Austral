@@ -41,9 +41,9 @@ def crear_chile_mbd():
 
     # 2. Map descriptor
     editor_map_id = 0x123456789ABCDEF0 # ulong
-    start_pos_x = -39700.0            # Santiago centro (coordenadas reales en sector sec-0010-0003)
-    start_pos_y = 100.0
-    start_pos_z = -11000.0
+    start_pos_x = -6586.0             # Santiago centro (sector sec-0002+0000)
+    start_pos_y = 82.0
+    start_pos_z = 1030.0
     start_sector_magic = 0x4B000800    # uint32
     rot_x = 0.0                        # Quaternion identity
     rot_y = 0.0

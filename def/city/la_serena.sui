@@ -2,7 +2,7 @@ city_data : city.la_serena
 {
     city_name: "La Serena"
     city_name_localized: "La Serena"
-    country: cl_iv
+    country: chile
     vehicle_brands[]: "renault"
 
 	map_x_offsets[]: 0

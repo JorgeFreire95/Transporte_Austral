@@ -2,7 +2,7 @@ city_data : city.santiago
 {
     city_name: "Santiago"
     city_name_localized: "Santiago"
-    country: cl_rm
+    country: chile
     vehicle_brands[]: "iveco"
 
 	map_x_offsets[]: 0

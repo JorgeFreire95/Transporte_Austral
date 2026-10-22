@@ -2,7 +2,7 @@ city_data : city.vina_del_mar
 {
     city_name: "Viña del Mar"
     city_name_localized: "Viña del Mar"
-    country: cl_v
+    country: chile
     vehicle_brands[]: "volvo"
 
     map_x_offsets[]: 0
