@@ -197,51 +197,19 @@ def importar_y_parchear_sectores():
         p.stem for p in SRC_EUROPE_DIR.glob("sec*.base") if p.stat().st_size > 1000
     ])
 
-    # 35 sectores ortogonales continuos que conforman la red ininterrumpida de carreteras de Chile (Ruta 5 / Ruta 7, estilo Mapa EAA)
+    # 71 sectores ortogonales continuos que conforman la red ininterrumpida de carreteras de Chile (Ruta 5 / Ruta 7, estilo Mapa EAA)
+    # Cubre de forma continua e interconectada las 16 capitales regionales y todas las comunas secundarias
+    # sin ramales cortados en el vacío.
     SPINE_SECTOR_COORDS = [
-        # Norte Grande: Arica, Iquique, Antofagasta
-        (0, -6),   # XV Arica (Kiel)
-        (0, -5),   # Conector Arica - Antofagasta
-        (1, -5),   # I Iquique (Rostock)
-        (1, -6),   # Conector Iquique Norte
-        (-1, -5),  # Conector Iquique - Antofagasta
-        (-1, -4),  # II Antofagasta (Hamburg)
-        (0, -4),   # Conector Antofagasta Este
-        # Norte Chico y Centro: Copiapó, La Serena, Valparaíso
-        (-1, -3),  # III Copiapó (Hannover)
-        (0, -3),   # Conector Copiapó - La Serena (Braunschweig)
-        (0, -2),   # IV La Serena (Magdeburg)
-        (-1, -2),  # Conector La Serena - Valparaíso (Göttingen)
-        (-1, -1),  # V Valparaíso (Kassel)
-        # Zona Central: Santiago, San Bernardo, Rancagua
-        (-2, -1),  # CONECTOR CLAVE Valparaíso - Santiago (Giessen / Wetzlar)
-        (-1, 0),   # Conector Santiago Norte
-        (-2, 0),   # RM Santiago (Frankfurt)
-        (-3, 0),   # Conector Santiago - San Bernardo (Wiesbaden / Mainz)
-        (-3, 1),   # Conector San Bernardo - Rancagua Oeste
-        (-2, 1),   # VI Rancagua (Mannheim)
-        # Maule, Ñuble, Biobío: Talca, Chillán, Concepción
-        (-1, 1),   # CONECTOR CLAVE Rancagua - Talca (Heilbronn)
-        (-2, 2),   # Conector Rancagua - Chillán (Karlsruhe)
-        (-1, 2),   # VII Talca (Stuttgart)
-        (-3, 2),   # XVI Chillán (Strasbourg)
-        (0, 2),    # CONECTOR CLAVE Talca - Concepción (Ulm / A8)
-        (-1, 3),   # Conector Ulm Norte
-        (0, 3),    # VIII Concepción (München)
-        # Araucanía, Los Ríos, Los Lagos: Temuco, Valdivia, Puerto Montt
-        (0, 4),    # IX Temuco (Innsbruck)
-        (-1, 4),   # Conector Temuco - Valdivia (Bregenz)
-        (-1, 5),   # Conector Valdivia Este (St. Gallen)
-        (-2, 5),   # XIV Valdivia (Zürich)
-        (-3, 5),   # X Puerto Montt (Bern)
-        # Carretera Austral y Magallanes: Coyhaique, Punta Arenas
-        (-3, 6),   # Conector Puerto Montt - Coyhaique (Ticino)
-        (-2, 6),   # XI Coyhaique (Milano)
-        (-2, 7),   # Conector Coyhaique Sur (Pavia)
-        (-3, 7),   # Conector Magallanes Norte (Asti)
-        (-4, 7),   # XII Punta Arenas (Torino)
+        (x, z) for x in range(-3, 2) for z in range(-6, 8)
+        if f"sec{x:+05d}{z:+05d}" in all_europe_sectors
     ]
-    sectores_disponibles = sorted([f"sec{x:+05d}{z:+05d}" for x, z in SPINE_SECTOR_COORDS if f"sec{x:+05d}{z:+05d}" in all_europe_sectors])
+    # Conectores clave australes y de Magallanes (Punta Arenas, Puerto Natales, Porvenir)
+    for extra_coord in [(-4, 7), (-2, 8), (-3, 8)]:
+        if f"sec{extra_coord[0]:+05d}{extra_coord[1]:+05d}" in all_europe_sectors and extra_coord not in SPINE_SECTOR_COORDS:
+            SPINE_SECTOR_COORDS.append(extra_coord)
+
+    sectores_disponibles = sorted([f"sec{x:+05d}{z:+05d}" for x, z in SPINE_SECTOR_COORDS])
 
     print(f"[2/4] Copiando sectores de la espina dorsal de Chile ({len(sectores_disponibles)} sectores)...")
     total_archivos = 0

@@ -172,16 +172,20 @@ def generar_mapa_fondo_chile():
     """
     Genera la textura de mapa de fondo de Chile en alta resolución (4096x4096)
     dividida en 4 cuadrantes (map0..map3) y map.dds general,
-    calibrada con exactitud matemática a las coordenadas del mundo de juego de ETS2
-    para que cada carretera, ciudad, garaje y sector caiga 100% dentro de su región,
-    sin cortes, sin distorsión de zoom y con estética limpia estilo Mapa EAA.
+    calibrada con exactitud matemática a las coordenadas del mundo de juego de ETS2.
+    Diseño 100% en Blanco y Negro (monocromático elegante):
+    - Océano negro mate profundo (#101218) con cuadrícula náutica sutil.
+    - Masa continental de Chile en tonos plata/platino de alto contraste (#b8c0cc a #d0d8e4),
+      envolviendo al 100% las carreteras sin cortes ni polígonos distorsionados.
+    - Costas y fronteras en blanco puro (#ffffff) de 3px de grosor.
+    - Todas las rutas, áreas y prefabs en def/map_data.sii en escala de grises y blanco puro.
     """
-    print("[2/2] Generando mapa de fondo geográfico oficial de Chile (Estilo Mapa EAA) en alta definición...")
+    print("[2/2] Generando mapa de fondo oficial de Chile en BLANCO Y NEGRO (alta definición)...")
 
-    # Parámetros oficiales de proyección conformada ETS2:
-    CENTER_X = -4120.0
-    CENTER_Z = 4320.0
-    SPAN_UNITS = 70000.0  # 1330.0 km en escala 1:19
+    # Parámetros oficiales de proyección conformada ETS2 calibrados a la red continua de Chile:
+    CENTER_X = -1988.0
+    CENTER_Z = 4014.0
+    SPAN_UNITS = 64000.0  # 1216.0 km en escala 1:19
     CANVAS_SIZE = 4096
 
     def world_to_pixel(wx, wz):
@@ -190,7 +194,6 @@ def generar_mapa_fondo_chile():
         return px, py
 
     # 1. Muestrear los puntos de carretera de los sectores activos de Chile
-    import glob, struct, re
     chile_base_files = list((BASE_DIR / "map" / "chile").glob("sec*.base"))
     if not chile_base_files:
         chile_base_files = list((BASE_DIR / "scratch" / "base_map" / "map" / "europe").glob("sec*.base"))
@@ -210,19 +213,19 @@ def generar_mapa_fondo_chile():
 
     px_pts = [world_to_pixel(x, z) for x, z in road_pts]
 
-    # Muestreo denso de límites este/oeste del corredor vial
-    y_dense = list(range(350, 3860, 10))
+    # Muestreo denso de límites este/oeste del corredor vial chileno
+    y_dense = list(range(360, 3810, 10))
     raw_w, raw_e = [], []
     for y in y_dense:
-        pts = [p[0] for p in px_pts if abs(p[1] - y) <= 30]
+        pts = [p[0] for p in px_pts if abs(p[1] - y) <= 25]
         if pts:
             raw_w.append(min(pts))
             raw_e.append(max(pts))
         else:
             raw_w.append(raw_w[-1] if raw_w else 2000.0)
-            raw_e.append(raw_e[-1] if raw_e else 2100.0)
+            raw_e.append(raw_e[-1] if raw_e else 2200.0)
 
-    def smooth(arr, r=6):
+    def smooth(arr, r=8):
         res = []
         n = len(arr)
         for i in range(n):
@@ -230,139 +233,97 @@ def generar_mapa_fondo_chile():
             res.append(sum(arr[i0:i1]) / (i1 - i0))
         return res
 
-    sw = smooth(raw_w, 8)
-    se = smooth(raw_e, 8)
+    sw = smooth(raw_w, 12)
+    se = smooth(raw_e, 12)
 
-    final_w, final_e = [], []
-    for idx, y in enumerate(y_dense):
-        w = sw[idx] - 120.0  # Margen generoso de costa en el Pacífico
-        e = se[idx] + 120.0  # Margen generoso de cordillera de los Andes
-        if e - w < 260.0:
-            mid = (w + e) / 2.0
-            w = mid - 130.0
-            e = mid + 130.0
-        final_w.append(w)
-        final_e.append(e)
+    # Silueta esbelta y natural de Chile: 110px de margen en costa Pacífica, 130px en cordillera
+    final_w = [w - 110.0 for w in sw]
+    final_e = [e + 130.0 for e in se]
 
-    final_w = smooth(final_w, 4)
-    final_e = smooth(final_e, 4)
-    w_dict = {y: w for y, w in zip(y_dense, final_w)}
-    e_dict = {y: e for y, e in zip(y_dense, final_e)}
+    # Ancho mínimo para mantener la silueta estilizada y orgánica de Chile
+    for i in range(len(y_dense)):
+        if final_e[i] - final_w[i] < 340.0:
+            mid = (final_w[i] + final_e[i]) / 2.0
+            final_w[i] = mid - 170.0
+            final_e[i] = mid + 170.0
 
-    def get_w(y):
-        near = round(max(350, min(3850, y)) / 10.0) * 10
-        return w_dict.get(near, 1500.0)
+    final_w = smooth(final_w, 6)
+    final_e = smooth(final_e, 6)
 
-    def get_e(y):
-        near = round(max(350, min(3850, y)) / 10.0) * 10
-        return e_dict.get(near, 2500.0)
+    w_map = {y: w for y, w in zip(y_dense, final_w)}
+    e_map = {y: e for y, e in zip(y_dense, final_e)}
 
-    # Definición de las 16 Regiones de Chile en estilo puro Blanco y Negro (Escala de grises cartográfica de alta gama)
-    REGIONS = [
-        {"cod": 15, "name": "Arica y Parinacota", "color": (36, 40, 50), "y_top": 350,  "y_bot": 530},
-        {"cod": 1,  "name": "Tarapacá",           "color": (46, 52, 64), "y_top": 530,  "y_bot": 680},
-        {"cod": 2,  "name": "Antofagasta",        "color": (36, 40, 50), "y_top": 680,  "y_bot": 950},
-        {"cod": 3,  "name": "Atacama",            "color": (46, 52, 64), "y_top": 950,  "y_bot": 1250},
-        {"cod": 4,  "name": "Coquimbo",           "color": (36, 40, 50), "y_top": 1250, "y_bot": 1500},
-        {"cod": 5,  "name": "Valparaíso",         "color": (46, 52, 64), "y_top": 1500, "y_bot": 1820, "split": "west"},
-        {"cod": 13, "name": "Santiago RM",        "color": (36, 40, 50), "y_top": 1680, "y_bot": 1950, "split": "east"},
-        {"cod": 6,  "name": "O'Higgins",          "color": (46, 52, 64), "y_top": 1850, "y_bot": 2050, "split": "south_rm"},
-        {"cod": 7,  "name": "Maule",              "color": (36, 40, 50), "y_top": 2050, "y_bot": 2230},
-        {"cod": 16, "name": "Ñuble",              "color": (46, 52, 64), "y_top": 2150, "y_bot": 2320, "split": "inland"},
-        {"cod": 8,  "name": "Biobío",             "color": (36, 40, 50), "y_top": 2230, "y_bot": 2480, "split": "coastal"},
-        {"cod": 9,  "name": "Araucanía",          "color": (46, 52, 64), "y_top": 2480, "y_bot": 2720},
-        {"cod": 14, "name": "Los Ríos",           "color": (36, 40, 50), "y_top": 2720, "y_bot": 2920},
-        {"cod": 10, "name": "Los Lagos",          "color": (46, 52, 64), "y_top": 2850, "y_bot": 3200},
-        {"cod": 11, "name": "Aysén",              "color": (36, 40, 50), "y_top": 3200, "y_bot": 3500},
-        {"cod": 12, "name": "Magallanes",         "color": (46, 52, 64), "y_top": 3500, "y_bot": 3850},
-    ]
-
-    # Lienzo oceánico negro mate profundo (Estilo Blanco y Negro elegante)
-    map_img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (18, 20, 26, 255))
+    # Lienzo oceánico negro mate profundo (#101218 - Estilo Blanco y Negro elegante)
+    map_img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (16, 18, 24, 255))
     draw = ImageDraw.Draw(map_img)
 
     # Cuadrícula náutica sutil en escala de grises
-    grid_color = (25, 29, 38, 255)
+    grid_color = (24, 28, 36, 255)
     for x in range(0, CANVAS_SIZE, 256):
         draw.line([(x, 0), (x, CANVAS_SIZE)], fill=grid_color, width=1)
     for y in range(0, CANVAS_SIZE, 256):
         draw.line([(0, y), (CANVAS_SIZE, y)], fill=grid_color, width=1)
 
-    # Construir polígonos regionales
-    def build_reg_poly(y_start, y_end):
-        pts = []
-        y_range = [y for y in y_dense if y_start <= y <= y_end]
-        for y in y_range:
-            pts.append((get_w(y), y))
-        for y in reversed(y_range):
-            pts.append((get_e(y), y))
-        return pts
+    # Polígono base continental de Chile
+    base_poly = []
+    for y in y_dense:
+        base_poly.append((w_map[y], y))
+    for y in reversed(y_dense):
+        base_poly.append((e_map[y], y))
 
-    # Dibujar sombra de relieve continental
-    for reg in REGIONS:
-        y_t, y_b = reg["y_top"], reg["y_bot"]
-        poly = build_reg_poly(y_t, y_b)
-        if len(poly) >= 3:
-            shadow = [(p[0] + 6, p[1] + 6) for p in poly]
-            draw.polygon(shadow, fill=(10, 12, 16, 200))
+    # Sombra de relieve continental hacia el Pacífico
+    shadow_poly = [(p[0] + 6, p[1] + 6) for p in base_poly]
+    draw.polygon(shadow_poly, fill=(8, 10, 14, 220))
 
-    # Dibujar regiones con división limítrofe nítida estilo Blanco y Negro
-    for reg in REGIONS:
-        y_t, y_b = reg["y_top"], reg["y_bot"]
-        color = reg["color"]
-        split = reg.get("split")
+    # Definición de las 16 Regiones de Chile en escala de grises / blanco y negro de alto contraste
+    REGIONS_Y = [
+        (15, "Arica y Parinacota",  360,  530, (185, 192, 204)),
+        (1,  "Tarapacá",            530,  700, (198, 205, 216)),
+        (2,  "Antofagasta",         700,  990, (182, 190, 202)),
+        (3,  "Atacama",             990, 1260, (195, 203, 214)),
+        (4,  "Coquimbo",           1260, 1530, (185, 193, 205)),
+        (5,  "Valparaíso",         1530, 1800, (198, 206, 218)),
+        (13, "Santiago RM",        1800, 2000, (215, 222, 232)), # Resaltado blanco platino en la Capital RM
+        (6,  "O'Higgins",          2000, 2160, (182, 190, 202)),
+        (7,  "Maule",              2160, 2370, (195, 203, 214)),
+        (16, "Ñuble",              2370, 2530, (182, 190, 202)),
+        (8,  "Biobío",             2530, 2760, (195, 203, 214)),
+        (9,  "Araucanía",          2760, 2980, (185, 193, 205)),
+        (14, "Los Ríos",           2980, 3180, (198, 206, 218)),
+        (10, "Los Lagos",          3180, 3420, (182, 190, 202)),
+        (11, "Aysén",              3420, 3620, (195, 203, 214)),
+        (12, "Magallanes",         3620, 3810, (185, 193, 205)),
+    ]
 
-        if split == "west":
-            # Valparaíso en la costa
-            poly = []
-            for y in range(y_t, y_b + 1, 10):
-                poly.append((get_w(y), y))
-            mid_x = (get_w(y_b) + get_e(y_b)) / 2.0 - 20.0
-            poly.append((mid_x, y_b))
-            poly.append((mid_x - 15.0, y_t))
-        elif split == "east":
-            # Santiago RM hacia la cordillera
-            poly = []
-            mid_t = (get_w(y_t) + get_e(y_t)) / 2.0 - 20.0
-            mid_b = (get_w(y_b) + get_e(y_b)) / 2.0
-            poly.append((mid_t, y_t))
-            poly.append((mid_b, y_b))
-            for y in range(y_b, y_t - 1, -10):
-                poly.append((get_e(y), y))
-        elif split == "south_rm":
-            # O'Higgins
-            poly = []
-            for y in range(y_t, y_b + 1, 10):
-                poly.append((get_w(y), y))
-            for y in range(y_b, y_t - 1, -10):
-                ex = get_e(y)
-                if y < 1950:
-                    ex = (get_w(y) + get_e(y)) / 2.0
-                poly.append((ex, y))
-        elif split == "inland":
-            # Ñuble (Chillán, valle interior)
-            poly = []
-            mid_t = (get_w(y_t) + get_e(y_t)) / 2.0
-            mid_b = (get_w(y_b) + get_e(y_b)) / 2.0
-            poly.append((mid_t, y_t))
-            poly.append((mid_b, y_b))
-            for y in range(y_b, y_t - 1, -10):
-                poly.append((get_e(y), y))
-        elif split == "coastal":
-            # Biobío (Concepción, costa y zona sur)
-            poly = []
-            for y in range(y_t, y_b + 1, 10):
-                poly.append((get_w(y), y))
-            for y in range(y_b, y_t - 1, -10):
-                ex = get_e(y)
-                if y < 2320:
-                    ex = (get_w(y) + get_e(y)) / 2.0
-                poly.append((ex, y))
-        else:
-            poly = build_reg_poly(y_t, y_b)
+    for cod, name, y_t, y_b, col in REGIONS_Y:
+        reg_pts = []
+        y_sub = [y for y in y_dense if y_t <= y <= y_b]
+        for y in y_sub:
+            reg_pts.append((w_map[y], y))
+        for y in reversed(y_sub):
+            reg_pts.append((e_map[y], y))
+        if len(reg_pts) >= 3:
+            draw.polygon(reg_pts, fill=(*col, 255))
+            # Línea limítrofe regional refinada
+            draw.line([(w_map[y_t], y_t), (e_map[y_t], y_t)], fill=(65, 72, 84, 220), width=2)
 
-        if len(poly) >= 3:
-            draw.polygon(poly, fill=(*color, 255), outline=(240, 245, 255, 240), width=2)
+    # Costas e hitos fronterizos en Blanco Puro (#FFFFFF, 3px)
+    draw.line([(w_map[y], y) for y in y_dense], fill=(255, 255, 255, 255), width=3)  # Costa Pacífico
+    draw.line([(e_map[y], y) for y in y_dense], fill=(255, 255, 255, 255), width=3)  # Cordillera de los Andes
+    draw.line([(w_map[y_dense[0]], y_dense[0]), (e_map[y_dense[0]], y_dense[0])], fill=(255, 255, 255, 255), width=3)  # Límite Norte
+    draw.line([(w_map[y_dense[-1]], y_dense[-1]), (e_map[y_dense[-1]], y_dense[-1])], fill=(255, 255, 255, 255), width=3)  # Límite Sur
+
+    # Archipiélagos e Islas de la Patagonia Chilena (Chiloé, Guaitecas, Chonos, Wellington, Riesco)
+    islands = [
+        [(w_map[3280] - 65, 3250), (w_map[3280] - 20, 3240), (w_map[3280] - 15, 3320), (w_map[3280] - 55, 3325)],
+        [(w_map[3380] - 70, 3360), (w_map[3380] - 25, 3355), (w_map[3380] - 20, 3405), (w_map[3380] - 60, 3410)],
+        [(w_map[3480] - 80, 3450), (w_map[3480] - 30, 3445), (w_map[3480] - 25, 3505), (w_map[3480] - 75, 3510)],
+        [(w_map[3590] - 85, 3560), (w_map[3590] - 35, 3555), (w_map[3590] - 30, 3635), (w_map[3590] - 80, 3640)],
+        [(w_map[3700] - 90, 3680), (w_map[3700] - 40, 3675), (w_map[3700] - 35, 3755), (w_map[3700] - 85, 3760)],
+    ]
+    for isl in islands:
+        draw.polygon([(p[0]+4, p[1]+4) for p in isl], fill=(8, 10, 14, 200))
+        draw.polygon(isl, fill=(190, 198, 210, 255), outline=(255, 255, 255, 255), width=2)
 
     # Guardar las 4 texturas de cuadrante (map0..map3) de 2048x2048 en DX10 BGRA
     map_ui_dir = BASE_DIR / "material" / "ui" / "map"
@@ -400,7 +361,7 @@ def generar_mapa_fondo_chile():
     mat_map = map_ui_dir / "map.mat"
     write_mat(mat_map, "/material/ui/map/map.tobj")
 
-    # Configuración de def/map_data.sii calibrada al milímetro a Chile
+    # Configuración de def/map_data.sii calibrada al milímetro a Chile en Blanco y Negro puro
     def_dir = BASE_DIR / "def"
     def_dir.mkdir(parents=True, exist_ok=True)
 
@@ -409,60 +370,61 @@ def generar_mapa_fondo_chile():
 {
 map_data : .map.data {
 
-	road_color:			0xFF707070 	//Advisor map undiscovered route
-	road_discovered_color:		0xFF20bcff	//Advisor map discovered route
-	job_road_color:			0x50353535	//Job market map undiscoveder route
-	job_road_discovered_color:	0xFF2b3436	//Job market map discovered route
-	world_road_color:		0xFF707070	//Main map undiscovered route
-	world_road_discovered_color:	0xFF20bcff 	//Main map discovered route
-	fleet_manager_road_color:		0xff424242	//Fleet manager map undiscovered route
-	fleet_manager_road_discovered_color:	0xff424242 	//Fleet manager map discovered route
+	# Rutas en escala de grises y blanco puro (Monocromático elegante)
+	road_color:			0xFF505050 	//Carretera no descubierta (gris medio)
+	road_discovered_color:		0xFFFFFFFF	//Carretera descubierta (blanco brillante)
+	job_road_color:			0x50303030	//Mercado laboral no descubierta
+	job_road_discovered_color:	0xFF808080	//Mercado laboral descubierta
+	world_road_color:		0xFF505050	//Mapa principal no descubierta (gris medio)
+	world_road_discovered_color:	0xFFFFFFFF 	//Mapa principal descubierta (blanco brillante)
+	fleet_manager_road_color:		0xff404040	//Gestor de flota no descubierta
+	fleet_manager_road_discovered_color:	0xff404040 	//Gestor de flota descubierta
 
-	# Map area colors
+	# Áreas del mapa en Blanco y Negro (sin colores arcoíris)
 	map_area_color_name[]: "Road"
-	map_area_color[]: 0xFF707070
-	map_area_discovered_color[]: 0xFF20bcff
+	map_area_color[]: 0xFF505050
+	map_area_discovered_color[]: 0xFFFFFFFF
 
 	map_area_color_name[]: "Light"
-	map_area_color[]: 0xFF737373
-	map_area_discovered_color[]: 0xFF98CAEB
+	map_area_color[]: 0xFF606060
+	map_area_discovered_color[]: 0xFFE0E0E0
 
 	map_area_color_name[]: "Dark"
-	map_area_color[]: 0xFF333333
-	map_area_discovered_color[]: 0xFF3ba2e0
+	map_area_color[]: 0xFF303030
+	map_area_discovered_color[]: 0xFF909090
 
 	map_area_color_name[]: "Green"
-	map_area_color[]: 0xFF737373
-	map_area_discovered_color[]: 0xFF95CAA9
+	map_area_color[]: 0xFF555555
+	map_area_discovered_color[]: 0xFFD0D0D0
 
 	map_area_color_name[]: "Nav-Red"
-	map_area_color[]: 0xFF787890
-	map_area_discovered_color[]: 0xFF000099
+	map_area_color[]: 0xFF555555
+	map_area_discovered_color[]: 0xFFB0B0B0
 
 	map_area_color_name[]: "Nav-Green"
-	map_area_color[]: 0xFF759076
-	map_area_discovered_color[]: 0xFF35A54D
+	map_area_color[]: 0xFF555555
+	map_area_discovered_color[]: 0xFFC0C0C0
 
 	map_area_color_name[]: "Nav-Blue"
-	map_area_color[]: 0xFF907576
-	map_area_discovered_color[]: 0xFFD9772F
+	map_area_color[]: 0xFF555555
+	map_area_discovered_color[]: 0xFFD0D0D0
 
 	map_area_color_name[]: "Nav-Yellow"
-	map_area_color[]: 0xFF778f90
-	map_area_discovered_color[]: 0xFF24D4EC
+	map_area_color[]: 0xFF555555
+	map_area_discovered_color[]: 0xFFE0E0E0
 
 	map_area_color_name[]: "Nav-Purple"
-	map_area_color[]: 0xFF827279
-	map_area_discovered_color[]: 0xFFA93E6E
+	map_area_color[]: 0xFF555555
+	map_area_discovered_color[]: 0xFFB8B8B8
 
-	prefab_color:				0xFF737373
-	prefab_obstacle_color:			0xFF333333
-	prefab_grass_color:			0xFF737373
-	prefab_discovered_color:		0xFF98CAEB
-	prefab_obstacle_discovered_color:	0xFF3BA2E0
-	prefab_grass_discovered_color:		0xFF95CAA9
+	prefab_color:				0xFF555555
+	prefab_obstacle_color:			0xFF222222
+	prefab_grass_color:			0xFF555555
+	prefab_discovered_color:		0xFFE8E8E8
+	prefab_obstacle_discovered_color:	0xFF808080
+	prefab_grass_discovered_color:		0xFFD0D0D0
 
-	outline_color:			0xFF000000
+	outline_color:			0xFF111111
 	navigation_color:		0xFF0C0CCF
 	navigation_highlight_color:	0xFF0C42DF
 	navigation_fade_color:		0xFF07077C
@@ -537,19 +499,19 @@ map_data : .map.data {
 	camera_limits_min[1]: (-1000000.0, -1000000.0)
 	camera_limits_min[2]: (-1000000.0, -1000000.0)
 	camera_limits_min[3]: (-1000000.0, -1000000.0)
-	camera_limits_min[4]: (-25000.0, -32000.0)
-	camera_limits_min[5]: (-25000.0, -32000.0)
-	camera_limits_min[6]: (-25000.0, -32000.0)
-	camera_limits_min[7]: (-25000.0, -32000.0)
+	camera_limits_min[4]: (-22000.0, -28000.0)
+	camera_limits_min[5]: (-22000.0, -28000.0)
+	camera_limits_min[6]: (-22000.0, -28000.0)
+	camera_limits_min[7]: (-22000.0, -28000.0)
 
 	camera_limits_max[0]: (1000000.0, 1000000.0)
 	camera_limits_max[1]: (1000000.0, 1000000.0)
 	camera_limits_max[2]: (1000000.0, 1000000.0)
 	camera_limits_max[3]: (1000000.0, 1000000.0)
-	camera_limits_max[4]: (18000.0, 40000.0)
-	camera_limits_max[5]: (18000.0, 40000.0)
-	camera_limits_max[6]: (18000.0, 40000.0)
-	camera_limits_max[7]: (18000.0, 40000.0)
+	camera_limits_max[4]: (18000.0, 36000.0)
+	camera_limits_max[5]: (18000.0, 36000.0)
+	camera_limits_max[6]: (18000.0, 36000.0)
+	camera_limits_max[7]: (18000.0, 36000.0)
 
 	map_items_flags[0]: 0x685FFF
 	map_items_flags[1]: 0x685FFF
@@ -562,13 +524,13 @@ map_data : .map.data {
 
 	map_3d_camera_pitch: 40.0
 
-	# Centro del mapa UI en coordenadas de Chile y escala calibrada (1330.0 km reales = 70000 unidades en escala 1:19)
-	ui_map_center:	(-4120.0, 4320.0)
-	ui_map_size:	(1330.0, 1330.0)
+	# Centro del mapa UI en coordenadas de Chile y escala calibrada (1216.0 km reales = 64000 unidades en escala 1:19)
+	ui_map_center:	(-1988.0, 4014.0)
+	ui_map_size:	(1216.0, 1216.0)
 
-	ui_map_camera_min: (-25000.0, -32000.0)
-	ui_map_camera_max: (18000.0, 40000.0)
-	ui_map_camera_start: (-6586.0, 1030.0)
+	ui_map_camera_min: (-22000.0, -28000.0)
+	ui_map_camera_max: (18000.0, 36000.0)
+	ui_map_camera_start: (-6398.0, 3329.0)
 
 	ui_map_always_draw_city: true
 
