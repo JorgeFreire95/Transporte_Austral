@@ -1,0 +1,7 @@
+effect : "eut2.dif.spec.rfx" {
+	texture : "texture" {
+		source : "/material/road/lines.tobj"
+		u_address : repeat
+		v_address : repeat
+	}
+}

@@ -173,14 +173,16 @@ def generar_mapa_fondo_chile():
     Genera la textura de mapa de fondo de Chile en alta resolución (4096x4096)
     dividida en 4 cuadrantes (map0..map3) y map.dds general,
     calibrada con exactitud matemática a las coordenadas del mundo de juego de ETS2.
-    Diseño 100% en Blanco y Negro (monocromático elegante):
-    - Océano negro mate profundo (#101218) con cuadrícula náutica sutil.
-    - Masa continental de Chile en tonos plata/platino de alto contraste (#b8c0cc a #d0d8e4),
-      envolviendo al 100% las carreteras sin cortes ni polígonos distorsionados.
-    - Costas y fronteras en blanco puro (#ffffff) de 3px de grosor.
-    - Todas las rutas, áreas y prefabs en def/map_data.sii en escala de grises y blanco puro.
+    Diseño moderno y elegante:
+    - Océano en azul marino profundo (#0c1017) con cuadrícula náutica sutil.
+    - Masa continental orgánica y continua de Chile en tono grafito (#1e2636),
+      envolviendo al 100% las ciudades y carreteras sin polígonos recortados ni quiebres.
+    - Relieve sombreado de la Cordillera de los Andes (#2a354b a #34425d) en el margen este.
+    - Costas del Pacífico con doble línea marítima (#486581 y #cad5e2).
+    - Archipiélagos australes (Chiloé, Guaitecas, Chonos, Wellington, Riesco, Tierra del Fuego).
+    - Rosa de los vientos náutica y tipografía de lujo 'REPÚBLICA DE CHILE - TRANSPORTE AUSTRAL'.
     """
-    print("[2/2] Generando mapa de fondo oficial de Chile en BLANCO Y NEGRO (alta definición)...")
+    print("[2/4] Generando mapa de fondo oficial de Chile (alta definición y silueta continua)...")
 
     # Parámetros oficiales de proyección conformada ETS2 calibrados a la red continua de Chile:
     CENTER_X = -1988.0
@@ -193,137 +195,199 @@ def generar_mapa_fondo_chile():
         py = (wz - CENTER_Z) / SPAN_UNITS * CANVAS_SIZE + (CANVAS_SIZE / 2.0)
         return px, py
 
-    # 1. Muestrear los puntos de carretera de los sectores activos de Chile
-    chile_base_files = list((BASE_DIR / "map" / "chile").glob("sec*.base"))
-    if not chile_base_files:
-        chile_base_files = list((BASE_DIR / "scratch" / "base_map" / "map" / "europe").glob("sec*.base"))
+    # Coordenadas maestras de las ciudades de Chile en el lienzo UI
+    cities = [
+        ( 415, 2207),  # Arica
+        ( 541, 2516),  # Iquique
+        ( 512, 2108),  # Antofagasta
+        ( 750, 2100),  # Calama / Norte
+        (1131, 2060),  # Copiapó
+        (1317, 2322),  # La Serena
+        (1791, 2175),  # Valparaíso
+        (1857, 1753),  # Santiago
+        (2235, 1744),  # Rancagua
+        (2359, 1541),  # Chillán
+        (2430, 1922),  # Talca
+        (2734, 2384),  # Concepción
+        (3050, 2360),  # Temuco
+        (3135, 1420),  # Puerto Montt
+        (3321, 1677),  # Valdivia
+        (3561, 1708),  # Coyhaique
+        (3746, 1243),  # Punta Arenas
+    ]
 
-    road_pts = []
-    for bf in chile_base_files:
-        m = re.search(r'sec([+-]\d{4})([+-]\d{4})', bf.stem)
-        if not m:
-            continue
-        sx = int(m.group(1)) * 4000
-        sz = int(m.group(2)) * 4000
-        data = bf.read_bytes()
-        for off in range(0, len(data) - 12, 16):
-            x, y, z = struct.unpack('<fff', data[off:off+12])
-            if sx - 200 <= x <= sx + 4200 and sz - 200 <= z <= sz + 4200 and -100 <= y <= 800:
-                road_pts.append((x, z))
+    # Muestreo denso de Y desde Arica (300) hasta Magallanes (3950)
+    y_vals = list(range(300, 3950, 10))
+    w_raw = []
+    e_raw = []
 
-    px_pts = [world_to_pixel(x, z) for x, z in road_pts]
+    for y in y_vals:
+        nearby = [cx for cy, cx in cities if abs(cy - y) <= 260]
+        if not nearby:
+            closest = min(cities, key=lambda c: abs(c[0] - y))
+            nearby = [closest[1]]
 
-    # Muestreo denso de límites este/oeste del corredor vial chileno
-    y_dense = list(range(360, 3810, 10))
-    raw_w, raw_e = [], []
-    for y in y_dense:
-        pts = [p[0] for p in px_pts if abs(p[1] - y) <= 25]
-        if pts:
-            raw_w.append(min(pts))
-            raw_e.append(max(pts))
-        else:
-            raw_w.append(raw_w[-1] if raw_w else 2000.0)
-            raw_e.append(raw_e[-1] if raw_e else 2200.0)
+        min_x = min(nearby)
+        max_x = max(nearby)
 
-    def smooth(arr, r=8):
+        pad_w = 140.0
+        pad_e = 160.0
+
+        # Modelado geográfico natural de Chile
+        if y < 450:
+            pad_w = 100.0 + (y - 300) * 0.2
+            pad_e = 120.0
+        elif 650 <= y <= 850:
+            f = math.sin((y - 650) / 200.0 * math.pi)
+            pad_w += 60.0 * f
+        elif 1650 <= y <= 1850:
+            f = math.sin((y - 1650) / 200.0 * math.pi)
+            pad_w += 50.0 * f
+        elif 2600 <= y <= 2800:
+            f = math.sin((y - 2600) / 200.0 * math.pi)
+            pad_w += 70.0 * f
+        elif 3050 <= y <= 3300:
+            f = math.sin((y - 3050) / 250.0 * math.pi)
+            pad_w += 80.0 * f
+        elif y >= 3650:
+            f = min(1.0, (y - 3650) / 250.0)
+            pad_e += 100.0 * f
+            pad_w += 50.0 * f
+
+        w_raw.append(min_x - pad_w)
+        e_raw.append(max_x + pad_e)
+
+    def smooth(arr, r=16):
         res = []
         n = len(arr)
         for i in range(n):
-            i0, i1 = max(0, i-r), min(n, i+r+1)
+            i0 = max(0, i - r)
+            i1 = min(n, i + r + 1)
             res.append(sum(arr[i0:i1]) / (i1 - i0))
         return res
 
-    sw = smooth(raw_w, 12)
-    se = smooth(raw_e, 12)
+    w_smooth = smooth(smooth(w_raw, 18), 12)
+    e_smooth = smooth(smooth(e_raw, 18), 12)
 
-    # Silueta esbelta y natural de Chile: 110px de margen en costa Pacífica, 130px en cordillera
-    final_w = [w - 110.0 for w in sw]
-    final_e = [e + 130.0 for e in se]
+    for i in range(len(y_vals)):
+        if e_smooth[i] - w_smooth[i] < 340.0:
+            mid = (w_smooth[i] + e_smooth[i]) / 2.0
+            w_smooth[i] = mid - 170.0
+            e_smooth[i] = mid + 170.0
 
-    # Ancho mínimo para mantener la silueta estilizada y orgánica de Chile
-    for i in range(len(y_dense)):
-        if final_e[i] - final_w[i] < 340.0:
-            mid = (final_w[i] + final_e[i]) / 2.0
-            final_w[i] = mid - 170.0
-            final_e[i] = mid + 170.0
+    w_map = {y: w for y, w in zip(y_vals, w_smooth)}
+    e_map = {y: e for y, e in zip(y_vals, e_smooth)}
 
-    final_w = smooth(final_w, 6)
-    final_e = smooth(final_e, 6)
+    # Lienzo oceánico: Azul marino profundo elegante (#0c1017)
+    map_img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (12, 16, 23, 255))
+    d = ImageDraw.Draw(map_img)
 
-    w_map = {y: w for y, w in zip(y_dense, final_w)}
-    e_map = {y: e for y, e in zip(y_dense, final_e)}
-
-    # Lienzo oceánico negro mate profundo (#101218 - Estilo Blanco y Negro elegante)
-    map_img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (16, 18, 24, 255))
-    draw = ImageDraw.Draw(map_img)
-
-    # Cuadrícula náutica sutil en escala de grises
-    grid_color = (24, 28, 36, 255)
+    # Cuadrícula náutica sutil
+    grid_color = (20, 27, 39, 255)
     for x in range(0, CANVAS_SIZE, 256):
-        draw.line([(x, 0), (x, CANVAS_SIZE)], fill=grid_color, width=1)
+        d.line([(x, 0), (x, CANVAS_SIZE)], fill=grid_color, width=1)
     for y in range(0, CANVAS_SIZE, 256):
-        draw.line([(0, y), (CANVAS_SIZE, y)], fill=grid_color, width=1)
+        d.line([(0, y), (CANVAS_SIZE, y)], fill=grid_color, width=1)
 
     # Polígono base continental de Chile
-    base_poly = []
-    for y in y_dense:
-        base_poly.append((w_map[y], y))
-    for y in reversed(y_dense):
-        base_poly.append((e_map[y], y))
+    poly = []
+    for y in y_vals:
+        poly.append((w_map[y], y))
+    for y in reversed(y_vals):
+        poly.append((e_map[y], y))
 
-    # Sombra de relieve continental hacia el Pacífico
-    shadow_poly = [(p[0] + 6, p[1] + 6) for p in base_poly]
-    draw.polygon(shadow_poly, fill=(8, 10, 14, 220))
+    # Sombra continental suave sobre el océano
+    shadow_poly = [(p[0] + 8, p[1] + 8) for p in poly]
+    d.polygon(shadow_poly, fill=(6, 8, 12, 210))
 
-    # Definición de las 16 Regiones de Chile en escala de grises / blanco y negro de alto contraste
-    REGIONS_Y = [
-        (15, "Arica y Parinacota",  360,  530, (185, 192, 204)),
-        (1,  "Tarapacá",            530,  700, (198, 205, 216)),
-        (2,  "Antofagasta",         700,  990, (182, 190, 202)),
-        (3,  "Atacama",             990, 1260, (195, 203, 214)),
-        (4,  "Coquimbo",           1260, 1530, (185, 193, 205)),
-        (5,  "Valparaíso",         1530, 1800, (198, 206, 218)),
-        (13, "Santiago RM",        1800, 2000, (215, 222, 232)), # Resaltado blanco platino en la Capital RM
-        (6,  "O'Higgins",          2000, 2160, (182, 190, 202)),
-        (7,  "Maule",              2160, 2370, (195, 203, 214)),
-        (16, "Ñuble",              2370, 2530, (182, 190, 202)),
-        (8,  "Biobío",             2530, 2760, (195, 203, 214)),
-        (9,  "Araucanía",          2760, 2980, (185, 193, 205)),
-        (14, "Los Ríos",           2980, 3180, (198, 206, 218)),
-        (10, "Los Lagos",          3180, 3420, (182, 190, 202)),
-        (11, "Aysén",              3420, 3620, (195, 203, 214)),
-        (12, "Magallanes",         3620, 3810, (185, 193, 205)),
-    ]
+    # Masa continental: Tono grafito/pizarra elegante (#1E2636)
+    d.polygon(poly, fill=(30, 38, 54, 255))
 
-    for cod, name, y_t, y_b, col in REGIONS_Y:
-        reg_pts = []
-        y_sub = [y for y in y_dense if y_t <= y <= y_b]
-        for y in y_sub:
-            reg_pts.append((w_map[y], y))
-        for y in reversed(y_sub):
-            reg_pts.append((e_map[y], y))
-        if len(reg_pts) >= 3:
-            draw.polygon(reg_pts, fill=(*col, 255))
-            # Línea limítrofe regional refinada
-            draw.line([(w_map[y_t], y_t), (e_map[y_t], y_t)], fill=(65, 72, 84, 220), width=2)
+    # Relieve de la Cordillera de los Andes (margen este)
+    andes_poly = []
+    for y in y_vals:
+        mid_x = w_map[y] + 0.60 * (e_map[y] - w_map[y])
+        andes_poly.append((mid_x, y))
+    for y in reversed(y_vals):
+        andes_poly.append((e_map[y], y))
+    d.polygon(andes_poly, fill=(40, 50, 70, 255))
 
-    # Costas e hitos fronterizos en Blanco Puro (#FFFFFF, 3px)
-    draw.line([(w_map[y], y) for y in y_dense], fill=(255, 255, 255, 255), width=3)  # Costa Pacífico
-    draw.line([(e_map[y], y) for y in y_dense], fill=(255, 255, 255, 255), width=3)  # Cordillera de los Andes
-    draw.line([(w_map[y_dense[0]], y_dense[0]), (e_map[y_dense[0]], y_dense[0])], fill=(255, 255, 255, 255), width=3)  # Límite Norte
-    draw.line([(w_map[y_dense[-1]], y_dense[-1]), (e_map[y_dense[-1]], y_dense[-1])], fill=(255, 255, 255, 255), width=3)  # Límite Sur
+    # Cresta alta de los Andes
+    crest_poly = []
+    for y in y_vals:
+        mid_x = w_map[y] + 0.82 * (e_map[y] - w_map[y])
+        crest_poly.append((mid_x, y))
+    for y in reversed(y_vals):
+        crest_poly.append((e_map[y], y))
+    d.polygon(crest_poly, fill=(50, 62, 85, 255))
 
-    # Archipiélagos e Islas de la Patagonia Chilena (Chiloé, Guaitecas, Chonos, Wellington, Riesco)
+    # Costa Pacífico: doble trazo con brillo marítimo
+    west_pts = [(w_map[y], y) for y in y_vals]
+    d.line(west_pts, fill=(58, 76, 102, 255), width=4)
+    d.line(west_pts, fill=(195, 208, 224, 255), width=2)
+
+    # Límite cordillerano
+    east_pts = [(e_map[y], y) for y in y_vals]
+    d.line(east_pts, fill=(72, 88, 116, 255), width=2)
+
+    # Límites Norte y Sur
+    d.line([(w_map[y_vals[0]], y_vals[0]), (e_map[y_vals[0]], y_vals[0])], fill=(195, 208, 224, 255), width=2)
+    d.line([(w_map[y_vals[-1]], y_vals[-1]), (e_map[y_vals[-1]], y_vals[-1])], fill=(195, 208, 224, 255), width=2)
+
+    # Archipiélagos e Islas de la Patagonia Chilena
     islands = [
-        [(w_map[3280] - 65, 3250), (w_map[3280] - 20, 3240), (w_map[3280] - 15, 3320), (w_map[3280] - 55, 3325)],
-        [(w_map[3380] - 70, 3360), (w_map[3380] - 25, 3355), (w_map[3380] - 20, 3405), (w_map[3380] - 60, 3410)],
-        [(w_map[3480] - 80, 3450), (w_map[3480] - 30, 3445), (w_map[3480] - 25, 3505), (w_map[3480] - 75, 3510)],
-        [(w_map[3590] - 85, 3560), (w_map[3590] - 35, 3555), (w_map[3590] - 30, 3635), (w_map[3590] - 80, 3640)],
-        [(w_map[3700] - 90, 3680), (w_map[3700] - 40, 3675), (w_map[3700] - 35, 3755), (w_map[3700] - 85, 3760)],
+        [(w_map[3180] - 75, 3140), (w_map[3180] - 25, 3130), (w_map[3180] - 20, 3230), (w_map[3180] - 65, 3235)],
+        [(w_map[3280] - 80, 3260), (w_map[3280] - 30, 3255), (w_map[3280] - 25, 3320), (w_map[3280] - 70, 3325)],
+        [(w_map[3380] - 85, 3360), (w_map[3380] - 35, 3355), (w_map[3380] - 30, 3420), (w_map[3380] - 75, 3425)],
+        [(w_map[3490] - 95, 3460), (w_map[3490] - 40, 3455), (w_map[3490] - 35, 3530), (w_map[3490] - 85, 3535)],
+        [(w_map[3610] - 90, 3580), (w_map[3610] - 35, 3575), (w_map[3610] - 30, 3650), (w_map[3610] - 80, 3655)],
+        [(e_map[3780] + 20, 3720), (e_map[3780] + 110, 3730), (e_map[3780] + 90, 3840), (e_map[3780] + 15, 3830)],
     ]
     for isl in islands:
-        draw.polygon([(p[0]+4, p[1]+4) for p in isl], fill=(8, 10, 14, 200))
-        draw.polygon(isl, fill=(190, 198, 210, 255), outline=(255, 255, 255, 255), width=2)
+        d.polygon([(p[0]+4, p[1]+4) for p in isl], fill=(6, 8, 12, 180))
+        d.polygon(isl, fill=(35, 45, 62, 255), outline=(195, 208, 224, 255), width=2)
+
+    # Rosa de los vientos náutica en el Océano Pacífico
+    cx, cy = 1050, 1750
+    r_outer, r_inner = 130, 35
+    d.ellipse([cx - r_outer, cy - r_outer, cx + r_outer, cy + r_outer], outline=(40, 52, 74, 255), width=2)
+    d.ellipse([cx - r_outer + 8, cy - r_outer + 8, cx + r_outer - 8, cy + r_outer - 8], outline=(55, 70, 96, 255), width=1)
+    d.ellipse([cx - r_inner, cy - r_inner, cx + r_inner, cy + r_inner], outline=(65, 82, 110, 255), width=1)
+
+    angles = [0, 45, 90, 135, 180, 225, 270, 315]
+    for deg in angles:
+        rad = math.radians(deg - 90)
+        r_tip = r_outer + 12 if deg == 0 else (r_outer if deg % 90 == 0 else r_outer - 35)
+        tip_x = cx + r_tip * math.cos(rad)
+        tip_y = cy + r_tip * math.sin(rad)
+        rad_left = math.radians(deg - 90 - 22.5)
+        rad_right = math.radians(deg - 90 + 22.5)
+        lx = cx + r_inner * math.cos(rad_left)
+        ly = cy + r_inner * math.sin(rad_left)
+        rx = cx + r_inner * math.cos(rad_right)
+        ry = cy + r_inner * math.sin(rad_right)
+        col1 = (195, 208, 224, 255) if deg == 0 else (120, 140, 170, 255)
+        col2 = (70, 88, 115, 255)
+        d.polygon([(cx, cy), (tip_x, tip_y), (lx, ly)], fill=col1)
+        d.polygon([(cx, cy), (tip_x, tip_y), (rx, ry)], fill=col2)
+
+    try:
+        font_n = ImageFont.truetype("arialbd.ttf", 24)
+        d.text((cx - 8, cy - r_outer - 42), "N", fill=(220, 230, 245, 255), font=font_n)
+    except Exception:
+        pass
+
+    # Tipografía cartográfica elegante en el Océano Pacífico
+    try:
+        f_title = ImageFont.truetype("arialbd.ttf", 38)
+        f_sub = ImageFont.truetype("arial.ttf", 24)
+        f_lat = ImageFont.truetype("calibri.ttf", 18)
+        d.text((760, 1420), "REPÚBLICA DE CHILE", fill=(85, 105, 135, 255), font=f_title)
+        d.text((760, 1470), "RED VIAL CONTINUA  •  TRANSPORTE AUSTRAL", fill=(65, 82, 108, 255), font=f_sub)
+        d.line([(760, 1515), (1420, 1515)], fill=(50, 65, 88, 255), width=2)
+        d.text((760, 1530), "ESCALA 1:19  •  PANAMERICANA RUTA 5 & RUTA 7", fill=(55, 70, 92, 255), font=f_lat)
+    except Exception:
+        pass
 
     # Guardar las 4 texturas de cuadrante (map0..map3) de 2048x2048 en DX10 BGRA
     map_ui_dir = BASE_DIR / "material" / "ui" / "map"
@@ -361,7 +425,7 @@ def generar_mapa_fondo_chile():
     mat_map = map_ui_dir / "map.mat"
     write_mat(mat_map, "/material/ui/map/map.tobj")
 
-    # Configuración de def/map_data.sii calibrada al milímetro a Chile en Blanco y Negro puro
+    # Configuración de def/map_data.sii calibrada al milímetro a Chile
     def_dir = BASE_DIR / "def"
     def_dir.mkdir(parents=True, exist_ok=True)
 
@@ -370,65 +434,65 @@ def generar_mapa_fondo_chile():
 {
 map_data : .map.data {
 
-	# Rutas en escala de grises y blanco puro (Monocromático elegante)
-	road_color:			0xFF505050 	//Carretera no descubierta (gris medio)
-	road_discovered_color:		0xFFFFFFFF	//Carretera descubierta (blanco brillante)
-	job_road_color:			0x50303030	//Mercado laboral no descubierta
-	job_road_discovered_color:	0xFF808080	//Mercado laboral descubierta
-	world_road_color:		0xFF505050	//Mapa principal no descubierta (gris medio)
-	world_road_discovered_color:	0xFFFFFFFF 	//Mapa principal descubierta (blanco brillante)
-	fleet_manager_road_color:		0xff404040	//Gestor de flota no descubierta
-	fleet_manager_road_discovered_color:	0xff404040 	//Gestor de flota descubierta
+	# Rutas con alto contraste y legibilidad moderna
+	road_color:					0xFF4A5568 	// Carretera no descubierta (grafito elegante)
+	road_discovered_color:		0xFFFFFFFF	// Carretera descubierta (blanco brillante)
+	job_road_color:				0x50303A48	// Mercado laboral no descubierta
+	job_road_discovered_color:	0xFF90A0B8	// Mercado laboral descubierta
+	world_road_color:			0xFF4A5568	// Mapa principal no descubierta
+	world_road_discovered_color:0xFFFFFFFF 	// Mapa principal descubierta (blanco puro)
+	fleet_manager_road_color:			0xFF3A4454
+	fleet_manager_road_discovered_color:0xFF3A4454
 
-	# Áreas del mapa en Blanco y Negro (sin colores arcoíris)
+	# Áreas y colores del mapa en armonía con la temática oscura
 	map_area_color_name[]: "Road"
-	map_area_color[]: 0xFF505050
+	map_area_color[]: 0xFF354256
 	map_area_discovered_color[]: 0xFFFFFFFF
 
 	map_area_color_name[]: "Light"
-	map_area_color[]: 0xFF606060
-	map_area_discovered_color[]: 0xFFE0E0E0
+	map_area_color[]: 0xFF405068
+	map_area_discovered_color[]: 0xFFE2E8F0
 
 	map_area_color_name[]: "Dark"
-	map_area_color[]: 0xFF303030
-	map_area_discovered_color[]: 0xFF909090
+	map_area_color[]: 0xFF1E2638
+	map_area_discovered_color[]: 0xFF94A3B8
 
 	map_area_color_name[]: "Green"
-	map_area_color[]: 0xFF555555
-	map_area_discovered_color[]: 0xFFD0D0D0
+	map_area_color[]: 0xFF2A384A
+	map_area_discovered_color[]: 0xFFCBD5E1
 
 	map_area_color_name[]: "Nav-Red"
-	map_area_color[]: 0xFF555555
-	map_area_discovered_color[]: 0xFFB0B0B0
+	map_area_color[]: 0xFF2A384A
+	map_area_discovered_color[]: 0xFFB0C0D5
 
 	map_area_color_name[]: "Nav-Green"
-	map_area_color[]: 0xFF555555
-	map_area_discovered_color[]: 0xFFC0C0C0
+	map_area_color[]: 0xFF2A384A
+	map_area_discovered_color[]: 0xFFC5D4E6
 
 	map_area_color_name[]: "Nav-Blue"
-	map_area_color[]: 0xFF555555
-	map_area_discovered_color[]: 0xFFD0D0D0
+	map_area_color[]: 0xFF2A384A
+	map_area_discovered_color[]: 0xFFCBD5E1
 
 	map_area_color_name[]: "Nav-Yellow"
-	map_area_color[]: 0xFF555555
-	map_area_discovered_color[]: 0xFFE0E0E0
+	map_area_color[]: 0xFF2A384A
+	map_area_discovered_color[]: 0xFFE2E8F0
 
 	map_area_color_name[]: "Nav-Purple"
-	map_area_color[]: 0xFF555555
-	map_area_discovered_color[]: 0xFFB8B8B8
+	map_area_color[]: 0xFF2A384A
+	map_area_discovered_color[]: 0xFFB8C8DB
 
-	prefab_color:				0xFF555555
-	prefab_obstacle_color:			0xFF222222
-	prefab_grass_color:			0xFF555555
-	prefab_discovered_color:		0xFFE8E8E8
-	prefab_obstacle_discovered_color:	0xFF808080
-	prefab_grass_discovered_color:		0xFFD0D0D0
+	prefab_color:				0xFF2E3A4E
+	prefab_obstacle_color:		0xFF141A24
+	prefab_grass_color:			0xFF283446
+	prefab_discovered_color:	0xFFE2E8F0
+	prefab_obstacle_discovered_color:	0xFF64748B
+	prefab_grass_discovered_color:		0xFFCBD5E1
 
-	outline_color:			0xFF111111
-	navigation_color:		0xFF0C0CCF
-	navigation_highlight_color:	0xFF0C42DF
-	navigation_fade_color:		0xFF07077C
-	navigation_arrow_color: 	0xFF06FB11
+	outline_color:				0xFF080B10
+	navigation_color:			0xFF0084FF	// GPS principal: Azul Eléctrico brillante
+	navigation_highlight_color:	0xFF00E5FF	// Resaltado GPS: Cian neón de alta visibilidad
+	navigation_fade_color:		0xFF003880	// Cola GPS atenuada
+	navigation_arrow_color: 	0xFF00FF88	// Flecha del jugador: Verde esmeralda brillante
 
 	# Niveles de Zoom completos (0 a 3 Minimap/GPS; 4 a 7 Mapa del Mundo M)
 	zoom_uplift[0]: 50.0
@@ -494,7 +558,7 @@ map_data : .map.data {
 	company_icon_size[6]: (16.0, 4.0)
 	company_icon_size[7]: (16.0, 4.0)
 
-	# Límites de cámara enmarcados estrictamente en el territorio de Chile
+	# Límites de cámara enmarcados en el territorio continuo de Chile
 	camera_limits_min[0]: (-1000000.0, -1000000.0)
 	camera_limits_min[1]: (-1000000.0, -1000000.0)
 	camera_limits_min[2]: (-1000000.0, -1000000.0)
@@ -524,7 +588,7 @@ map_data : .map.data {
 
 	map_3d_camera_pitch: 40.0
 
-	# Centro del mapa UI en coordenadas de Chile y escala calibrada (1216.0 km reales = 64000 unidades en escala 1:19)
+	# Centro del mapa UI en coordenadas de Chile y escala calibrada
 	ui_map_center:	(-1988.0, 4014.0)
 	ui_map_size:	(1216.0, 1216.0)
 
@@ -536,7 +600,7 @@ map_data : .map.data {
 
 	navigation_city_penalty: 1.0
 	navigation_slow_road_penalty: 5.0
-	navigation_maximum_speed: 30.6
+	navigation_maximum_speed: 33.3 // 120 km/h autopista chilena
 }
 }
 """
@@ -546,6 +610,194 @@ map_data : .map.data {
     print(" -> Mapa de fondo oficial de Chile (map0..map3, map) y def/map_data.sii generados exitosamente.")
 
 
+def generar_escudos_carreteras_chile():
+    """
+    Genera los escudos oficiales de carreteras de Chile (Ruta 5, Ruta 68, Ruta 78, Ruta 7, etc.)
+    en material/ui/map/road/ en formato DDS DX10 BGRA 64x64, con descriptores TOBJ y MAT.
+    Neutraliza con texturas 100% transparentes todos los escudos europeos (autobahns alemanas,
+    autoroutes francesas, etc.) para que ninguna carretera tenga insignias europeas.
+    """
+    print("[3/4] Generando escudos oficiales de Carreteras de Chile y neutralizando escudos europeos...")
+    road_ui_dir = BASE_DIR / "material" / "ui" / "map" / "road"
+    road_ui_dir.mkdir(parents=True, exist_ok=True)
+
+    # 1. Escudos oficiales de Chile (Escudo Verde MOP con número blanco en negrita)
+    CHILEAN_SHIELDS = {
+        # Ruta 5 Panamericana (Autopista Central, Ruta 5 Norte, Ruta 5 Sur)
+        "road_d_a5": "5",
+        "road_d_a7": "5",
+        "road_d_a31": "5",
+        "road_cl_5": "5",
+        # Ruta 68 (Santiago - Valparaíso / Viña del Mar)
+        "road_d_a44": "68",
+        "road_cl_68": "68",
+        # Ruta 78 (Autopista del Sol: Santiago - San Antonio)
+        "road_d_a6": "78",
+        "road_cl_78": "78",
+        # Ruta 7 (Carretera Austral: Puerto Montt - Coyhaique)
+        "road_d_a3": "7",
+        "road_cl_7": "7",
+        # CH-60 (Autopista Los Andes / Paso Los Libertadores)
+        "road_d_a4": "60",
+        "road_cl_60": "60",
+        # Ruta 1 (Costera Arica - Iquique - Tocopilla - Antofagasta)
+        "road_d_a2": "1",
+        "road_cl_1": "1",
+        # Ruta 152 (Autopista del Itata: Chillán - Concepción)
+        "road_d_a8": "152",
+        "road_cl_152": "152",
+        # Ruta 160 (Concepción - Coronel - Lota - Arauco)
+        "road_d_a9": "160",
+        "road_cl_160": "160",
+        # Ruta 9 (Punta Arenas - Puerto Natales)
+        "road_it_a9": "9",
+        "road_it_a4": "9",
+        "road_it_a7": "9",
+        "road_cl_9": "9",
+        # CH-11 (Arica - Tambo Quemado)
+        "road_d_a1": "11",
+        "road_cl_11": "11",
+        # CH-23 (Calama - San Pedro de Atacama)
+        "road_d_a10": "23",
+        "road_cl_23": "23",
+        # CH-115 (Talca - Paso Pehuenche)
+        "road_d_a11": "115",
+        "road_cl_115": "115",
+        # CH-181 (Temuco - Paso Pino Hachado)
+        "road_d_a12": "181",
+        "road_cl_181": "181",
+        # CH-215 (Osorno - Paso Cardenal Samoré)
+        "road_d_a13": "215",
+        "road_cl_215": "215",
+        # Ruta 57 (Autopista Los Libertadores)
+        "road_d_a14": "57",
+        "road_cl_57": "57",
+        # Ruta 146 (Concepción - Cabrero)
+        "road_d_a17": "146",
+        "road_cl_146": "146",
+        # Ruta 180 (Angol - Los Ángeles)
+        "road_d_a19": "180",
+        "road_cl_180": "180",
+        # Ruta 257 (Tierra del Fuego / Porvenir)
+        "road_d_a20": "257",
+        "road_cl_257": "257",
+        # Ruta 24 (Tocopilla - Calama)
+        "road_d_a24": "24",
+        "road_cl_24": "24",
+        # Ruta 27 (San Pedro - Paso de Jama)
+        "road_d_a27": "27",
+        "road_cl_27": "27",
+        # Ruta 66 (Carretera de la Fruta)
+        "road_d_a30": "66",
+        "road_cl_66": "66",
+    }
+
+    def crear_escudo_chile(numero: str, w: int = 64, h: int = 64) -> Image.Image:
+        im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+        d = ImageDraw.Draw(im)
+        m = 3
+        # Sombra suave
+        d.rounded_rectangle([m+1, m+2, w-m+1, h-m+2], radius=11, fill=(0, 0, 0, 180))
+        # Borde exterior blanco puro
+        d.rounded_rectangle([m, m, w-m, h-m], radius=11, fill=(255, 255, 255, 255))
+        # Fondo Verde Vial Oficial MOP Chile (#0B7637)
+        d.rounded_rectangle([m+3, m+3, w-m-3, h-m-3], radius=9, fill=(11, 118, 55, 255))
+
+        f_size = 32 if len(numero) == 1 else (26 if len(numero) == 2 else 20)
+        try:
+            font = ImageFont.truetype("arialbd.ttf", f_size)
+        except Exception:
+            font = ImageFont.load_default()
+
+        bbox = d.textbbox((0, 0), numero, font=font)
+        tw = bbox[2] - bbox[0]
+        th = bbox[3] - bbox[1]
+        tx = (w - tw) / 2
+        ty = (h - th) / 2 - 2
+        d.text((tx, ty), numero, font=font, fill=(255, 255, 255, 255))
+        return im
+
+    # Imagen transparente (64x64) para anular por completo los escudos extranjeros
+    img_transparent = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+
+    total_chile = 0
+    for shield_name, num in CHILEAN_SHIELDS.items():
+        img = crear_escudo_chile(num)
+        dds_p = road_ui_dir / f"{shield_name}.dds"
+        tobj_p = road_ui_dir / f"{shield_name}.tobj"
+        mat_p = road_ui_dir / f"{shield_name}.mat"
+        save_dx10_dds(img, dds_p)
+        write_tobj(tobj_p, f"/material/ui/map/road/{shield_name}.dds")
+        write_mat(mat_p, f"/material/ui/map/road/{shield_name}.tobj")
+        total_chile += 1
+
+    # Escanear todos los escudos europeos base para neutralizarlos con textura transparente
+    src_base_road = BASE_DIR / "scratch" / "extracted_map_ui" / "material" / "ui" / "map" / "road"
+    total_neutralizados = 0
+    if src_base_road.exists():
+        for euro_file in src_base_road.glob("*.dds"):
+            name = euro_file.stem
+            if name not in CHILEAN_SHIELDS and (
+                name.startswith("road_d_") or name.startswith("road_fr_") or
+                name.startswith("road_ch_") or name.startswith("road_at_") or
+                name.startswith("road_it_") or name.startswith("road_cz_") or
+                name.startswith("road_pl_") or name.startswith("road_uk_")
+            ):
+                dds_p = road_ui_dir / f"{name}.dds"
+                tobj_p = road_ui_dir / f"{name}.tobj"
+                mat_p = road_ui_dir / f"{name}.mat"
+                save_dx10_dds(img_transparent, dds_p)
+                write_tobj(tobj_p, f"/material/ui/map/road/{name}.dds")
+                write_mat(mat_p, f"/material/ui/map/road/{name}.tobj")
+                total_neutralizados += 1
+
+    print(f" -> {total_chile} escudos oficiales de Chile generados (Ruta 5, 68, 78, 7, etc.)")
+    print(f" -> {total_neutralizados} escudos extranjeros europeos neutralizados al 100%")
+
+
+def generar_demarcacion_vial_chile():
+    """
+    Genera la textura de demarcación vial chilena en material/road/lines.dds
+    con línea central AMARILLA (estándar MOP Chile / Panamericana) y líneas laterales blancas.
+    """
+    print("[4/4] Generando demarcación vial chilena (eje central amarillo MOP)...")
+    road_mat_dir = BASE_DIR / "material" / "road"
+    road_mat_dir.mkdir(parents=True, exist_ok=True)
+
+    im_lines = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im_lines)
+
+    # Amarillo tráfico MOP Chile (#FDB813)
+    yellow_mop = (253, 184, 19, 255)
+    white_line = (245, 248, 255, 255)
+
+    # Banda izquierda: línea continua blanca (borde / berma)
+    d.rectangle([0, 0, 32, 256], fill=white_line)
+    # Banda central: eje divisorio amarillo MOP (línea continua o segmentada)
+    d.rectangle([64, 0, 128, 256], fill=yellow_mop)
+    # Banda doble amarilla: líneas continuas dobles no adelantar
+    d.rectangle([140, 0, 168, 256], fill=yellow_mop)
+    d.rectangle([176, 0, 204, 256], fill=yellow_mop)
+    # Banda derecha: línea blanca segmentada
+    d.rectangle([220, 0, 256, 256], fill=white_line)
+
+    lines_dds = road_mat_dir / "lines.dds"
+    save_dx10_dds(im_lines, lines_dds)
+    lines_tobj = road_mat_dir / "lines.tobj"
+    write_tobj(lines_tobj, "/material/road/lines.dds", clamp=False)
+    lines_mat = road_mat_dir / "lines.mat"
+    mat_content = """effect : "eut2.dif.spec.rfx" {
+\ttexture : "texture" {
+\t\tsource : "/material/road/lines.tobj"
+\t\tu_address : repeat
+\t\tv_address : repeat
+\t}
+}
+"""
+    lines_mat.write_text(mat_content, encoding="utf-8")
+    print(" -> Demarcación vial chilena generada con éxito en material/road/lines.*")
+
+
 def main():
     print("==================================================================")
     print(" TRANSPORTE AUSTRAL - CONSTRUCTOR DE ACTIVOS GRÁFICOS Y UI")
@@ -553,9 +805,12 @@ def main():
     comprimir_mod_icon()
     generar_pantallas_de_carga()
     generar_mapa_fondo_chile()
+    generar_escudos_carreteras_chile()
+    generar_demarcacion_vial_chile()
     print("==================================================================")
-    print("Activos generados. Listo para compilar con tools/build.py.")
+    print("Todos los activos chilenos generados. Listo para compilar con tools/build.py.")
 
 
 if __name__ == "__main__":
     main()
+

@@ -18,4 +18,9 @@ SiiNunit
 @include "country/cl_x.sui"
 @include "country/cl_xi.sui"
 @include "country/cl_xii.sui"
+@include "country/germany.sui"
+@include "country/france.sui"
+@include "country/switzerland.sui"
+@include "country/austria.sui"
+@include "country/italy.sui"
 }

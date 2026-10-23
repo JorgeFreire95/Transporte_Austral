@@ -197,19 +197,28 @@ def importar_y_parchear_sectores():
         p.stem for p in SRC_EUROPE_DIR.glob("sec*.base") if p.stat().st_size > 1000
     ])
 
-    # 71 sectores ortogonales continuos que conforman la red ininterrumpida de carreteras de Chile (Ruta 5 / Ruta 7, estilo Mapa EAA)
-    # Cubre de forma continua e interconectada las 16 capitales regionales y todas las comunas secundarias
-    # sin ramales cortados en el vacío.
+    # Red continua de 37 sectores interconectados de Chile (Ruta 5 / Ruta 7 Panamericana)
+    # Cubre de forma continua e ininterrumpida las 16 capitales regionales y comunas clave
+    # sin ramales cortados ni extremos en el vacío.
     SPINE_SECTOR_COORDS = [
-        (x, z) for x in range(-3, 2) for z in range(-6, 8)
-        if f"sec{x:+05d}{z:+05d}" in all_europe_sectors
+        # 1. Norte Grande (Arica, Iquique, Antofagasta, Calama)
+        (0, -6), (1, -6), (0, -5), (1, -5), (-1, -5), (-1, -4), (0, -4), (-2, -4),
+        # 2. Norte Chico (Copiapó, Caldera, La Serena, Coquimbo)
+        (-1, -3), (0, -3), (0, -2), (-1, -2),
+        # 3. Zona Central (Valparaíso, San Antonio, Santiago, San Bernardo, Rancagua, San Fernando)
+        (-1, -1), (0, -1), (-2, -1), (-1, 0), (-2, 0), (-3, 0), (-3, 1), (-2, 1), (-1, 1),
+        # 4. Maule, Ñuble, Biobío (Curicó, Talca, Chillán, Los Ángeles, Concepción)
+        (-2, 2), (-1, 2), (-3, 2), (0, 2), (0, 3),
+        # 5. Araucanía, Los Ríos, Los Lagos (Temuco, Valdivia, Osorno, Puerto Montt)
+        (0, 4), (-1, 4), (-1, 5), (-2, 5), (-3, 4), (-3, 5),
+        # 6. Carretera Austral y Magallanes (Coyhaique, Punta Arenas, Puerto Natales, Porvenir)
+        (-3, 6), (-2, 6), (-2, 7), (-3, 7), (-4, 7), (-3, 8), (-2, 8),
     ]
-    # Conectores clave australes y de Magallanes (Punta Arenas, Puerto Natales, Porvenir)
-    for extra_coord in [(-4, 7), (-2, 8), (-3, 8)]:
-        if f"sec{extra_coord[0]:+05d}{extra_coord[1]:+05d}" in all_europe_sectors and extra_coord not in SPINE_SECTOR_COORDS:
-            SPINE_SECTOR_COORDS.append(extra_coord)
 
-    sectores_disponibles = sorted([f"sec{x:+05d}{z:+05d}" for x, z in SPINE_SECTOR_COORDS])
+    sectores_disponibles = sorted([
+        f"sec{x:+05d}{z:+05d}" for x, z in SPINE_SECTOR_COORDS
+        if f"sec{x:+05d}{z:+05d}" in all_europe_sectors
+    ])
 
     print(f"[2/4] Copiando sectores de la espina dorsal de Chile ({len(sectores_disponibles)} sectores)...")
     total_archivos = 0
