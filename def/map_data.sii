@@ -156,7 +156,7 @@ map_data : .map.data {
 	map_3d_camera_pitch: 40.0
 
 	# Centro del mapa UI en coordenadas de Chile y escala calibrada (1330.0 km reales = 70000 unidades en escala 1:19)
-	ui_map_center:	(-3947.0, 3915.0)
+	ui_map_center:	(-4120.0, 4320.0)
 	ui_map_size:	(1330.0, 1330.0)
 
 	ui_map_camera_min: (-25000.0, -32000.0)

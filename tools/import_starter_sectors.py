@@ -197,7 +197,7 @@ def importar_y_parchear_sectores():
         p.stem for p in SRC_EUROPE_DIR.glob("sec*.base") if p.stat().st_size > 1000
     ])
 
-    # 30 sectores ortogonales continuos que conforman la red ininterrumpida de carreteras de Chile (Ruta 5 / Ruta 7, estilo Mapa EAA)
+    # 35 sectores ortogonales continuos que conforman la red ininterrumpida de carreteras de Chile (Ruta 5 / Ruta 7, estilo Mapa EAA)
     SPINE_SECTOR_COORDS = [
         # Norte Grande: Arica, Iquique, Antofagasta
         (0, -6),   # XV Arica (Kiel)
@@ -209,19 +209,24 @@ def importar_y_parchear_sectores():
         (0, -4),   # Conector Antofagasta Este
         # Norte Chico y Centro: Copiapó, La Serena, Valparaíso
         (-1, -3),  # III Copiapó (Hannover)
-        (0, -3),   # Conector Copiapó - La Serena
+        (0, -3),   # Conector Copiapó - La Serena (Braunschweig)
         (0, -2),   # IV La Serena (Magdeburg)
         (-1, -2),  # Conector La Serena - Valparaíso (Göttingen)
         (-1, -1),  # V Valparaíso (Kassel)
-        # Zona Central: Santiago, Rancagua
-        (-1, 0),   # Conector Valparaíso - Santiago
+        # Zona Central: Santiago, San Bernardo, Rancagua
+        (-2, -1),  # CONECTOR CLAVE Valparaíso - Santiago (Giessen / Wetzlar)
+        (-1, 0),   # Conector Santiago Norte
         (-2, 0),   # RM Santiago (Frankfurt)
+        (-3, 0),   # Conector Santiago - San Bernardo (Wiesbaden / Mainz)
+        (-3, 1),   # Conector San Bernardo - Rancagua Oeste
         (-2, 1),   # VI Rancagua (Mannheim)
         # Maule, Ñuble, Biobío: Talca, Chillán, Concepción
-        (-2, 2),   # Conector Rancagua - Talca (Karlsruhe)
+        (-1, 1),   # CONECTOR CLAVE Rancagua - Talca (Heilbronn)
+        (-2, 2),   # Conector Rancagua - Chillán (Karlsruhe)
         (-1, 2),   # VII Talca (Stuttgart)
         (-3, 2),   # XVI Chillán (Strasbourg)
-        (-1, 3),   # Conector Talca - Concepción (Ulm Norte)
+        (0, 2),    # CONECTOR CLAVE Talca - Concepción (Ulm / A8)
+        (-1, 3),   # Conector Ulm Norte
         (0, 3),    # VIII Concepción (München)
         # Araucanía, Los Ríos, Los Lagos: Temuco, Valdivia, Puerto Montt
         (0, 4),    # IX Temuco (Innsbruck)

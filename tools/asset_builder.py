@@ -179,8 +179,8 @@ def generar_mapa_fondo_chile():
     print("[2/2] Generando mapa de fondo geográfico oficial de Chile (Estilo Mapa EAA) en alta definición...")
 
     # Parámetros oficiales de proyección conformada ETS2:
-    CENTER_X = -3947.0
-    CENTER_Z = 3915.0
+    CENTER_X = -4120.0
+    CENTER_Z = 4320.0
     SPAN_UNITS = 70000.0  # 1330.0 km en escala 1:19
     CANVAS_SIZE = 4096
 
@@ -257,32 +257,32 @@ def generar_mapa_fondo_chile():
         near = round(max(350, min(3850, y)) / 10.0) * 10
         return e_dict.get(near, 2500.0)
 
-    # Definición de las 16 Regiones de Chile con colores cartográficos oficiales
+    # Definición de las 16 Regiones de Chile en estilo puro Blanco y Negro (Escala de grises cartográfica de alta gama)
     REGIONS = [
-        {"cod": 15, "name": "Arica y Parinacota", "color": (140,  40,  85), "y_top": 350,  "y_bot": 530},
-        {"cod": 1,  "name": "Tarapacá",           "color": (225,  75,  85), "y_top": 530,  "y_bot": 680},
-        {"cod": 2,  "name": "Antofagasta",        "color": (235, 110,  45), "y_top": 680,  "y_bot": 950},
-        {"cod": 3,  "name": "Atacama",            "color": (235, 165,  40), "y_top": 950,  "y_bot": 1250},
-        {"cod": 4,  "name": "Coquimbo",           "color": (245, 205,  35), "y_top": 1250, "y_bot": 1500},
-        {"cod": 5,  "name": "Valparaíso",         "color": (135, 175,  70), "y_top": 1500, "y_bot": 1820, "split": "west"},
-        {"cod": 13, "name": "Santiago RM",        "color": (175,  35,  60), "y_top": 1680, "y_bot": 1950, "split": "east"},
-        {"cod": 6,  "name": "O'Higgins",          "color": (240, 115,  45), "y_top": 1850, "y_bot": 2050, "split": "south_rm"},
-        {"cod": 7,  "name": "Maule",              "color": ( 20, 165,  95), "y_top": 2050, "y_bot": 2230},
-        {"cod": 16, "name": "Ñuble",              "color": (200,  25,  55), "y_top": 2150, "y_bot": 2320, "split": "inland"},
-        {"cod": 8,  "name": "Biobío",             "color": (245, 155,  35), "y_top": 2230, "y_bot": 2480, "split": "coastal"},
-        {"cod": 9,  "name": "Araucanía",          "color": (230, 115,  80), "y_top": 2480, "y_bot": 2720},
-        {"cod": 14, "name": "Los Ríos",           "color": (115, 190,  70), "y_top": 2720, "y_bot": 2920},
-        {"cod": 10, "name": "Los Lagos",          "color": ( 35, 165, 220), "y_top": 2850, "y_bot": 3200},
-        {"cod": 11, "name": "Aysén",              "color": (130,  70, 150), "y_top": 3200, "y_bot": 3500},
-        {"cod": 12, "name": "Magallanes",         "color": (215,  40, 115), "y_top": 3500, "y_bot": 3850},
+        {"cod": 15, "name": "Arica y Parinacota", "color": (36, 40, 50), "y_top": 350,  "y_bot": 530},
+        {"cod": 1,  "name": "Tarapacá",           "color": (46, 52, 64), "y_top": 530,  "y_bot": 680},
+        {"cod": 2,  "name": "Antofagasta",        "color": (36, 40, 50), "y_top": 680,  "y_bot": 950},
+        {"cod": 3,  "name": "Atacama",            "color": (46, 52, 64), "y_top": 950,  "y_bot": 1250},
+        {"cod": 4,  "name": "Coquimbo",           "color": (36, 40, 50), "y_top": 1250, "y_bot": 1500},
+        {"cod": 5,  "name": "Valparaíso",         "color": (46, 52, 64), "y_top": 1500, "y_bot": 1820, "split": "west"},
+        {"cod": 13, "name": "Santiago RM",        "color": (36, 40, 50), "y_top": 1680, "y_bot": 1950, "split": "east"},
+        {"cod": 6,  "name": "O'Higgins",          "color": (46, 52, 64), "y_top": 1850, "y_bot": 2050, "split": "south_rm"},
+        {"cod": 7,  "name": "Maule",              "color": (36, 40, 50), "y_top": 2050, "y_bot": 2230},
+        {"cod": 16, "name": "Ñuble",              "color": (46, 52, 64), "y_top": 2150, "y_bot": 2320, "split": "inland"},
+        {"cod": 8,  "name": "Biobío",             "color": (36, 40, 50), "y_top": 2230, "y_bot": 2480, "split": "coastal"},
+        {"cod": 9,  "name": "Araucanía",          "color": (46, 52, 64), "y_top": 2480, "y_bot": 2720},
+        {"cod": 14, "name": "Los Ríos",           "color": (36, 40, 50), "y_top": 2720, "y_bot": 2920},
+        {"cod": 10, "name": "Los Lagos",          "color": (46, 52, 64), "y_top": 2850, "y_bot": 3200},
+        {"cod": 11, "name": "Aysén",              "color": (36, 40, 50), "y_top": 3200, "y_bot": 3500},
+        {"cod": 12, "name": "Magallanes",         "color": (46, 52, 64), "y_top": 3500, "y_bot": 3850},
     ]
 
-    # Lienzo oceánico azul marino profundo
-    map_img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (17, 22, 32, 255))
+    # Lienzo oceánico negro mate profundo (Estilo Blanco y Negro elegante)
+    map_img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (18, 20, 26, 255))
     draw = ImageDraw.Draw(map_img)
 
-    # Cuadrícula náutica sutil
-    grid_color = (23, 31, 44, 255)
+    # Cuadrícula náutica sutil en escala de grises
+    grid_color = (25, 29, 38, 255)
     for x in range(0, CANVAS_SIZE, 256):
         draw.line([(x, 0), (x, CANVAS_SIZE)], fill=grid_color, width=1)
     for y in range(0, CANVAS_SIZE, 256):
@@ -304,9 +304,9 @@ def generar_mapa_fondo_chile():
         poly = build_reg_poly(y_t, y_b)
         if len(poly) >= 3:
             shadow = [(p[0] + 6, p[1] + 6) for p in poly]
-            draw.polygon(shadow, fill=(10, 13, 20, 160))
+            draw.polygon(shadow, fill=(10, 12, 16, 200))
 
-    # Dibujar regiones con división limítrofe nítida estilo EAA
+    # Dibujar regiones con división limítrofe nítida estilo Blanco y Negro
     for reg in REGIONS:
         y_t, y_b = reg["y_top"], reg["y_bot"]
         color = reg["color"]
@@ -362,7 +362,7 @@ def generar_mapa_fondo_chile():
             poly = build_reg_poly(y_t, y_b)
 
         if len(poly) >= 3:
-            draw.polygon(poly, fill=(*color, 255), outline=(255, 255, 255, 220), width=2)
+            draw.polygon(poly, fill=(*color, 255), outline=(240, 245, 255, 240), width=2)
 
     # Guardar las 4 texturas de cuadrante (map0..map3) de 2048x2048 en DX10 BGRA
     map_ui_dir = BASE_DIR / "material" / "ui" / "map"
@@ -563,7 +563,7 @@ map_data : .map.data {
 	map_3d_camera_pitch: 40.0
 
 	# Centro del mapa UI en coordenadas de Chile y escala calibrada (1330.0 km reales = 70000 unidades en escala 1:19)
-	ui_map_center:	(-3947.0, 3915.0)
+	ui_map_center:	(-4120.0, 4320.0)
 	ui_map_size:	(1330.0, 1330.0)
 
 	ui_map_camera_min: (-25000.0, -32000.0)
