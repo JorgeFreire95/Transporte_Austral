@@ -280,7 +280,14 @@ def importar_y_parchear_sectores():
     bridge_gap.main()
     remove_eu_signs.main()
     prune_roads.prune(BASE_DIR / "map" / "chile", [BASE_DIR / "map" / "europe"])
+    import join_roads
+    join_roads.main(str(BASE_DIR / "map" / "chile"), [str(BASE_DIR / "map" / "europe")])
     add_comunas.main()
+    import chile_signs_aux
+    chile_signs_aux.run([BASE_DIR / "map" / "chile", BASE_DIR / "map" / "europe"])
+    import chile_fuel, chile_gas_logos
+    chile_fuel.main()
+    chile_gas_logos.main()
 
     # 5. Generar sucursales de empresas
     print("[3/4] Generando sucursales de empresas en def/company/*/editor/...")

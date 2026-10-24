@@ -196,14 +196,18 @@ def generar_logo_ui(comp_id: str, company_dir: Path, small_dir: Path):
     mat_main = company_dir / f"{comp_id}.mat"
     write_mat(mat_main, f"/material/ui/company/{comp_id}.tobj")
 
-    # 2. Logo pequeño para Mapa y GPS (64x64)
-    img_small = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
-    draw_small = ImageDraw.Draw(img_small)
-
-    draw_small.rounded_rectangle([2, 2, 62, 62], radius=10, fill=(*bg, 255), outline=(255, 255, 255, 240), width=2)
-    font_size_small = 16 if len(title) <= 5 else (13 if len(title) <= 8 else 10)
-    font_small = ImageFont.truetype(font_bold, font_size_small)
-    draw_small.text((32, 32), title[:6], font=font_small, fill=(*fg, 255), anchor="mm")
+    # 2. Icono para Mapa y GPS (64x64): insignia circular con monograma, sin texto largo
+    S = 8
+    big = Image.new("RGBA", (64 * S, 64 * S), (0, 0, 0, 0))
+    db = ImageDraw.Draw(big)
+    db.ellipse([2 * S, 2 * S, 62 * S, 62 * S], fill=(*bg, 255), outline=(255, 255, 255, 255), width=3 * S)
+    db.ellipse([9 * S, 9 * S, 55 * S, 55 * S], outline=(*accent, 255), width=2 * S)
+    words = title.replace("'", "").split()
+    mono = title if len(title) <= 4 else (words[0][0] + words[1][0] if len(words) > 1 else words[0][0])
+    mono = mono.upper()
+    fsz = {1: 36, 2: 28, 3: 17, 4: 13}[len(mono)] * S
+    db.text((32 * S, 32 * S), mono, font=ImageFont.truetype(font_bold, fsz), fill=(*fg, 255), anchor="mm")
+    img_small = big.resize((64, 64), Image.LANCZOS)
 
     dds_small = small_dir / f"{comp_id}.dds"
     img_small.save(dds_small, format="DDS")
