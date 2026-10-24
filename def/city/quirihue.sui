@@ -1,0 +1,26 @@
+city_data : city.quirihue
+{
+    city_name: "Quirihue"
+    city_name_localized: "Quirihue"
+    country: chile
+
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+
+    # Region: Nuble
+}

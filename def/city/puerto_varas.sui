@@ -1,0 +1,26 @@
+city_data : city.puerto_varas
+{
+    city_name: "Puerto Varas"
+    city_name_localized: "Puerto Varas"
+    country: chile
+
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+
+    # Region: Los Lagos
+}

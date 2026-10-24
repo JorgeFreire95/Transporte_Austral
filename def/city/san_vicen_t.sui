@@ -1,0 +1,26 @@
+city_data : city.san_vicen_t
+{
+    city_name: "San Vicente"
+    city_name_localized: "San Vicente"
+    country: chile
+
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+
+    # Region: OHiggins
+}

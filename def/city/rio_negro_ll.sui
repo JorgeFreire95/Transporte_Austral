@@ -1,0 +1,26 @@
+city_data : city.rio_negro_ll
+{
+    city_name: "Rio Negro"
+    city_name_localized: "Rio Negro"
+    country: chile
+
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+
+    # Region: Los Lagos
+}

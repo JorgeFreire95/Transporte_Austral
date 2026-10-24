@@ -1,0 +1,26 @@
+city_data : city.tortel
+{
+    city_name: "Caleta Tortel"
+    city_name_localized: "Caleta Tortel"
+    country: chile
+
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 0
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+    map_x_offsets[]: 35
+
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: 0
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+    map_y_offsets[]: -5
+
+    # Region: Aysen
+}

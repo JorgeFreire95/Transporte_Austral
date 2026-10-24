@@ -2,65 +2,46 @@ SiiNunit
 {
 map_data : .map.data {
 
-	# Rutas con alto contraste y legibilidad moderna
-	road_color:					0xFF4A5568 	// Carretera no descubierta (grafito elegante)
-	road_discovered_color:		0xFFFFFFFF	// Carretera descubierta (blanco brillante)
-	job_road_color:				0x50303A48	// Mercado laboral no descubierta
-	job_road_discovered_color:	0xFF90A0B8	// Mercado laboral descubierta
-	world_road_color:			0xFF4A5568	// Mapa principal no descubierta
-	world_road_discovered_color:0xFFFFFFFF 	// Mapa principal descubierta (blanco puro)
-	fleet_manager_road_color:			0xFF3A4454
-	fleet_manager_road_discovered_color:0xFF3A4454
+	road_color:			0xFF707070 	# Advisor map undiscovered route
+	road_discovered_color:		0xFF4cc6ff	# Advisor map discovered route
+	job_road_color:			0x50353535	# Job market map undiscoveder route
+	job_road_discovered_color:	0xFF2b3436	# Job market map discovered route
+	world_road_color:		0xFF707070	# Main map undiscovered route
+	world_road_discovered_color:	0xFF4cc6ff 	# Main map discovered route
+	fleet_manager_road_color:		0xff424242	# Fleet manager map undiscovered route
+	fleet_manager_road_discovered_color:	0xff424242 	# Fleet manager map discovered route
 
-	# Áreas y colores del mapa en armonía con la temática oscura
+	prefab_color:				0xFF737373	# Undiscovered prefab driveable areas
+	prefab_obstacle_color:			0xFF333333	# Undiscovered prefab buildings
+	prefab_grass_color:			0xFF737373	# Undiscovered prefab grass areas
+	prefab_discovered_color:		0xFF98CAEB	# Discovered prefab driveable areas
+	prefab_obstacle_discovered_color:	0xFF3ba2e0	# Discovered prefab buildings
+	prefab_grass_discovered_color:		0xFF95CAA9	# Discovered prefab grass
+
+	outline_color:			0xFF000000	# Route outline
+	navigation_color:		0xFF0C0CCF	# Navigation path color
+	navigation_highlight_color:	0xFF0C42DF	# Navigation path color, highligted segment
+	navigation_fade_color:		0xFF07077C	# Navigation path color, faded segment
+	navigation_arrow_color: 	0xFF06FB11	# Navigation crossroad arrows color
+
+	# Map area colors
+	# !!DO NOT REORDER OR DELETE ANY ENTRIES!!
+
 	map_area_color_name[]: "Road"
-	map_area_color[]: 0xFF354256
-	map_area_discovered_color[]: 0xFFFFFFFF
+	map_area_color[]: 0xFF707070
+	map_area_discovered_color[]: 0xFF4cc6ff
 
 	map_area_color_name[]: "Light"
-	map_area_color[]: 0xFF405068
-	map_area_discovered_color[]: 0xFFE2E8F0
+	map_area_color[]: 0xFF737373
+	map_area_discovered_color[]: 0xFF98CAEB
 
 	map_area_color_name[]: "Dark"
-	map_area_color[]: 0xFF1E2638
-	map_area_discovered_color[]: 0xFF94A3B8
+	map_area_color[]: 0xFF333333
+	map_area_discovered_color[]: 0xFF3ba2e0
 
 	map_area_color_name[]: "Green"
-	map_area_color[]: 0xFF2A384A
-	map_area_discovered_color[]: 0xFFCBD5E1
-
-	map_area_color_name[]: "Nav-Red"
-	map_area_color[]: 0xFF2A384A
-	map_area_discovered_color[]: 0xFFB0C0D5
-
-	map_area_color_name[]: "Nav-Green"
-	map_area_color[]: 0xFF2A384A
-	map_area_discovered_color[]: 0xFFC5D4E6
-
-	map_area_color_name[]: "Nav-Blue"
-	map_area_color[]: 0xFF2A384A
-	map_area_discovered_color[]: 0xFFCBD5E1
-
-	map_area_color_name[]: "Nav-Yellow"
-	map_area_color[]: 0xFF2A384A
-	map_area_discovered_color[]: 0xFFE2E8F0
-
-	map_area_color_name[]: "Nav-Purple"
-	map_area_color[]: 0xFF2A384A
-	map_area_discovered_color[]: 0xFFB8C8DB
-
-	prefab_color:				0xFF2E3A4E
-	prefab_obstacle_color:		0xFF141A24
-	prefab_grass_color:			0xFF283446
-	prefab_discovered_color:	0xFFE2E8F0
-	prefab_obstacle_discovered_color:	0xFF64748B
-	prefab_grass_discovered_color:		0xFFCBD5E1
-
-	outline_color:				0xFF080B10
-	navigation_color:			0xFF0084FF	// GPS principal: Azul Eléctrico brillante
-	navigation_highlight_color:	0xFF00E5FF	// Resaltado GPS: Cian neón de alta visibilidad
-	navigation_fade_color:		0xFF003880	// Cola GPS atenuada
-	navigation_arrow_color: 	0xFF00FF88	// Flecha del jugador: Verde esmeralda brillante
+	map_area_color[]: 0xFF737373
+	map_area_discovered_color[]: 0xFF95CAA9
 
 	# Niveles de Zoom completos (0 a 3 Minimap/GPS; 4 a 7 Mapa del Mundo M)
 	zoom_uplift[0]: 50.0

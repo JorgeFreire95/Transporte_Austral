@@ -604,8 +604,10 @@ map_data : .map.data {
 }
 }
 """
-    with open(map_data_sii, "w", encoding="utf-8") as f:
-        f.write(map_data_content)
+    # def/map_data.sii conserva los colores originales del juego (amarillo); no se sobrescribe
+    if not map_data_sii.exists():
+        with open(map_data_sii, "w", encoding="utf-8") as f:
+            f.write(map_data_content)
 
     print(" -> Mapa de fondo oficial de Chile (map0..map3, map) y def/map_data.sii generados exitosamente.")
 

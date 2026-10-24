@@ -275,6 +275,13 @@ def importar_y_parchear_sectores():
 
     print(f" -> {neutralizados} sectores europeos neutralizados (mapa base de Europa 100% eliminado)")
 
+    # Unir la red, quitar letreros europeos, ocultar carreteras cortadas e insertar comunas
+    import bridge_gap, remove_eu_signs, prune_roads, add_comunas
+    bridge_gap.main()
+    remove_eu_signs.main()
+    prune_roads.prune(BASE_DIR / "map" / "chile", [BASE_DIR / "map" / "europe"])
+    add_comunas.main()
+
     # 5. Generar sucursales de empresas
     print("[3/4] Generando sucursales de empresas en def/company/*/editor/...")
     total_sucursales = 0
